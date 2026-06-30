@@ -2,13 +2,14 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-06-28
+Last Updated    : 2026-06-30
 Current Module  : MODULE 0 — Orientation & Mental Models
-Current Topic   : 001 Introduction to System Design (Learning)
+Current Topic   : 004 Non-Functional Requirements (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Revisions Due   : None
-Top Weak Areas  : (none yet)
-Overall Interview Readiness : 0%
+Topics Completed: 3 (001, 002, 003)
+Revisions Due   : 001 (+1d overdue), 002 (+1d overdue) — do these next session
+Top Weak Areas  : Peak vs avg QPS for storage; ×365 for multi-year; generic implications
+Overall Interview Readiness : 3%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet
 Target          : General product-based companies (FAANG-adjacent, to be refined)
@@ -35,6 +36,8 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | Date | What Was Covered | What's Next |
 |------|-----------------|-------------|
 | 2026-06-28 | Bootstrap complete + Topic 001 (Introduction to System Design) — Completed. Key mistakes: NFR vs Solution confusion, FR vs NFR distinction. | Topic 002 — The System Design Interview Framework |
+| 2026-06-28 | Topic 002 (The System Design Interview Framework) — Completed. Key mistakes: CAP not a clarifying question; missed channel FR; missed reliability NFR. | Topic 003 — Back-of-the-Envelope Estimation |
+| 2026-06-30 | Topic 003 (Back-of-the-Envelope Estimation) — Completed. Got QPS and bandwidth correct on two practice systems. Storage errors: used peak instead of avg QPS; forgot ×365 for multi-year. Implication answers were generic. Confidence: 3/5. | Topics 001 + 002 overdue revisions, then Topic 004 |
 
 ---
 
@@ -44,7 +47,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 |----|-------|--------|-------|-----------|----------|------|----------|----------|------|------|------------|
 | 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 0 | — | 2026-06-29 | 3 | Easy | NFR vs Solution; FR vs NFR distinction |
 | 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 0 | — | 2026-06-29 | 4 | Easy | CAP is not a clarifying question; missed channel FR; missed reliability NFR |
-| 003 | Back-of-the-Envelope Estimation | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 003 | Back-of-the-Envelope Estimation | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Easy-Med | Peak vs avg QPS for storage; forgot ×365 multi-year; generic implications |
 | 004 | Non-Functional Requirements | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 006 | The Client–Server Model | Not Started | — | — | — | 0 | — | — | — | — | — |

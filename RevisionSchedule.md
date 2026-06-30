@@ -16,4 +16,12 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-07-13 | 001 | Introduction to System Design | +15 days | Pending |
 | 2026-07-28 | 001 | Introduction to System Design | +30 days | Pending |
 
+| 2026-07-01 | 003 | Back-of-the-Envelope Estimation | +1 day | Pending |
+| 2026-07-03 | 003 | Back-of-the-Envelope Estimation | +3 days | Pending |
+| 2026-07-07 | 003 | Back-of-the-Envelope Estimation | +7 days | Pending |
+| 2026-07-15 | 003 | Back-of-the-Envelope Estimation | +15 days | Pending |
+| 2026-07-30 | 003 | Back-of-the-Envelope Estimation | +30 days | Pending |
+| 2026-08-29 | 003 | Back-of-the-Envelope Estimation | +60 days | Pending |
+| 2026-09-28 | 003 | Back-of-the-Envelope Estimation | +90 days | Pending |
+
 <!-- Rows are added here after each topic is Completed -->
