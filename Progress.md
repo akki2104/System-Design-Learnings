@@ -45,8 +45,8 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 
 | ID | Title | Status | Start | Completed | Mastered | Rev# | Last Rev | Next Due | Conf | Diff | Weak Areas |
 |----|-------|--------|-------|-----------|----------|------|----------|----------|------|------|------------|
-| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 0 | — | 2026-06-29 | 3 | Easy | NFR vs Solution; FR vs NFR distinction |
-| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 0 | — | 2026-06-29 | 4 | Easy | CAP is not a clarifying question; missed channel FR; missed reliability NFR |
+| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 1 | 2026-06-30 | 2026-07-01 | 3 | Easy | Observability pillars (MLT) not recalled |
+| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 1 | 2026-06-30 | 2026-07-01 | 3 | Easy | Time budget (HLD=15 not 10); questions never to ask interviewer |
 | 003 | Back-of-the-Envelope Estimation | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Easy-Med | Peak vs avg QPS for storage; forgot ×365 multi-year; generic implications |
 | 004 | Non-Functional Requirements | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |

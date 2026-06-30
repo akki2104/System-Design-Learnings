@@ -57,6 +57,27 @@ Format:
 - How to remember: "Per day → per year → per N years. Two multiplications, not one."
 - Recurs? 1
 
+### 2026-06-30 — [Topic 001 Revision: Introduction to System Design]
+- Mistake: Could not recall the three pillars of observability
+- Why it's wrong: Metrics, Logs, Traces are foundational — asked in every deep dive and every operations discussion. Forgetting them = blank on Operational Maturity dimension.
+- Correct understanding: **M**etrics (numbers over time), **L**ogs (events with context), **T**races (request journey across services). MLT.
+- How to remember: MLT — like a sandwich. Every system needs all three layers.
+- Recurs? 1
+
+### 2026-06-30 — [Topic 002 Revision: The System Design Interview Framework]
+- Mistake: Time budget recalled as 5/5/5/5/10/10/5 — assigned only 10 min to HLD instead of 15
+- Why it's wrong: HLD is the core of the interview — it's where the design lives. It gets the most time.
+- Correct understanding: 5/5/5/5/**15**/10/5. HLD = 15 min. Deep dive = 10. Everything else = 5.
+- How to remember: HLD is the biggest block. The two 'design' steps (HLD + deep dive) = 25 of 45 minutes.
+- Recurs? 1
+
+### 2026-06-30 — [Topic 002 Revision: The System Design Interview Framework]
+- Mistake: Could not recall the two questions you must never ask the interviewer
+- Why it's wrong: Asking "should we use microservices?" or "what to choose from CAP?" hands your architectural thinking to the interviewer. It signals you can't reason independently — automatic low score.
+- Correct understanding: Never ask the interviewer to make architectural decisions. You clarify REQUIREMENTS; you decide ARCHITECTURE.
+- How to remember: Clarifying questions = about the problem. Architectural questions = yours to answer.
+- Recurs? 2 (CAP question was also a mistake in original Topic 002 lesson — now recurring)
+
 ### 2026-06-30 — [Topic 003: Back-of-the-Envelope Estimation]
 - Mistake: Stated implication as "multiple servers with load balancers" — correct but generic
 - Why it's wrong: Every scaled system has multiple servers. The implication of estimation numbers must name the *type of constraint* (read-heavy → cache; write-heavy → sharding; PB-scale → object storage). Generic answers don't demonstrate architectural thinking.
