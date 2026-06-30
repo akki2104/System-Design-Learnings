@@ -15,6 +15,20 @@ Format:
 
 ---
 
+### 2026-06-28 — [Topic 002: The System Design Interview Framework]
+- Mistake: Asked "What should we choose from CAP?" as a clarifying question to the interviewer
+- Why it's wrong: CAP reasoning is YOUR architectural decision to make and defend. Asking the interviewer signals you can't reason independently.
+- Correct understanding: You gather requirements in Step 1, then YOU decide the consistency/availability tradeoff in Step 4–5 and justify it.
+- How to remember: Clarifying questions ask about REQUIREMENTS. Architectural questions are for YOU to answer, not the interviewer.
+- Recurs? 1
+
+### 2026-06-28 — [Topic 002: The System Design Interview Framework]
+- Mistake: Missed the most design-changing FR for a notification system (delivery channel)
+- Why it's wrong: Channel choice (push/SMS/email/in-app) determines how many third-party integrations and what architecture is needed. It's the highest-leverage Step 1 question.
+- Correct understanding: For any notification-type system, channel is always the first FR to clarify.
+- How to remember: "How does it reach the user?" = the channel question = always ask this first.
+- Recurs? 1
+
 ### 2026-06-28 — [Topic 001: Introduction to System Design]
 - Mistake: When asked for NFRs, gave solutions instead ("use SQL", "add a load balancer")
 - Why it's wrong: NFRs describe HOW WELL the system must perform, not WHAT technology to use. Solutions come AFTER NFRs.
