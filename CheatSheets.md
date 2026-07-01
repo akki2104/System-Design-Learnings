@@ -74,3 +74,46 @@ INTERVIEW NARRATIVE (≤5 min)
 4. Move on
 ```
 ---
+
+### [004] Non-Functional Requirements
+```
+THE 5 NFRs
+─────────────────────────────────────────────────────
+Availability    → system UP; measured in nines
+                  Series: A = A1×A2×A3 (degrades with each dependency)
+                  Parallel: A = 1-(1-A1)(1-A2) (improves with redundancy)
+
+Reliability     → correct results when UP (≠ Availability)
+                  Available + wrong = most dangerous failure mode
+                  Sub: fault tolerance, redundancy, graceful degradation
+
+Scalability     → DB bottlenecks before server (stateful vs stateless)
+                  Order: server → DB connections → DB writes → I/O
+
+Maintainability → operable, simple, evolvable
+                  Signal: add monitoring + logging to every design
+
+Cost            → compute + storage + network + ops
+                  Move: name most expensive component + how to reduce it
+
+NFR FORMAT (use every time)
+─────────────────────────────────────────────────────
+[Quality] + [Threshold + p99] + [Business justification]
+"< 2s at p99 — users abandon after 3s, direct revenue impact"
+
+NINES TABLE
+─────────────────────────────────────────────────────
+99%     → 3.65 days/year   99.99%  → 52.6 min/year
+99.9%   → 8.76 hours/year  99.999% → 5.26 min/year
+
+NFR PRIORITY BY SYSTEM
+─────────────────────────────────────────────────────
+Payments → Reliability | Social → Availability | Healthcare → Consistency
+Real-time → Latency    | Internal → Cost
+
+TRADEOFF FRAMEWORK
+─────────────────────────────────────────────────────
+1. Name the conflict  2. Challenge whether stricter NFR is truly needed
+3. Propose specific tradeoff + business justification
+```
+---

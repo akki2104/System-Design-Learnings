@@ -17,6 +17,13 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-07-28 | 001 | Introduction to System Design | +30 days | Pending |
 
 | 2026-07-01 | 003 | Back-of-the-Envelope Estimation | +1 day | Pending |
+| 2026-07-01 | 004 | Non-Functional Requirements | +1 day | Pending |
+| 2026-07-03 | 004 | Non-Functional Requirements | +3 days | Pending |
+| 2026-07-07 | 004 | Non-Functional Requirements | +7 days | Pending |
+| 2026-07-15 | 004 | Non-Functional Requirements | +15 days | Pending |
+| 2026-07-30 | 004 | Non-Functional Requirements | +30 days | Pending |
+| 2026-08-29 | 004 | Non-Functional Requirements | +60 days | Pending |
+| 2026-09-28 | 004 | Non-Functional Requirements | +90 days | Pending |
 | 2026-07-03 | 003 | Back-of-the-Envelope Estimation | +3 days | Pending |
 | 2026-07-07 | 003 | Back-of-the-Envelope Estimation | +7 days | Pending |
 | 2026-07-15 | 003 | Back-of-the-Envelope Estimation | +15 days | Pending |

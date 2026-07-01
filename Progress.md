@@ -4,9 +4,9 @@
 ```
 Last Updated    : 2026-06-30
 Current Module  : MODULE 0 — Orientation & Mental Models
-Current Topic   : 004 Non-Functional Requirements (Next)
+Current Topic   : 005 How to Reason About Tradeoffs (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 3 (001, 002, 003)
+Topics Completed: 4 (001, 002, 003, 004)
 Revisions Due   : 001 (+1d overdue), 002 (+1d overdue) — do these next session
 Top Weak Areas  : Peak vs avg QPS for storage; ×365 for multi-year; generic implications
 Overall Interview Readiness : 3%
@@ -38,6 +38,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-06-28 | Bootstrap complete + Topic 001 (Introduction to System Design) — Completed. Key mistakes: NFR vs Solution confusion, FR vs NFR distinction. | Topic 002 — The System Design Interview Framework |
 | 2026-06-28 | Topic 002 (The System Design Interview Framework) — Completed. Key mistakes: CAP not a clarifying question; missed channel FR; missed reliability NFR. | Topic 003 — Back-of-the-Envelope Estimation |
 | 2026-06-30 | Topic 003 (Back-of-the-Envelope Estimation) — Completed. Got QPS and bandwidth correct on two practice systems. Storage errors: used peak instead of avg QPS; forgot ×365 for multi-year. Implication answers were generic. Confidence: 3/5. | Topics 001 + 002 overdue revisions, then Topic 004 |
+| 2026-06-30 | Topic 004 (Non-Functional Requirements) — Completed. Strong tradeoff reasoning (Zomato PM question). Graceful degradation instincts good. Weak: missing p99 percentile on latency NFRs; warm-up NFRs vague before drilling. Confidence: 3/5. | Revisions 001+002+003+004 due tomorrow, then Topic 005 |
 
 ---
 
@@ -48,7 +49,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 1 | 2026-06-30 | 2026-07-01 | 3 | Easy | Observability pillars (MLT) not recalled |
 | 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 1 | 2026-06-30 | 2026-07-01 | 3 | Easy | Time budget (HLD=15 not 10); questions never to ask interviewer |
 | 003 | Back-of-the-Envelope Estimation | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Easy-Med | Peak vs avg QPS for storage; forgot ×365 multi-year; generic implications |
-| 004 | Non-Functional Requirements | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 004 | Non-Functional Requirements | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Medium | Missing p99 percentile on latency; initial NFRs were vague |
 | 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 006 | The Client–Server Model | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 007 | IP, Ports, Sockets | Not Started | — | — | — | 0 | — | — | — | — | — |

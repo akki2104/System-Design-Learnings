@@ -57,6 +57,20 @@ Format:
 - How to remember: "Per day → per year → per N years. Two multiplications, not one."
 - Recurs? 1
 
+### 2026-06-30 — [Topic 004: Non-Functional Requirements]
+- Mistake: Stated latency NFR without a percentile qualifier ("under 1.5 seconds" instead of "under 1.5 seconds at p99")
+- Why it's wrong: Without a percentile, a latency threshold is unmeasurable. "Under 1.5s" for 50% of requests is very different from 99% of requests. Interviewers and SREs always require percentile precision.
+- Correct understanding: Always say "< Xms at p99" (or p95 for less strict). p99 = 99% of all requests are below this threshold.
+- How to remember: Latency without a percentile = a speed limit sign with no number. Always add "at p99."
+- Recurs? 1
+
+### 2026-06-30 — [Topic 004: Non-Functional Requirements]
+- Mistake: Warm-up NFRs were vague ("low latency", "high availability", "serve 10k users") — no thresholds or justifications
+- Why it's wrong: Vague NFRs give no architectural anchor. "Low latency" doesn't tell you whether to invest in a cache or a CDN. "High availability" doesn't tell you how many nines to design for.
+- Correct understanding: Every NFR = [quality] + [measurable threshold + percentile] + [business justification]. Only then can it drive architecture.
+- How to remember: An NFR without a number is an opinion, not a requirement.
+- Recurs? 1
+
 ### 2026-06-30 — [Topic 001 Revision: Introduction to System Design]
 - Mistake: Could not recall the three pillars of observability
 - Why it's wrong: Metrics, Logs, Traces are foundational — asked in every deep dive and every operations discussion. Forgetting them = blank on Operational Maturity dimension.
