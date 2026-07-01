@@ -64,6 +64,33 @@ Format:
 - How to remember: Latency without a percentile = a speed limit sign with no number. Always add "at p99."
 - Recurs? 1
 
+### 2026-07-01 — [Topic 002 Revision: Interview Framework]
+- Mistake: Named Step 6 as "LLD" instead of "Deep Dive"
+- Why it's wrong: LLD is a completely separate interview round (classes, patterns, thread safety). The 7-step HLD framework has no LLD step. Step 6 = Deep Dive into the hardest 1–2 HLD components.
+- Correct understanding: Deep Dive = pick the spicy HLD components (e.g., the feed ranking algorithm, the video encoding pipeline) and go deep on internals. LLD = different day, different round.
+- How to remember: The 7 steps are all HLD. LLD never appears in the HLD framework.
+- Recurs? 1
+
+### 2026-07-01 — [Topic 003 Revision: Back-of-the-Envelope Estimation]
+- Mistake: Write QPS formula stated as "DAU × (reads+writes)/user/day ÷ 86,400" — included reads
+- Why it's wrong: Write QPS formula is for writes only. Reads and writes are calculated separately. Including reads inflates write QPS and corrupts downstream storage and bandwidth estimates.
+- Correct understanding: Write QPS = DAU × writes/user/day ÷ 86,400. Read QPS = DAU × reads/user/day ÷ 86,400. Separate formulas, separate numbers.
+- How to remember: QPS has a direction. Write QPS = writes only. Read QPS = reads only.
+- Recurs? 1
+
+### 2026-07-01 — [Topic 003 Revision: Back-of-the-Envelope Estimation]
+- Mistake: Explained bandwidth correctly but could not explain why storage uses average QPS
+- Why it's wrong: Without understanding the why, the rule breaks down under interviewer pressure ("why average and not peak?")
+- Correct understanding: Storage = accounting (what actually arrived on disk per day = average rate). Bandwidth = capacity planning (how wide the pipes need to be = peak rate). "Storage is what happened. Bandwidth is what could happen."
+- Recurs? 2 (repeated from original lesson — now persistent weak area)
+
+### 2026-07-01 — [Topic 004 Revision: NFRs]
+- Mistake: Answered the nines table instead of calculating series availability (0.999³)
+- Why it's wrong: The question asked for a multiplication — 3 components at 99.9% in series. Series availability = A1 × A2 × A3 = 0.997 = 99.7%. Reciting the table is not the same as computing the result.
+- Correct understanding: Series availability compounds multiplicatively. Three 99.9% components → 99.7%. Every dependency added degrades availability.
+- How to remember: Series = multiply probabilities. 99.9% × 99.9% × 99.9% = 99.7%.
+- Recurs? 1
+
 ### 2026-06-30 — [Topic 004: Non-Functional Requirements]
 - Mistake: Warm-up NFRs were vague ("low latency", "high availability", "serve 10k users") — no thresholds or justifications
 - Why it's wrong: Vague NFRs give no architectural anchor. "Low latency" doesn't tell you whether to invest in a cache or a CDN. "High availability" doesn't tell you how many nines to design for.
