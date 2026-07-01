@@ -22,9 +22,23 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
 
 1. Read `SYSTEM_DESIGN_MASTER_GUIDE.md` (constitution)
 2. Read `Progress.md` (determine current position, last session, and next topic)
-3. Check `RevisionSchedule.md` — if any topics are due for revision today, do revision first
-4. Deliver lesson or revision per the guide's teaching algorithm
-5. After session, update all affected tracking files
+3. Read `Schedule.md` — find today's date in the schedule and tell the learner:
+   - Which topics are due today (with target times)
+   - Whether they are ahead, on track, or behind
+   - A one-line pace check: "You should be on topic NNN by today. You are on topic MMM. You are X days ahead/behind."
+4. Check `RevisionSchedule.md` — if any topics are due for revision today, run revision BEFORE new content
+5. Deliver lesson or revision per the guide's teaching algorithm
+6. After session, update all affected tracking files
+
+> **Daily briefing format (say this at the start of every session):**
+> ```
+> 📅 Today: [date]
+> 📍 Schedule says: Topics [X–Y] should be done by today
+> ✅ Actually done: Topics 001–[N]
+> ⚡ Pace: [ahead by X days / on track / behind by X days]
+> 🔁 Revisions due today: [list or "none"]
+> 🎯 Today's goal: [topics to cover this session]
+> ```
 
 ## File Roles and Maintenance Rules
 
@@ -36,6 +50,7 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
 | `InterviewMistakes.md` | Running log of learner mistakes with root cause + fix + mnemonic | Mentor (when a mistake occurs) |
 | `Glossary.md` | Alphabetical term definitions; add ~3-5 terms per new topic | Mentor |
 | `CheatSheets.md` | 1-screen condensed summaries per topic; add after each completed topic | Mentor |
+| `Schedule.md` | Master day-by-day schedule — target dates for all 114 topics, LLD, case studies; read every session | Mentor reads; never modifies unless timeline changes |
 | `Numbers.md` | Latency, data size, and capacity formulas reference card | Static; update rarely |
 | `Topics/NNN_*.md` | One lesson file per HLD topic; created when topic is taught | Mentor |
 | `Revision/Revision_NNN.md` | Active-recall Q&A per completed topic | Mentor |
@@ -74,9 +89,11 @@ Remote: `https://github.com/akki2104/System-Design-Learnings` (username: `akki21
 > git push -u origin main
 > ```
 
-## Curriculum Position (as of 2026-06-28)
+## Curriculum Position (as of 2026-07-01)
 
-- **Current module:** Module 0 — Orientation & Mental Models
-- **Completed:** Topic 001 (Introduction to System Design)
-- **Mastered:** 0 topics
-- **Next:** Topic 002 onward per `Progress.md`
+- **Current module:** Module 0 → Module 1 (transitioning)
+- **Completed:** Topics 001–004
+- **Mastered:** 0 topics (mastery confirmed after Day-7 revision passes)
+- **Next:** Topic 005 onward per `Progress.md` and `Schedule.md`
+- **Interview-ready target:** August 9, 2026
+- **Schedule file:** `Schedule.md` — consult this every session for daily targets
