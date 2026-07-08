@@ -4,11 +4,11 @@
 ```
 Last Updated    : 2026-07-08
 Current Module  : MODULE 0 — Orientation & Mental Models
-Current Topic   : 005 How to Reason About Tradeoffs (Learning — in progress)
+Current Topic   : 006 The Client–Server Model (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 4 (001, 002, 003, 004)
-Revisions Due   : OVERDUE — 003 (reset +1d from Jul 2), 003+004 (+3d from Jul 3), 001+002 (+7d from Jul 5)
-Top Weak Areas  : Avg vs peak QPS for storage (RECURRING ×2 — drill at session start); 86,400 typo (×2); tech-selection reasoning (learner-flagged 2026-07-08)
+Topics Completed: 5 (001, 002, 003, 004, 005)
+Revisions Due   : OVERDUE — 003 (reset +1d from Jul 2), 003+004 (+3d from Jul 3), 001+002 (+7d from Jul 5), 005 (+1d from Jul 9)
+Top Weak Areas  : Avg vs peak QPS for storage (RECURRING ×2 — drill at session start); 86,400 typo (×2); flexible-schema vs write-throughput conflation (new)
 Pace            : ~8 days behind Schedule.md as of 2026-07-08 (should be on ~032, on 005)
 Overall Interview Readiness : 3%
 
@@ -42,6 +42,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-06-28 | Topic 002 (The System Design Interview Framework) — Completed. Key mistakes: CAP not a clarifying question; missed channel FR; missed reliability NFR. | Topic 003 — Back-of-the-Envelope Estimation |
 | 2026-06-30 | Topic 003 (Back-of-the-Envelope Estimation) — Completed. Got QPS and bandwidth correct on two practice systems. Storage errors: used peak instead of avg QPS; forgot ×365 for multi-year. Implication answers were generic. Confidence: 3/5. | Topics 001 + 002 overdue revisions, then Topic 004 |
 | 2026-06-30 | Topic 004 (Non-Functional Requirements) — Completed. Strong tradeoff reasoning (Zomato PM question). Graceful degradation instincts good. Weak: missing p99 percentile on latency NFRs; warm-up NFRs vague before drilling. Confidence: 3/5. | Revisions 001+002+003+004 due tomorrow, then Topic 005 |
+| 2026-07-08 | Topic 005 (How to Reason About Tradeoffs) — Completed after a multi-day gap (learner requested TechChoices.md playbook — added to curriculum standard). Correctly applied read/write decision tree to Twitter and WhatsApp. Fixed mid-lesson: conflated MongoDB flexible-schema with Cassandra write-throughput; attributed join cost to data volume instead of sharding. Mastery check passed. Confidence: 3/5. | Revisions overdue (001,002,003,004,005) — batch next session; then Topics 006+007 |
 
 ---
 
@@ -53,6 +54,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 2 | 2026-07-01 | 2026-07-05 | 3 | Easy | Step 6 = Deep Dive not LLD |
 | 003 | Back-of-the-Envelope Estimation | Revising | 2026-06-30 | 2026-06-30 | — | 1 | 2026-07-01 | 2026-07-02 | 2 | Easy-Med | Write QPS formula (reads+writes confusion); avg vs peak concept still shaky |
 | 004 | Non-Functional Requirements | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Medium | Missing p99 percentile on latency; initial NFRs were vague |
+| 005 | How to Reason About Tradeoffs | Completed | 2026-07-08 | 2026-07-08 | — | 0 | — | 2026-07-09 | 3 | Medium | Conflated MongoDB schema-flexibility with Cassandra write-throughput; join cost attributed to volume not sharding (both corrected) |
 | 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 006 | The Client–Server Model | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 007 | IP, Ports, Sockets | Not Started | — | — | — | 0 | — | — | — | — | — |

@@ -40,6 +40,26 @@
 
 ---
 
+## Why Joins Get Expensive at Scale — the real trigger
+
+**Common misconception:** "huge data volume" is what kills SQL joins. **Wrong.** A single Postgres machine joins tables fine even at hundreds of GB, as long as it's properly indexed — a join there is just a local, in-memory row match.
+
+**The real trigger is SHARDING (spreading data across machines), not data size.**
+
+```
+Big data, ONE machine        → joins still work fine (good indexes are enough)
+Data SPREAD across machines  → joins become expensive NETWORK calls
+                                (every join now needs a round trip to another server)
+```
+
+Example — Zomato's `orders` and `restaurants`:
+- **Unsharded Postgres:** `orders JOIN restaurants` = fast, local, one machine.
+- **Orders sharded by user_id across 10 machines:** `restaurants` lives on one machine only. Every other shard now needs a network hop to fetch restaurant details for a join. Multiply that by every shard, every query — that's the "join overhead" people mean.
+
+**This is why NoSQL documents look "duplicated":** a MongoDB order document embeds the restaurant's name/address directly instead of storing a `restaurant_id` and joining. The duplication is the price paid to avoid a network join. This is called **denormalization**, and it's a deliberate tradeoff — write once, read fast, accept some data duplication and eventual staleness if the restaurant details change.
+
+---
+
 ## Estimation → Tech Choice (bridge from Topic 003)
 
 | The number says | The tech conclusion |

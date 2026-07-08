@@ -117,3 +117,38 @@ TRADEOFF FRAMEWORK
 3. Propose specific tradeoff + business justification
 ```
 ---
+
+### [005] How to Reason About Tradeoffs
+```
+THE TRADEOFF DECISION TREE
+─────────────────────────────────────────────────
+Scary number appears → READS or WRITES?
+  READS  → ADD A CACHE       (cheap, reversible, same DB)
+  WRITES → SWITCH/SHARD DB   (expensive, hard to reverse)
+
+WHY CACHE FIXES READS, NOT WRITES
+─────────────────────────────────────────────────
+Read cache miss  = fall back to DB, just slower (no data loss)
+Write cache loss = data gone forever (no fallback) — DB must absorb all writes
+
+WHY JOINS GET EXPENSIVE
+─────────────────────────────────────────────────
+Big data, ONE machine       → joins fine (indexing handles it)
+Data SPLIT across machines  → joins = network calls (the real cost)
+Fix: denormalize to avoid cross-shard joins
+
+DB CHOICE QUICK MAP
+─────────────────────────────────────────────────
+Flexible/nested schema, unknown shape   → MongoDB
+Massive writes, KNOWN access pattern    → Cassandra / DynamoDB
+Money, joins, ACID                      → PostgreSQL / MySQL (default)
+Hot reads, sessions, counters           → Redis (cache, not truth)
+Full-text/fuzzy search                  → Elasticsearch (index, not truth)
+PB-scale blobs                          → S3 / object storage
+
+THE 3-PART INTERVIEW SENTENCE
+─────────────────────────────────────────────────
+"I'll use [X] because [specific problem property].
+ I considered [Y] but rejected it because [what Y trades away]."
+```
+---

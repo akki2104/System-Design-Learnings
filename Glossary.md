@@ -32,5 +32,10 @@ Kept in alphabetical order.
 | SLA (Service Level Agreement) | A contractual commitment with external parties about availability/performance, with penalties for breach | [004](Topics/004_Non_Functional_Requirements.md) |
 | SLI (Service Level Indicator) | The actual measured metric (e.g., request success rate, p99 latency) | [004](Topics/004_Non_Functional_Requirements.md) |
 | SLO (Service Level Objective) | The internal target for an SLI (e.g., "99.9% of requests succeed") | [004](Topics/004_Non_Functional_Requirements.md) |
+| Denormalization | Deliberately duplicating data (e.g., embedding related fields) to avoid expensive cross-shard joins | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
+| Leaderless Replication | A write model (used by Cassandra/DynamoDB) where any node can accept a write, avoiding a single-primary write bottleneck | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
+| Sharding | Splitting a dataset across multiple machines; the real cause of expensive joins (not raw data volume) | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
+| Write-Back Cache | A cache that acknowledges writes before flushing to the durable database; fast but risks data loss on crash | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
+| Write-Through Cache | A cache that writes to both cache and database synchronously; safe but doesn't reduce database write load | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
 
 <!-- Rows added after each lesson -->

@@ -32,4 +32,12 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-29 | 003 | Back-of-the-Envelope Estimation | +60 days | Pending |
 | 2026-09-28 | 003 | Back-of-the-Envelope Estimation | +90 days | Pending |
 
+| 2026-07-09 | 005 | How to Reason About Tradeoffs | +1 day | Pending |
+| 2026-07-11 | 005 | How to Reason About Tradeoffs | +3 days | Pending |
+| 2026-07-15 | 005 | How to Reason About Tradeoffs | +7 days | Pending |
+| 2026-07-23 | 005 | How to Reason About Tradeoffs | +15 days | Pending |
+| 2026-08-07 | 005 | How to Reason About Tradeoffs | +30 days | Pending |
+| 2026-09-06 | 005 | How to Reason About Tradeoffs | +60 days | Pending |
+| 2026-10-06 | 005 | How to Reason About Tradeoffs | +90 days | Pending |
+
 <!-- Rows are added here after each topic is Completed -->

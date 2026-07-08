@@ -91,6 +91,27 @@ Format:
 - How to remember: Series = multiply probabilities. 99.9% × 99.9% × 99.9% = 99.7%.
 - Recurs? 1
 
+### 2026-07-08 — [Topic 005: How to Reason About Tradeoffs]
+- Mistake: Claimed "high read to write ratio" would push you off Postgres
+- Why it's wrong: High read:write ratio (e.g., 100:1) is the case Postgres/relational DBs handle BEST — that's exactly what read replicas and caching solve. The real trigger to leave Postgres is high WRITE throughput exceeding what one primary can absorb.
+- Correct understanding: Read-heavy → stay on Postgres, add cache/replicas. Write-heavy (exceeding one primary's capacity) → shard or switch to a leaderless store (Cassandra/DynamoDB).
+- How to remember: Read pressure never kicks you off Postgres by itself. Only write throughput does.
+- Recurs? 1
+
+### 2026-07-08 — [Topic 005: How to Reason About Tradeoffs]
+- Mistake: Attributed expensive joins to "huge amount of data" rather than sharding
+- Why it's wrong: A single machine joins large tables (hundreds of GB) fine with good indexes — that's a local, in-memory operation. Joins only become expensive network operations once data is SPLIT across multiple machines (sharding).
+- Correct understanding: Big data on ONE machine → joins still work. Data spread across machines → joins become network calls. This is why sharded/NoSQL systems denormalize (duplicate data) to avoid cross-shard joins.
+- How to remember: It's not the size of the table, it's whether the table lives on one machine or many.
+- Recurs? 1
+
+### 2026-07-08 — [Topic 005: How to Reason About Tradeoffs]
+- Mistake: Picked MongoDB for a high-write-throughput problem (WhatsApp, 500K writes/sec), justified with "flexible schema" and "need to view data from different angles"
+- Why it's wrong: Flexible schema (MongoDB's strength) and high write throughput (Cassandra's strength) are two different properties — conflating them leads to the wrong pick. Also, "view data from different angles" (ad-hoc queries) is actually an argument AGAINST wide-column stores, but WhatsApp messages have a well-known, fixed access pattern (by conversation_id, ordered by time), so that argument didn't even apply here. MongoDB shards still route writes through a per-shard primary — same write bottleneck as sharded SQL.
+- Correct understanding: High write throughput + known access pattern → Cassandra/DynamoDB (leaderless writes, any node accepts a write). Flexible/unknown schema shape → MongoDB. Don't use one tech's justification for a different tech's problem.
+- How to remember: Ask "what property does this system actually need?" before naming a database — write throughput and schema flexibility are different axes.
+- Recurs? 1
+
 ### 2026-06-30 — [Topic 004: Non-Functional Requirements]
 - Mistake: Warm-up NFRs were vague ("low latency", "high availability", "serve 10k users") — no thresholds or justifications
 - Why it's wrong: Vague NFRs give no architectural anchor. "Low latency" doesn't tell you whether to invest in a cache or a CDN. "High availability" doesn't tell you how many nines to design for.
