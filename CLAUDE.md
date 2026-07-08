@@ -27,8 +27,9 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
    - Whether they are ahead, on track, or behind
    - A one-line pace check: "You should be on topic NNN by today. You are on topic MMM. You are X days ahead/behind."
 4. Check `RevisionSchedule.md` — if any topics are due for revision today, run revision BEFORE new content
-5. Deliver lesson or revision per the guide's teaching algorithm
-6. After session, update all affected tracking files
+5. Check `InterviewMistakes.md` for mistakes with recurrence ≥ 2 — run a 60-second scored drill on each BEFORE anything else
+6. Deliver lesson or revision per the guide's teaching algorithm; every lesson touching a tech category includes a "when to use / when NOT to use" decision box (also appended to `TechChoices.md`)
+7. After session, update all affected tracking files
 
 > **Daily briefing format (say this at the start of every session):**
 > ```
@@ -52,6 +53,7 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
 | `CheatSheets.md` | 1-screen condensed summaries per topic; add after each completed topic | Mentor |
 | `Schedule.md` | Master day-by-day schedule — target dates for all 114 topics, LLD, case studies; read every session | Mentor reads; never modifies unless timeline changes |
 | `Numbers.md` | Latency, data size, and capacity formulas reference card | Static; update rarely |
+| `TechChoices.md` | "When to use what" tech decision playbook (problem → tech → why → why not alternatives); grows after each lesson touching a tech category | Mentor |
 | `Topics/NNN_*.md` | One lesson file per HLD topic; created when topic is taught | Mentor |
 | `Revision/Revision_NNN.md` | Active-recall Q&A per completed topic | Mentor |
 | `LLD/`, `CaseStudies/`, `InterviewPractice/`, `Assessments/` | Future content; create files when curriculum reaches them | Mentor |

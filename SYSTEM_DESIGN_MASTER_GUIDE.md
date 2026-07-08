@@ -354,6 +354,10 @@ Every lesson file is built with these 24 sections, **in order**. Sections may be
 
 > **Diagram standard:** Prefer Mermaid for architecture/sequence/state diagrams (```` ```mermaid ````), and ASCII for quick flows and "animation frames." Always label arrows with what flows (data, request, ack, heartbeat).
 
+> **Tech-decision standard (added 2026-07-08, learner request):** Whenever a lesson touches a technology category (database, cache, queue, protocol, load balancer, etc.), it MUST include a "when to use / when NOT to use" decision box naming 2–3 real technologies, the default pick, and interview-ready "why not X" phrasing for the rejected alternatives. Every such decision box is also appended to `TechChoices.md`. Revision sessions include at least one "which tech would you pick here and why" drill.
+
+> **Recurring-mistake drill standard (added 2026-07-08):** Any mistake with recurrence count ≥ 2 in `InterviewMistakes.md` gets a 60-second targeted drill at the START of the next session (before revisions or new content), scored ✅/❌. The drill repeats each session until two consecutive clean passes.
+
 ---
 
 ## 6. THE TEACHING ALGORITHM (THE LOOP THE MENTOR RUNS EVERY SESSION)
@@ -684,6 +688,7 @@ After a lesson reaches `Completed` (Mastery Check passed), the mentor performs A
 | `Diagrams.md` | Reusable diagram library (LB, cache-aside, leader-follower, fanout, etc.) | When a new reusable pattern appears |
 | `Resources.md` | Curated external resources per topic | After each lesson |
 | `Numbers.md` | Latency numbers + estimation formulas + "powers of ten" reference | Created in topic 003; referenced forever |
+| `TechChoices.md` | "When to use what" decision playbook — problem → tech → why → why not the alternatives | After each lesson touching a tech category |
 
 **`InterviewMistakes.md` format:**
 ```
@@ -798,6 +803,7 @@ This roadmap was calibrated against current interview practice using multiple so
 | Date       | Change                                  | By |
 |------------|-----------------------------------------|----|
 | 2026-06-28 | Initial master guide created            | Mentor LLM |
+| 2026-07-08 | Added TechChoices.md playbook + tech-decision standard in every lesson + recurring-mistake drill standard (learner request) | Mentor LLM |
 ```
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*

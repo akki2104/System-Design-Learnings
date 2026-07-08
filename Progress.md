@@ -2,16 +2,19 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-06-30
+Last Updated    : 2026-07-08
 Current Module  : MODULE 0 — Orientation & Mental Models
-Current Topic   : 005 How to Reason About Tradeoffs (Next)
+Current Topic   : 005 How to Reason About Tradeoffs (Learning — in progress)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 4 (001, 002, 003, 004)
-Revisions Due   : 001 (+1d overdue), 002 (+1d overdue) — do these next session
-Top Weak Areas  : Peak vs avg QPS for storage; ×365 for multi-year; generic implications
+Revisions Due   : OVERDUE — 003 (reset +1d from Jul 2), 003+004 (+3d from Jul 3), 001+002 (+7d from Jul 5)
+Top Weak Areas  : Avg vs peak QPS for storage (RECURRING ×2 — drill at session start); 86,400 typo (×2); tech-selection reasoning (learner-flagged 2026-07-08)
+Pace            : ~8 days behind Schedule.md as of 2026-07-08 (should be on ~032, on 005)
 Overall Interview Readiness : 3%
 
-Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet
+Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
+                  Learns best from worked examples + scorecards. Wants every concept tied to
+                  named tech choices: which DB/queue, why, and why NOT the alternatives (→ TechChoices.md)
 Target          : General product-based companies (FAANG-adjacent, to be refined)
 Timeline Target : ~4 weeks new content + 2 weeks revision = INTERVIEW READY by ~mid-August 2026
 
