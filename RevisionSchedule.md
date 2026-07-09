@@ -40,4 +40,19 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-09-06 | 005 | How to Reason About Tradeoffs | +60 days | Pending |
 | 2026-10-06 | 005 | How to Reason About Tradeoffs | +90 days | Pending |
 
+| 2026-07-10 | 006 | The Client–Server Model | +1 day | Pending |
+| 2026-07-12 | 006 | The Client–Server Model | +3 days | Pending |
+| 2026-07-16 | 006 | The Client–Server Model | +7 days | Pending |
+| 2026-07-24 | 006 | The Client–Server Model | +15 days | Pending |
+| 2026-08-08 | 006 | The Client–Server Model | +30 days | Pending |
+| 2026-09-07 | 006 | The Client–Server Model | +60 days | Pending |
+| 2026-10-07 | 006 | The Client–Server Model | +90 days | Pending |
+| 2026-07-10 | 007 | IP, Ports, Sockets | +1 day | Pending |
+| 2026-07-12 | 007 | IP, Ports, Sockets | +3 days | Pending |
+| 2026-07-16 | 007 | IP, Ports, Sockets | +7 days | Pending |
+| 2026-07-24 | 007 | IP, Ports, Sockets | +15 days | Pending |
+| 2026-08-08 | 007 | IP, Ports, Sockets | +30 days | Pending |
+| 2026-09-07 | 007 | IP, Ports, Sockets | +60 days | Pending |
+| 2026-10-07 | 007 | IP, Ports, Sockets | +90 days | Pending |
+
 <!-- Rows are added here after each topic is Completed -->

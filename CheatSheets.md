@@ -152,3 +152,25 @@ THE 3-PART INTERVIEW SENTENCE
  I considered [Y] but rejected it because [what Y trades away]."
 ```
 ---
+
+### [006] The Client-Server Model
+```
+CLIENT = initiates requests | SERVER = listens & responds
+Same machine can be BOTH — client to one system, server to another
+Model is ASYMMETRIC: servers always listening; clients connect on demand
+Failure propagates UP the chain: DB down → App Server times out → Browser errors
+
+Client-Server (default) → centralized, easy to secure, but server = bottleneck
+Peer-to-Peer (rare in interviews) → no bottleneck, hard to secure/coordinate
+```
+---
+
+### [007] IP, Ports, Sockets
+```
+IP = WHICH MACHINE | PORT = WHICH PROCESS on that machine | SOCKET = the open connection
+Socket = 5-tuple: (source IP, source port, dest IP, dest port, protocol)
+Ports let ONE machine run MANY services (web:443, ssh:22, db:5432)
+Multiple connections to same server:port are distinguished by different
+CLIENT source ports (OS-assigned automatically, invisible to the user)
+```
+---

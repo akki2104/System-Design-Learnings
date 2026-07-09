@@ -37,5 +37,12 @@ Kept in alphabetical order.
 | Sharding | Splitting a dataset across multiple machines; the real cause of expensive joins (not raw data volume) | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
 | Write-Back Cache | A cache that acknowledges writes before flushing to the durable database; fast but risks data loss on crash | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
 | Write-Through Cache | A cache that writes to both cache and database synchronously; safe but doesn't reduce database write load | [005](Topics/005_How_to_Reason_About_Tradeoffs.md) |
+| Client | Anything that initiates a request to consume a resource/service | [006](Topics/006_The_Client_Server_Model.md) |
+| Server | Anything that provides a resource/service and listens for requests | [006](Topics/006_The_Client_Server_Model.md) |
+| Peer-to-Peer (P2P) | An architecture where nodes communicate directly without a central server; no single bottleneck but harder to secure/coordinate | [006](Topics/006_The_Client_Server_Model.md) |
+| IP Address | Identifies WHICH MACHINE on a network | [007](Topics/007_IP_Ports_Sockets.md) |
+| Port | Identifies WHICH PROCESS/SERVICE on a machine; lets one IP run many services | [007](Topics/007_IP_Ports_Sockets.md) |
+| Socket | An open network connection uniquely identified by the 5-tuple: source IP, source port, dest IP, dest port, protocol | [007](Topics/007_IP_Ports_Sockets.md) |
+| Ephemeral Port | A temporary port automatically assigned by the OS to a client's outgoing connection | [007](Topics/007_IP_Ports_Sockets.md) |
 
 <!-- Rows added after each lesson -->
