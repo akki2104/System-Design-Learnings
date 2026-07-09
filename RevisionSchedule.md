@@ -65,6 +65,14 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 
 <!-- Rows are added here after each topic is Completed -->
 
-<!-- NOTE 2026-07-09: Learner has chosen to defer all pending revisions (001-007) to this
+| 2026-07-10 | 009 | DNS | +1 day | Pending |
+| 2026-07-12 | 009 | DNS | +3 days | Pending |
+| 2026-07-16 | 009 | DNS | +7 days | Pending |
+| 2026-07-24 | 009 | DNS | +15 days | Pending |
+| 2026-08-08 | 009 | DNS | +30 days | Pending |
+| 2026-09-07 | 009 | DNS | +60 days | Pending |
+| 2026-10-07 | 009 | DNS | +90 days | Pending |
+
+<!-- NOTE 2026-07-09: Learner has chosen to defer all pending revisions (001-009) to this
      weekend rather than run them mid-week. This is an intentional, learner-directed choice,
      not a missed/failed revision. Do not mark these as failed; just run them this weekend. -->

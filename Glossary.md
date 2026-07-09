@@ -48,5 +48,10 @@ Kept in alphabetical order.
 | UDP (User Datagram Protocol) | Connectionless transport protocol with no delivery/ordering guarantees; faster, no handshake | [008](Topics/008_TCP_vs_UDP.md) |
 | 3-Way Handshake | TCP's connection setup sequence (SYN, SYN-ACK, ACK) before any real data flows; costs one round trip | [008](Topics/008_TCP_vs_UDP.md) |
 | QUIC | A UDP-based transport protocol (used in HTTP/3) that adds its own reliability layer, skipping TCP's handshake cost while keeping delivery guarantees | [008](Topics/008_TCP_vs_UDP.md) |
+| DNS (Domain Name System) | Translates human-readable domain names into IP addresses via a hierarchical resolver chain | [009](Topics/009_DNS.md) |
+| TTL (Time To Live) | How long a DNS resolver may cache a record before re-checking the authoritative source | [009](Topics/009_DNS.md) |
+| A Record | A DNS record mapping a domain to an IPv4 address | [009](Topics/009_DNS.md) |
+| CNAME Record | A DNS record mapping a domain to another domain name (an alias) | [009](Topics/009_DNS.md) |
+| GeoDNS | DNS that returns different IPs for the same domain based on the requester's location — a simple form of geo-routing | [009](Topics/009_DNS.md) |
 
 <!-- Rows added after each lesson -->

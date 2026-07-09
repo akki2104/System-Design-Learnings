@@ -203,3 +203,35 @@ UDP-based but adds its own reliability layer — skips TCP's handshake
 cost while still guaranteeing delivery
 ```
 ---
+
+### [009] DNS
+```
+DNS = translates domain names → IP addresses
+
+WHY HIERARCHICAL (not one giant server)
+─────────────────────────────────────────
+Root → TLD (.com) → Authoritative — each layer handles a small, delegated slice
+Same pattern as sharding: distribute responsibility, not centralize it
+
+RESOLUTION FLOW
+─────────────────────────────────────────
+"google.com?" → Resolver → Root → TLD → Authoritative → IP returned
+
+CACHING (TTL)
+─────────────────────────────────────────
+Records cached per TTL — skips the full chain on repeat lookups
+Lower TTL before migration → faster propagation, less stale-cache risk
+Raise TTL after → fewer lookups, cheaper/faster steady state
+
+RECORD TYPES
+─────────────────────────────────────────
+A     → domain → IPv4
+AAAA  → domain → IPv6
+CNAME → domain → another domain (alias)
+GeoDNS → different IP per requester location (cheap geo-routing)
+
+PROTOCOL
+─────────────────────────────────────────
+DNS uses UDP (Topic 008) — tiny, stateless, cheap to retry if lost
+```
+---
