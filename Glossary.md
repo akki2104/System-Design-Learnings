@@ -44,5 +44,9 @@ Kept in alphabetical order.
 | Port | Identifies WHICH PROCESS/SERVICE on a machine; lets one IP run many services | [007](Topics/007_IP_Ports_Sockets.md) |
 | Socket | An open network connection uniquely identified by the 5-tuple: source IP, source port, dest IP, dest port, protocol | [007](Topics/007_IP_Ports_Sockets.md) |
 | Ephemeral Port | A temporary port automatically assigned by the OS to a client's outgoing connection | [007](Topics/007_IP_Ports_Sockets.md) |
+| TCP (Transmission Control Protocol) | Connection-oriented transport protocol with guaranteed, ordered delivery via handshake, ACKs, and retransmission | [008](Topics/008_TCP_vs_UDP.md) |
+| UDP (User Datagram Protocol) | Connectionless transport protocol with no delivery/ordering guarantees; faster, no handshake | [008](Topics/008_TCP_vs_UDP.md) |
+| 3-Way Handshake | TCP's connection setup sequence (SYN, SYN-ACK, ACK) before any real data flows; costs one round trip | [008](Topics/008_TCP_vs_UDP.md) |
+| QUIC | A UDP-based transport protocol (used in HTTP/3) that adds its own reliability layer, skipping TCP's handshake cost while keeping delivery guarantees | [008](Topics/008_TCP_vs_UDP.md) |
 
 <!-- Rows added after each lesson -->

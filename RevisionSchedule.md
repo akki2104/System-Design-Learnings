@@ -55,4 +55,16 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-09-07 | 007 | IP, Ports, Sockets | +60 days | Pending |
 | 2026-10-07 | 007 | IP, Ports, Sockets | +90 days | Pending |
 
+| 2026-07-10 | 008 | TCP vs UDP | +1 day | Pending |
+| 2026-07-12 | 008 | TCP vs UDP | +3 days | Pending |
+| 2026-07-16 | 008 | TCP vs UDP | +7 days | Pending |
+| 2026-07-24 | 008 | TCP vs UDP | +15 days | Pending |
+| 2026-08-08 | 008 | TCP vs UDP | +30 days | Pending |
+| 2026-09-07 | 008 | TCP vs UDP | +60 days | Pending |
+| 2026-10-07 | 008 | TCP vs UDP | +90 days | Pending |
+
 <!-- Rows are added here after each topic is Completed -->
+
+<!-- NOTE 2026-07-09: Learner has chosen to defer all pending revisions (001-007) to this
+     weekend rather than run them mid-week. This is an intentional, learner-directed choice,
+     not a missed/failed revision. Do not mark these as failed; just run them this weekend. -->

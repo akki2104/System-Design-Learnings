@@ -174,3 +174,32 @@ Multiple connections to same server:port are distinguished by different
 CLIENT source ports (OS-assigned automatically, invisible to the user)
 ```
 ---
+
+### [008] TCP vs UDP
+```
+TCP vs UDP
+─────────────────────────────────────────────────
+TCP: connection-oriented, guaranteed+ordered delivery, handshake first, slower
+UDP: connectionless, no guarantees, no handshake, faster
+
+3-WAY HANDSHAKE (TCP setup cost)
+─────────────────────────────────────────────────
+SYN → SYN-ACK → ACK   (1 full round trip before real data flows)
+
+WHEN TO USE WHICH
+─────────────────────────────────────────────────
+TCP → data must be correct & complete: files, APIs, DB, trading systems
+UDP → stale data is harmless, speed matters more: video/voice, gaming, DNS
+
+THE REAL QUESTION (not "is speed important")
+─────────────────────────────────────────────────
+"Does losing/reordering ONE update cause real harm, or does the
+ next update make the old one obsolete anyway?"
+Harm → TCP.  Obsolete anyway → UDP.
+
+QUIC (HTTP/3, Topic 010 preview)
+─────────────────────────────────────────────────
+UDP-based but adds its own reliability layer — skips TCP's handshake
+cost while still guaranteeing delivery
+```
+---

@@ -4,10 +4,10 @@
 ```
 Last Updated    : 2026-07-09
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 008 TCP vs UDP (Next)
+Current Topic   : 009 DNS (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 7 (001, 002, 003, 004, 005, 006, 007)
-Revisions Due   : OVERDUE — 003 (reset +1d from Jul 2), 003+004 (+3d from Jul 3), 001+002 (+7d from Jul 5), 005 (+1d from Jul 9)
+Topics Completed: 8 (001-008)
+Revisions Due   : OVERDUE — 001-007 backlog, deferred to weekend by learner's choice (2026-07-09); 008 +1d due 2026-07-10
 Top Weak Areas  : Avg vs peak QPS for storage (RECURRING ×2 — drill at session start); 86,400 typo (×2); flexible-schema vs write-throughput conflation
 Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 007)
 Overall Interview Readiness : 3%
@@ -44,6 +44,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-06-30 | Topic 004 (Non-Functional Requirements) — Completed. Strong tradeoff reasoning (Zomato PM question). Graceful degradation instincts good. Weak: missing p99 percentile on latency NFRs; warm-up NFRs vague before drilling. Confidence: 3/5. | Revisions 001+002+003+004 due tomorrow, then Topic 005 |
 | 2026-07-08 | Topic 005 (How to Reason About Tradeoffs) — Completed after a multi-day gap (learner requested TechChoices.md playbook — added to curriculum standard). Correctly applied read/write decision tree to Twitter and WhatsApp. Fixed mid-lesson: conflated MongoDB flexible-schema with Cassandra write-throughput; attributed join cost to data volume instead of sharding. Mastery check passed. Confidence: 3/5. | Revisions overdue (001,002,003,004,005) — batch next session; then Topics 006+007 |
 | 2026-07-09 | Topics 006 (Client-Server Model) + 007 (IP, Ports, Sockets) — Completed as survey batch, entering Module 1. Clean understanding of role-asymmetry and failure propagation (006); minor correction on socket 5-tuple mechanics (007 — thought "socket ID" was separate from the tuple). Confidence: 4/5 both. | Revisions still overdue (001-005) — batch soon; then Topic 008 TCP vs UDP |
+| 2026-07-09 | Topic 008 (TCP vs UDP) — Completed same session as 006+007. Clean pass on the core decision framework AND the trap question (stock trading system — correctly rejected UDP despite "needs speed" framing). No mistakes logged. Confidence: 4/5. Learner has deferred all revisions (001-007) to this weekend by choice. | Topic 009 (DNS) — continue Module 1; revision catch-up this weekend |
 
 ---
 
@@ -58,6 +59,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 005 | How to Reason About Tradeoffs | Completed | 2026-07-08 | 2026-07-08 | — | 0 | — | 2026-07-09 | 3 | Medium | Conflated MongoDB schema-flexibility with Cassandra write-throughput; join cost attributed to volume not sharding (both corrected) |
 | 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Easy | Initially framed client/server as frontend/backend rather than role |
 | 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Easy | Thought "socket ID" was separate from the 5-tuple |
+| 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Medium | None — clean pass including trap question |
 | 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 006 | The Client–Server Model | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 007 | IP, Ports, Sockets | Not Started | — | — | — | 0 | — | — | — | — | — |
