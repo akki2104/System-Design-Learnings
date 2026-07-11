@@ -75,8 +75,8 @@ Format:
 - Mistake: Write QPS formula stated as "DAU × (reads+writes)/user/day ÷ 86,400" — included reads
 - Why it's wrong: Write QPS formula is for writes only. Reads and writes are calculated separately. Including reads inflates write QPS and corrupts downstream storage and bandwidth estimates.
 - Correct understanding: Write QPS = DAU × writes/user/day ÷ 86,400. Read QPS = DAU × reads/user/day ÷ 86,400. Separate formulas, separate numbers.
-- How to remember: QPS has a direction. Write QPS = writes only. Read QPS = reads only.
-- Recurs? 1
+- How to remember: QPS has a direction. Write QPS = writes only. Read QPS = reads only. Reads don't land on disk.
+- Recurs? 2 — also occurred in 2026-07-11 revision blitz; PERSISTENT WEAK AREA
 
 ### 2026-07-01 — [Topic 003 Revision: Back-of-the-Envelope Estimation]
 - Mistake: Explained bandwidth correctly but could not explain why storage uses average QPS
@@ -131,7 +131,7 @@ Format:
 - Why it's wrong: HLD is the core of the interview — it's where the design lives. It gets the most time.
 - Correct understanding: 5/5/5/5/**15**/10/5. HLD = 15 min. Deep dive = 10. Everything else = 5.
 - How to remember: HLD is the biggest block. The two 'design' steps (HLD + deep dive) = 25 of 45 minutes.
-- Recurs? 1
+- Recurs? 2 — 2026-07-11: got HLD right (15) but Deep Dive wrong (said 5 instead of 10). Different slot, same pattern.
 
 ### 2026-06-30 — [Topic 002 Revision: The System Design Interview Framework]
 - Mistake: Could not recall the two questions you must never ask the interviewer
@@ -145,4 +145,43 @@ Format:
 - Why it's wrong: Every scaled system has multiple servers. The implication of estimation numbers must name the *type of constraint* (read-heavy → cache; write-heavy → sharding; PB-scale → object storage). Generic answers don't demonstrate architectural thinking.
 - Correct understanding: After computing numbers, ask "what kind of problem is this?" and name it specifically. 1:1 ratio = write-heavy = sharding. 100:1 = read-heavy = cache. PB = object storage.
 - How to remember: "The number is the symptom. Name the diagnosis, not just the symptom."
+- Recurs? 1
+
+---
+
+### 2026-07-11 — [Revision Blitz: Topics 001–010]
+
+### 2026-07-11 — [Topic 007 Revision: IP, Ports, Sockets]
+- Mistake: Stated "Port 80 is for WebSockets, Port 443 is for web server"
+- Why it's wrong: Port 80 = HTTP (unencrypted). Port 443 = HTTPS (TLS-encrypted). WebSockets do not own a port — ws:// rides HTTP on port 80, wss:// rides HTTPS on port 443.
+- Correct understanding: 80 = HTTP. 443 = HTTPS. WebSockets start as an HTTP connection and upgrade via the `Upgrade: websocket` header.
+- How to remember: 443 = HTTPS = Secure. The S in HTTPS = the bigger port. 80 = plain HTTP, no encryption.
+- Recurs? 1
+
+### 2026-07-11 — [Topic 009 Revision: DNS]
+- Mistake: Walked the DNS chain starting from root nameserver — missed browser cache and OS cache as the first two steps
+- Why it's wrong: In practice, most DNS resolutions never reach the root — they're served from browser or OS cache. Starting from root signals you don't know the full resolution path, which interviewers test.
+- Correct understanding: Full chain: browser cache → OS cache → recursive resolver → root nameserver → TLD nameserver → authoritative nameserver.
+- How to remember: "Before any network packet leaves the machine, check local caches first." Caches are always step 1.
+- Recurs? 1
+
+### 2026-07-11 — [Topic 010 Revision: HTTP/1.1, HTTP/2, HTTP/3]
+- Mistake: Said HTTP/3's QUIC "guarantees ordered delivery" — describing TCP's behavior, not QUIC's fix
+- Why it's wrong: TCP's guaranteed ordered delivery at the connection level is the problem that causes HoL blocking. QUIC fixes it by enforcing ordering per-stream independently — a lost packet in stream 1 only stalls stream 1, not stream 2.
+- Correct understanding: QUIC = per-stream ordering over UDP. TCP = connection-level ordering. This is the architectural reason HTTP/3 eliminates cross-stream HoL blocking.
+- How to remember: TCP orders at the connection → one loss blocks ALL. QUIC orders per stream → one loss blocks THAT stream only.
+- Recurs? 1
+
+### 2026-07-11 — [Topic 005 Revision: Tradeoffs]
+- Mistake: Gave the spirit of tradeoff reasoning (steps 3–4) without naming steps 1–2 (Name the decision, Identify the axes)
+- Why it's wrong: Interviewers score on structure, not just outcome. Jumping to "I chose X because Y" without naming the tradeoff axis and competing forces skips the reasoning framework that earns points on the Tradeoffs dimension.
+- Correct understanding: Full 4 steps: (1) Name the decision, (2) Identify the axes (latency vs consistency, reads vs writes, etc.), (3) Evaluate each option against those axes, (4) Choose + Justify + Acknowledge the cost.
+- How to remember: "Name → Axes → Evaluate → Choose+Cost." You can't skip to step 4 without steps 1–2.
+- Recurs? 1
+
+### 2026-07-11 — [Topic 006 Revision: Client-Server Model]
+- Mistake: Described P2P difficulty as "complexity" without naming the specific type
+- Why it's wrong: "Complexity" is filler — it signals you're reaching for a word, not a concept. The actual hardnesses are: security (no central checkpoint), coordination (no authority to enforce consistency), and discovery (no central registry).
+- Correct understanding: P2P is harder because of (1) security — no single point to verify/authenticate nodes, (2) coordination — distributed consensus without a leader, (3) discovery — how peers find each other.
+- How to remember: Three P's: Protection (security), Protocol agreement (coordination), Peer finding (discovery).
 - Recurs? 1

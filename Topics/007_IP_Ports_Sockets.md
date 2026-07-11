@@ -58,12 +58,29 @@ Any ONE value differing in the 5-tuple = a distinct connection.
 
 ---
 
+## Well-Known Ports to Know
+
+| Port | Protocol | Notes |
+|------|----------|-------|
+| 80 | HTTP | Unencrypted web traffic |
+| 443 | HTTPS | Encrypted web traffic (TLS) |
+| 22 | SSH | Secure shell |
+| 5432 | PostgreSQL | Default DB port |
+| 6379 | Redis | Default cache port |
+
+**WebSockets do not have their own port.** ws:// runs over HTTP on port 80; wss:// runs over HTTPS on port 443. WebSocket connections start as HTTP and upgrade via the `Upgrade: websocket` header.
+
+Memory hook: 443 = HTTPS = the *secure* one. 80 = HTTP = plain.
+
+---
+
 ## Common Mistakes
 
 | Mistake | Fix |
 |---------|-----|
 | Thinking a "socket ID" is a separate identifier | There's no separate ID — the 5-tuple itself is the identity |
 | Assuming two tabs to the same site need different destination ports | Only the CLIENT'S source port differs; destination IP:port stays the same |
+| "Port 80 is for WebSockets" | Port 80 = HTTP. WebSockets run *over* HTTP/HTTPS, not on their own port |
 
 ---
 

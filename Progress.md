@@ -2,13 +2,13 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-07-09
+Last Updated    : 2026-07-11
 Current Module  : MODULE 1 — Networking & Communication Foundations
 Current Topic   : 011 HTTPS & TLS (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 10 (001-010)
-Revisions Due   : OVERDUE — 001-010 backlog, deferred to weekend by learner's choice (2026-07-09)
-Top Weak Areas  : Avg vs peak QPS for storage (RECURRING ×2 — drill at session start); 86,400 typo (×2); flexible-schema vs write-throughput conflation
+Revisions Due   : Next due 2026-07-12 (006-010 +3d); 2026-07-13 (001-002 +15d); 2026-07-15 (003-005 +7d/+15d)
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion (new); DNS chain missing browser+OS cache; Avg vs peak QPS (CLEARED today — got it right)
 Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 007)
 Overall Interview Readiness : 3%
 
@@ -47,6 +47,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-09 | Topic 008 (TCP vs UDP) — Completed same session as 006+007. Clean pass on the core decision framework AND the trap question (stock trading system — correctly rejected UDP despite "needs speed" framing). No mistakes logged. Confidence: 4/5. Learner has deferred all revisions (001-007) to this weekend by choice. | Topic 009 (DNS) — continue Module 1; revision catch-up this weekend |
 | 2026-07-09 | Topic 009 (DNS) — Completed same session. Clean pass on TTL/migration reasoning, no mistakes logged. Confidence: 4/5. | Topic 010 (HTTP/1.1, HTTP/2, HTTP/3) — continue Module 1; revision catch-up still due this weekend (001-009) |
 | 2026-07-09 | Topic 010 (HTTP/1.1, HTTP/2, HTTP/3) — Completed same session (5 topics in one day: 006-010). Correctly traced app-level HOL blocking (HTTP/1.1) and identified the cause; needed the transport-level HOL blocking mechanism (HTTP/2 on TCP) explained fully, then passed mastery check on why HTTP/3 needed a new transport (QUIC). Confidence: 4/5. Git identity for this repo switched to akki2104 (personal GitHub) per learner request — local config only, not global. | Topic 011 (HTTPS & TLS); big revision catch-up (001-010) still due this weekend |
+| 2026-07-11 | Revision Blitz — all 10 topics (001-010) covered. Avg vs peak QPS CLEARED. Persistent new weak area: reads in write QPS formula (×2). New mistakes: Port 80/443 swapped; DNS chain missing browser+OS cache; HTTP/3 HoL mechanism confused; Tradeoff steps 1-2 missing; P2P difficulty too vague. Clean passes: TCP/UDP, NFR template, series availability, Postgres read vs write trigger, CAP forbidden questions. Topic 007 updated with port 80/443 reference table. | Topic 011 — HTTPS & TLS |
 
 ---
 
@@ -54,22 +55,16 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 
 | ID | Title | Status | Start | Completed | Mastered | Rev# | Last Rev | Next Due | Conf | Diff | Weak Areas |
 |----|-------|--------|-------|-----------|----------|------|----------|----------|------|------|------------|
-| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 2 | 2026-07-01 | 2026-07-05 | 4 | Easy | — |
-| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 2 | 2026-07-01 | 2026-07-05 | 3 | Easy | Step 6 = Deep Dive not LLD |
-| 003 | Back-of-the-Envelope Estimation | Revising | 2026-06-30 | 2026-06-30 | — | 1 | 2026-07-01 | 2026-07-02 | 2 | Easy-Med | Write QPS formula (reads+writes confusion); avg vs peak concept still shaky |
-| 004 | Non-Functional Requirements | Completed | 2026-06-30 | 2026-06-30 | — | 0 | — | 2026-07-01 | 3 | Medium | Missing p99 percentile on latency; initial NFRs were vague |
-| 005 | How to Reason About Tradeoffs | Completed | 2026-07-08 | 2026-07-08 | — | 0 | — | 2026-07-09 | 3 | Medium | Conflated MongoDB schema-flexibility with Cassandra write-throughput; join cost attributed to volume not sharding (both corrected) |
-| 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Easy | Initially framed client/server as frontend/backend rather than role |
-| 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Easy | Thought "socket ID" was separate from the 5-tuple |
-| 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Medium | None — clean pass including trap question |
-| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Easy | None — clean pass |
-| 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 0 | — | 2026-07-10 | 4 | Med-Hard | Needed transport-level HOL blocking mechanism explained fully before mastery check passed |
-| 005 | How to Reason About Tradeoffs | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 006 | The Client–Server Model | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 007 | IP, Ports, Sockets | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 008 | TCP vs UDP | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 009 | DNS | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 010 | HTTP/1.1, HTTP/2, HTTP/3 | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 3 | 2026-07-11 | 2026-07-13 | 4 | Easy | FR/NFR test phrasing imprecise (revision blitz) |
+| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 3 | 2026-07-11 | 2026-07-13 | 3 | Easy | Deep Dive time: said 5 min instead of 10 (recurring ×2 on time budget) |
+| 003 | Back-of-the-Envelope Estimation | Completed | 2026-06-30 | 2026-06-30 | — | 3 | 2026-07-11 | 2026-07-15 | 2 | Easy-Med | Reads in write QPS formula (RECURRING ×2 — persistent); avg vs peak CLEARED |
+| 004 | Non-Functional Requirements | Completed | 2026-06-30 | 2026-06-30 | — | 3 | 2026-07-11 | 2026-07-15 | 3 | Medium | Missing p99 percentile on latency; initial NFRs were vague |
+| 005 | How to Reason About Tradeoffs | Completed | 2026-07-08 | 2026-07-08 | — | 2 | 2026-07-11 | 2026-07-15 | 3 | Medium | Tradeoff method steps 1-2 missing in revision; Postgres/write confusion fully corrected |
+| 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 4 | Easy | P2P difficulty too vague ("complexity") — no specific type named |
+| 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Easy | Port 80/443 confusion (said 80=WebSockets; corrected: 80=HTTP, 443=HTTPS) |
+| 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 4 | Medium | Clean pass on both revision questions |
+| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Easy | Missed browser+OS cache as first steps in DNS chain |
+| 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Med-Hard | HTTP/3 HoL fix: said "guarantees ordered delivery" (TCP behavior) instead of per-stream QUIC ordering |
 | 011 | HTTPS & TLS | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 012 | REST API Design | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 013 | RPC & gRPC | Not Started | — | — | — | 0 | — | — | — | — | — |
