@@ -73,6 +73,14 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-09-07 | 009 | DNS | +60 days | Pending |
 | 2026-10-07 | 009 | DNS | +90 days | Pending |
 
-<!-- NOTE 2026-07-09: Learner has chosen to defer all pending revisions (001-009) to this
+| 2026-07-10 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +1 day | Pending |
+| 2026-07-12 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +3 days | Pending |
+| 2026-07-16 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +7 days | Pending |
+| 2026-07-24 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +15 days | Pending |
+| 2026-08-08 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +30 days | Pending |
+| 2026-09-07 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +60 days | Pending |
+| 2026-10-07 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +90 days | Pending |
+
+<!-- NOTE 2026-07-09: Learner has chosen to defer all pending revisions (001-010) to this
      weekend rather than run them mid-week. This is an intentional, learner-directed choice,
      not a missed/failed revision. Do not mark these as failed; just run them this weekend. -->

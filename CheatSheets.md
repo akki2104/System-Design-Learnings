@@ -235,3 +235,32 @@ PROTOCOL
 DNS uses UDP (Topic 008) — tiny, stateless, cheap to retry if lost
 ```
 ---
+
+### [010] HTTP/1.1, HTTP/2, HTTP/3
+```
+HTTP/1.1 vs HTTP/2 vs HTTP/3
+─────────────────────────────────────────────────
+HTTP/1.1 → TCP, ~6 connections/domain limit, app-level head-of-line blocking
+HTTP/2   → TCP, ONE connection, multiplexed binary streams, HPACK header
+           compression — fixes app-level blocking, TCP-level blocking remains
+HTTP/3   → QUIC (UDP-based), independent per-stream delivery, no HOL blocking,
+           faster setup (0-RTT), handshake+TLS bundled together
+
+HEAD-OF-LINE BLOCKING — TWO DIFFERENT LAYERS
+─────────────────────────────────────────────────
+App-level (HTTP/1.1)   → limited connections force requests to queue
+Transport-level (HTTP/2 on TCP) → one lost packet blocks ALL multiplexed
+                                   streams sharing that TCP connection
+
+WHY HTTP/3 NEEDED A NEW TRANSPORT (not just new HTTP framing)
+─────────────────────────────────────────────────
+TCP's ordering guarantee applies to the WHOLE connection — can't be fixed
+by changing HTTP's layer again. QUIC replaces TCP itself.
+
+WHEN TO DESIGN AROUND WHICH
+─────────────────────────────────────────────────
+HTTP/1.1 → legacy support, simple low-resource-count APIs
+HTTP/2   → default for modern web apps (many resources)
+HTTP/3   → high-latency/lossy networks, mobile, video streaming
+```
+---

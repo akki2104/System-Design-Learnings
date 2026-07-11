@@ -53,5 +53,9 @@ Kept in alphabetical order.
 | A Record | A DNS record mapping a domain to an IPv4 address | [009](Topics/009_DNS.md) |
 | CNAME Record | A DNS record mapping a domain to another domain name (an alias) | [009](Topics/009_DNS.md) |
 | GeoDNS | DNS that returns different IPs for the same domain based on the requester's location — a simple form of geo-routing | [009](Topics/009_DNS.md) |
+| Head-of-Line Blocking | When one blocked/lost item delays all items behind it in a queue; occurs at the application layer (HTTP/1.1's connection cap) and transport layer (HTTP/2 on TCP's shared ordering) | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
+| Multiplexing | Sending multiple independent request/response streams over a single connection simultaneously, interleaved as frames | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
+| HPACK | HTTP/2's header compression scheme; avoids resending full headers on every request over the same connection | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
+| 0-RTT | A connection resumption mode (used by QUIC/HTTP/3) that sends encrypted data in the very first packet, skipping a full handshake round trip | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
 
 <!-- Rows added after each lesson -->
