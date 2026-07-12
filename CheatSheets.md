@@ -264,3 +264,47 @@ HTTP/2   → default for modern web apps (many resources)
 HTTP/3   → high-latency/lossy networks, mobile, video streaming
 ```
 ---
+
+### [011] HTTPS & TLS
+```
+HTTPS = HTTP + TLS
+
+TLS GUARANTEES (3)
+─────────────────────────────────────────────────
+Encryption    → data unreadable in transit
+Integrity     → tampering detected
+Authentication → server identity proven via CA-signed certificate
+
+CHAIN OF TRUST
+─────────────────────────────────────────────────
+Browser trusts CAs (pre-installed) → CA signs server cert → server presents cert
+→ browser verifies → connection proceeds
+
+TLS HANDSHAKE
+─────────────────────────────────────────────────
+Asymmetric (once) → securely exchange session key
+Symmetric (all data) → ~1000× faster, used for everything after
+
+TLS VERSIONS
+─────────────────────────────────────────────────
+TLS 1.2 → 2 RTT before data flows
+TLS 1.3 → 1 RTT (key material sent with ClientHello)
+0-RTT   → session resumption, data in first packet (repeat connections only)
+
+TLS TERMINATION DECISION
+─────────────────────────────────────────────────
+General API / web app   → terminate at LB (simpler, standard)
+PCI-DSS / HIPAA         → end-to-end TLS (card/health data must be encrypted
+                          everywhere, including internal network)
+
+mTLS
+─────────────────────────────────────────────────
+Both sides present certs → mutual identity proof
+Use for: service-to-service auth in microservices
+Tools: Istio, Linkerd (service mesh automates cert management)
+
+PORT REMINDER
+─────────────────────────────────────────────────
+80 = HTTP (unencrypted)   |   443 = HTTPS (TLS-encrypted)
+```
+---

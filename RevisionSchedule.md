@@ -74,9 +74,17 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-10-07 | 009 | DNS | +90 days | Pending |
 
 | 2026-07-10 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +1 day | Done 2026-07-11 |
+| 2026-07-13 | 011 | HTTPS & TLS | +1 day | Pending |
 | 2026-07-12 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +3 days | Pending |
 | 2026-07-16 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +7 days | Pending |
 | 2026-07-24 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +15 days | Pending |
 | 2026-08-08 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +30 days | Pending |
 | 2026-09-07 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +60 days | Pending |
 | 2026-10-07 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | +90 days | Pending |
+
+| 2026-07-15 | 011 | HTTPS & TLS | +3 days | Pending |
+| 2026-07-19 | 011 | HTTPS & TLS | +7 days | Pending |
+| 2026-07-27 | 011 | HTTPS & TLS | +15 days | Pending |
+| 2026-08-11 | 011 | HTTPS & TLS | +30 days | Pending |
+| 2026-09-10 | 011 | HTTPS & TLS | +60 days | Pending |
+| 2026-10-10 | 011 | HTTPS & TLS | +90 days | Pending |

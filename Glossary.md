@@ -58,4 +58,12 @@ Kept in alphabetical order.
 | HPACK | HTTP/2's header compression scheme; avoids resending full headers on every request over the same connection | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
 | 0-RTT | A connection resumption mode (used by QUIC/HTTP/3) that sends encrypted data in the very first packet, skipping a full handshake round trip | [010](Topics/010_HTTP_1_1_HTTP_2_HTTP_3.md) |
 
+| TLS (Transport Layer Security) | The cryptographic protocol that wraps HTTP to create HTTPS; provides encryption, integrity, and server authentication | [011](Topics/011_HTTPS_TLS.md) |
+| Certificate Authority (CA) | A trusted third party (e.g., DigiCert, Let's Encrypt) that signs server certificates, enabling browsers to verify server identity | [011](Topics/011_HTTPS_TLS.md) |
+| Asymmetric Encryption | Encryption using a public/private key pair; public key encrypts, only private key decrypts — used in TLS handshake to safely exchange a session key | [011](Topics/011_HTTPS_TLS.md) |
+| Symmetric Encryption | Encryption using a single shared key; ~1000× faster than asymmetric — used for all data after TLS handshake completes | [011](Topics/011_HTTPS_TLS.md) |
+| TLS Termination | The point where HTTPS is decrypted; at the load balancer (standard) or end-to-end (required for PCI-DSS/HIPAA) | [011](Topics/011_HTTPS_TLS.md) |
+| mTLS (Mutual TLS) | A TLS mode where both client and server present certificates, providing mutual authentication — standard for service-to-service calls in microservices | [011](Topics/011_HTTPS_TLS.md) |
+| PCI-DSS | Payment Card Industry Data Security Standard; mandates end-to-end encryption for card data in transit, including inside internal networks | [011](Topics/011_HTTPS_TLS.md) |
+
 <!-- Rows added after each lesson -->
