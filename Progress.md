@@ -4,13 +4,13 @@
 ```
 Last Updated    : 2026-07-12
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 014 GraphQL (Next)
+Current Topic   : 015 WebSockets, SSE, Polling, Long Polling (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 13 (001-013)
-Revisions Due   : Next due 2026-07-12 (006-010 +3d, overdue); 2026-07-13 (001-002 +15d, 011/012/013 +1d)
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion; DNS chain missing browser+OS cache; REST URL ordering; gRPC browser-vs-mobile distinction (new)
-Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 013)
-Overall Interview Readiness : 4%
+Topics Completed: 14 (001-014)
+Revisions Due   : Next due 2026-07-12 (006-010 +3d, overdue); 2026-07-13 (001-002 +15d, 011/012/013/014 +1d)
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion; DNS chain missing browser+OS cache; GraphQL N+1 batching fix mechanism (new)
+Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 014)
+Overall Interview Readiness : 5%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
                   Learns best from worked examples + scorecards. Wants every concept tied to
@@ -51,6 +51,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-12 | Topic 011 (HTTPS & TLS) — Completed. Correctly identified MITM as the HTTP threat and PCI-DSS as the reason for end-to-end TLS on payment APIs. Good grasp of the 3 TLS guarantees and why the handshake switches from asymmetric to symmetric. Didn't know authentication was the third guarantee (required prompting). Confidence: 3-4/5. | Topic 012 — REST API Design |
 | 2026-07-12 | Topic 012 (REST API Design) — Completed same session as 011. Strong grasp of statelessness and the cursor-vs-offset pagination correctness argument (self-derived the duplicate/skip mechanism correctly). Corrected: idempotency defined by response code instead of final state; URL design exercise had collection/ID ordering reversed and modeled "like" as a PATCH field instead of a sub-resource. Clean on 401 vs 403. Confidence: 4/5. | Topic 013 — RPC & gRPC |
 | 2026-07-12 | Topic 013 (RPC & gRPC) — Completed same session as 011+012. Good grasp of gRPC's HTTP/2 + protobuf combo and the four streaming patterns. Corrected: attributed gRPC's browser incompatibility to protobuf's unreadability (secondary reason) instead of the actual hard blocker — browsers can't control HTTP/2 trailers, while native mobile apps can use gRPC directly. Confidence: 4/5. | Topic 014 — GraphQL |
+| 2026-07-12 | Topic 014 (GraphQL) — Completed same session. Learner requested a pacing change: explain the full topic uninterrupted, ask all questions at the end (saved as standing behavioral preference). Correctly identified over-fetching, the caching problem (no fixed URL), and correctly self-diagnosed that GraphQL's N+1 problem moves server-side — but did not know the DataLoader/batching fix, which was explained fully. Confidence: 4/5. | Topic 015 — WebSockets, SSE, Polling, Long Polling |
 
 ---
 
@@ -71,7 +72,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 3 | Medium | Didn't know authentication was 3rd TLS guarantee; PCI-DSS reasoning correct |
 | 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Idempotency defined by response code, not final state; URL ordering reversed (ID before collection); "like" modeled as PATCH instead of sub-resource |
 | 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Attributed gRPC browser blocker to protobuf unreadability instead of HTTP/2 trailer control; native mobile vs browser distinction now clear |
-| 014 | GraphQL | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Diagnosed server-side N+1 correctly but didn't know DataLoader/batching fix (now explained) |
 | 015 | WebSockets, SSE, Polling, Long Polling | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 016 | Forward Proxy, Reverse Proxy, API Gateway | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 017 | Load Balancers | Not Started | — | — | — | 0 | — | — | — | — | — |

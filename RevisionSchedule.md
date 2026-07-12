@@ -104,3 +104,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-11 | 013 | RPC & gRPC | +30 days | Pending |
 | 2026-09-10 | 013 | RPC & gRPC | +60 days | Pending |
 | 2026-10-10 | 013 | RPC & gRPC | +90 days | Pending |
+
+| 2026-07-13 | 014 | GraphQL | +1 day | Pending |
+| 2026-07-15 | 014 | GraphQL | +3 days | Pending |
+| 2026-07-19 | 014 | GraphQL | +7 days | Pending |
+| 2026-07-27 | 014 | GraphQL | +15 days | Pending |
+| 2026-08-11 | 014 | GraphQL | +30 days | Pending |
+| 2026-09-10 | 014 | GraphQL | +60 days | Pending |
+| 2026-10-10 | 014 | GraphQL | +90 days | Pending |

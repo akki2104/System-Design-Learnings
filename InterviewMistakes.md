@@ -206,3 +206,10 @@ Format:
 - Correct understanding: Browsers → gRPC blocked at the transport-control level → need grpc-web proxy. Native mobile → gRPC works directly. Debuggability (binary payload) is a separate, secondary reason teams choose REST for public APIs even when gRPC would technically work.
 - How to remember: "Browsers can't hold the wheel (HTTP/2 trailers), mobile apps can." Unreadable payload is an annoyance, not a blocker.
 - Recurs? 1
+
+### 2026-07-12 — [Topic 014: GraphQL]
+- Mistake: Correctly diagnosed that GraphQL's N+1 problem moves server-side (per-item DB calls) but did not know the fix (batching/DataLoader)
+- Why it's wrong: Without the batching fix, a production GraphQL server silently reintroduces N+1 DB queries per request — this is a real operational cost interviewers probe on when GraphQL is proposed.
+- Correct understanding: DataLoader pattern — queue individual per-item resolver requests within the same request tick, then fire one combined batched query (`WHERE id IN (...)`) instead of one query per item. Same principle as write-batching/Nagle's algorithm.
+- How to remember: "Collect, then combine." Diagnosis was right (N+1 moved to the server) — the missing piece was the standard fix name and mechanism.
+- Recurs? 1

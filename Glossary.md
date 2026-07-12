@@ -77,4 +77,10 @@ Kept in alphabetical order.
 | Protocol Buffers (protobuf) | A compact binary serialization format defined by a schema (`.proto` file); contracts are enforced at compile time, unlike JSON | [013](Topics/013_RPC_gRPC.md) |
 | grpc-web | A proxy layer that translates between browser-compatible requests and native gRPC, needed because browsers can't control HTTP/2 trailers directly | [013](Topics/013_RPC_gRPC.md) |
 
+| GraphQL | A query language for APIs where the client specifies exact fields/nesting in one request to a single endpoint, fixing REST's over-/under-fetching | [014](Topics/014_GraphQL.md) |
+| Over-fetching | A REST response containing more fields than the client needs, wasting bandwidth | [014](Topics/014_GraphQL.md) |
+| Under-fetching | Needing multiple sequential REST round trips to assemble related/nested data | [014](Topics/014_GraphQL.md) |
+| Resolver | A function behind a GraphQL schema field that knows how to fetch that specific piece of data | [014](Topics/014_GraphQL.md) |
+| DataLoader (Batching) | A pattern that queues individual per-item data requests within a request tick and combines them into one bulk query, fixing GraphQL's server-side N+1 problem | [014](Topics/014_GraphQL.md) |
+
 <!-- Rows added after each lesson -->

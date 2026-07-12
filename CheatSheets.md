@@ -399,3 +399,44 @@ gRPC → internal service-to-service, low latency, strict typed contracts,
 REST → public API, browser clients involved, human-readable debugging
 ```
 ---
+
+### [014] GraphQL
+```
+PROBLEMS IT SOLVES
+─────────────────────────────────────────────────
+Over-fetching  → REST returns full object, client needs 2 fields
+Under-fetching → REST needs N sequential round trips for nested data
+GraphQL fix    → 1 endpoint (POST /graphql), client specifies exact
+                  fields+nesting in 1 query, 1 round trip
+
+SCHEMA / TYPES / RESOLVERS
+─────────────────────────────────────────────────
+Strongly typed schema (like protobuf, but for a data graph)
+Each field → backed by a resolver function that fetches that data
+
+THREE OPERATIONS
+─────────────────────────────────────────────────
+Query        → read   (like GET)
+Mutation     → write  (like POST/PUT/DELETE)
+Subscription → real-time push (like gRPC server streaming)
+
+THE N+1 PROBLEM MOVES, DOESN'T DISAPPEAR
+─────────────────────────────────────────────────
+Naive: N posts → N+1 DB queries (1 for posts + 1 per post's commentCount)
+Fix: DataLoader/batching — queue per-item requests within a tick,
+      fire ONE combined query (WHERE id IN (...)) instead of N queries
+Same principle as write-batching/Nagle's algorithm elsewhere
+
+CACHING IS HARDER
+─────────────────────────────────────────────────
+REST: GET /users/5 → cacheable by URL (CDN/browser, free)
+GraphQL: single POST endpoint, variable body → no URL to key on
+          → needs its own cache layer (persisted queries, Apollo/Relay)
+
+DECISION
+─────────────────────────────────────────────────
+GraphQL → many diverse client types (web/iOS/Android/TV) needing
+           different data shapes from the same domain (Facebook's case)
+REST    → simple CRUD, cacheable reads, public API simplicity
+```
+---
