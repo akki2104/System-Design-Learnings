@@ -308,3 +308,58 @@ PORT REMINDER
 80 = HTTP (unencrypted)   |   443 = HTTPS (TLS-encrypted)
 ```
 ---
+
+### [012] REST API Design
+```
+TWO CORE RULES
+─────────────────────────────────────────────────
+1. Resources (nouns) in URLs, HTTP method = the verb
+   GET /users/5   not   GET /getUser?id=5
+2. Statelessness — no server memory between requests (auth token every call)
+
+HTTP METHODS (Safe? / Idempotent?)
+─────────────────────────────────────────────────
+GET     read       Safe=Y  Idempotent=Y
+POST    create     Safe=N  Idempotent=N
+PUT     replace    Safe=N  Idempotent=Y
+PATCH   partial    Safe=N  Idempotent=N (usually)
+DELETE  remove     Safe=N  Idempotent=Y
+
+IDEMPOTENCY = SAME FINAL STATE, NOT SAME RESPONSE
+─────────────────────────────────────────────────
+DELETE: 1st call → 200/204, repeat calls → 404 (different responses,
+same end state: resource gone). Ties directly to payment retry-safety.
+
+URL CONVENTIONS
+─────────────────────────────────────────────────
+Plural collection nouns      → /tweets not /tweet
+Collection before ID         → /users/{id} not /{id}/users
+Nested = ownership           → /users/{id}/tweets
+Action → model as resource   → POST /tweets/{id}/likes (not PATCH .../like)
+
+STATUS CODES
+─────────────────────────────────────────────────
+200 OK | 201 Created | 204 No Content
+400 Bad Request | 401 Unauthorized (who are you?)
+403 Forbidden (know you, can't do this) | 404 Not Found
+409 Conflict | 429 Too Many Requests | 500 Server Error
+
+VERSIONING — default: URL path (/v1/...)
+─────────────────────────────────────────────────
+Path > Header > Query param (in order of interview-default preference)
+
+PAGINATION — OFFSET VS CURSOR
+─────────────────────────────────────────────────
+Offset (?offset=20&limit=10)  → breaks on live feeds: insert/delete
+                                  shifts row positions → dup/skip results
+Cursor (?cursor=id82&limit=10) → anchored to fixed ID, immune to shifts
+                                  used by Twitter/Slack/Stripe
+
+DECISION BOX
+─────────────────────────────────────────────────
+REST    → public API, CRUD-shaped, HTTP caching matters
+WebSocket → need real-time bidirectional push
+GraphQL → client needs flexible/nested data shapes
+gRPC    → internal service-to-service, low latency, strict contracts
+```
+---

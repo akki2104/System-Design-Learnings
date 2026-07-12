@@ -185,3 +185,17 @@ Format:
 - Correct understanding: P2P is harder because of (1) security — no single point to verify/authenticate nodes, (2) coordination — distributed consensus without a leader, (3) discovery — how peers find each other.
 - How to remember: Three P's: Protection (security), Protocol agreement (coordination), Peer finding (discovery).
 - Recurs? 1
+
+### 2026-07-12 — [Topic 012: REST API Design]
+- Mistake: Defined DELETE's idempotency as "same response every time" instead of "same final state"
+- Why it's wrong: DELETE actually returns different responses on repeat calls (200/204 first, then 404) — if idempotency meant same response, DELETE would fail the test. Idempotency is a guarantee about system state, not HTTP response codes.
+- Correct understanding: Idempotent = calling N times produces the same final state as calling once. DELETE's state (resource gone) is identical after 1 or 100 calls, even though the response code changes.
+- How to remember: Look at the DATA after the dust settles, not the response you got. "Same world, not same words."
+- Recurs? 1
+
+### 2026-07-12 — [Topic 012: REST API Design]
+- Mistake: URL design exercise — reversed path order in 3/5 answers (e.g., `/{userId}/users` instead of `/users/{userId}`), used singular collection nouns (`/tweet`), and modeled "like" as `PATCH .../like` instead of a sub-resource
+- Why it's wrong: REST convention always puts the collection noun before the specific ID — reversing it breaks the resource-hierarchy readability the convention exists for. Singular nouns break the "collection" semantics. Modeling a create/delete action ("like") as a PATCH field update conflates a resource creation with a field mutation.
+- Correct understanding: `/users/{userId}`, `/tweets` (plural), `/users/{userId}/tweets` (nested ownership), `POST /tweets/{tweetId}/likes` (like = its own resource).
+- How to remember: "Collection, then ID" — read the URL left to right as narrowing scope from general to specific. Actions that create/delete records of their own (likes, follows, subscriptions) are always sub-resources, never PATCH fields.
+- Recurs? 1

@@ -4,13 +4,13 @@
 ```
 Last Updated    : 2026-07-12
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 012 REST API Design (Next)
+Current Topic   : 013 RPC & gRPC (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 11 (001-011)
-Revisions Due   : Next due 2026-07-12 (006-010 +3d); 2026-07-13 (001-002 +15d); 2026-07-15 (003-005 +7d/+15d)
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion (new); DNS chain missing browser+OS cache; Avg vs peak QPS (CLEARED today — got it right)
-Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 007)
-Overall Interview Readiness : 3%
+Topics Completed: 12 (001-012)
+Revisions Due   : Next due 2026-07-12 (006-010 +3d, overdue); 2026-07-13 (001-002 +15d, 011 +1d, 012 +1d)
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion; DNS chain missing browser+OS cache; REST URL ordering (collection-before-ID) and idempotency = state not response (new)
+Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 012)
+Overall Interview Readiness : 4%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
                   Learns best from worked examples + scorecards. Wants every concept tied to
@@ -49,6 +49,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-09 | Topic 010 (HTTP/1.1, HTTP/2, HTTP/3) — Completed same session (5 topics in one day: 006-010). Correctly traced app-level HOL blocking (HTTP/1.1) and identified the cause; needed the transport-level HOL blocking mechanism (HTTP/2 on TCP) explained fully, then passed mastery check on why HTTP/3 needed a new transport (QUIC). Confidence: 4/5. Git identity for this repo switched to akki2104 (personal GitHub) per learner request — local config only, not global. | Topic 011 (HTTPS & TLS); big revision catch-up (001-010) still due this weekend |
 | 2026-07-11 | Revision Blitz — all 10 topics (001-010) covered. Avg vs peak QPS CLEARED. Persistent new weak area: reads in write QPS formula (×2). New mistakes: Port 80/443 swapped; DNS chain missing browser+OS cache; HTTP/3 HoL mechanism confused; Tradeoff steps 1-2 missing; P2P difficulty too vague. Clean passes: TCP/UDP, NFR template, series availability, Postgres read vs write trigger, CAP forbidden questions. Topic 007 updated with port 80/443 reference table. | Topic 011 — HTTPS & TLS |
 | 2026-07-12 | Topic 011 (HTTPS & TLS) — Completed. Correctly identified MITM as the HTTP threat and PCI-DSS as the reason for end-to-end TLS on payment APIs. Good grasp of the 3 TLS guarantees and why the handshake switches from asymmetric to symmetric. Didn't know authentication was the third guarantee (required prompting). Confidence: 3-4/5. | Topic 012 — REST API Design |
+| 2026-07-12 | Topic 012 (REST API Design) — Completed same session as 011. Strong grasp of statelessness and the cursor-vs-offset pagination correctness argument (self-derived the duplicate/skip mechanism correctly). Corrected: idempotency defined by response code instead of final state; URL design exercise had collection/ID ordering reversed and modeled "like" as a PATCH field instead of a sub-resource. Clean on 401 vs 403. Confidence: 4/5. | Topic 013 — RPC & gRPC |
 
 ---
 
@@ -67,7 +68,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Easy | Missed browser+OS cache as first steps in DNS chain |
 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Med-Hard | HTTP/3 HoL fix: said "guarantees ordered delivery" (TCP behavior) instead of per-stream QUIC ordering |
 | 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 3 | Medium | Didn't know authentication was 3rd TLS guarantee; PCI-DSS reasoning correct |
-| 012 | REST API Design | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Idempotency defined by response code, not final state; URL ordering reversed (ID before collection); "like" modeled as PATCH instead of sub-resource |
 | 013 | RPC & gRPC | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 014 | GraphQL | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 015 | WebSockets, SSE, Polling, Long Polling | Not Started | — | — | — | 0 | — | — | — | — | — |

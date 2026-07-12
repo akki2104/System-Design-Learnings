@@ -88,3 +88,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-11 | 011 | HTTPS & TLS | +30 days | Pending |
 | 2026-09-10 | 011 | HTTPS & TLS | +60 days | Pending |
 | 2026-10-10 | 011 | HTTPS & TLS | +90 days | Pending |
+
+| 2026-07-13 | 012 | REST API Design | +1 day | Pending |
+| 2026-07-15 | 012 | REST API Design | +3 days | Pending |
+| 2026-07-19 | 012 | REST API Design | +7 days | Pending |
+| 2026-07-27 | 012 | REST API Design | +15 days | Pending |
+| 2026-08-11 | 012 | REST API Design | +30 days | Pending |
+| 2026-09-10 | 012 | REST API Design | +60 days | Pending |
+| 2026-10-10 | 012 | REST API Design | +90 days | Pending |

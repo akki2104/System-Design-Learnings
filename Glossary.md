@@ -66,4 +66,10 @@ Kept in alphabetical order.
 | mTLS (Mutual TLS) | A TLS mode where both client and server present certificates, providing mutual authentication — standard for service-to-service calls in microservices | [011](Topics/011_HTTPS_TLS.md) |
 | PCI-DSS | Payment Card Industry Data Security Standard; mandates end-to-end encryption for card data in transit, including inside internal networks | [011](Topics/011_HTTPS_TLS.md) |
 
+| REST (Representational State Transfer) | An API convention where URLs name resources (nouns) and HTTP methods convey actions; stateless by design | [012](Topics/012_REST_API_Design.md) |
+| Idempotent | A property where calling an operation N times produces the same final state as calling it once — a state guarantee, not a response guarantee | [012](Topics/012_REST_API_Design.md) |
+| Statelessness | The server holds no memory between requests; each request carries everything needed to process it, enabling any instance to serve any request | [012](Topics/012_REST_API_Design.md) |
+| Cursor-Based Pagination | Pagination anchored to a fixed, unique, sortable ID rather than a row count; immune to duplicate/skipped results caused by concurrent inserts/deletes | [012](Topics/012_REST_API_Design.md) |
+| Offset-Based Pagination | Pagination anchored to a row count ("skip N, take M"); breaks under concurrent writes on live feeds | [012](Topics/012_REST_API_Design.md) |
+
 <!-- Rows added after each lesson -->
