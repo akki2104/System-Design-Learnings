@@ -72,4 +72,9 @@ Kept in alphabetical order.
 | Cursor-Based Pagination | Pagination anchored to a fixed, unique, sortable ID rather than a row count; immune to duplicate/skipped results caused by concurrent inserts/deletes | [012](Topics/012_REST_API_Design.md) |
 | Offset-Based Pagination | Pagination anchored to a row count ("skip N, take M"); breaks under concurrent writes on live feeds | [012](Topics/012_REST_API_Design.md) |
 
+| RPC (Remote Procedure Call) | A model where a network call is treated as calling a function on a remote machine, rather than acting on a resource (REST's model) | [013](Topics/013_RPC_gRPC.md) |
+| gRPC | Google's RPC framework; combines HTTP/2 transport with Protocol Buffers for fast, strictly-typed service-to-service calls | [013](Topics/013_RPC_gRPC.md) |
+| Protocol Buffers (protobuf) | A compact binary serialization format defined by a schema (`.proto` file); contracts are enforced at compile time, unlike JSON | [013](Topics/013_RPC_gRPC.md) |
+| grpc-web | A proxy layer that translates between browser-compatible requests and native gRPC, needed because browsers can't control HTTP/2 trailers directly | [013](Topics/013_RPC_gRPC.md) |
+
 <!-- Rows added after each lesson -->

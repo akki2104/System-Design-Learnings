@@ -199,3 +199,10 @@ Format:
 - Correct understanding: `/users/{userId}`, `/tweets` (plural), `/users/{userId}/tweets` (nested ownership), `POST /tweets/{tweetId}/likes` (like = its own resource).
 - How to remember: "Collection, then ID" — read the URL left to right as narrowing scope from general to specific. Actions that create/delete records of their own (likes, follows, subscriptions) are always sub-resources, never PATCH fields.
 - Recurs? 1
+
+### 2026-07-12 — [Topic 013: RPC & gRPC]
+- Mistake: Said gRPC can't be used on mobile apps because "the protobuf payload is humanly unreadable"
+- Why it's wrong: Unreadability is a real but secondary debuggability cost — it doesn't actually block gRPC from running anywhere. The real hard blocker is specific to browsers: they can't control HTTP/2 trailers (needed by gRPC to signal stream completion/status) through fetch/XMLHttpRequest. Native mobile apps have no such restriction — Uber and Square use gRPC directly on mobile.
+- Correct understanding: Browsers → gRPC blocked at the transport-control level → need grpc-web proxy. Native mobile → gRPC works directly. Debuggability (binary payload) is a separate, secondary reason teams choose REST for public APIs even when gRPC would technically work.
+- How to remember: "Browsers can't hold the wheel (HTTP/2 trailers), mobile apps can." Unreadable payload is an annoyance, not a blocker.
+- Recurs? 1

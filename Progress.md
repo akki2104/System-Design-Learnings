@@ -4,12 +4,12 @@
 ```
 Last Updated    : 2026-07-12
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 013 RPC & gRPC (Next)
+Current Topic   : 014 GraphQL (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 12 (001-012)
-Revisions Due   : Next due 2026-07-12 (006-010 +3d, overdue); 2026-07-13 (001-002 +15d, 011 +1d, 012 +1d)
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion; DNS chain missing browser+OS cache; REST URL ordering (collection-before-ID) and idempotency = state not response (new)
-Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 012)
+Topics Completed: 13 (001-013)
+Revisions Due   : Next due 2026-07-12 (006-010 +3d, overdue); 2026-07-13 (001-002 +15d, 011/012/013 +1d)
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); Port 80/443 confusion; DNS chain missing browser+OS cache; REST URL ordering; gRPC browser-vs-mobile distinction (new)
+Pace            : ~9 days behind Schedule.md as of 2026-07-09 (should be on ~033, on 013)
 Overall Interview Readiness : 4%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -50,6 +50,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-11 | Revision Blitz — all 10 topics (001-010) covered. Avg vs peak QPS CLEARED. Persistent new weak area: reads in write QPS formula (×2). New mistakes: Port 80/443 swapped; DNS chain missing browser+OS cache; HTTP/3 HoL mechanism confused; Tradeoff steps 1-2 missing; P2P difficulty too vague. Clean passes: TCP/UDP, NFR template, series availability, Postgres read vs write trigger, CAP forbidden questions. Topic 007 updated with port 80/443 reference table. | Topic 011 — HTTPS & TLS |
 | 2026-07-12 | Topic 011 (HTTPS & TLS) — Completed. Correctly identified MITM as the HTTP threat and PCI-DSS as the reason for end-to-end TLS on payment APIs. Good grasp of the 3 TLS guarantees and why the handshake switches from asymmetric to symmetric. Didn't know authentication was the third guarantee (required prompting). Confidence: 3-4/5. | Topic 012 — REST API Design |
 | 2026-07-12 | Topic 012 (REST API Design) — Completed same session as 011. Strong grasp of statelessness and the cursor-vs-offset pagination correctness argument (self-derived the duplicate/skip mechanism correctly). Corrected: idempotency defined by response code instead of final state; URL design exercise had collection/ID ordering reversed and modeled "like" as a PATCH field instead of a sub-resource. Clean on 401 vs 403. Confidence: 4/5. | Topic 013 — RPC & gRPC |
+| 2026-07-12 | Topic 013 (RPC & gRPC) — Completed same session as 011+012. Good grasp of gRPC's HTTP/2 + protobuf combo and the four streaming patterns. Corrected: attributed gRPC's browser incompatibility to protobuf's unreadability (secondary reason) instead of the actual hard blocker — browsers can't control HTTP/2 trailers, while native mobile apps can use gRPC directly. Confidence: 4/5. | Topic 014 — GraphQL |
 
 ---
 
@@ -69,7 +70,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Med-Hard | HTTP/3 HoL fix: said "guarantees ordered delivery" (TCP behavior) instead of per-stream QUIC ordering |
 | 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 3 | Medium | Didn't know authentication was 3rd TLS guarantee; PCI-DSS reasoning correct |
 | 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Idempotency defined by response code, not final state; URL ordering reversed (ID before collection); "like" modeled as PATCH instead of sub-resource |
-| 013 | RPC & gRPC | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Attributed gRPC browser blocker to protobuf unreadability instead of HTTP/2 trailer control; native mobile vs browser distinction now clear |
 | 014 | GraphQL | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 015 | WebSockets, SSE, Polling, Long Polling | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 016 | Forward Proxy, Reverse Proxy, API Gateway | Not Started | — | — | — | 0 | — | — | — | — | — |

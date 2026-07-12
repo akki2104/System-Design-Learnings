@@ -96,3 +96,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-11 | 012 | REST API Design | +30 days | Pending |
 | 2026-09-10 | 012 | REST API Design | +60 days | Pending |
 | 2026-10-10 | 012 | REST API Design | +90 days | Pending |
+
+| 2026-07-13 | 013 | RPC & gRPC | +1 day | Pending |
+| 2026-07-15 | 013 | RPC & gRPC | +3 days | Pending |
+| 2026-07-19 | 013 | RPC & gRPC | +7 days | Pending |
+| 2026-07-27 | 013 | RPC & gRPC | +15 days | Pending |
+| 2026-08-11 | 013 | RPC & gRPC | +30 days | Pending |
+| 2026-09-10 | 013 | RPC & gRPC | +60 days | Pending |
+| 2026-10-10 | 013 | RPC & gRPC | +90 days | Pending |

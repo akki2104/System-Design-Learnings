@@ -363,3 +363,39 @@ GraphQL → client needs flexible/nested data shapes
 gRPC    → internal service-to-service, low latency, strict contracts
 ```
 ---
+
+### [013] RPC & gRPC
+```
+RPC MENTAL MODEL
+─────────────────────────────────────────────────
+REST → act on a resource:      POST /users/5/tweets
+RPC  → call a remote function: client.PostTweet(userId=5, text=...)
+
+gRPC = HTTP/2 (transport) + PROTOBUF (serialization)
+─────────────────────────────────────────────────
+HTTP/2   → multiplexed streams, no app-level HOL blocking (Topic 010)
+Protobuf → binary, schema-defined (.proto), compile-time-checked
+           contract, smaller/faster than JSON
+
+FOUR CALL PATTERNS
+─────────────────────────────────────────────────
+Unary                 → 1 request → 1 response
+Server streaming      → 1 request → stream of responses (live prices)
+Client streaming      → stream of requests → 1 response (chunked upload)
+Bidirectional stream  → both sides stream (live chat)
+
+BROWSER VS NATIVE MOBILE (the real distinction)
+─────────────────────────────────────────────────
+Browser       → CANNOT speak gRPC directly (no HTTP/2 trailer control
+                 via fetch/XHR) → needs grpc-web proxy
+Native mobile → CAN speak gRPC directly (Uber, Square do this)
+Debuggability → binary payload isn't curl-able — secondary reason
+                 teams still pick REST for public APIs
+
+DECISION
+─────────────────────────────────────────────────
+gRPC → internal service-to-service, low latency, strict typed contracts,
+        streaming needed
+REST → public API, browser clients involved, human-readable debugging
+```
+---
