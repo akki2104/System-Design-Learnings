@@ -82,5 +82,10 @@ Kept in alphabetical order.
 | Under-fetching | Needing multiple sequential REST round trips to assemble related/nested data | [014](Topics/014_GraphQL.md) |
 | Resolver | A function behind a GraphQL schema field that knows how to fetch that specific piece of data | [014](Topics/014_GraphQL.md) |
 | DataLoader (Batching) | A pattern that queues individual per-item data requests within a request tick and combines them into one bulk query, fixing GraphQL's server-side N+1 problem | [014](Topics/014_GraphQL.md) |
+| Short Polling | Client repeatedly requests data on a fixed timer; simple but wastes requests and bounds latency to the poll interval | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
+| Long Polling | Server holds a request open until data is available or a timeout hits, then the client immediately re-requests | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
+| SSE (Server-Sent Events) | A one-directional (server→client), persistent HTTP-based connection for continuous server push, with built-in auto-reconnect | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
+| WebSocket | A protocol that upgrades an HTTP connection (via 101 Switching Protocols) into a persistent, full-duplex, bidirectional connection | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
+| 101 Switching Protocols | The HTTP status code confirming a connection has upgraded from HTTP to WebSocket | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
 
 <!-- Rows added after each lesson -->

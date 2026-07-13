@@ -440,3 +440,30 @@ GraphQL → many diverse client types (web/iOS/Android/TV) needing
 REST    → simple CRUD, cacheable reads, public API simplicity
 ```
 ---
+
+### [015] WebSockets, SSE, Polling, Long Polling
+```
+THE REAL-TIME SPECTRUM
+─────────────────────────────────────────────────
+Short Polling → repeat request on timer; wasted "no" responses; cost = clients × frequency
+Long Polling  → server holds request open until data/timeout; near-instant once data exists;
+                still re-requests every cycle + many idle open connections at scale
+SSE           → ONE persistent connection, server pushes continuously; ONE-DIRECTIONAL
+                (server→client only); auto-reconnect built into spec; text only
+WebSockets    → HTTP upgrades (101 Switching Protocols) to full-duplex persistent connection;
+                BOTH directions, binary or text; needs sticky LB routing at scale
+
+DECISION MAP
+─────────────────────────────────────────────────
+Latency doesn't matter much        → Short Polling
+Moderate need, broad compatibility → Long Polling
+Server pushes, client never replies → SSE
+True two-way, high-frequency       → WebSockets
+
+THE 101 STATUS
+─────────────────────────────────────────────────
+Confirms protocol upgrade from HTTP → WebSocket.
+Middleboxes that don't understand Upgrade may block/mishandle it —
+why wss:// typically runs on port 443 (looks like normal HTTPS)
+```
+---

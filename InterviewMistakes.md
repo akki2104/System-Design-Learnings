@@ -15,6 +15,29 @@ Format:
 
 ---
 
+### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
+- Mistake: Explained short polling's latency-vs-waste tension only as "connection overhead + server load" rather than the precise cost mechanism
+- Why it's wrong: The precise insight is that latency COULD be reduced by polling more frequently, but cost scales with clients × frequency, making it economically unbearable at scale — and latency can never drop below network RTT regardless.
+- Correct understanding: You're always trading wasted requests for freshness, at a ratio that gets worse as client count grows — not a hard impossibility, an economic one.
+- How to remember: "Cost = clients × frequency. You CAN buy lower latency, you just can't afford to at scale."
+- Recurs? 1
+
+### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
+- Mistake: Named only one unsolved limitation of long polling (many idle open connections) and missed the second (re-request overhead every cycle)
+- Why it's wrong: Long polling still forces the client to fire a brand-new HTTP request immediately after every response, re-paying connection/header setup cost each time — a separate cost from the idle-connections problem.
+- Correct understanding: Long polling has TWO remaining costs: (1) many idle open connections at scale, (2) repeated connection/header overhead on every re-request cycle.
+- How to remember: Long polling fixes the "wasted no" problem, not the "repeated handshake" problem.
+- Recurs? 1
+
+### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
+- Mistake: Attributed WebSocket firewall/proxy issues to "firewalls won't allow indefinite connections" rather than the precise mechanism
+- Why it's wrong: The real issue is that intermediaries need to explicitly understand and support the HTTP protocol Upgrade. Middleboxes that only understand plain HTTP semantics may block, buffer incorrectly, or terminate a connection that silently becomes non-HTTP — it's a protocol-comprehension issue, not simply a duration/idle-timeout issue.
+- Correct understanding: 101 Switching Protocols requires proxy/firewall support for the Upgrade mechanism itself; this is why wss:// typically runs on port 443, disguised as normal HTTPS traffic to less sophisticated network equipment.
+- How to remember: "It's not that they hate long connections — it's that they don't understand what the connection turned into."
+- Recurs? 1
+
+---
+
 ### 2026-06-28 — [Topic 002: The System Design Interview Framework]
 - Mistake: Asked "What should we choose from CAP?" as a clarifying question to the interviewer
 - Why it's wrong: CAP reasoning is YOUR architectural decision to make and defend. Asking the interviewer signals you can't reason independently.
