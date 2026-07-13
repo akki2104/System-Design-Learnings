@@ -113,6 +113,14 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 015 | WebSockets, SSE, Polling, Long Polling | +30 days | Pending |
 | 2026-09-11 | 015 | WebSockets, SSE, Polling, Long Polling | +60 days | Pending |
 | 2026-10-11 | 015 | WebSockets, SSE, Polling, Long Polling | +90 days | Pending |
+
+| 2026-07-14 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +1 day | Pending |
+| 2026-07-16 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +3 days | Pending |
+| 2026-07-20 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +7 days | Pending |
+| 2026-07-28 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +15 days | Pending |
+| 2026-08-12 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +30 days | Pending |
+| 2026-09-11 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +60 days | Pending |
+| 2026-10-11 | 016 | Forward Proxy, Reverse Proxy, API Gateway | +90 days | Pending |
 | 2026-07-15 | 014 | GraphQL | +3 days | Pending |
 | 2026-07-19 | 014 | GraphQL | +7 days | Pending |
 | 2026-07-27 | 014 | GraphQL | +15 days | Pending |

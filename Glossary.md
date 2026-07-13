@@ -87,5 +87,8 @@ Kept in alphabetical order.
 | SSE (Server-Sent Events) | A one-directional (server→client), persistent HTTP-based connection for continuous server push, with built-in auto-reconnect | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
 | WebSocket | A protocol that upgrades an HTTP connection (via 101 Switching Protocols) into a persistent, full-duplex, bidirectional connection | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
 | 101 Switching Protocols | The HTTP status code confirming a connection has upgraded from HTTP to WebSocket | [015](Topics/015_WebSockets_SSE_Polling_Long_Polling.md) |
+| Forward Proxy | Sits in front of the client, making requests on its behalf; hides the client's identity from the server | [016](Topics/016_Forward_Proxy_Reverse_Proxy_API_Gateway.md) |
+| Reverse Proxy | Sits in front of one or more servers; hides the server's identity/topology from the client | [016](Topics/016_Forward_Proxy_Reverse_Proxy_API_Gateway.md) |
+| API Gateway | A reverse proxy specialized for microservices APIs, adding centralized auth, rate limiting, routing, and transformation | [016](Topics/016_Forward_Proxy_Reverse_Proxy_API_Gateway.md) |
 
 <!-- Rows added after each lesson -->

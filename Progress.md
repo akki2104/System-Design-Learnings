@@ -4,9 +4,9 @@
 ```
 Last Updated    : 2026-07-13
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 016 Forward Proxy, Reverse Proxy, API Gateway (Next)
+Current Topic   : 017 Load Balancers (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 15 (001-015)
+Topics Completed: 16 (001-016)
 Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011/012/013/014 (+1d) all deferred to later today by learner's choice; 015 +1d due 2026-07-14
 Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); polling latency-vs-waste mechanism imprecise; WebSocket firewall/101 reasoning imprecise
 Pace            : ~29 topics behind Schedule.md as of 2026-07-13 (should be on ~045, on 015)
@@ -53,6 +53,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-12 | Topic 013 (RPC & gRPC) — Completed same session as 011+012. Good grasp of gRPC's HTTP/2 + protobuf combo and the four streaming patterns. Corrected: attributed gRPC's browser incompatibility to protobuf's unreadability (secondary reason) instead of the actual hard blocker — browsers can't control HTTP/2 trailers, while native mobile apps can use gRPC directly. Confidence: 4/5. | Topic 014 — GraphQL |
 | 2026-07-12 | Topic 014 (GraphQL) — Completed same session. Learner requested a pacing change: explain the full topic uninterrupted, ask all questions at the end (saved as standing behavioral preference). Correctly identified over-fetching, the caching problem (no fixed URL), and correctly self-diagnosed that GraphQL's N+1 problem moves server-side — but did not know the DataLoader/batching fix, which was explained fully. Confidence: 4/5. | Topic 015 — WebSockets, SSE, Polling, Long Polling |
 | 2026-07-13 | Topic 015 (WebSockets, SSE, Polling, Long Polling) — Completed, following the uninterrupted-explanation-then-questions pacing preference. Strong performance on directionality reasoning (SSE vs WebSockets) and the collaborative-editor design question (clean interview-sentence answer). Needed sharpening: short-polling latency-vs-waste mechanism (clients × frequency framing), long-polling's second unsolved limitation (re-request overhead), and the precise reason WebSocket upgrades concern firewalls (protocol Upgrade support, not "no indefinite connections"). Confidence: 4/5. | Topic 016 — Forward Proxy, Reverse Proxy, API Gateway; big revision backlog (001-002,006-014) due later today |
+| 2026-07-13 | Topic 016 (Forward Proxy, Reverse Proxy, API Gateway) — Completed same session as 015. Clean 4/4 on all checkpoint questions, including the load-balancer-classification trap and the reverse-proxy-vs-API-Gateway distinction. No mistakes logged. Confidence: 4/5. | Topic 017 — Load Balancers; big revision backlog (001-002,006-015) still due later today |
 
 ---
 
@@ -75,7 +76,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Attributed gRPC browser blocker to protobuf unreadability instead of HTTP/2 trailer control; native mobile vs browser distinction now clear |
 | 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Diagnosed server-side N+1 correctly but didn't know DataLoader/batching fix (now explained) |
 | 015 | WebSockets, SSE, Polling, Long Polling | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Polling latency-vs-waste mechanism imprecise; long-polling 2nd limitation missed; WebSocket firewall/101 reasoning imprecise |
-| 016 | Forward Proxy, Reverse Proxy, API Gateway | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
 | 017 | Load Balancers | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 018 | CDN | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 019 | Content Compression & Encoding | Not Started | — | — | — | 0 | — | — | — | — | — |

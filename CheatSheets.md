@@ -467,3 +467,22 @@ Middleboxes that don't understand Upgrade may block/mishandle it —
 why wss:// typically runs on port 443 (looks like normal HTTPS)
 ```
 ---
+
+### [016] Forward Proxy, Reverse Proxy, API Gateway
+```
+THE DISTINGUISHING QUESTION
+─────────────────────────────────────────────────
+"Whose side is this thing standing on — client's or server's?"
+
+FORWARD PROXY (client-side)          REVERSE PROXY (server-side)
+──────────────────────────           ──────────────────────────
+Hides CLIENT from server             Hides SERVER from client
+Corporate filtering, VPNs,           SSL termination, load balancing,
+client-side caching                  hiding backend topology, caching
+
+API GATEWAY = reverse proxy + cross-cutting concerns for microservices
+─────────────────────────────────────────────────
+Centralized auth, rate limiting, routing, transformation, logging
+— things a plain reverse proxy does NOT provide
+```
+---
