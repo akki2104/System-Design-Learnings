@@ -532,3 +532,23 @@ L7 → web apps, content routing, TLS termination
 Tools: HAProxy, Nginx, AWS ALB/NLB, Envoy
 ```
 ---
+
+### [018] CDN
+```
+CDN = distributed network of edge servers (reverse proxies) caching
+      content physically close to users — fixes latency that's PHYSICAL,
+      not code-optimizable
+
+ROUTING: GeoDNS (Topic 009) sends users to their nearest edge
+
+PUSH vs PULL
+─────────────────────────────────────────────────
+Pull → lazy, cache miss on first request per region, self-managing (default)
+Push → pre-distributed everywhere, zero cold-cache misses, for major launches
+
+CACHE INVALIDATION (same as DNS TTL, Topic 009)
+─────────────────────────────────────────────────
+TTL expiry     → auto-refresh after N time
+Explicit purge → force-remove NOW via invalidation API (critical fixes)
+```
+---

@@ -97,5 +97,10 @@ Kept in alphabetical order.
 | Sticky Sessions (Session Affinity) | Routing the same client to the same backend server, usually because that server holds session state in memory | [017](Topics/017_Load_Balancers.md) |
 | Active Health Check | The load balancer proactively pings a health endpoint to detect dead backends | [017](Topics/017_Load_Balancers.md) |
 | Passive Health Check | The load balancer infers backend health by observing real traffic outcomes (errors/timeouts), catching failures active pings miss | [017](Topics/017_Load_Balancers.md) |
+| CDN (Content Delivery Network) | A geographically distributed network of edge servers (reverse proxies) that cache content close to users to reduce latency | [018](Topics/018_CDN.md) |
+| Edge Server | A CDN node physically close to end users; architecturally a reverse proxy in front of the origin | [018](Topics/018_CDN.md) |
+| Pull CDN | A CDN model where edge servers fetch and cache content from origin on first request (cache miss), then serve subsequent requests from cache | [018](Topics/018_CDN.md) |
+| Push CDN | A CDN model where the origin proactively uploads content to all edge servers ahead of time, guaranteeing zero cold-cache misses | [018](Topics/018_CDN.md) |
+| Cache Invalidation (CDN) | Removing stale cached content via TTL expiry or an explicit purge API call, mirroring DNS TTL tradeoffs | [018](Topics/018_CDN.md) |
 
 <!-- Rows added after each lesson -->

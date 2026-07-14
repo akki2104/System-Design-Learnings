@@ -135,3 +135,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 017 | Load Balancers | +30 days | Pending |
 | 2026-09-11 | 017 | Load Balancers | +60 days | Pending |
 | 2026-10-11 | 017 | Load Balancers | +90 days | Pending |
+
+| 2026-07-14 | 018 | CDN | +1 day | Pending |
+| 2026-07-16 | 018 | CDN | +3 days | Pending |
+| 2026-07-20 | 018 | CDN | +7 days | Pending |
+| 2026-07-28 | 018 | CDN | +15 days | Pending |
+| 2026-08-12 | 018 | CDN | +30 days | Pending |
+| 2026-09-11 | 018 | CDN | +60 days | Pending |
+| 2026-10-11 | 018 | CDN | +90 days | Pending |
