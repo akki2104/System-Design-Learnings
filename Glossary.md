@@ -102,5 +102,10 @@ Kept in alphabetical order.
 | Pull CDN | A CDN model where edge servers fetch and cache content from origin on first request (cache miss), then serve subsequent requests from cache | [018](Topics/018_CDN.md) |
 | Push CDN | A CDN model where the origin proactively uploads content to all edge servers ahead of time, guaranteeing zero cold-cache misses | [018](Topics/018_CDN.md) |
 | Cache Invalidation (CDN) | Removing stale cached content via TTL expiry or an explicit purge API call, mirroring DNS TTL tradeoffs | [018](Topics/018_CDN.md) |
+| Accept-Encoding | An HTTP request header where the client advertises which compression formats it supports | [019](Topics/019_Content_Compression_and_Encoding.md) |
+| Content-Encoding | An HTTP response header indicating which compression format the server actually used | [019](Topics/019_Content_Compression_and_Encoding.md) |
+| Lossy Compression | Compression that permanently discards some data to achieve smaller size (e.g., JPEG) — acceptable when the loss is imperceptible | [019](Topics/019_Content_Compression_and_Encoding.md) |
+| Lossless Compression | Compression that preserves all original data exactly (e.g., PNG) — required when every detail matters | [019](Topics/019_Content_Compression_and_Encoding.md) |
+| Codec | An algorithm for encoding/decoding video (or audio); newer codecs trade better compression for higher encode/decode compute cost | [019](Topics/019_Content_Compression_and_Encoding.md) |
 
 <!-- Rows added after each lesson -->

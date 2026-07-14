@@ -552,3 +552,25 @@ TTL expiry     → auto-refresh after N time
 Explicit purge → force-remove NOW via invalidation API (critical fixes)
 ```
 ---
+
+### [019] Content Compression & Encoding
+```
+NEGOTIATION
+─────────────────────────────────────────────────
+Accept-Encoding (client's supported formats) → Content-Encoding (server's choice)
+
+TEXT: gzip (safe default) vs brotli (better ratio, more CPU) — compress ONCE
+      at build/deploy for static assets, amortized across millions of requests
+
+IMAGES: lossy (JPEG, small, fine for photos) vs lossless (PNG, pixel-perfect,
+        required for legal docs/transparency) vs modern (WebP/AVIF + fallback)
+
+VIDEO CODEC TRADEOFF (not just compression ratio)
+─────────────────────────────────────────────────
+1. Encode cost   → server CPU/GPU
+2. Decode cost   → USER'S device CPU/battery
+3. Compatibility → may need fallback (H.264 baseline + newer codec)
+
+WHERE: reverse proxy / CDN layer (Topics 016, 018) — transparent, centralized
+```
+---

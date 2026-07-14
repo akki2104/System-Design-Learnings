@@ -143,3 +143,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 018 | CDN | +30 days | Pending |
 | 2026-09-11 | 018 | CDN | +60 days | Pending |
 | 2026-10-11 | 018 | CDN | +90 days | Pending |
+
+| 2026-07-14 | 019 | Content Compression & Encoding | +1 day | Pending |
+| 2026-07-16 | 019 | Content Compression & Encoding | +3 days | Pending |
+| 2026-07-20 | 019 | Content Compression & Encoding | +7 days | Pending |
+| 2026-07-28 | 019 | Content Compression & Encoding | +15 days | Pending |
+| 2026-08-12 | 019 | Content Compression & Encoding | +30 days | Pending |
+| 2026-09-11 | 019 | Content Compression & Encoding | +60 days | Pending |
+| 2026-10-11 | 019 | Content Compression & Encoding | +90 days | Pending |

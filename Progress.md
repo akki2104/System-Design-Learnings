@@ -3,10 +3,10 @@
 ## Dashboard
 ```
 Last Updated    : 2026-07-13
-Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 019 Content Compression & Encoding (Next)
+Current Module  : MODULE 2 — Data Storage Foundations
+Current Topic   : 020 Storage Engine Fundamentals (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 18 (001-018)
+Topics Completed: 19 (001-019) — MODULE 1 COMPLETE
 Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011-017 (+1d, various). Learner revises on his own cadence (weekends / when he feels enough has piled up) — not pushed on due-date.
 Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); polling latency-vs-waste mechanism imprecise; WebSocket firewall/101 reasoning imprecise; IP-Hash vs Redis conflation (new — resolved)
 Pace            : ~29 topics behind Schedule.md as of 2026-07-13 (should be on ~045, on 017)
@@ -56,6 +56,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-13 | Topic 016 (Forward Proxy, Reverse Proxy, API Gateway) — Completed same session as 015. Clean 4/4 on all checkpoint questions, including the load-balancer-classification trap and the reverse-proxy-vs-API-Gateway distinction. No mistakes logged. Confidence: 4/5. | Topic 017 — Load Balancers; big revision backlog (001-002,006-015) still due later today |
 | 2026-07-13 | Topic 017 (Load Balancers) — Completed. Learner confirmed revision cadence: revises on weekends or whenever he feels enough is covered, not strictly on RevisionSchedule.md due dates (saved as standing preference — backlog will keep being surfaced but not pushed). Clean on health checks (correctly identified passive checks catch functional failures active pings miss) and on why sticky sessions undercut horizontal scaling. Needed clarification: initially conflated IP Hash and Redis-backed sessions as the same solution — clarified they're different mechanisms (routing trick vs true statelessness) with different tradeoffs. Confidence: 4/5. | Topic 018 — CDN |
 | 2026-07-13 | Topic 018 (CDN) — Completed same session. Clean 4/4 on all checkpoint questions — correctly tied edge servers back to Topic 016 (reverse proxy) and GeoDNS back to Topic 009, correctly chose Push CDN for a zero-cold-cache-miss launch scenario, and correctly used explicit purge (not TTL wait) for a critical fix. No mistakes logged. Confidence: 4/5. | Topic 019 — Content Compression & Encoding (final Module 1 topic) |
+| 2026-07-13 | Topic 019 (Content Compression & Encoding) — Completed same session. MODULE 1 COMPLETE (Topics 006-019). Clean on Accept-Encoding/Content-Encoding negotiation, the "compress once, serve millions" amortization insight, and lossy/lossless distinction with a correct legal-document example. Partial on the video codec trap: correctly flagged CPU/encode cost but missed decode cost (on the USER's device) and compatibility/fallback needs as the other two dimensions. Confidence: 4/5. | Topic 020 — Storage Engine Fundamentals (begins MODULE 2 — Data Storage Foundations) |
 
 ---
 
@@ -81,7 +82,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
 | 017 | Load Balancers | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Initially conflated IP Hash and Redis-backed sessions as the same solution — clarified as different mechanisms with different tradeoffs |
 | 018 | CDN | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
-| 019 | Content Compression & Encoding | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 019 | Content Compression & Encoding | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | Video codec trap: missed decode cost (user device) and compatibility/fallback as separate dimensions from encode CPU cost |
 | 020 | Storage Engine Fundamentals | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 021 | Relational Databases & SQL | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 022 | Indexing Deep Dive | Not Started | — | — | — | 0 | — | — | — | — | — |
