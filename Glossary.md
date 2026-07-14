@@ -108,4 +108,9 @@ Kept in alphabetical order.
 | Lossless Compression | Compression that preserves all original data exactly (e.g., PNG) — required when every detail matters | [019](Topics/019_Content_Compression_and_Encoding.md) |
 | Codec | An algorithm for encoding/decoding video (or audio); newer codecs trade better compression for higher encode/decode compute cost | [019](Topics/019_Content_Compression_and_Encoding.md) |
 
+| Page | The fixed-size unit of disk I/O (e.g., 4KB/8KB/16KB); even a tiny query reads/writes a full page | [020](Topics/020_Storage_Engine_Fundamentals.md) |
+| Buffer Pool | A DB's in-memory cache of recently-used pages, serving reads and holding dirty writes before they're flushed to disk | [020](Topics/020_Storage_Engine_Fundamentals.md) |
+| WAL (Write-Ahead Log) | An append-only log that records changes before they're applied to data pages, giving durability via fast sequential writes | [020](Topics/020_Storage_Engine_Fundamentals.md) |
+| Checkpointing | Periodically flushing dirty pages to disk, bounding how much WAL history must be replayed on crash recovery | [020](Topics/020_Storage_Engine_Fundamentals.md) |
+
 <!-- Rows added after each lesson -->

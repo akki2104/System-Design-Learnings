@@ -151,3 +151,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 019 | Content Compression & Encoding | +30 days | Pending |
 | 2026-09-11 | 019 | Content Compression & Encoding | +60 days | Pending |
 | 2026-10-11 | 019 | Content Compression & Encoding | +90 days | Pending |
+
+| 2026-07-14 | 020 | Storage Engine Fundamentals | +1 day | Pending |
+| 2026-07-16 | 020 | Storage Engine Fundamentals | +3 days | Pending |
+| 2026-07-20 | 020 | Storage Engine Fundamentals | +7 days | Pending |
+| 2026-07-28 | 020 | Storage Engine Fundamentals | +15 days | Pending |
+| 2026-08-12 | 020 | Storage Engine Fundamentals | +30 days | Pending |
+| 2026-09-11 | 020 | Storage Engine Fundamentals | +60 days | Pending |
+| 2026-10-11 | 020 | Storage Engine Fundamentals | +90 days | Pending |

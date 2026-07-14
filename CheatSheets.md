@@ -574,3 +574,42 @@ VIDEO CODEC TRADEOFF (not just compression ratio)
 WHERE: reverse proxy / CDN layer (Topics 016, 018) — transparent, centralized
 ```
 ---
+
+### [020] Storage Engine Fundamentals
+```
+THE CONSTRAINT: RAM vs DISK SPEED GAP
+─────────────────────────────────────────────────
+RAM ~100ns | SSD random read ~100-150μs (1000x) | HDD seek ~10ms (100,000x)
+→ minimize seeks, maximize sequential I/O — drives everything below
+
+PAGES = fixed-size unit of disk I/O (4KB/8KB/16KB)
+─────────────────────────────────────────────────
+Tiny query still pulls a FULL page. Random access = many seeks (slow).
+Sequential access = adjacent pages, prefetchable (fast).
+
+BUFFER POOL (RAM cache)
+─────────────────────────────────────────────────
+Reads: buffer pool hit → return from RAM | miss → disk → cache → return
+Writes: applied to in-memory page first (dirty), not flushed immediately
+
+WAL (WRITE-AHEAD LOG) — durability without random-write cost
+─────────────────────────────────────────────────
+Write → WAL entry appended+fsynced (sequential, FAST) → ack to client
+      → data page dirty in memory → [later] checkpoint flushes to disk
+Crash before fsync → write lost. Crash after fsync → replay WAL, recovered.
+
+WHY STILL FLUSH DATA PAGES (not WAL-replay forever)
+─────────────────────────────────────────────────
+Unbounded WAL → replay = entire write history = infeasible at scale
+Checkpointing → materialized snapshot → recovery only replays SINCE
+                 last checkpoint, not from the beginning
+
+Buffer pool (RAM, read speed) ≠ Checkpointing (disk, bounds WAL replay)
+— two separate mechanisms, easy to conflate
+
+FORWARD LINKS
+─────────────────────────────────────────────────
+WAL → ACID Durability (024) | WAL shipping → Replication (039)
+Sequential-write principle → LSM-Trees (023), Kafka
+```
+---

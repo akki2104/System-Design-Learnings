@@ -236,3 +236,10 @@ Format:
 - Correct understanding: DataLoader pattern — queue individual per-item resolver requests within the same request tick, then fire one combined batched query (`WHERE id IN (...)`) instead of one query per item. Same principle as write-batching/Nagle's algorithm.
 - How to remember: "Collect, then combine." Diagnosis was right (N+1 moved to the server) — the missing piece was the standard fix name and mechanism.
 - Recurs? 1
+
+### 2026-07-13 — [Topic 020: Storage Engine Fundamentals]
+- Mistake: Explained the buffer pool correctly (fast reads via RAM cache) but didn't know why the DB still flushes data pages to disk instead of relying on WAL replay forever
+- Why it's wrong: An unbounded WAL means reconstructing current state requires replaying the entire write history from the beginning of time — infeasible after enough volume. Conflated the buffer pool's job (fast reads) with checkpointing's job (bounding WAL replay time).
+- Correct understanding: Checkpointing flushes dirty pages to disk periodically, creating a materialized snapshot of state so crash recovery only replays the log since the last checkpoint. Buffer pool (RAM) = read speed. Checkpointing (disk flush) = bounded recovery time. Two separate mechanisms.
+- How to remember: "Buffer pool serves today's reads. Checkpoints stop yesterday's history from piling up forever."
+- Recurs? 1
