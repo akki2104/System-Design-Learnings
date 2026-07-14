@@ -127,3 +127,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-11 | 014 | GraphQL | +30 days | Pending |
 | 2026-09-10 | 014 | GraphQL | +60 days | Pending |
 | 2026-10-10 | 014 | GraphQL | +90 days | Pending |
+
+| 2026-07-14 | 017 | Load Balancers | +1 day | Pending |
+| 2026-07-16 | 017 | Load Balancers | +3 days | Pending |
+| 2026-07-20 | 017 | Load Balancers | +7 days | Pending |
+| 2026-07-28 | 017 | Load Balancers | +15 days | Pending |
+| 2026-08-12 | 017 | Load Balancers | +30 days | Pending |
+| 2026-09-11 | 017 | Load Balancers | +60 days | Pending |
+| 2026-10-11 | 017 | Load Balancers | +90 days | Pending |

@@ -486,3 +486,49 @@ Centralized auth, rate limiting, routing, transformation, logging
 — things a plain reverse proxy does NOT provide
 ```
 ---
+
+### [017] Load Balancers
+```
+LB = specialized reverse proxy distributing traffic across a backend pool
+     → solves scaling (Topic 001) + redundancy (Topic 004) at once
+
+L4 vs L7
+─────────────────────────────────────────────────
+L4 → IP+port only (5-tuple), fast, protocol-agnostic, no content awareness
+L7 → understands HTTP (path/headers/cookies), enables TLS termination,
+      more overhead. Default for web apps.
+
+ALGORITHMS
+─────────────────────────────────────────────────
+Round Robin           → equal-capacity servers
+Weighted Round Robin  → heterogeneous server pool
+Least Connections     → long-lived connections (WebSockets, streaming)
+IP Hash               → session affinity without a shared store
+
+HEALTH CHECKS
+─────────────────────────────────────────────────
+Active  → LB pings /health proactively
+Passive → LB observes real traffic; catches functional failures
+           (e.g. exhausted DB pool) that active pings MISS
+
+STICKY SESSIONS / IP HASH vs REDIS
+─────────────────────────────────────────────────
+Sticky/IP Hash → routing-layer trick, session still fragile
+                  (pinned to ONE server, lost if it dies)
+Redis (shared store) → true statelessness, any server serves any
+                  request, +1 hop cost, needs its own infra
+Redis is NOT just "a better sticky session" — it removes the need
+for affinity entirely.
+
+LB REDUNDANCY (LB itself is now a SPOF)
+─────────────────────────────────────────────────
+DNS-based failover | Active-passive VIP pair (keepalived/VRRP)
+Cloud-managed LB (AWS ALB/NLB) → redundancy handled for you
+
+DECISION
+─────────────────────────────────────────────────
+L4 → raw throughput, protocol-agnostic (DB poolers)
+L7 → web apps, content routing, TLS termination
+Tools: HAProxy, Nginx, AWS ALB/NLB, Envoy
+```
+---

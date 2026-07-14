@@ -91,4 +91,11 @@ Kept in alphabetical order.
 | Reverse Proxy | Sits in front of one or more servers; hides the server's identity/topology from the client | [016](Topics/016_Forward_Proxy_Reverse_Proxy_API_Gateway.md) |
 | API Gateway | A reverse proxy specialized for microservices APIs, adding centralized auth, rate limiting, routing, and transformation | [016](Topics/016_Forward_Proxy_Reverse_Proxy_API_Gateway.md) |
 
+| Load Balancer | A specialized reverse proxy that distributes traffic across a pool of backend servers for scaling and redundancy | [017](Topics/017_Load_Balancers.md) |
+| L4 Load Balancing | Routing based on IP + port only (transport layer); fast, protocol-agnostic, no content awareness | [017](Topics/017_Load_Balancers.md) |
+| L7 Load Balancing | Routing based on HTTP content (path/headers/cookies); enables TLS termination, more processing overhead | [017](Topics/017_Load_Balancers.md) |
+| Sticky Sessions (Session Affinity) | Routing the same client to the same backend server, usually because that server holds session state in memory | [017](Topics/017_Load_Balancers.md) |
+| Active Health Check | The load balancer proactively pings a health endpoint to detect dead backends | [017](Topics/017_Load_Balancers.md) |
+| Passive Health Check | The load balancer infers backend health by observing real traffic outcomes (errors/timeouts), catching failures active pings miss | [017](Topics/017_Load_Balancers.md) |
+
 <!-- Rows added after each lesson -->

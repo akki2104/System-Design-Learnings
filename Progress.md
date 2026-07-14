@@ -4,12 +4,12 @@
 ```
 Last Updated    : 2026-07-13
 Current Module  : MODULE 1 — Networking & Communication Foundations
-Current Topic   : 017 Load Balancers (Next)
+Current Topic   : 018 CDN (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 16 (001-016)
-Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011/012/013/014 (+1d) all deferred to later today by learner's choice; 015 +1d due 2026-07-14
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); polling latency-vs-waste mechanism imprecise; WebSocket firewall/101 reasoning imprecise
-Pace            : ~29 topics behind Schedule.md as of 2026-07-13 (should be on ~045, on 015)
+Topics Completed: 17 (001-017)
+Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011-017 (+1d, various). Learner revises on his own cadence (weekends / when he feels enough has piled up) — not pushed on due-date.
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); polling latency-vs-waste mechanism imprecise; WebSocket firewall/101 reasoning imprecise; IP-Hash vs Redis conflation (new — resolved)
+Pace            : ~29 topics behind Schedule.md as of 2026-07-13 (should be on ~045, on 017)
 Overall Interview Readiness : 5%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -54,6 +54,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-12 | Topic 014 (GraphQL) — Completed same session. Learner requested a pacing change: explain the full topic uninterrupted, ask all questions at the end (saved as standing behavioral preference). Correctly identified over-fetching, the caching problem (no fixed URL), and correctly self-diagnosed that GraphQL's N+1 problem moves server-side — but did not know the DataLoader/batching fix, which was explained fully. Confidence: 4/5. | Topic 015 — WebSockets, SSE, Polling, Long Polling |
 | 2026-07-13 | Topic 015 (WebSockets, SSE, Polling, Long Polling) — Completed, following the uninterrupted-explanation-then-questions pacing preference. Strong performance on directionality reasoning (SSE vs WebSockets) and the collaborative-editor design question (clean interview-sentence answer). Needed sharpening: short-polling latency-vs-waste mechanism (clients × frequency framing), long-polling's second unsolved limitation (re-request overhead), and the precise reason WebSocket upgrades concern firewalls (protocol Upgrade support, not "no indefinite connections"). Confidence: 4/5. | Topic 016 — Forward Proxy, Reverse Proxy, API Gateway; big revision backlog (001-002,006-014) due later today |
 | 2026-07-13 | Topic 016 (Forward Proxy, Reverse Proxy, API Gateway) — Completed same session as 015. Clean 4/4 on all checkpoint questions, including the load-balancer-classification trap and the reverse-proxy-vs-API-Gateway distinction. No mistakes logged. Confidence: 4/5. | Topic 017 — Load Balancers; big revision backlog (001-002,006-015) still due later today |
+| 2026-07-13 | Topic 017 (Load Balancers) — Completed. Learner confirmed revision cadence: revises on weekends or whenever he feels enough is covered, not strictly on RevisionSchedule.md due dates (saved as standing preference — backlog will keep being surfaced but not pushed). Clean on health checks (correctly identified passive checks catch functional failures active pings miss) and on why sticky sessions undercut horizontal scaling. Needed clarification: initially conflated IP Hash and Redis-backed sessions as the same solution — clarified they're different mechanisms (routing trick vs true statelessness) with different tradeoffs. Confidence: 4/5. | Topic 018 — CDN |
 
 ---
 
@@ -77,7 +78,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Diagnosed server-side N+1 correctly but didn't know DataLoader/batching fix (now explained) |
 | 015 | WebSockets, SSE, Polling, Long Polling | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Polling latency-vs-waste mechanism imprecise; long-polling 2nd limitation missed; WebSocket firewall/101 reasoning imprecise |
 | 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
-| 017 | Load Balancers | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 017 | Load Balancers | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Initially conflated IP Hash and Redis-backed sessions as the same solution — clarified as different mechanisms with different tradeoffs |
 | 018 | CDN | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 019 | Content Compression & Encoding | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 020 | Storage Engine Fundamentals | Not Started | — | — | — | 0 | — | — | — | — | — |
