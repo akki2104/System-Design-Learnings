@@ -15,6 +15,13 @@ Format:
 
 ---
 
+### 2026-07-13 — [Topic 021: Relational Databases & SQL]
+- Mistake: Stated the normalize-vs-denormalize practical rule circularly ("normalize when we have to remove redundancy") rather than naming the actual trigger condition
+- Why it's wrong: This restates normalization's definition rather than answering "when do you choose one over the other" — an interviewer wants the decision trigger, not the definition repeated back.
+- Correct understanding: Default to 3NF (removes redundancy). Denormalize specifically WHEN sharding would make joins expensive (network hops) OR a read-heavy access pattern benefits from pre-joined/embedded data.
+- How to remember: The answer should name a CONDITION ("when X happens, do Y"), not just restate what normalization/denormalization each mean.
+- Recurs? 1
+
 ### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
 - Mistake: Explained short polling's latency-vs-waste tension only as "connection overhead + server load" rather than the precise cost mechanism
 - Why it's wrong: The precise insight is that latency COULD be reduced by polling more frequently, but cost scales with clients × frequency, making it economically unbearable at scale — and latency can never drop below network RTT regardless.

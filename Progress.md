@@ -4,17 +4,21 @@
 ```
 Last Updated    : 2026-07-13
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 021 Relational Databases & SQL (Next)
+Current Topic   : 022 Indexing Deep Dive (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 20 (001-020) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011-020 (+1d, various). Learner revises on his own cadence (weekends / when he feels enough has piled up) — not pushed on due-date.
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); WAL vs buffer pool/checkpointing conflation (new)
+Topics Completed: 21 (001-021) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011-021 (+1d, various). Learner revises on his own cadence (weekends / when he feels enough has piled up) — not pushed on due-date.
+Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); WAL vs buffer pool/checkpointing conflation (resolved); normalization forms (1NF/2NF/3NF) initially skipped in chat, now fully covered — see PROCESS NOTE below
 Pace            : ~26 topics behind Schedule.md as of 2026-07-13 (should be on ~046, on 020)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
                   Learns best from worked examples + scorecards. Wants every concept tied to
-                  named tech choices: which DB/queue, why, and why NOT the alternatives (→ TechChoices.md)
+                  named tech choices: which DB/queue, why, and why NOT the alternatives (→ TechChoices.md).
+                  Actively audits lesson completeness — asks "is this covered enough / are we
+                  missing something" and catches real gaps (e.g. normalization forms, 2026-07-13).
+                  PROCESS RULE: Topics/NNN_*.md must be a complete superset of the live chat,
+                  never a shortened re-summary — cross-check master guide keywords before finalizing.
 Target          : General product-based companies (FAANG-adjacent, to be refined)
 Timeline Target : ~4 weeks new content + 2 weeks revision = INTERVIEW READY by ~mid-August 2026
 
@@ -58,6 +62,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-13 | Topic 018 (CDN) — Completed same session. Clean 4/4 on all checkpoint questions — correctly tied edge servers back to Topic 016 (reverse proxy) and GeoDNS back to Topic 009, correctly chose Push CDN for a zero-cold-cache-miss launch scenario, and correctly used explicit purge (not TTL wait) for a critical fix. No mistakes logged. Confidence: 4/5. | Topic 019 — Content Compression & Encoding (final Module 1 topic) |
 | 2026-07-13 | Topic 019 (Content Compression & Encoding) — Completed same session. MODULE 1 COMPLETE (Topics 006-019). Clean on Accept-Encoding/Content-Encoding negotiation, the "compress once, serve millions" amortization insight, and lossy/lossless distinction with a correct legal-document example. Partial on the video codec trap: correctly flagged CPU/encode cost but missed decode cost (on the USER's device) and compatibility/fallback needs as the other two dimensions. Confidence: 4/5. | Topic 020 — Storage Engine Fundamentals (begins MODULE 2 — Data Storage Foundations) |
 | 2026-07-13 | Topic 020 (Storage Engine Fundamentals) — Completed, opening Module 2. Clean on the page-as-I/O-unit mechanism and the precise data-loss distinction between crash-before-fsync vs crash-after-fsync. Correctly explained buffer pool's role but conflated it with checkpointing when asked why data pages are still flushed to disk instead of relying on WAL replay forever — clarified as two separate mechanisms (read speed vs bounded recovery time). Confidence: 4/5. | Topic 021 — Relational Databases & SQL |
+| 2026-07-13 | Topic 021 (Relational Databases & SQL) — Completed. PROCESS ISSUE: chat lesson initially covered normalization only as philosophy, skipping the formal 1NF/2NF/3NF forms the master guide explicitly names for this topic — learner proactively asked "is this covered enough," caught the gap, and it was taught in full afterward. Learner then raised a broader, valid concern that chat content sometimes doesn't fully match what lands in Topics/NNN_*.md files. Standing process fix saved to memory: the .md file must be a complete superset of the live chat, never a shortened re-summary; cross-check master guide keywords before finalizing. Once corrected, learner constructed his OWN 2NF/3NF violation examples correctly (stronger signal than reciting memorized ones) and gave clean answers on join cost and the normalize-vs-denormalize practical rule. Confidence: 3-4/5. | Topic 022 — Indexing Deep Dive |
 
 ---
 
@@ -85,7 +90,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 018 | CDN | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
 | 019 | Content Compression & Encoding | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | Video codec trap: missed decode cost (user device) and compatibility/fallback as separate dimensions from encode CPU cost |
 | 020 | Storage Engine Fundamentals | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Conflated buffer pool (read speed) with checkpointing (bounded WAL replay) when asked why data pages are still flushed to disk |
-| 021 | Relational Databases & SQL | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 021 | Relational Databases & SQL | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Med-Hard | Normalization forms initially skipped in chat then fully corrected; Q4 (normalize vs denormalize) phrasing slightly circular, sharpened |
 | 022 | Indexing Deep Dive | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 023 | B-Trees vs LSM-Trees | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 024 | Transactions & ACID | Not Started | — | — | — | 0 | — | — | — | — | — |

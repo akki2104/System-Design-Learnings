@@ -613,3 +613,37 @@ WAL → ACID Durability (024) | WAL shipping → Replication (039)
 Sequential-write principle → LSM-Trees (023), Kafka
 ```
 ---
+
+### [021] Relational Databases & SQL
+```
+RELATIONAL MODEL
+─────────────────────────────────────────────────
+Tables + rows + columns, related via primary/foreign keys
+
+NORMALIZATION — store each fact ONCE
+─────────────────────────────────────────────────
+1NF → atomic values, no repeating groups in one column
+2NF → no partial dependency on a composite key
+3NF → no transitive dependency (non-key depending on non-key)
+Default to 3NF; denormalize deliberately (Topic 005) for read speed/sharding
+
+JOINS
+─────────────────────────────────────────────────
+Cheap on ONE machine (in-memory/page matching)
+Expensive once SHARDED (network hop per join)
+INNER / LEFT / RIGHT / FULL
+
+SQL = declarative — query planner decides execution (uses Topic 020's
+      buffer pool / page internals to decide what's cheap)
+
+SCHEMA ENFORCEMENT
+─────────────────────────────────────────────────
+Fixed schema + types + constraints, enforced at write time —
+opposite of MongoDB's flexible schema (Topic 005)
+
+WHEN TO USE RELATIONAL (extends Topic 005)
+─────────────────────────────────────────────────
+Clear relationships + integrity matters + frequent joins + ACID > infinite
+horizontal write scale → still the DEFAULT starting point
+```
+---

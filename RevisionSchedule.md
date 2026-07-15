@@ -159,3 +159,11 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 020 | Storage Engine Fundamentals | +30 days | Pending |
 | 2026-09-11 | 020 | Storage Engine Fundamentals | +60 days | Pending |
 | 2026-10-11 | 020 | Storage Engine Fundamentals | +90 days | Pending |
+
+| 2026-07-14 | 021 | Relational Databases & SQL | +1 day | Pending |
+| 2026-07-16 | 021 | Relational Databases & SQL | +3 days | Pending |
+| 2026-07-20 | 021 | Relational Databases & SQL | +7 days | Pending |
+| 2026-07-28 | 021 | Relational Databases & SQL | +15 days | Pending |
+| 2026-08-12 | 021 | Relational Databases & SQL | +30 days | Pending |
+| 2026-09-11 | 021 | Relational Databases & SQL | +60 days | Pending |
+| 2026-10-11 | 021 | Relational Databases & SQL | +90 days | Pending |

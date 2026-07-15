@@ -112,5 +112,12 @@ Kept in alphabetical order.
 | Buffer Pool | A DB's in-memory cache of recently-used pages, serving reads and holding dirty writes before they're flushed to disk | [020](Topics/020_Storage_Engine_Fundamentals.md) |
 | WAL (Write-Ahead Log) | An append-only log that records changes before they're applied to data pages, giving durability via fast sequential writes | [020](Topics/020_Storage_Engine_Fundamentals.md) |
 | Checkpointing | Periodically flushing dirty pages to disk, bounding how much WAL history must be replayed on crash recovery | [020](Topics/020_Storage_Engine_Fundamentals.md) |
+| Primary Key | A column (or set of columns) that uniquely identifies a row within its own table | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| Foreign Key | A column referencing a primary key in another table, forming a relationship between the two | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| Normalization | Structuring a schema so each fact is stored exactly once, eliminating update anomalies from duplicated data | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| 1NF (First Normal Form) | Requires every column to hold a single, atomic value — no repeating groups/lists in one field | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| 2NF (Second Normal Form) | Requires every non-key column to depend on the WHOLE composite primary key, not just part of it | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| 3NF (Third Normal Form) | Requires no non-key column to depend on another non-key column (no transitive dependency) | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| Query Planner | The database component that decides how to actually execute a declarative SQL query (index choice, join order, etc.) | [021](Topics/021_Relational_Databases_and_SQL.md) |
 
 <!-- Rows added after each lesson -->
