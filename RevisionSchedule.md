@@ -3,6 +3,41 @@
 Sorted by due date. The mentor checks this at the start of every session.
 Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 
+---
+
+## REVISION BLITZ — 2026-07-13
+
+Full backlog cleared (18 topics: 001-002, 006-021). Individual scattered rows below are
+NOT all individually marked — this block is the authoritative record for this pass.
+
+**PASSED — interval advances (13 topics):** 001, 002, 006, 007, 008, 010, 012, 014, 016,
+018, 019 (weak, see note), 020, 021
+
+**FAILED — reset to +1 day, due 2026-07-14 (5 topics):** 009, 011, 013, 015, 017
+
+| Topic | Result | Note |
+|-------|--------|------|
+| 001 | ✅ Pass | Minor: said "traceability" instead of "Traces" |
+| 002 | ✅ Pass | |
+| 006 | ✅ Pass | |
+| 007 | ✅ Pass | |
+| 008 | ✅ Pass | Soft — named right dimensions, missed precise "obsolete anyway" framing |
+| 009 | ❌ RESET | Attributed DNS hierarchy to caching instead of scale/availability/management |
+| 010 | ✅ Pass | Clean |
+| 011 | ❌ RESET | 3rd TLS guarantee (Authentication) not recalled — RECURRING ×2 |
+| 012 | ✅ Pass | Clean |
+| 013 | ❌ RESET | gRPC browser blocker — wrong reason again, RECURRING ×2 |
+| 014 | ✅ Pass | Clean |
+| 015 | ❌ RESET | Short-polling latency-vs-waste mechanism — RECURRING ×2, PERSISTENT |
+| 016 | ✅ Pass | Clean |
+| 017 | ❌ RESET | Active vs passive health check — wrong mechanism (speed vs failure-type) |
+| 018 | ✅ Pass | Clean |
+| 019 | ⚠️ Pass (weak) | 2/3 codec costs named (up from 1/3) — decode-on-device still missing |
+| 020 | ✅ Pass | |
+| 021 | ✅ Pass | |
+
+---
+
 | Due Date | Topic ID | Title | Interval | Status |
 |----------|----------|-------|----------|--------|
 | 2026-06-29 | 001 | Introduction to System Design | +1 day | Done 2026-06-30 |
@@ -167,3 +202,13 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 | 2026-08-12 | 021 | Relational Databases & SQL | +30 days | Pending |
 | 2026-09-11 | 021 | Relational Databases & SQL | +60 days | Pending |
 | 2026-10-11 | 021 | Relational Databases & SQL | +90 days | Pending |
+
+---
+
+## RESET ROWS — failed 2026-07-13 revision blitz, interval reset to +1 day
+
+| 2026-07-14 | 009 | DNS | +1 day (reset) | Pending |
+| 2026-07-14 | 011 | HTTPS & TLS | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
+| 2026-07-14 | 013 | RPC & gRPC | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
+| 2026-07-14 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
+| 2026-07-14 | 017 | Load Balancers | +1 day (reset) | Pending |

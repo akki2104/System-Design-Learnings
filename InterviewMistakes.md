@@ -22,12 +22,40 @@ Format:
 - How to remember: The answer should name a CONDITION ("when X happens, do Y"), not just restate what normalization/denormalization each mean.
 - Recurs? 1
 
+### 2026-07-13 — [Revision Blitz — Topic 009: DNS]
+- Mistake: Attributed DNS's hierarchical design to "maintaining caching at multiple levels" rather than the real reasons
+- Why it's wrong: Caching (TTL) is a separate mechanism layered on top for speed — it's not why DNS resolution is hierarchical in the first place.
+- Correct understanding: DNS is hierarchical for three reasons: scale (billions of domains, no single machine/company can hold it all), availability (one server = single point of failure for the entire internet), and management (domain owners control their own records without needing central authority permission). Same pattern as sharding — delegate responsibility instead of centralizing it.
+- How to remember: "Hierarchy = delegation of responsibility (scale/availability/management). Caching = a separate speed layer on top."
+- Recurs? 1
+
+### 2026-07-13 — [Revision Blitz — Topic 011: HTTPS & TLS]
+- Mistake: Could not recall the third TLS guarantee (Authentication) during revision
+- Why it's wrong: This is the exact same gap from the original Topic 011 lesson — Confidentiality and Integrity are recalled easily, but Authentication (the certificate proving the server is who it claims to be) keeps getting dropped.
+- Correct understanding: TLS provides three guarantees — Confidentiality (encryption), Integrity (tamper detection), Authentication (certificate-verified server identity). Mnemonic: C-I-A.
+- How to remember: "C-I-A — like the agency. Confidentiality, Integrity, Authentication."
+- Recurs? 2 — first missed in the original 2026-07-12 lesson, now missed again in the 2026-07-13 revision blitz. PERSISTENT WEAK AREA.
+
+### 2026-07-13 — [Revision Blitz — Topic 017: Load Balancers]
+- Mistake: Explained passive vs. active health checks as a difference in detection SPEED ("passive knows instantly, active has a delay") rather than the difference in WHAT KIND of failure each can see
+- Why it's wrong: The real distinction is that active health checks only test a synthetic `/health` endpoint — which can return 200 OK even when the real service is functionally broken (e.g., DB connection pool exhausted, but the shallow health check never touches the DB). Passive health checks observe REAL production traffic outcomes, catching functional failures a synthetic ping structurally cannot see.
+- Correct understanding: A server can pass every active health check while being functionally broken for real users — that's precisely the scenario passive checks exist to catch. It's about failure TYPE visibility, not detection speed.
+- How to remember: "Active checks ask a scripted question. Passive checks watch what actually happens to real customers."
+- Recurs? 1
+
+### 2026-07-13 — [Revision Blitz — Topic 019: Content Compression & Encoding]
+- Mistake: Named 2 of 3 video codec adoption costs (encode/CPU cost, compatibility) but still missed the third (decode cost specifically draining the USER'S device battery/CPU, separate from server-side encode cost)
+- Why it's wrong: Decode cost lives on a device you don't control — older/lower-end phones lack hardware decode support for newer codecs, forcing software decoding that drains battery and can cause stutter. This is a distinct cost from server-side encoding compute.
+- Correct understanding: Three costs before adopting a newer codec: (1) encode cost — server CPU/GPU, (2) decode cost — USER'S device CPU/battery, (3) compatibility — may need a fallback (e.g., H.264 baseline + newer codec for supporting clients).
+- How to remember: "Encode is your cost. Decode is THEIR cost. Compatibility is whether they can even try."
+- Recurs? 2 — improved from the original lesson (only named 1 of 3 then, now 2 of 3) but the decode-on-device dimension still hasn't stuck. Track for one more clean pass before considering it resolved.
+
 ### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
 - Mistake: Explained short polling's latency-vs-waste tension only as "connection overhead + server load" rather than the precise cost mechanism
 - Why it's wrong: The precise insight is that latency COULD be reduced by polling more frequently, but cost scales with clients × frequency, making it economically unbearable at scale — and latency can never drop below network RTT regardless.
 - Correct understanding: You're always trading wasted requests for freshness, at a ratio that gets worse as client count grows — not a hard impossibility, an economic one.
 - How to remember: "Cost = clients × frequency. You CAN buy lower latency, you just can't afford to at scale."
-- Recurs? 1
+- Recurs? 2 — 2026-07-13 revision blitz: gave "increases server load" again, same shallow answer as the original lesson. PERSISTENT WEAK AREA — needs a dedicated drill, not just another revision pass.
 
 ### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
 - Mistake: Named only one unsolved limitation of long polling (many idle open connections) and missed the second (re-request overhead every cycle)
@@ -235,7 +263,7 @@ Format:
 - Why it's wrong: Unreadability is a real but secondary debuggability cost — it doesn't actually block gRPC from running anywhere. The real hard blocker is specific to browsers: they can't control HTTP/2 trailers (needed by gRPC to signal stream completion/status) through fetch/XMLHttpRequest. Native mobile apps have no such restriction — Uber and Square use gRPC directly on mobile.
 - Correct understanding: Browsers → gRPC blocked at the transport-control level → need grpc-web proxy. Native mobile → gRPC works directly. Debuggability (binary payload) is a separate, secondary reason teams choose REST for public APIs even when gRPC would technically work.
 - How to remember: "Browsers can't hold the wheel (HTTP/2 trailers), mobile apps can." Unreadable payload is an annoyance, not a blocker.
-- Recurs? 1
+- Recurs? 2 — 2026-07-13 revision blitz: gave a DIFFERENT wrong reason this time ("browsers don't know the server's procedures") instead of the protobuf-readability mistake from the original lesson. PERSISTENT WEAK AREA — the underlying fact (HTTP/2 trailer control) isn't sticking, even though the wrong reasoning keeps changing.
 
 ### 2026-07-12 — [Topic 014: GraphQL]
 - Mistake: Correctly diagnosed that GraphQL's N+1 problem moves server-side (per-item DB calls) but did not know the fix (batching/DataLoader)

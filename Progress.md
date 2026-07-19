@@ -7,9 +7,9 @@ Current Module  : MODULE 2 — Data Storage Foundations
 Current Topic   : 022 Indexing Deep Dive (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 21 (001-021) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : OVERDUE — 001-002 (+15d), 006-010 (+3d), 011-021 (+1d, various). Learner revises on his own cadence (weekends / when he feels enough has piled up) — not pushed on due-date.
-Top Weak Areas  : Reads in write QPS formula (RECURRING ×2 — drill at session start); WAL vs buffer pool/checkpointing conflation (resolved); normalization forms (1NF/2NF/3NF) initially skipped in chat, now fully covered — see PROCESS NOTE below
-Pace            : ~26 topics behind Schedule.md as of 2026-07-13 (should be on ~046, on 020)
+Revisions Due   : REVISION BLITZ completed 2026-07-13 (all 18 overdue topics: 001-002, 006-021). 13 passed/advanced. 5 RESET to +1 day (due 2026-07-14): 009, 011, 013, 015, 017.
+Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 009 DNS hierarchy reasoning, 017 active/passive health check mechanism. Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
+Pace            : ~26 topics behind Schedule.md as of 2026-07-13 (should be on ~046, on 021)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -63,6 +63,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-13 | Topic 019 (Content Compression & Encoding) — Completed same session. MODULE 1 COMPLETE (Topics 006-019). Clean on Accept-Encoding/Content-Encoding negotiation, the "compress once, serve millions" amortization insight, and lossy/lossless distinction with a correct legal-document example. Partial on the video codec trap: correctly flagged CPU/encode cost but missed decode cost (on the USER's device) and compatibility/fallback needs as the other two dimensions. Confidence: 4/5. | Topic 020 — Storage Engine Fundamentals (begins MODULE 2 — Data Storage Foundations) |
 | 2026-07-13 | Topic 020 (Storage Engine Fundamentals) — Completed, opening Module 2. Clean on the page-as-I/O-unit mechanism and the precise data-loss distinction between crash-before-fsync vs crash-after-fsync. Correctly explained buffer pool's role but conflated it with checkpointing when asked why data pages are still flushed to disk instead of relying on WAL replay forever — clarified as two separate mechanisms (read speed vs bounded recovery time). Confidence: 4/5. | Topic 021 — Relational Databases & SQL |
 | 2026-07-13 | Topic 021 (Relational Databases & SQL) — Completed. PROCESS ISSUE: chat lesson initially covered normalization only as philosophy, skipping the formal 1NF/2NF/3NF forms the master guide explicitly names for this topic — learner proactively asked "is this covered enough," caught the gap, and it was taught in full afterward. Learner then raised a broader, valid concern that chat content sometimes doesn't fully match what lands in Topics/NNN_*.md files. Standing process fix saved to memory: the .md file must be a complete superset of the live chat, never a shortened re-summary; cross-check master guide keywords before finalizing. Once corrected, learner constructed his OWN 2NF/3NF violation examples correctly (stronger signal than reciting memorized ones) and gave clean answers on join cost and the normalize-vs-denormalize practical rule. Confidence: 3-4/5. | Topic 022 — Indexing Deep Dive |
+| 2026-07-13 | REVISION BLITZ — full backlog cleared, 18 topics (001-002, 006-021). 13 passed/advanced, 5 RESET to +1 day: 009 (DNS hierarchy reasoning — new miss), 011 (TLS Authentication guarantee — PERSISTENT ×2), 013 (gRPC browser blocker — PERSISTENT ×2, different wrong reason each time), 015 (short-polling latency-vs-waste — PERSISTENT ×2), 017 (active/passive health checks — new miss, explained as speed not failure-type). 019 passed but weak (codec costs 1/3→2/3, improving). Full scorecard in RevisionSchedule.md's blitz block. | Reset revisions (009,011,013,015,017) due 2026-07-14; then Topic 022 — Indexing Deep Dive |
 
 ---
 
@@ -70,27 +71,27 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 
 | ID | Title | Status | Start | Completed | Mastered | Rev# | Last Rev | Next Due | Conf | Diff | Weak Areas |
 |----|-------|--------|-------|-----------|----------|------|----------|----------|------|------|------------|
-| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 3 | 2026-07-11 | 2026-07-13 | 4 | Easy | FR/NFR test phrasing imprecise (revision blitz) |
-| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 3 | 2026-07-11 | 2026-07-13 | 3 | Easy | Deep Dive time: said 5 min instead of 10 (recurring ×2 on time budget) |
+| 001 | Introduction to System Design | Completed | 2026-06-28 | 2026-06-28 | — | 4 | 2026-07-13 | 2026-08-12 | 4 | Easy | Blitz pass — minor: said "traceability" instead of "Traces" |
+| 002 | The System Design Interview Framework | Completed | 2026-06-28 | 2026-06-28 | — | 4 | 2026-07-13 | 2026-08-12 | 4 | Easy | Blitz pass — clean |
 | 003 | Back-of-the-Envelope Estimation | Completed | 2026-06-30 | 2026-06-30 | — | 3 | 2026-07-11 | 2026-07-15 | 2 | Easy-Med | Reads in write QPS formula (RECURRING ×2 — persistent); avg vs peak CLEARED |
 | 004 | Non-Functional Requirements | Completed | 2026-06-30 | 2026-06-30 | — | 3 | 2026-07-11 | 2026-07-15 | 3 | Medium | Missing p99 percentile on latency; initial NFRs were vague |
 | 005 | How to Reason About Tradeoffs | Completed | 2026-07-08 | 2026-07-08 | — | 2 | 2026-07-11 | 2026-07-15 | 3 | Medium | Tradeoff method steps 1-2 missing in revision; Postgres/write confusion fully corrected |
-| 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 4 | Easy | P2P difficulty too vague ("complexity") — no specific type named |
-| 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Easy | Port 80/443 confusion (said 80=WebSockets; corrected: 80=HTTP, 443=HTTPS) |
-| 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 4 | Medium | Clean pass on both revision questions |
-| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Easy | Missed browser+OS cache as first steps in DNS chain |
-| 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-11 | 2026-07-12 | 3 | Med-Hard | HTTP/3 HoL fix: said "guarantees ordered delivery" (TCP behavior) instead of per-stream QUIC ordering |
-| 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 3 | Medium | Didn't know authentication was 3rd TLS guarantee; PCI-DSS reasoning correct |
-| 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Idempotency defined by response code, not final state; URL ordering reversed (ID before collection); "like" modeled as PATCH instead of sub-resource |
-| 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Attributed gRPC browser blocker to protobuf unreadability instead of HTTP/2 trailer control; native mobile vs browser distinction now clear |
-| 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 0 | — | 2026-07-13 | 4 | Medium | Diagnosed server-side N+1 correctly but didn't know DataLoader/batching fix (now explained) |
-| 015 | WebSockets, SSE, Polling, Long Polling | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Polling latency-vs-waste mechanism imprecise; long-polling 2nd limitation missed; WebSocket firewall/101 reasoning imprecise |
-| 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
-| 017 | Load Balancers | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Initially conflated IP Hash and Redis-backed sessions as the same solution — clarified as different mechanisms with different tradeoffs |
-| 018 | CDN | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | None — clean 4/4 pass |
-| 019 | Content Compression & Encoding | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Easy | Video codec trap: missed decode cost (user device) and compatibility/fallback as separate dimensions from encode CPU cost |
-| 020 | Storage Engine Fundamentals | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Medium | Conflated buffer pool (read speed) with checkpointing (bounded WAL replay) when asked why data pages are still flushed to disk |
-| 021 | Relational Databases & SQL | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4 | Med-Hard | Normalization forms initially skipped in chat then fully corrected; Q4 (normalize vs denormalize) phrasing slightly circular, sharpened |
+| 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-13 | 2026-07-28 | 4 | Easy | Blitz pass — clean |
+| 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-13 | 2026-07-28 | 4 | Easy | Blitz pass — clean (5-tuple recalled precisely) |
+| 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-13 | 2026-07-28 | 4 | Medium | Blitz pass (soft) — named right dimensions, missed precise "obsolete anyway" framing |
+| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-13 (FAILED) | 2026-07-14 | 3 | Easy | RESET — attributed DNS hierarchy to caching instead of scale/availability/management |
+| 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-13 | 2026-07-28 | 4 | Med-Hard | Blitz pass — clean, HOL blocking mechanism solid |
+| 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | 2026-07-13 (FAILED) | 2026-07-14 | 3 | Medium | RESET — 3rd TLS guarantee (Authentication) missed AGAIN. PERSISTENT ×2. |
+| 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Medium | Blitz pass — clean cursor-pagination reasoning |
+| 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | 2026-07-13 (FAILED) | 2026-07-14 | 3 | Medium | RESET — gRPC browser blocker wrong AGAIN (different wrong reason). PERSISTENT ×2. |
+| 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Medium | Blitz pass — clean N+1/DataLoader recall |
+| 015 | WebSockets, SSE, Polling, Long Polling | Completed | 2026-07-13 | 2026-07-13 | — | 0 | 2026-07-13 (FAILED) | 2026-07-14 | 3 | Medium | RESET — short-polling latency-vs-waste mechanism wrong AGAIN. PERSISTENT ×2, needs dedicated drill. |
+| 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Easy | Blitz pass — clean |
+| 017 | Load Balancers | Completed | 2026-07-13 | 2026-07-13 | — | 0 | 2026-07-13 (FAILED) | 2026-07-14 | 3 | Medium | RESET — passive vs active health check: explained as detection SPEED instead of failure TYPE |
+| 018 | CDN | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Easy | Blitz pass — clean |
+| 019 | Content Compression & Encoding | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Easy | Blitz pass (weak) — codec costs improved 1/3→2/3, decode-on-device still missing, watch next pass |
+| 020 | Storage Engine Fundamentals | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Medium | Blitz pass — clean checkpointing/WAL reasoning |
+| 021 | Relational Databases & SQL | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Med-Hard | Blitz pass — excellent self-constructed 3NF example |
 | 022 | Indexing Deep Dive | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 023 | B-Trees vs LSM-Trees | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 024 | Transactions & ACID | Not Started | — | — | — | 0 | — | — | — | — | — |
