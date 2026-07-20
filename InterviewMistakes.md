@@ -15,6 +15,13 @@ Format:
 
 ---
 
+### 2026-07-20 — [Topic 023: B-Trees vs LSM-Trees]
+- Mistake: Believed SSTables are unsorted, so LSM-Tree reads can't use binary search and must do random disk seeks
+- Why it's wrong: SSTable literally stands for "Sorted String Table" — each individual SSTable IS sorted, and binary search works fine within one. The actual read cost is having to check MULTIPLE separate sorted structures (memtable + several SSTables), not losing sorting within any single one.
+- Correct understanding: LSM-Tree read cost is roughly O(k × log n), where k = number of SSTables checked — multiplying binary search across files, not abandoning it. A key might live in an older SSTable if it wasn't touched since an earlier flush, which is why the newest SSTable alone isn't sufficient.
+- How to remember: "The S in SSTable stands for Sorted. The cost is MANY sorted files, not NO sorting."
+- Recurs? 1
+
 ### 2026-07-15 — [Topic 021: Relational Databases & SQL]
 - Mistake: Stated the normalize-vs-denormalize practical rule circularly ("normalize when we have to remove redundancy") rather than naming the actual trigger condition
 - Why it's wrong: This restates normalization's definition rather than answering "when do you choose one over the other" — an interviewer wants the decision trigger, not the definition repeated back.

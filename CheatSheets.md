@@ -680,3 +680,39 @@ Add when: high cardinality + frequently queried + read-favoring ratio
 Avoid when: write-heavy table, low-cardinality column, already over-indexed
 ```
 ---
+
+### [023] B-Trees vs LSM-Trees
+```
+B-TREE vs LSM-TREE
+─────────────────────────────────────────────────
+B-Tree:    in-place random writes (slow writes), ONE sorted structure (fast reads)
+LSM-Tree:  sequential appends only (fast writes), MULTIPLE sorted structures (slower reads)
+
+LSM WRITE PATH
+─────────────────────────────────────────────────
+Write → WAL (append) + memtable (in-memory, sorted)
+Memtable full → flush as new immutable SSTable (sorted, sequential write)
+
+LSM READ PATH
+─────────────────────────────────────────────────
+Check memtable → check newest SSTable (binary search WITHIN it, it IS sorted)
+→ not found → check next SSTable → ... (key may be in an OLDER SSTable)
+Cost: O(k × log n) — k = number of SSTables checked, not "no sorting"
+
+COMPACTION
+─────────────────────────────────────────────────
+Merges multiple SSTables → fewer files to check + removes stale/duplicate/
+deleted entries. Background cost that bounds read-side degradation.
+
+BLOOM FILTERS (Topic 089 preview)
+─────────────────────────────────────────────────
+Per-SSTable structure: quickly says "definitely NOT here" → skip that
+SSTable without a disk read
+
+DECISION (extends Topic 005)
+─────────────────────────────────────────────────
+Write-heavy → LSM-Tree (Cassandra, RocksDB, LevelDB, HBase)
+Read-heavy/balanced → B-Tree (Postgres, MySQL/InnoDB)
+NOT strictly better either way — tradeoff based on read:write ratio
+```
+---

@@ -2,24 +2,14 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-07-20 (DATE CORRECTION — see note below)
+Last Updated    : 2026-07-20
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 023 B-Trees vs LSM-Trees (Next)
+Current Topic   : 024 Transactions & ACID (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 22 (001-022) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : 5 RESET topics due 2026-07-20 (TODAY — 009, 011, 013, 015, 017) + Topic 022 +1d due 2026-07-21
-Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 009 DNS hierarchy reasoning, 017 active/passive health check mechanism. Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
-Pace            : ~45 topics behind Schedule.md as of 2026-07-20 (should be on ~066, on 022)
-
->>> DATE CORRECTION (2026-07-20): Every entry dated "2026-07-13" for topics 017 through
->>> the Revision Blitz was WRONG — the mentor anchored to a stale date early in a long
->>> multi-day chat session and never re-verified it as real days passed. Corrected via
->>> git commit timestamps (ground truth): Topics 017-020 actually completed 2026-07-14,
->>> Topic 021 completed 2026-07-15, Revision Blitz actually ran 2026-07-19, Topic 022
->>> completed 2026-07-20 (correct). All revision due-dates below are recalculated from
->>> the CORRECT dates. Process fix saved to memory: verify the real system date before
->>> writing any date into a file, every time — do not trust dates recalled from earlier
->>> in a long-running conversation.
+Topics Completed: 23 (001-023) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Revisions Due   : 5 RESET topics due 2026-07-20 (TODAY — 009, 011, 013, 015, 017) + Topic 022 +1d due 2026-07-21 + Topic 023 +1d due 2026-07-21
+Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 023 SSTables-are-unsorted misconception (corrected same lesson). New: 009 DNS hierarchy reasoning, 017 active/passive health check mechanism. Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
+Pace            : ~45 topics behind Schedule.md as of 2026-07-20 (should be on ~066, on 023)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -76,6 +66,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-19 | REVISION BLITZ — full backlog cleared, 18 topics (001-002, 006-021). 13 passed/advanced, 5 RESET to +1 day: 009 (DNS hierarchy reasoning — new miss), 011 (TLS Authentication guarantee — PERSISTENT ×2), 013 (gRPC browser blocker — PERSISTENT ×2, different wrong reason each time), 015 (short-polling latency-vs-waste — PERSISTENT ×2), 017 (active/passive health checks — new miss, explained as speed not failure-type). 019 passed but weak (codec costs 1/3→2/3, improving). Full scorecard in RevisionSchedule.md's blitz block. | Reset revisions (009,011,013,015,017) due 2026-07-20; then Topic 022 — Indexing Deep Dive |
 | 2026-07-20 | DATE CORRECTION — learner caught that all dates from Topic 017 onward through the Revision Blitz were mislabeled "2026-07-13" (mentor anchored to a stale date early in this long multi-day chat and never re-verified it as real days passed). Corrected via git commit timestamps: 017-020 → 2026-07-14, 021 → 2026-07-15, Revision Blitz → 2026-07-19. All revision due-dates recalculated from correct anchors. Process fix saved to memory: verify the real system date before writing any date, every time. | Continue with Topic 023 — B-Trees vs LSM-Trees |
 | 2026-07-20 | Topic 022 (Indexing Deep Dive) — Completed same session. Excellent performance — clean 4/4 including the bookmark-lookup mechanism (Q2) and the write-heavy indexing trap (Q4, correctly recommended minimal/zero secondary indexes given a 500:1 write:read ratio). Q1's initial answer was correct but light on mechanism (why binary search applies to a B-Tree) — sharpened with the "tree height stays ~log₂(n) regardless of table size" explanation during feedback. No mistakes logged. Confidence: 4-5/5. | Topic 023 — B-Trees vs LSM-Trees |
+| 2026-07-20 | Topic 023 (B-Trees vs LSM-Trees) — Completed same session. Core misconception surfaced and corrected: believed SSTables were unsorted, so LSM reads couldn't binary search — corrected that SSTables ARE sorted (the name says so), and the real read cost is checking MULTIPLE sorted structures, not losing sorting within one. Q1 (B-Tree random writes) only half-answered initially, missing why LSM avoids the same cost. Q4 (LSM not "strictly better") was clean and correct on the first try. Confidence: 3/5. | Topic 024 — Transactions & ACID |
 
 ---
 
@@ -105,7 +96,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 020 | Storage Engine Fundamentals | Completed | 2026-07-14 | 2026-07-14 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Medium | Blitz pass — clean checkpointing/WAL reasoning |
 | 021 | Relational Databases & SQL | Completed | 2026-07-15 | 2026-07-15 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Med-Hard | Blitz pass — excellent self-constructed 3NF example |
 | 022 | Indexing Deep Dive | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent on bookmark-lookup and write-heavy trap |
-| 023 | B-Trees vs LSM-Trees | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 023 | B-Trees vs LSM-Trees | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 3 | Medium | SSTables-are-unsorted misconception (corrected mid-lesson); Q1 initially only explained B-Tree side |
 | 024 | Transactions & ACID | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 025 | Isolation Levels & Anomalies | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | Not Started | — | — | — | 0 | — | — | — | — | — |

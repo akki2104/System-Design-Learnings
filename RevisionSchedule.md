@@ -236,3 +236,11 @@ NOT all individually marked — this block is the authoritative record for this 
 > REVISION BLITZ block and RESET ROWS above, both now corrected. Progress.md's HLD table
 > is the authoritative source for each topic's actual "Next Due" date going forward —
 > refer to it, not to individually hunting through this file's scattered rows.
+
+| 2026-07-21 | 023 | B-Trees vs LSM-Trees | +1 day | Pending |
+| 2026-07-23 | 023 | B-Trees vs LSM-Trees | +3 days | Pending |
+| 2026-07-27 | 023 | B-Trees vs LSM-Trees | +7 days | Pending |
+| 2026-08-04 | 023 | B-Trees vs LSM-Trees | +15 days | Pending |
+| 2026-08-19 | 023 | B-Trees vs LSM-Trees | +30 days | Pending |
+| 2026-09-18 | 023 | B-Trees vs LSM-Trees | +60 days | Pending |
+| 2026-10-18 | 023 | B-Trees vs LSM-Trees | +90 days | Pending |

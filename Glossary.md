@@ -127,5 +127,9 @@ Kept in alphabetical order.
 | Leftmost-Prefix Rule | A composite index on (A, B) only helps queries filtering on a prefix of its columns in order (A, or A+B) — not B alone | [022](Topics/022_Indexing_Deep_Dive.md) |
 | Covering Index | An index containing every column a query needs, allowing an index-only scan that skips the bookmark lookup entirely | [022](Topics/022_Indexing_Deep_Dive.md) |
 | Cardinality | The number of distinct values in a column; high-cardinality columns (email, user_id) benefit from indexing far more than low-cardinality ones (booleans) | [022](Topics/022_Indexing_Deep_Dive.md) |
+| LSM-Tree (Log-Structured Merge-Tree) | A write-optimized storage structure that converts all writes to sequential appends via a memtable and immutable SSTables, trading read simplicity for write throughput | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
+| Memtable | An in-memory sorted buffer that holds recent writes before they're flushed to disk as an SSTable | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
+| SSTable (Sorted String Table) | An immutable, sorted file on disk produced by flushing a memtable; binary search works within it, but a read may need to check several | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
+| Compaction | The background process that merges multiple SSTables into fewer, larger ones, removing stale/duplicate/deleted entries and bounding read-side cost | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
 
 <!-- Rows added after each lesson -->
