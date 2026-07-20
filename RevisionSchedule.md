@@ -244,3 +244,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-19 | 023 | B-Trees vs LSM-Trees | +30 days | Pending |
 | 2026-09-18 | 023 | B-Trees vs LSM-Trees | +60 days | Pending |
 | 2026-10-18 | 023 | B-Trees vs LSM-Trees | +90 days | Pending |
+
+| 2026-07-21 | 024 | Transactions & ACID | +1 day | Pending |
+| 2026-07-23 | 024 | Transactions & ACID | +3 days | Pending |
+| 2026-07-27 | 024 | Transactions & ACID | +7 days | Pending |
+| 2026-08-04 | 024 | Transactions & ACID | +15 days | Pending |
+| 2026-08-19 | 024 | Transactions & ACID | +30 days | Pending |
+| 2026-09-18 | 024 | Transactions & ACID | +60 days | Pending |
+| 2026-10-18 | 024 | Transactions & ACID | +90 days | Pending |

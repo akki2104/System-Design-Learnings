@@ -131,5 +131,10 @@ Kept in alphabetical order.
 | Memtable | An in-memory sorted buffer that holds recent writes before they're flushed to disk as an SSTable | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
 | SSTable (Sorted String Table) | An immutable, sorted file on disk produced by flushing a memtable; binary search works within it, but a read may need to check several | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
 | Compaction | The background process that merges multiple SSTables into fewer, larger ones, removing stale/duplicate/deleted entries and bounding read-side cost | [023](Topics/023_B_Trees_vs_LSM_Trees.md) |
+| ACID | Atomicity, Consistency, Isolation, Durability — the four guarantees a database transaction provides against partial-failure bugs | [024](Topics/024_Transactions_and_ACID.md) |
+| Atomicity | A transaction either fully completes or fully rolls back — no partial state is ever visible | [024](Topics/024_Transactions_and_ACID.md) |
+| Consistency (ACID) | A transaction moves the database from one valid state to another, respecting all schema constraints — NOT the same concept as CAP's Consistency | [024](Topics/024_Transactions_and_ACID.md) |
+| Isolation | Concurrent transactions behave as if each were the only one running; exact rules covered in Topic 025 | [024](Topics/024_Transactions_and_ACID.md) |
+| Durability | Once a transaction commits, its changes survive a crash — implemented via the WAL fsync-before-acknowledge mechanism (Topic 020) | [024](Topics/024_Transactions_and_ACID.md) |
 
 <!-- Rows added after each lesson -->

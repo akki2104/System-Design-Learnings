@@ -716,3 +716,27 @@ Read-heavy/balanced → B-Tree (Postgres, MySQL/InnoDB)
 NOT strictly better either way — tradeoff based on read:write ratio
 ```
 ---
+
+### [024] Transactions & ACID
+```
+ACID
+─────────────────────────────────────────────────
+Atomicity   → all-or-nothing; WAL/undo log enables rollback of incomplete txns
+Consistency → valid state → valid state; schema constraints hold (Topic 021)
+              ≠ CAP's Consistency (cross-node agreement, Topic 046) — different concept!
+Isolation   → concurrent txns don't interfere (levels detailed in Topic 025)
+Durability  → committed = survives crash; THIS IS WAL fsync-before-ack (Topic 020)
+
+WHEN TO USE FULL TRANSACTIONS
+─────────────────────────────────────────────────
+Money/inventory/anything where partial writes cause real harm → YES
+Analytics/logging/event data → often NO, cost > benefit
+
+MECHANISM MAP
+─────────────────────────────────────────────────
+Atomicity   ← WAL/undo log
+Consistency ← constraint checks (Topic 021)
+Isolation   ← concurrency control (Topics 026/027)
+Durability  ← WAL fsync (Topic 020)
+```
+---

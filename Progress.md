@@ -4,12 +4,12 @@
 ```
 Last Updated    : 2026-07-20
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 024 Transactions & ACID (Next)
+Current Topic   : 025 Isolation Levels & Anomalies (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 23 (001-023) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : 5 RESET topics due 2026-07-20 (TODAY — 009, 011, 013, 015, 017) + Topic 022 +1d due 2026-07-21 + Topic 023 +1d due 2026-07-21
+Topics Completed: 24 (001-024) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Revisions Due   : 5 RESET topics due 2026-07-20 (TODAY — 009, 011, 013, 015, 017) + Topics 022,023,024 +1d due 2026-07-21
 Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 023 SSTables-are-unsorted misconception (corrected same lesson). New: 009 DNS hierarchy reasoning, 017 active/passive health check mechanism. Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
-Pace            : ~45 topics behind Schedule.md as of 2026-07-20 (should be on ~066, on 023)
+Pace            : ~45 topics behind Schedule.md as of 2026-07-20 (should be on ~066, on 024)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -67,6 +67,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-20 | DATE CORRECTION — learner caught that all dates from Topic 017 onward through the Revision Blitz were mislabeled "2026-07-13" (mentor anchored to a stale date early in this long multi-day chat and never re-verified it as real days passed). Corrected via git commit timestamps: 017-020 → 2026-07-14, 021 → 2026-07-15, Revision Blitz → 2026-07-19. All revision due-dates recalculated from correct anchors. Process fix saved to memory: verify the real system date before writing any date, every time. | Continue with Topic 023 — B-Trees vs LSM-Trees |
 | 2026-07-20 | Topic 022 (Indexing Deep Dive) — Completed same session. Excellent performance — clean 4/4 including the bookmark-lookup mechanism (Q2) and the write-heavy indexing trap (Q4, correctly recommended minimal/zero secondary indexes given a 500:1 write:read ratio). Q1's initial answer was correct but light on mechanism (why binary search applies to a B-Tree) — sharpened with the "tree height stays ~log₂(n) regardless of table size" explanation during feedback. No mistakes logged. Confidence: 4-5/5. | Topic 023 — B-Trees vs LSM-Trees |
 | 2026-07-20 | Topic 023 (B-Trees vs LSM-Trees) — Completed same session. Core misconception surfaced and corrected: believed SSTables were unsorted, so LSM reads couldn't binary search — corrected that SSTables ARE sorted (the name says so), and the real read cost is checking MULTIPLE sorted structures, not losing sorting within one. Q1 (B-Tree random writes) only half-answered initially, missing why LSM avoids the same cost. Q4 (LSM not "strictly better") was clean and correct on the first try. Confidence: 3/5. | Topic 024 — Transactions & ACID |
+| 2026-07-20 | Topic 024 (Transactions & ACID) — Completed same session. Clean 4/4 pass — correctly distinguished ACID Consistency from CAP Consistency (a common interview trap), correctly identified Durability as literally the WAL mechanism from Topic 020 rather than something new, and gave well-reasoned answer on when to skip transactions (analytics/logging). No mistakes logged. Confidence: 4-5/5. | Topic 025 — Isolation Levels & Anomalies |
 
 ---
 
@@ -97,7 +98,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 021 | Relational Databases & SQL | Completed | 2026-07-15 | 2026-07-15 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Med-Hard | Blitz pass — excellent self-constructed 3NF example |
 | 022 | Indexing Deep Dive | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent on bookmark-lookup and write-heavy trap |
 | 023 | B-Trees vs LSM-Trees | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 3 | Medium | SSTables-are-unsorted misconception (corrected mid-lesson); Q1 initially only explained B-Tree side |
-| 024 | Transactions & ACID | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 024 | Transactions & ACID | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent ACID-vs-CAP consistency distinction |
 | 025 | Isolation Levels & Anomalies | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 027 | MVCC | Not Started | — | — | — | 0 | — | — | — | — | — |
