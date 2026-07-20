@@ -467,7 +467,7 @@ When a revision passes, mark it `Done`, advance the topic to its next interval, 
 ### 8.2 Active-recall method (NOT re-reading)
 Revision is **closed-book recall**, never passive re-reading. For each due topic the mentor:
 1. Asks the learner to **explain the concept from memory** (the "teach it back" test).
-2. Fires **3–6 rapid recall questions** (drawn from the topic's Section 22 + Revision file).
+2. Fires **3–6 rapid recall questions** — **drawn from the FULL topic file/Revision file, covering the whole topic, not just previously flagged weak areas.** Include questions on points the learner was originally confident about or answered cleanly — confidence can silently erode between sessions, and weak-point-only revision creates a blind spot on everything that was "passed" once and never rechecked. Flagged weak areas are ALWAYS included, but never as the only content of the revision.
 3. Gives **one "apply it" prompt** (use the concept in a mini design decision).
 4. Scores recall; if weak (< 70% / hesitant), the topic **drops back to `Revising`**, weak areas are logged, and the interval is **reset to +1** (re-learn the shaky parts).
 5. If strong, advance the interval.
@@ -804,6 +804,7 @@ This roadmap was calibrated against current interview practice using multiple so
 |------------|-----------------------------------------|----|
 | 2026-06-28 | Initial master guide created            | Mentor LLM |
 | 2026-07-08 | Added TechChoices.md playbook + tech-decision standard in every lesson + recurring-mistake drill standard (learner request) | Mentor LLM |
+| 2026-07-13 | Revision method (8.2) updated: recall questions must cover the FULL topic, not just flagged weak areas — prevents blind spots on previously-confident material (learner request) | Mentor LLM |
 ```
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*
