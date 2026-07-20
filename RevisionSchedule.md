@@ -252,3 +252,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-19 | 024 | Transactions & ACID | +30 days | Pending |
 | 2026-09-18 | 024 | Transactions & ACID | +60 days | Pending |
 | 2026-10-18 | 024 | Transactions & ACID | +90 days | Pending |
+
+| 2026-07-21 | 025 | Isolation Levels & Anomalies | +1 day | Pending |
+| 2026-07-23 | 025 | Isolation Levels & Anomalies | +3 days | Pending |
+| 2026-07-27 | 025 | Isolation Levels & Anomalies | +7 days | Pending |
+| 2026-08-04 | 025 | Isolation Levels & Anomalies | +15 days | Pending |
+| 2026-08-19 | 025 | Isolation Levels & Anomalies | +30 days | Pending |
+| 2026-09-18 | 025 | Isolation Levels & Anomalies | +60 days | Pending |
+| 2026-10-18 | 025 | Isolation Levels & Anomalies | +90 days | Pending |

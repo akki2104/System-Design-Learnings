@@ -740,3 +740,41 @@ Isolation   ← concurrency control (Topics 026/027)
 Durability  ← WAL fsync (Topic 020)
 ```
 ---
+
+### [025] Isolation Levels & Anomalies
+```
+THE ANOMALIES (name them, not the level that allows them)
+─────────────────────────────────────────────────
+Dirty Read           → read UNCOMMITTED data from another txn
+Non-Repeatable Read  → re-read SAME ROW, value changed (other txn committed)
+Phantom Read         → re-run SAME QUERY, ROW SET changed (insert/delete)
+Lost Update          → two txns read same value pre-commit, both write,
+                        one update silently overwritten (read+write not atomic)
+
+FOUR ISOLATION LEVELS (progressively stricter, progressively costlier)
+─────────────────────────────────────────────────
+                    Dirty  NonRepeat  Phantom  LostUpdate
+Read Uncommitted     ✗        ✗         ✗          ✗
+Read Committed       ✓        ✗         ✗          ✗      ← Postgres default
+Repeatable Read      ✓        ✓         ✗*         ✗      ← MySQL/InnoDB default
+Serializable         ✓        ✓         ✓          ✓
+(✓ = prevented, ✗ = possible; *Postgres's MVCC impl also blocks phantoms in practice)
+
+WHY NOT ALWAYS SERIALIZABLE
+─────────────────────────────────────────────────
+Heavier locking (more blocking) OR abort/retry under contention (optimistic)
+→ throughput cost. Pick level based on what YOUR business logic tolerates.
+
+LOST UPDATE WALKTHROUGH (bank transfer)
+─────────────────────────────────────────────────
+A reads balance=100 → B reads balance=100 (still committed, A hasn't written)
+→ A withdraws, writes 0, commits → B withdraws (based on ITS OWN read of 100),
+writes 0, commits → A's withdrawal LOST, $200 left but balance shows one $100
+Fix: Serializable OR explicit row lock (SELECT ... FOR UPDATE) — Topic 026
+
+FORWARD LINKS
+─────────────────────────────────────────────────
+Locking mechanism → Topic 026 (2PL, Deadlocks)
+Snapshot isolation impl → Topic 027 (MVCC)
+```
+---

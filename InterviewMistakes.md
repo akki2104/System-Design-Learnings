@@ -285,3 +285,10 @@ Format:
 - Correct understanding: Checkpointing flushes dirty pages to disk periodically, creating a materialized snapshot of state so crash recovery only replays the log since the last checkpoint. Buffer pool (RAM) = read speed. Checkpointing (disk flush) = bounded recovery time. Two separate mechanisms.
 - How to remember: "Buffer pool serves today's reads. Checkpoints stop yesterday's history from piling up forever."
 - Recurs? 1
+
+### 2026-07-20 — [Topic 025: Isolation Levels & Anomalies]
+- Mistake: Named an anomaly by the isolation level that allows it ("a Read Committed type of anomaly") instead of its actual name (Non-Repeatable Read)
+- Why it's wrong: Interviewers ask "what anomaly is this?" expecting the anomaly's name — the isolation level is a separate fact (which levels prevent it), not the anomaly's identity.
+- Correct understanding: The anomaly is Non-Repeatable Read; Read Committed is the isolation level that PERMITS it to happen (prevented starting at Repeatable Read).
+- How to remember: Anomaly = the failure mode's name. Isolation level = which failure modes are allowed at that tier. Two different vocabularies — don't swap them.
+- Recurs? 1

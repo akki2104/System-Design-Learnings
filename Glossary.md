@@ -137,4 +137,12 @@ Kept in alphabetical order.
 | Isolation | Concurrent transactions behave as if each were the only one running; exact rules covered in Topic 025 | [024](Topics/024_Transactions_and_ACID.md) |
 | Durability | Once a transaction commits, its changes survive a crash — implemented via the WAL fsync-before-acknowledge mechanism (Topic 020) | [024](Topics/024_Transactions_and_ACID.md) |
 
+| Dirty Read | Reading data another transaction wrote but hasn't committed yet; if it rolls back, you acted on data that never existed | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Non-Repeatable Read | Re-reading the same row within a transaction and getting a different value because another transaction committed a change in between | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Phantom Read | Re-running the same query and getting a different SET of matching rows because another transaction inserted/deleted qualifying rows in between | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Lost Update | Two transactions read the same value before either commits, both write based on that stale read, and one update silently overwrites the other | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Read Committed | Isolation level preventing dirty reads only; Postgres's default | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Repeatable Read | Isolation level preventing dirty reads + non-repeatable reads via a consistent snapshot; MySQL/InnoDB's default | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+| Serializable | The strictest isolation level; transactions behave as if run one after another sequentially, preventing all anomalies at the highest performance cost | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
+
 <!-- Rows added after each lesson -->
