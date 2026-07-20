@@ -212,3 +212,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-07-14 | 013 | RPC & gRPC | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
 | 2026-07-14 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
 | 2026-07-14 | 017 | Load Balancers | +1 day (reset) | Pending |
+
+| 2026-07-14 | 022 | Indexing Deep Dive | +1 day | Pending |
+| 2026-07-16 | 022 | Indexing Deep Dive | +3 days | Pending |
+| 2026-07-20 | 022 | Indexing Deep Dive | +7 days | Pending |
+| 2026-07-28 | 022 | Indexing Deep Dive | +15 days | Pending |
+| 2026-08-12 | 022 | Indexing Deep Dive | +30 days | Pending |
+| 2026-09-11 | 022 | Indexing Deep Dive | +60 days | Pending |
+| 2026-10-11 | 022 | Indexing Deep Dive | +90 days | Pending |

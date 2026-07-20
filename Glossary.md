@@ -119,5 +119,13 @@ Kept in alphabetical order.
 | 2NF (Second Normal Form) | Requires every non-key column to depend on the WHOLE composite primary key, not just part of it | [021](Topics/021_Relational_Databases_and_SQL.md) |
 | 3NF (Third Normal Form) | Requires no non-key column to depend on another non-key column (no transitive dependency) | [021](Topics/021_Relational_Databases_and_SQL.md) |
 | Query Planner | The database component that decides how to actually execute a declarative SQL query (index choice, join order, etc.) | [021](Topics/021_Relational_Databases_and_SQL.md) |
+| Index | A separate, sorted data structure mapping column values to row locations, enabling O(log n) lookups instead of O(n) full table scans | [022](Topics/022_Indexing_Deep_Dive.md) |
+| B-Tree | A sorted, balanced tree structure supporting both exact-match and range queries; the default index structure in relational databases | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Clustered Index | An index where the table's actual row data is physically stored in index order; only one per table; a lookup costs a single hop | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Secondary (Non-Clustered) Index | A separate structure pointing to a row's location elsewhere; many per table; a lookup costs two hops (the "bookmark lookup") | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Bookmark Lookup | The extra hop a secondary-index query pays to fetch the actual row after finding its location in the index | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Leftmost-Prefix Rule | A composite index on (A, B) only helps queries filtering on a prefix of its columns in order (A, or A+B) — not B alone | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Covering Index | An index containing every column a query needs, allowing an index-only scan that skips the bookmark lookup entirely | [022](Topics/022_Indexing_Deep_Dive.md) |
+| Cardinality | The number of distinct values in a column; high-cardinality columns (email, user_id) benefit from indexing far more than low-cardinality ones (booleans) | [022](Topics/022_Indexing_Deep_Dive.md) |
 
 <!-- Rows added after each lesson -->

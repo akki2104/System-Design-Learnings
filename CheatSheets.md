@@ -647,3 +647,36 @@ Clear relationships + integrity matters + frequent joins + ACID > infinite
 horizontal write scale → still the DEFAULT starting point
 ```
 ---
+
+### [022] Indexing Deep Dive
+```
+FULL SCAN vs INDEX
+─────────────────────────────────────────────────
+Full table scan: O(n)          — check every row
+B-Tree index lookup: O(log n)   — height stays tiny even at huge scale
+                                   (10M rows → ~24 page reads)
+
+CLUSTERED vs SECONDARY (NON-CLUSTERED)
+─────────────────────────────────────────────────
+Clustered   → row data physically stored in index order; ONE per table; 1 hop
+Secondary   → separate structure pointing to row location; MANY per table; 2 hops
+              (the "bookmark lookup" cost)
+
+COMPOSITE INDEX — LEFTMOST PREFIX RULE
+─────────────────────────────────────────────────
+INDEX (A, B) helps: WHERE A=x | WHERE A=x AND B=y
+INDEX (A, B) does NOT help: WHERE B=y alone
+
+COVERING INDEX
+─────────────────────────────────────────────────
+Index contains ALL columns a query needs → index-only scan,
+no bookmark lookup to the actual table at all
+
+THE COST SIDE
+─────────────────────────────────────────────────
+Every index → slower writes (must update on every INSERT/UPDATE/DELETE)
+            → more storage
+Add when: high cardinality + frequently queried + read-favoring ratio
+Avoid when: write-heavy table, low-cardinality column, already over-indexed
+```
+---

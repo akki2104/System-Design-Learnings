@@ -4,10 +4,10 @@
 ```
 Last Updated    : 2026-07-13
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 022 Indexing Deep Dive (Next)
+Current Topic   : 023 B-Trees vs LSM-Trees (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 21 (001-021) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : REVISION BLITZ completed 2026-07-13 (all 18 overdue topics: 001-002, 006-021). 13 passed/advanced. 5 RESET to +1 day (due 2026-07-14): 009, 011, 013, 015, 017.
+Topics Completed: 22 (001-022) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Revisions Due   : 5 RESET topics due 2026-07-14 (009, 011, 013, 015, 017) + Topic 022 +1d due 2026-07-14
 Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 009 DNS hierarchy reasoning, 017 active/passive health check mechanism. Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
 Pace            : ~26 topics behind Schedule.md as of 2026-07-13 (should be on ~046, on 021)
 Overall Interview Readiness : 6%
@@ -64,6 +64,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-13 | Topic 020 (Storage Engine Fundamentals) — Completed, opening Module 2. Clean on the page-as-I/O-unit mechanism and the precise data-loss distinction between crash-before-fsync vs crash-after-fsync. Correctly explained buffer pool's role but conflated it with checkpointing when asked why data pages are still flushed to disk instead of relying on WAL replay forever — clarified as two separate mechanisms (read speed vs bounded recovery time). Confidence: 4/5. | Topic 021 — Relational Databases & SQL |
 | 2026-07-13 | Topic 021 (Relational Databases & SQL) — Completed. PROCESS ISSUE: chat lesson initially covered normalization only as philosophy, skipping the formal 1NF/2NF/3NF forms the master guide explicitly names for this topic — learner proactively asked "is this covered enough," caught the gap, and it was taught in full afterward. Learner then raised a broader, valid concern that chat content sometimes doesn't fully match what lands in Topics/NNN_*.md files. Standing process fix saved to memory: the .md file must be a complete superset of the live chat, never a shortened re-summary; cross-check master guide keywords before finalizing. Once corrected, learner constructed his OWN 2NF/3NF violation examples correctly (stronger signal than reciting memorized ones) and gave clean answers on join cost and the normalize-vs-denormalize practical rule. Confidence: 3-4/5. | Topic 022 — Indexing Deep Dive |
 | 2026-07-13 | REVISION BLITZ — full backlog cleared, 18 topics (001-002, 006-021). 13 passed/advanced, 5 RESET to +1 day: 009 (DNS hierarchy reasoning — new miss), 011 (TLS Authentication guarantee — PERSISTENT ×2), 013 (gRPC browser blocker — PERSISTENT ×2, different wrong reason each time), 015 (short-polling latency-vs-waste — PERSISTENT ×2), 017 (active/passive health checks — new miss, explained as speed not failure-type). 019 passed but weak (codec costs 1/3→2/3, improving). Full scorecard in RevisionSchedule.md's blitz block. | Reset revisions (009,011,013,015,017) due 2026-07-14; then Topic 022 — Indexing Deep Dive |
+| 2026-07-13 | Topic 022 (Indexing Deep Dive) — Completed same session. Excellent performance — clean 4/4 including the bookmark-lookup mechanism (Q2) and the write-heavy indexing trap (Q4, correctly recommended minimal/zero secondary indexes given a 500:1 write:read ratio). Q1's initial answer was correct but light on mechanism (why binary search applies to a B-Tree) — sharpened with the "tree height stays ~log₂(n) regardless of table size" explanation during feedback. No mistakes logged. Confidence: 4-5/5. | Topic 023 — B-Trees vs LSM-Trees |
 
 ---
 
@@ -92,7 +93,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 019 | Content Compression & Encoding | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Easy | Blitz pass (weak) — codec costs improved 1/3→2/3, decode-on-device still missing, watch next pass |
 | 020 | Storage Engine Fundamentals | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Medium | Blitz pass — clean checkpointing/WAL reasoning |
 | 021 | Relational Databases & SQL | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-13 | 2026-07-16 | 4 | Med-Hard | Blitz pass — excellent self-constructed 3NF example |
-| 022 | Indexing Deep Dive | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 022 | Indexing Deep Dive | Completed | 2026-07-13 | 2026-07-13 | — | 0 | — | 2026-07-14 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent on bookmark-lookup and write-heavy trap |
 | 023 | B-Trees vs LSM-Trees | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 024 | Transactions & ACID | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 025 | Isolation Levels & Anomalies | Not Started | — | — | — | 0 | — | — | — | — | — |
