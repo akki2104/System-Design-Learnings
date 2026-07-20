@@ -72,7 +72,7 @@ does NOT help:      WHERE B=y alone
 
 ---
 
-## My Weak Areas (from lesson 2026-07-13)
+## My Weak Areas (from lesson 2026-07-20)
 
 - None significant — clean 4/4 pass, including the write-heavy indexing trap question
 - Q1's initial answer was correct but light on mechanism (why binary search applies) — sharpened during feedback

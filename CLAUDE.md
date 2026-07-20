@@ -20,6 +20,7 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
 
 ## Session Workflow
 
+0. **Verify the real current date via the system/environment context before writing ANY date into ANY file** — never reuse a date recalled from earlier in a long-running conversation. A date-mislabeling bug on 2026-07-20 (caught by the learner) happened because the mentor anchored to a stale date early in a multi-day chat session and never re-checked it as real days passed, silently corrupting the spaced-repetition schedule for a week of entries. Re-verify every single time, even mid-session, even if a date was already confirmed earlier in the same conversation.
 1. Read `SYSTEM_DESIGN_MASTER_GUIDE.md` (constitution)
 2. Read `Progress.md` (determine current position, last session, and next topic)
 3. Read `Schedule.md` — find today's date in the schedule and tell the learner:

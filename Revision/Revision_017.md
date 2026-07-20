@@ -1,7 +1,7 @@
 # Revision — Topic 017: Load Balancers
 
 **Format:** Active recall — answer before reading the answer.
-**Completed:** 2026-07-13
+**Completed:** 2026-07-14
 
 ---
 

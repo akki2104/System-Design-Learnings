@@ -68,7 +68,7 @@ no redundancy, needs joins    duplication, avoids cross-shard joins
 
 ---
 
-## My Weak Areas (from lesson 2026-07-13)
+## My Weak Areas (from lesson 2026-07-15)
 
 - Initially only knew normalization as an intuition, not the formal 1NF/2NF/3NF rules — this was caught and corrected mid-lesson (learner proactively asked whether the topic was complete)
 - Q4's practical rule was initially phrased slightly circularly ("normalize to remove redundancy") rather than stating the denormalization trigger condition directly — sharpened during discussion
@@ -77,4 +77,4 @@ no redundancy, needs joins    duplication, avoids cross-shard joins
 
 ## Past Mistakes
 
-See [InterviewMistakes.md](../InterviewMistakes.md) — entries dated 2026-07-13.
+See [InterviewMistakes.md](../InterviewMistakes.md) — entries dated 2026-07-15.

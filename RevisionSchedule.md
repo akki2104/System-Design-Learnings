@@ -5,7 +5,7 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 
 ---
 
-## REVISION BLITZ — 2026-07-13
+## REVISION BLITZ — 2026-07-19 (DATE CORRECTED — was mislabeled 2026-07-13; see 2026-07-20 note below)
 
 Full backlog cleared (18 topics: 001-002, 006-021). Individual scattered rows below are
 NOT all individually marked — this block is the authoritative record for this pass.
@@ -13,7 +13,14 @@ NOT all individually marked — this block is the authoritative record for this 
 **PASSED — interval advances (13 topics):** 001, 002, 006, 007, 008, 010, 012, 014, 016,
 018, 019 (weak, see note), 020, 021
 
-**FAILED — reset to +1 day, due 2026-07-14 (5 topics):** 009, 011, 013, 015, 017
+**FAILED — reset to +1 day, due 2026-07-20 (5 topics):** 009, 011, 013, 015, 017
+
+> **DATE CORRECTION (2026-07-20):** this entire blitz was mislabeled "2026-07-13" —
+> it actually happened on 2026-07-19 (confirmed via git commit timestamp). The mentor
+> anchored to a stale date early in a long multi-day chat session and never re-verified
+> it as real days passed. All due-dates in this file have been recalculated from the
+> correct anchor dates (git commit timestamps used as ground truth). Topics 017-020 were
+> also mislabeled — actually completed 2026-07-14; Topic 021 actually completed 2026-07-15.
 
 | Topic | Result | Note |
 |-------|--------|------|
@@ -205,18 +212,27 @@ NOT all individually marked — this block is the authoritative record for this 
 
 ---
 
-## RESET ROWS — failed 2026-07-13 revision blitz, interval reset to +1 day
+## RESET ROWS — failed 2026-07-19 revision blitz (date-corrected), interval reset to +1 day
 
-| 2026-07-14 | 009 | DNS | +1 day (reset) | Pending |
-| 2026-07-14 | 011 | HTTPS & TLS | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
-| 2026-07-14 | 013 | RPC & gRPC | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
-| 2026-07-14 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset) | Pending — PERSISTENT (2nd fail) |
-| 2026-07-14 | 017 | Load Balancers | +1 day (reset) | Pending |
+| 2026-07-20 | 009 | DNS | +1 day (reset) | Pending — DUE TODAY |
+| 2026-07-20 | 011 | HTTPS & TLS | +1 day (reset) | Pending — DUE TODAY — PERSISTENT (2nd fail) |
+| 2026-07-20 | 013 | RPC & gRPC | +1 day (reset) | Pending — DUE TODAY — PERSISTENT (2nd fail) |
+| 2026-07-20 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset) | Pending — DUE TODAY — PERSISTENT (2nd fail) |
+| 2026-07-20 | 017 | Load Balancers | +1 day (reset) | Pending — DUE TODAY |
 
-| 2026-07-14 | 022 | Indexing Deep Dive | +1 day | Pending |
-| 2026-07-16 | 022 | Indexing Deep Dive | +3 days | Pending |
-| 2026-07-20 | 022 | Indexing Deep Dive | +7 days | Pending |
-| 2026-07-28 | 022 | Indexing Deep Dive | +15 days | Pending |
-| 2026-08-12 | 022 | Indexing Deep Dive | +30 days | Pending |
-| 2026-09-11 | 022 | Indexing Deep Dive | +60 days | Pending |
-| 2026-10-11 | 022 | Indexing Deep Dive | +90 days | Pending |
+| 2026-07-21 | 022 | Indexing Deep Dive | +1 day | Pending |
+| 2026-07-23 | 022 | Indexing Deep Dive | +3 days | Pending |
+| 2026-07-27 | 022 | Indexing Deep Dive | +7 days | Pending |
+| 2026-08-04 | 022 | Indexing Deep Dive | +15 days | Pending |
+| 2026-08-19 | 022 | Indexing Deep Dive | +30 days | Pending |
+| 2026-09-18 | 022 | Indexing Deep Dive | +60 days | Pending |
+| 2026-10-18 | 022 | Indexing Deep Dive | +90 days | Pending |
+
+---
+
+> **NOTE (2026-07-20):** many scattered "Pending" rows above (for topics 001-002, 006-021)
+> show due-dates computed from the ORIGINAL (correct at the time) completion dates and
+> are mostly still valid — only the entries affected by the date-mislabeling bug are the
+> REVISION BLITZ block and RESET ROWS above, both now corrected. Progress.md's HLD table
+> is the authoritative source for each topic's actual "Next Due" date going forward —
+> refer to it, not to individually hunting through this file's scattered rows.

@@ -1,7 +1,7 @@
 # Revision — Topic 020: Storage Engine Fundamentals
 
 **Format:** Active recall — answer before reading the answer.
-**Completed:** 2026-07-13
+**Completed:** 2026-07-14
 
 ---
 
