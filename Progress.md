@@ -2,14 +2,14 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-07-20
+Last Updated    : 2026-07-22
 Current Module  : MODULE 2 — Data Storage Foundations
 Current Topic   : 026 Concurrency Control: Locks, 2PL, Deadlocks (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 25 (001-025) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : 5 RESET topics due 2026-07-20 (TODAY — 009, 011, 013, 015, 017) + Topics 022,023,024,025 +1d due 2026-07-21
-Top Weak Areas  : PERSISTENT (×2, need dedicated drill) — 011 TLS auth guarantee, 013 gRPC browser blocker, 015 short-polling latency-vs-waste mechanism. New: 025 anomaly-name vs isolation-level conflation (corrected same lesson). Improving: 019 video codec costs (1/3→2/3). Long-standing: reads in write QPS formula.
-Pace            : ~45 topics behind Schedule.md as of 2026-07-20 (should be on ~066, on 025)
+Revisions Due   : Big revision session run 2026-07-22 (9 topics: 009,011,013,015,017,022,023,024,025). 7 passed/advanced, 2 RESET to +1 day due 2026-07-23: 013 (PERSISTENT ×3), 025 (1st revision, failed).
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. RESOLVED — 011 TLS auth guarantee, 017 health check distinction (both cleared 2026-07-22). New: 025 non-repeatable vs phantom axis, isolation-level decision framing. Minor: 009 missing "management" as 3rd DNS reason, 017 forgot L4/L7 basics. Long-standing: reads in write QPS formula.
+Pace            : ~48 topics behind Schedule.md as of 2026-07-22 (should be on ~073, on 025)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -69,6 +69,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-20 | Topic 023 (B-Trees vs LSM-Trees) — Completed same session. Core misconception surfaced and corrected: believed SSTables were unsorted, so LSM reads couldn't binary search — corrected that SSTables ARE sorted (the name says so), and the real read cost is checking MULTIPLE sorted structures, not losing sorting within one. Q1 (B-Tree random writes) only half-answered initially, missing why LSM avoids the same cost. Q4 (LSM not "strictly better") was clean and correct on the first try. Confidence: 3/5. | Topic 024 — Transactions & ACID |
 | 2026-07-20 | Topic 024 (Transactions & ACID) — Completed same session. Clean 4/4 pass — correctly distinguished ACID Consistency from CAP Consistency (a common interview trap), correctly identified Durability as literally the WAL mechanism from Topic 020 rather than something new, and gave well-reasoned answer on when to skip transactions (analytics/logging). No mistakes logged. Confidence: 4-5/5. | Topic 025 — Isolation Levels & Anomalies |
 | 2026-07-20 | Topic 025 (Isolation Levels & Anomalies) — Completed same session. Correctly identified the minimum isolation level (Repeatable Read) for a non-repeatable-read scenario and correctly reasoned through why Read Committed doesn't prevent a double-spend race (named it as "both commit before either reads the other's write") — but initially named the anomaly by the isolation level that permits it instead of its actual name; corrected to Non-Repeatable Read and additionally taught Lost Update (the anomaly the bank-transfer race actually is) as a superset addition beyond the master guide's three named anomalies, since it directly completes the reasoning. Confidence: 4/5. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks |
+| 2026-07-22 | BIG REVISION SESSION — 9 overdue topics covered (009, 011, 013, 015, 017, 022, 023, 024, 025), following the new "cover the full topic, not just weak points" protocol. Two real wins: 011's TLS-guarantee gap and 017's health-check-mechanism gap both RESOLVED after persisting across 2 prior attempts. Two topics remain PERSISTENT and now need a different remediation approach: 013's gRPC browser blocker has produced a 3rd distinct wrong reason across 3 sessions — flagging for a mnemonic-first drill instead of more conceptual re-teaching. 015's short-polling latency-vs-waste mechanism failed a 3rd time with the same shallow answer — switched teaching method to a concrete numeric walkthrough (10,000 clients × poll-interval change) rather than re-explaining the concept abstractly; retest with a similarly concrete question next time. New minor gaps: 009 still missing "management" as DNS's 3rd hierarchy reason; 017 forgot the basic L4 vs L7 distinction; 025 (first revision) got both sub-questions wrong — non-repeatable-vs-phantom distinguishing axis, and the isolation-level decision framing was too vague — RESET to +1 day. 022, 023, 024 all passed clean. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks; retest 013/015 with new approaches next revision cycle |
 
 ---
 
@@ -84,23 +85,23 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 006 | The Client–Server Model | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-19 | 2026-08-03 | 4 | Easy | Blitz pass — clean |
 | 007 | IP, Ports, Sockets | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-19 | 2026-08-03 | 4 | Easy | Blitz pass — clean (5-tuple recalled precisely) |
 | 008 | TCP vs UDP | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-19 | 2026-08-03 | 4 | Medium | Blitz pass (soft) — named right dimensions, missed precise "obsolete anyway" framing |
-| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 1 | 2026-07-19 (FAILED) | 2026-07-20 (TODAY) | 3 | Easy | RESET — attributed DNS hierarchy to caching instead of scale/availability/management |
+| 009 | DNS | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-22 | 2026-07-29 | 3 | Easy | Improved — named scale+availability correctly, still missing "management" as 3rd reason |
 | 010 | HTTP/1.1, HTTP/2, HTTP/3 | Completed | 2026-07-09 | 2026-07-09 | — | 2 | 2026-07-19 | 2026-08-03 | 4 | Med-Hard | Blitz pass — clean, HOL blocking mechanism solid |
-| 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 0 | 2026-07-19 (FAILED) | 2026-07-20 (TODAY) | 3 | Medium | RESET — 3rd TLS guarantee (Authentication) missed AGAIN. PERSISTENT ×2. |
+| 011 | HTTPS & TLS | Completed | 2026-07-12 | 2026-07-12 | — | 1 | 2026-07-22 | 2026-07-25 | 4 | Medium | RESOLVED — all 3 TLS guarantees recalled cleanly, no longer persistent |
 | 012 | REST API Design | Completed | 2026-07-12 | 2026-07-12 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Medium | Blitz pass — clean cursor-pagination reasoning |
-| 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | 2026-07-19 (FAILED) | 2026-07-20 (TODAY) | 3 | Medium | RESET — gRPC browser blocker wrong AGAIN (different wrong reason). PERSISTENT ×2. |
+| 013 | RPC & gRPC | Completed | 2026-07-12 | 2026-07-12 | — | 0 | 2026-07-22 (FAILED) | 2026-07-23 | 3 | Medium | RESET — gRPC browser blocker wrong for a 3RD different reason. PERSISTENT ×3 — needs mnemonic drill, not re-explanation |
 | 014 | GraphQL | Completed | 2026-07-12 | 2026-07-12 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Medium | Blitz pass — clean N+1/DataLoader recall |
 | 015 | WebSockets, SSE, Polling, Long Polling | Completed | 2026-07-13 | 2026-07-13 | — | 0 | 2026-07-19 (FAILED) | 2026-07-20 (TODAY) | 3 | Medium | RESET — short-polling latency-vs-waste mechanism wrong AGAIN. PERSISTENT ×2, needs dedicated drill. |
 | 016 | Forward Proxy, Reverse Proxy, API Gateway | Completed | 2026-07-13 | 2026-07-13 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Easy | Blitz pass — clean |
-| 017 | Load Balancers | Completed | 2026-07-14 | 2026-07-14 | — | 0 | 2026-07-19 (FAILED) | 2026-07-20 (TODAY) | 3 | Medium | RESET — passive vs active health check: explained as detection SPEED instead of failure TYPE |
+| 017 | Load Balancers | Completed | 2026-07-14 | 2026-07-14 | — | 1 | 2026-07-22 | 2026-07-25 | 4 | Medium | RESOLVED — health check distinction now correct; NEW minor gap: forgot L4 vs L7 core difference |
 | 018 | CDN | Completed | 2026-07-14 | 2026-07-14 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Easy | Blitz pass — clean |
 | 019 | Content Compression & Encoding | Completed | 2026-07-14 | 2026-07-14 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Easy | Blitz pass (weak) — codec costs improved 1/3→2/3, decode-on-device still missing, watch next pass |
 | 020 | Storage Engine Fundamentals | Completed | 2026-07-14 | 2026-07-14 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Medium | Blitz pass — clean checkpointing/WAL reasoning |
 | 021 | Relational Databases & SQL | Completed | 2026-07-15 | 2026-07-15 | — | 1 | 2026-07-19 | 2026-07-22 | 4 | Med-Hard | Blitz pass — excellent self-constructed 3NF example |
-| 022 | Indexing Deep Dive | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent on bookmark-lookup and write-heavy trap |
-| 023 | B-Trees vs LSM-Trees | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 3 | Medium | SSTables-are-unsorted misconception (corrected mid-lesson); Q1 initially only explained B-Tree side |
-| 024 | Transactions & ACID | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4-5 | Med-Hard | None — clean 4/4 pass, excellent ACID-vs-CAP consistency distinction |
-| 025 | Isolation Levels & Anomalies | Completed | 2026-07-20 | 2026-07-20 | — | 0 | — | 2026-07-21 | 4 | Med-Hard | Named anomaly by the isolation level that allows it ("Read Committed type") instead of its actual name (Non-Repeatable Read) — corrected |
+| 022 | Indexing Deep Dive | Completed | 2026-07-20 | 2026-07-20 | — | 1 | 2026-07-22 | 2026-07-25 | 4-5 | Med-Hard | Revision pass clean — bookmark-lookup mechanism solid |
+| 023 | B-Trees vs LSM-Trees | Completed | 2026-07-20 | 2026-07-20 | — | 1 | 2026-07-22 | 2026-07-25 | 4 | Medium | Revision pass clean — LSM read-stopping reasoning solid |
+| 024 | Transactions & ACID | Completed | 2026-07-20 | 2026-07-20 | — | 1 | 2026-07-22 | 2026-07-25 | 4-5 | Med-Hard | Revision pass clean — ACID-vs-CAP consistency and WAL rollback both solid |
+| 025 | Isolation Levels & Anomalies | Completed | 2026-07-20 | 2026-07-20 | — | 0 | 2026-07-22 (FAILED) | 2026-07-23 | 3 | Med-Hard | RESET (1st revision) — non-repeatable vs phantom distinguishing axis wrong; isolation-level decision framing too vague |
 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 027 | MVCC | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 028 | NoSQL Overview | Not Started | — | — | — | 0 | — | — | — | — | — |

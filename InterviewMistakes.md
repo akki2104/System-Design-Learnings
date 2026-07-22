@@ -15,6 +15,27 @@ Format:
 
 ---
 
+### 2026-07-22 — [Revision — Topic 025: Isolation Levels & Anomalies]
+- Mistake: Distinguished non-repeatable read from phantom read using the wrong axis ("without filter vs with filter, different count both times")
+- Why it's wrong: Both real examples actually use a filter (e.g., `WHERE id='X'` is a filter too) — filter-presence isn't the distinguishing feature.
+- Correct understanding: Non-repeatable read = an EXISTING, already-matched row's VALUE changes on re-read. Phantom read = the SET/COUNT of rows matching a range condition changes because new rows appear or vanish. One is "a row I already found now has a different value"; the other is "new rows now match my filter that didn't before."
+- How to remember: "Non-repeatable = same row, new value. Phantom = new row, matches old filter."
+- Recurs? 1
+
+### 2026-07-22 — [Revision — Topic 025: Isolation Levels & Anomalies]
+- Mistake: Answered "what's the actual isolation-level decision" with "according to the use case, right?" — correct instinct, too vague to count as a real interview answer
+- Why it's wrong: An interviewer needs the specific framing, not just an acknowledgment that context matters.
+- Correct understanding: The precise framing is "what's the WEAKEST isolation level that still satisfies my correctness requirement for THIS specific operation" — not "always Serializable" (kills throughput) and not "always the default" (risks real bugs).
+- How to remember: Weakest-that-still-works, decided PER OPERATION, not per system.
+- Recurs? 1
+
+### 2026-07-22 — [Revision — Topic 009: DNS]
+- Mistake: On second attempt, correctly named scale and availability as reasons for DNS's hierarchical design, but still missed the third reason (management)
+- Why it's wrong: Management — domain owners need to control their own records without needing central authority permission — is the third pillar alongside scale and availability.
+- Correct understanding: DNS is hierarchical for three reasons: scale, availability, AND management. Two out of three isn't the full picture.
+- How to remember: "Scale, Availability, Management — S-A-M owns his own DNS records."
+- Recurs? 1 (this specific sub-gap; overall DNS-hierarchy question has now been asked twice with different wrong/incomplete answers each time)
+
 ### 2026-07-20 — [Topic 023: B-Trees vs LSM-Trees]
 - Mistake: Believed SSTables are unsorted, so LSM-Tree reads can't use binary search and must do random disk seeks
 - Why it's wrong: SSTable literally stands for "Sorted String Table" — each individual SSTable IS sorted, and binary search works fine within one. The actual read cost is having to check MULTIPLE separate sorted structures (memtable + several SSTables), not losing sorting within any single one.
@@ -41,7 +62,7 @@ Format:
 - Why it's wrong: This is the exact same gap from the original Topic 011 lesson — Confidentiality and Integrity are recalled easily, but Authentication (the certificate proving the server is who it claims to be) keeps getting dropped.
 - Correct understanding: TLS provides three guarantees — Confidentiality (encryption), Integrity (tamper detection), Authentication (certificate-verified server identity). Mnemonic: C-I-A.
 - How to remember: "C-I-A — like the agency. Confidentiality, Integrity, Authentication."
-- Recurs? 2 — first missed in the original 2026-07-12 lesson, now missed again in the 2026-07-19 revision blitz. PERSISTENT WEAK AREA.
+- Recurs? 2 — first missed in the original 2026-07-12 lesson, then again in the 2026-07-19 revision blitz. **RESOLVED 2026-07-21** — correctly recalled all three (Authentication, Encryption, Integrity) clean on the next revision pass. No longer flagged as persistent.
 
 ### 2026-07-19 — [Revision Blitz — Topic 017: Load Balancers]
 - Mistake: Explained passive vs. active health checks as a difference in detection SPEED ("passive knows instantly, active has a delay") rather than the difference in WHAT KIND of failure each can see
@@ -62,7 +83,7 @@ Format:
 - Why it's wrong: The precise insight is that latency COULD be reduced by polling more frequently, but cost scales with clients × frequency, making it economically unbearable at scale — and latency can never drop below network RTT regardless.
 - Correct understanding: You're always trading wasted requests for freshness, at a ratio that gets worse as client count grows — not a hard impossibility, an economic one.
 - How to remember: "Cost = clients × frequency. You CAN buy lower latency, you just can't afford to at scale."
-- Recurs? 2 — 2026-07-19 revision blitz: gave "increases server load" again, same shallow answer as the original lesson. PERSISTENT WEAK AREA — needs a dedicated drill, not just another revision pass.
+- Recurs? 3 — 2026-07-19 revision blitz: "increases server load" again. 2026-07-21 revision: same shallow "wasted requests + network overhead" answer a THIRD time. PERSISTENT WEAK AREA — three sessions of conceptual re-explanation haven't worked. Switched teaching method to a concrete numeric walkthrough (10,000 clients × poll interval change from 3s→300ms = 10× load for marginal latency gain) — retest next revision with a similar numeric-style question, not a conceptual one, to check if the concrete framing sticks better.
 
 ### 2026-07-13 — [Topic 015: WebSockets, SSE, Polling, Long Polling]
 - Mistake: Named only one unsolved limitation of long polling (many idle open connections) and missed the second (re-request overhead every cycle)
@@ -270,7 +291,7 @@ Format:
 - Why it's wrong: Unreadability is a real but secondary debuggability cost — it doesn't actually block gRPC from running anywhere. The real hard blocker is specific to browsers: they can't control HTTP/2 trailers (needed by gRPC to signal stream completion/status) through fetch/XMLHttpRequest. Native mobile apps have no such restriction — Uber and Square use gRPC directly on mobile.
 - Correct understanding: Browsers → gRPC blocked at the transport-control level → need grpc-web proxy. Native mobile → gRPC works directly. Debuggability (binary payload) is a separate, secondary reason teams choose REST for public APIs even when gRPC would technically work.
 - How to remember: "Browsers can't hold the wheel (HTTP/2 trailers), mobile apps can." Unreadable payload is an annoyance, not a blocker.
-- Recurs? 2 — 2026-07-19 revision blitz: gave a DIFFERENT wrong reason this time ("browsers don't know the server's procedures") instead of the protobuf-readability mistake from the original lesson. PERSISTENT WEAK AREA — the underlying fact (HTTP/2 trailer control) isn't sticking, even though the wrong reasoning keeps changing.
+- Recurs? 3 — 2026-07-19 revision blitz: gave a DIFFERENT wrong reason ("browsers don't know the server's procedures"). 2026-07-21 revision: got the HTTP/2 API restriction half right, but added a THIRD different wrong reason ("browsers lack native protobuf support" — false, JS protobuf libraries exist) and still didn't state the native-mobile comparison unprompted. PERSISTENT WEAK AREA — three sessions, three different wrong reasons, same underlying fact (HTTP/2 trailer control) not sticking. Needs a mnemonic-first drill, not another conceptual re-explanation.
 
 ### 2026-07-12 — [Topic 014: GraphQL]
 - Mistake: Correctly diagnosed that GraphQL's N+1 problem moves server-side (per-item DB calls) but did not know the fix (batching/DataLoader)

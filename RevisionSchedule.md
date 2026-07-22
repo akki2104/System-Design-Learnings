@@ -260,3 +260,31 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-19 | 025 | Isolation Levels & Anomalies | +30 days | Pending |
 | 2026-09-18 | 025 | Isolation Levels & Anomalies | +60 days | Pending |
 | 2026-10-18 | 025 | Isolation Levels & Anomalies | +90 days | Pending |
+
+---
+
+## REVISION SESSION — 2026-07-22 (9 topics: covering full topic content, not just weak points)
+
+**PASSED — interval advances (7 topics):** 009 (weak, see note), 011 (RESOLVED, persistent cleared),
+017 (RESOLVED, persistent cleared), 022, 023, 024 — all clean
+
+**FAILED — reset to +1 day, due 2026-07-23 (2 topics):** 013 (PERSISTENT ×3), 025 (1st revision, failed)
+
+| Topic | Result | Note |
+|-------|--------|------|
+| 009 | ✅ Pass (weak) | Scale + availability correct; still missing "management" as 3rd DNS reason |
+| 011 | ✅ Pass — RESOLVED | All 3 TLS guarantees clean. No longer persistent. |
+| 013 | ❌ RESET | Browser gRPC blocker: 3rd DIFFERENT wrong reason across 3 sessions. PERSISTENT ×3 — needs mnemonic drill next time, not conceptual re-explanation. |
+| 015 | (not due — already reset 2026-07-20, next due 2026-07-21, covered separately) | — |
+| 017 | ✅ Pass — RESOLVED | Health check functional-failure distinction now correct. New minor gap: forgot L4 vs L7. |
+| 022 | ✅ Pass | Clean — bookmark lookup mechanism solid |
+| 023 | ✅ Pass | Clean — LSM read-stopping reasoning solid |
+| 024 | ✅ Pass | Clean — ACID-vs-CAP consistency, WAL rollback both solid |
+| 025 | ❌ RESET | First revision failed both sub-questions — non-repeatable/phantom axis wrong, isolation-level decision framing too vague |
+
+> **Note on 015:** also drilled in this session (persistent ×3 — same shallow "wasted requests" answer).
+> Teaching method switched to a concrete numeric walkthrough. Reset to +1 day, due 2026-07-23.
+
+| 2026-07-23 | 013 | RPC & gRPC | +1 day (reset, 3rd time) | Pending — PERSISTENT, needs mnemonic drill |
+| 2026-07-23 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset, 3rd time) | Pending — PERSISTENT, numeric approach tried |
+| 2026-07-23 | 025 | Isolation Levels & Anomalies | +1 day (reset) | Pending — first revision failed |
