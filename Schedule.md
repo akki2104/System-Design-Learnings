@@ -1,219 +1,126 @@
-# Master Schedule — Accelerated 1-Month Track
+# Master Schedule — COMPRESSED TRACK (v2)
 
-**Program start:** June 28, 2026
-**Interview-ready target:** August 9, 2026
-**Pace:** 15 hrs/week | 5 study days/week | ~2–3 hrs/day
+> **Rewritten:** 2026-07-25, from the learner's *actual* position (Topic 027 complete), replacing the
+> original v1 calendar which assumed a zero-gap run from June 28 and had drifted ~51 topics out of date.
+> **Priority ratings live in `TopicPriority.md`** — read it before every topic and show the Topic
+> Briefing Card (Master Guide §0.1).
 
-**Depth key:**
-- `D` = Deep (45–60 min) — full treatment, high-signal topic
-- `S` = Survey (15–20 min) — batched with others, concept + key tradeoffs
-- `A` = Awareness — covered *inside* the parent topic listed; no separate session
+**Position at rewrite:** Topics 001–027 complete · Modules 0 and 1 done · Module 2 in progress
+**Revised interview-ready target:** **2026-08-18** *(was Aug 9; +9 days)*
+**Assumed rate:** ~2.25 hrs/day focused · ~51 hrs of work remaining ≈ 23 days
 
-If you're behind on a date, that's your slack alert. Check this weekly.
+**Why the extension:** the original date required ~87 theory topics + 20 case studies + 9 LLD lessons
+in 15 days, which was not achievable. Compressing to 35 must-topics / 26 skims / 26 skips and holding
+14 case studies + 6 LLD sessions fits in 23 days. The learner is mid-active applying — a 9-day
+extension was chosen over dropping case studies, because case-study reps are the single highest-value
+block at this stage.
 
----
-
-## HLD Topics — 114 Total
-
-| ID | Title | Type | Target Date | Time |
-|----|-------|------|-------------|------|
-| 001 | Introduction to System Design | D | Jun 28 ✅ | 60 min |
-| 002 | System Design Interview Framework | D | Jun 28 ✅ | 60 min |
-| 003 | Back-of-the-Envelope Estimation | D | Jun 30 ✅ | 60 min |
-| 004 | Non-Functional Requirements | D | Jun 30 ✅ | 60 min |
-| 005 | How to Reason About Tradeoffs | D | Jul 1 | 45 min |
-| 006 | The Client–Server Model | S | Jul 1 | 15 min |
-| 007 | IP, Ports, Sockets | S | Jul 1 | 15 min |
-| 008 | TCP vs UDP | D | Jul 2 | 50 min |
-| 009 | DNS | S | Jul 2 | 15 min |
-| 010 | HTTP/1.1, HTTP/2, HTTP/3 | D | Jul 2 | 50 min |
-| 011 | HTTPS & TLS | S | Jul 3 | 15 min |
-| 012 | REST API Design | D | Jul 3 | 50 min |
-| 013 | RPC & gRPC | S | Jul 3 | 15 min |
-| 014 | GraphQL | S | Jul 3 | 15 min |
-| 015 | WebSockets, SSE, Polling, Long Polling | D | Jul 4 | 50 min |
-| 016 | Forward Proxy, Reverse Proxy, API Gateway | S | Jul 4 | 15 min |
-| 017 | Load Balancers | D | Jul 4 | 50 min |
-| 018 | CDN | S | Jul 5 | 15 min |
-| 019 | Content Compression & Encoding | A | Jul 5 | inside 018 |
-| 020 | Storage Engine Fundamentals | S | Jul 5 | 15 min |
-| 021 | Relational Databases & SQL | D | Jul 5 | 50 min |
-| 022 | Indexing Deep Dive | D | Jul 6 | 50 min |
-| 023 | B-Trees vs LSM-Trees | S | Jul 6 | 15 min |
-| 024 | Transactions & ACID | D | Jul 6 | 50 min |
-| 025 | Isolation Levels & Anomalies | D | Jul 7 | 50 min |
-| 026 | Concurrency Control: Locks, 2PL, Deadlocks | S | Jul 7 | 15 min |
-| 027 | MVCC | S | Jul 7 | 15 min |
-| 028 | NoSQL Overview | S | Jul 7 | 15 min |
-| 029 | Wide-Column Stores | S | Jul 8 | 15 min |
-| 030 | Document Stores | S | Jul 8 | 15 min |
-| 031 | Choosing a Database | S | Jul 8 | 15 min |
-| 032 | Caching Fundamentals | S | Jul 8 | 15 min |
-| 033 | Caching Patterns | D | Jul 9 | 50 min |
-| 034 | Eviction Policies | S | Jul 9 | 15 min |
-| 035 | Cache Problems (stampede, penetration, avalanche) | D | Jul 9 | 50 min |
-| 036 | Distributed Caching with Redis/Memcached | D | Jul 10 | 50 min |
-| 037 | Cache Consistency & Invalidation | D | Jul 10 | 50 min |
-| 038 | Vertical vs Horizontal Scaling | S | Jul 11 | 15 min |
-| 039 | Replication | D | Jul 11 | 50 min |
-| 040 | Replication Lag & Read Consistency | D | Jul 11 | 50 min |
-| 041 | Partitioning & Sharding | D | Jul 12 | 50 min |
-| 042 | Consistent Hashing | D | Jul 12 | 50 min |
-| 043 | Choosing a Shard Key | D | Jul 13 | 50 min |
-| 044 | Rebalancing & Resharding | S | Jul 13 | 15 min |
-| 045 | Why Distributed Systems Are Hard | S | Jul 13 | 15 min |
-| 046 | CAP Theorem | D | Jul 14 | 50 min |
-| 047 | PACELC | A | Jul 14 | inside 046 |
-| 048 | Consistency Models | D | Jul 14 | 50 min |
-| 049 | Time, Clocks & Ordering | S | Jul 15 | 15 min |
-| 050 | Quorums | D | Jul 15 | 50 min |
-| 051 | Consensus & Leader Election | S | Jul 15 | 15 min |
-| 052 | Raft | D | Jul 16 | 60 min |
-| 053 | Paxos | A | Jul 16 | inside 052 |
-| 054 | Distributed Transactions: 2PC & 3PC | S | Jul 17 | 20 min |
-| 055 | Sagas & Compensating Transactions | D | Jul 17 | 50 min |
-| 056 | Idempotency & Exactly-Once Semantics | D | Jul 17 | 50 min |
-| 057 | Conflict Resolution & CRDTs | S | Jul 18 | 15 min |
-| 058 | Why Asynchronous Processing | S | Jul 18 | 15 min |
-| 059 | Message Queues (RabbitMQ model) | S | Jul 18 | 15 min |
-| 060 | Log-Based Streaming (Kafka) | D | Jul 18 | 60 min |
-| 061 | Delivery Guarantees | D | Jul 19 | 50 min |
-| 062 | Stream Processing | S | Jul 19 | 15 min |
-| 063 | Event-Driven Architecture | S | Jul 19 | 15 min |
-| 064 | Event Sourcing | S | Jul 20 | 15 min |
-| 065 | CQRS | S | Jul 20 | 15 min |
-| 066 | Change Data Capture & Outbox Pattern | S | Jul 20 | 15 min |
-| 067 | Availability Math (SLA/SLO/SLI/Error budgets) | D | Jul 20 | 50 min |
-| 068 | Fault Tolerance & Redundancy | S | Jul 21 | 15 min |
-| 069 | Timeout, Retry, Exponential Backoff | D | Jul 21 | 50 min |
-| 070 | Circuit Breaker & Bulkhead | D | Jul 21 | 50 min |
-| 071 | Rate Limiting & Throttling | D | Jul 22 | 60 min |
-| 072 | Load Shedding & Backpressure | S | Jul 22 | 15 min |
-| 073 | Graceful Degradation & Failover | S | Jul 22 | 15 min |
-| 074 | Disaster Recovery (RPO/RTO) | D | Jul 23 | 50 min |
-| 075 | Health Checks, Heartbeats, Failure Detection | S | Jul 23 | 15 min |
-| 076 | Monitoring & Metrics (RED/USE/4 golden signals) | D | Jul 23 | 50 min |
-| 077 | Logging at Scale | S | Jul 24 | 15 min |
-| 078 | Distributed Tracing | D | Jul 24 | 50 min |
-| 079 | Alerting & On-Call | S | Jul 24 | 15 min |
-| 080 | Security Fundamentals | S | Jul 25 | 15 min |
-| 081 | Authentication vs Authorization | D | Jul 25 | 50 min |
-| 082 | Sessions, Cookies, Tokens, JWT | D | Jul 25 | 50 min |
-| 083 | OAuth 2.0 & OIDC | D | Jul 26 | 50 min |
-| 084 | Encryption | S | Jul 26 | 15 min |
-| 085 | Secrets Management & Certificate Rotation | S | Jul 26 | 15 min |
-| 086 | API Security | S | Jul 27 | 15 min |
-| 087 | Multi-Tenancy & Data Isolation | S | Jul 27 | 15 min |
-| 088 | Privacy, Compliance & Data Residency | S | Jul 27 | 15 min |
-| 089 | Bloom Filters | D | Jul 27 | 50 min |
-| 090 | HyperLogLog | S | Jul 28 | 15 min |
-| 091 | Count-Min Sketch | S | Jul 28 | 15 min |
-| 092 | Geospatial Indexing | D | Jul 28 | 50 min |
-| 093 | Full-Text Search & Inverted Indexes | S | Jul 28 | 15 min |
-| 094 | Elasticsearch / OpenSearch | S | Jul 29 | 15 min |
-| 095 | Time-Series Databases | S | Jul 29 | 15 min |
-| 096 | Object/Blob Storage | S | Jul 29 | 15 min |
-| 097 | Distributed File Systems | S | Jul 29 | 15 min |
-| 098 | Unique ID Generation | S | Jul 30 | 15 min |
-| 099 | Distributed Locks & Leases | D | Jul 30 | 50 min |
-| 100 | Service Discovery & Service Mesh | S | Jul 30 | 15 min |
-| 101 | Configuration & Feature Flags at Scale | S | Jul 30 | 15 min |
-| 102 | Monolith vs Microservices vs Modular Monolith | D | Jul 31 | 50 min |
-| 103 | Service Decomposition & DDD Basics | S | Jul 31 | 15 min |
-| 104 | API Gateway & BFF | S | Jul 31 | 15 min |
-| 105 | Serverless & FaaS | S | Aug 1 | 15 min |
-| 106 | Containers & Docker | S | Aug 1 | 15 min |
-| 107 | Orchestration & Kubernetes | S | Aug 1 | 15 min |
-| 108 | CI/CD & Deployment Strategies | S | Aug 1 | 15 min |
-| 109 | Infrastructure as Code & Environments | S | Aug 2 | 15 min |
-| 110 | Cloud Building Blocks | S | Aug 2 | 15 min |
-| 111 | The Full HLD Playbook (Capstone Refresher) | D | Aug 2 | 50 min |
-| 112 | Estimation Mastery Drill | D | Aug 2 | 50 min |
-| 113 | Bottleneck Hunting & Evolution | D | Aug 3 | 50 min |
-| 114 | Cost Reasoning in Design | S | Aug 3 | 20 min |
-
-**→ All 114 HLD topics done by: August 3, 2026**
+**Legend:** 🔴 full lesson · 🟡 condensed, batched · ⚫ not scheduled (see `TopicPriority.md`)
 
 ---
 
-## LLD Track — 8 Essential Lessons
-*(Parallel track — starts July 19, interleaved with HLD)*
+## PHASE 1 — Finish the Theory Core (Jul 25 → Jul 31, 7 days)
 
-| ID | Title | Type | Target Date | Time |
-|----|-------|------|-------------|------|
-| L001 | OOP Fundamentals | D | Jul 19 | 45 min |
-| L002 | SOLID Principles | D | Jul 21 | 45 min |
-| L003 | GRASP Principles | S | Jul 23 | 20 min |
-| L004 | UML: Class + Sequence Diagrams | D | Jul 25 | 45 min |
-| L008 | Creational Design Patterns | D | Jul 28 | 45 min |
-| L009 | Structural Design Patterns | S | Jul 30 | 30 min |
-| L010 | Behavioral Design Patterns | D | Aug 1 | 45 min |
-| L011 | Concurrency & Thread Safety | D | Aug 3 | 45 min |
-| L019 | Machine-Coding Round Playbook | D | Aug 4 | 45 min |
+| Date | Work | Time |
+|------|------|------|
+| **Jul 25** *(today)* | 🔴 028 NoSQL Overview · 🔴 029 Wide-Column · 🟡 030 Document Stores · 🔴 031 Choosing a Database | ~2.3h |
+| **Jul 26** | 🔴 032 Caching Fundamentals · 🔴 033 Caching Patterns · 🟡 034 Eviction · 🔴 035 Cache Problems | ~2.3h |
+| **Jul 27** | 🔴 036 Redis/Memcached · 🔴 037 Cache Consistency · 🟡 038 Vert-vs-Horiz · 🔴 039 Replication | ~2.3h |
+| **Jul 28** | 🔴 040 Replication Lag · 🔴 041 Partitioning & Sharding · 🟡 044 Rebalancing | ~1.8h |
+| **Jul 29** | 🔴 042 Consistent Hashing · 🔴 043 Shard Key · 🟡 045 Why Distributed Is Hard | ~1.8h |
+| **Jul 30** | 🔴 046 CAP · 🟡 047 PACELC · 🔴 048 Consistency Models · 🔴 050 Quorums | ~2.2h |
+| **Jul 31** | 🟡 **SKIM BATCH A** (051 Consensus, 052 Raft, 054 2PC/3PC, 062 Stream Proc, 063 EDA, 065 CQRS, 066 CDC/Outbox) · 🔴 055 Sagas | ~1.9h |
 
-**→ LLD essentials done by: August 4, 2026**
+> ⚫ Not scheduled in this phase: 049 Clocks/Vector · 053 Paxos · 057 CRDTs · 064 Event Sourcing
 
----
+## PHASE 2 — Messaging, Reliability, Security (Aug 1 → Aug 4, 4 days)
 
-## Case Studies — 20 Highest-Signal
-*(Starts July 14 — one every 1–2 days alongside HLD)*
+| Date | Work | Time |
+|------|------|------|
+| **Aug 1** | 🔴 056 Idempotency · 🔴 058 Why Async · 🔴 059 Message Queues | ~1.8h |
+| **Aug 2** | 🔴 060 Kafka · 🔴 061 Delivery Guarantees · 🔴 069 Retry/Backoff+Jitter | ~2.3h |
+| **Aug 3** | 🔴 070 Circuit Breaker · 🔴 071 Rate Limiting · 🔴 076 Monitoring | ~2.1h |
+| **Aug 4** | 🟡 **SKIM BATCH B** (067 Availability Math, 068 Fault Tolerance, 072 Load Shedding, 073 Graceful Degradation, 074 DR/RPO-RTO, 075 Health Checks, 077 Logging, 078 Tracing) · 🔴 081 AuthN/AuthZ · 🔴 082 JWT/Sessions | ~2.4h |
 
-| ID | System | Tier | Target Date | Time |
-|----|--------|------|-------------|------|
-| CS001 | TinyURL / URL Shortener | 1 | Jul 14 | 45 min |
-| CS002 | Rate Limiter | 1 | Jul 16 | 45 min |
-| CS003 | Notification System | 1 | Jul 18 | 45 min |
-| CS004 | Unique ID Generator | 1 | Jul 20 | 45 min |
-| CS005 | Key-Value Store / Distributed Cache | 1 | Jul 22 | 45 min |
-| CS006 | Web Crawler | 1 | Jul 24 | 45 min |
-| CS007 | Leaderboard / Top-K Service | 1 | Jul 26 | 45 min |
-| CS008 | Nearby Friends / Proximity Service | 1 | Jul 28 | 45 min |
-| CS011 | Twitter / News Feed | 2 | Jul 30 | 60 min |
-| CS014 | WhatsApp / Messenger | 2 | Aug 1 | 60 min |
-| CS016 | YouTube | 2 | Aug 3 | 60 min |
-| CS018 | Dropbox / Google Drive | 2 | Aug 4 | 60 min |
-| CS020 | Typeahead / Search Autocomplete | 2 | Aug 5 | 45 min |
-| CS023 | BookMyShow / Ticketmaster | 2 | Aug 5 | 60 min |
-| CS026 | Uber / Ride Matching | 3 | Aug 6 | 60 min |
-| CS029 | Payment Gateway (Stripe-style) | 3 | Aug 6 | 60 min |
-| CS028 | Google Maps | 3 | Aug 7 | 60 min |
-| CS037 | Metrics & Monitoring (Datadog-style) | 4 | Aug 7 | 60 min |
-| CS031 | Stock Exchange / Trading System | 3 | Aug 8 | 60 min |
-| CS013 | Facebook News Feed (Fanout deep dive) | 2 | Aug 8 | 60 min |
+> ⚫ Not scheduled: 079 Alerting · 085 Secrets · 087 Multi-Tenancy · 088 Compliance
 
-**→ 20 Case Studies done by: August 8, 2026**
+## PHASE 3 — Building Blocks + Capstone (Aug 5 → Aug 8, 4 days)
 
----
+| Date | Work | Time |
+|------|------|------|
+| **Aug 5** | 🟡 **SKIM BATCH C** (080 Security Fund., 083 OAuth, 084 Encryption, 086 API Security, 090 HyperLogLog, 093 Full-Text, 094 Elasticsearch, 099 Distributed Locks) · 🔴 089 Bloom Filters | ~1.9h |
+| **Aug 6** | 🔴 092 Geospatial Indexing · 🔴 096 Object Storage · 🔴 098 Unique ID Generation | ~2.0h |
+| **Aug 7** | 🔴 102 Monolith vs Microservices · 🟡 **SKIM BATCH D** (103 DDD, 104 BFF, 108 CI/CD, 114 Cost Reasoning) · 🔴 111 Full HLD Playbook | ~1.9h |
+| **Aug 8** | 🔴 112 Estimation Mastery Drill · 🔴 113 Bottleneck Hunting | ~1.7h |
 
-## Mock Interviews
-| # | Type | Target Date |
-|---|------|-------------|
-| Mock 1 | Tier 1 system (any CS001–CS008) | Aug 4 |
-| Mock 2 | Timed full 45-min (company-flavored) | Aug 7 |
-| Mock 3 | Requirement-change round | Aug 9 |
+> ⚫ Not scheduled: 091 CMS · 095 TSDB · 097 DFS · 100 Service Mesh · 101 Feature Flags · 105–107, 109–110
 
----
+**→ All prioritized HLD theory complete: Aug 8** *(35 full lessons, 26 skims, 26 skipped)*
 
-## Summary Timeline
+## PHASE 4 — Case Studies (Aug 9 → Aug 14, 6 days) — *the highest-value block*
 
-```
-Jun 28 – Jul  4 : Module 0 + Module 1 (Topics 001–017)       ← YOU ARE HERE
-Jul  5 – Jul 11 : Module 2 + Module 3 (Topics 018–037)
-Jul 12 – Jul 18 : Module 4 + Module 5 (Topics 038–056)        + CS001–CS003
-Jul 19 – Jul 25 : Module 6 + Module 7 (Topics 057–079)        + CS004–CS007 + LLD 1–4
-Jul 26 – Aug  2 : Modules 8–10 (Topics 080–110)               + CS008–CS014 + LLD 5–8
-Aug  3 – Aug  5 : Module 11 + capstone (Topics 111–114)        + CS015–CS016 + Mock 1
-Aug  6 – Aug  9 : Remaining case studies (CS017–CS020)         + Mocks 2–3
-Aug  9          : INTERVIEW READY ✅
-```
+| Date | Case Studies | Time |
+|------|-------------|------|
+| **Aug 9** | CS1 URL Shortener · CS2 Rate Limiter | ~1.5h |
+| **Aug 10** | CS3 Twitter/News Feed · CS4 WhatsApp | ~2.0h |
+| **Aug 11** | CS5 Notification System · CS6 Unique ID Generator · **Mock 1** (coached) | ~2.6h |
+| **Aug 12** | CS7 Key-Value Store · CS8 YouTube | ~1.8h |
+| **Aug 13** | CS9 Uber/Ride Matching · CS10 Payment Gateway | ~2.0h |
+| **Aug 14** | CS11 Typeahead · **Mock 2** (timed, company-flavoured) | ~2.0h |
+
+> 🟡 Tail — cut first if behind: CS12 Web Crawler · CS13 Leaderboard · CS14 BookMyShow
+
+## PHASE 5 — LLD Essentials (Aug 15 → Aug 16, 2 days)
+
+*Kept at 6 sessions because machine-coding rounds are expected at Indian product companies.*
+
+| Date | Work | Time |
+|------|------|------|
+| **Aug 15** | L001+L002 OOP & SOLID · L004 UML Class+Sequence · L008 Creational Patterns | ~2.3h |
+| **Aug 16** | L009+L010 Structural+Behavioral · L011 Concurrency · L019 Machine-Coding Playbook | ~2.4h |
+
+## PHASE 6 — Consolidation (Aug 17 → Aug 18, 2 days)
+
+| Date | Work | Time |
+|------|------|------|
+| **Aug 17** | Tail case studies (CS12–CS14 if time) · full weak-area drill (persistent misses: 013, 015, estimation formula) | ~2.5h |
+| **Aug 18** | **Mock 3** (requirement-change round) · final cheat-sheet review | ~2.0h |
+
+**→ INTERVIEW READY: 2026-08-18** ✅
 
 ---
 
-## Your Slack Checker
+## Slack Checker
 
-Print this and stick it somewhere visible. At the end of each day, check:
+At the end of each day, ask: *"What did the schedule say for today? Did I do it?"*
 
-> *"What date is it? What topic should be done by today? Is it done?"*
+| Drift | Action |
+|-------|--------|
+| ≤ 1 day behind | Normal. Absorb it in the next session. |
+| 2–3 days behind | Cut the 🟡 case-study tail (CS12–CS14) and reclaim ~2.3h. |
+| 4+ days behind | Downgrade the remaining 🔴 topics in Modules 8–10 to 🟡, keep all case studies and mocks. **Never** protect theory at the cost of case studies. |
+| Ahead | Add back ⚫ topics in this order: 064 Event Sourcing → 049 Clocks → 100 Service Mesh → 091 Count-Min Sketch. |
 
-If you're more than **3 days behind** on any topic — flag it immediately and batch double the next session.
-If you're more than **1 week behind** — add one extra session per day until caught up.
+**Rule of thumb:** if forced to choose between one more theory topic and one more case study,
+**always take the case study.** At 2 YOE, interviews evaluate you on a design conversation, not a quiz.
+
+---
+
+## Revision Cadence
+
+The learner revises on his own schedule (weekends / when enough accumulates), not on strict due
+dates. `RevisionSchedule.md` remains the queue of record; the mentor surfaces the backlog in each
+daily briefing but does **not** block new content on it.
+
+**Current persistent misses to target in the next revision pass:**
+- Topic 013 — gRPC browser blocker (failed ×3, needs a mnemonic, not re-explanation)
+- Topic 015 — short-polling latency-vs-waste (failed ×3, numeric-example approach being tried)
+- Topic 003 — reads-in-write-QPS formula (long-standing; Topic 112 drill will target it directly)
+
+---
+
+## Archived: v1 Schedule
+
+The original June 28 – Aug 9 calendar is preserved in git history (any commit before 2026-07-25).
+It assumed no gaps and no compression; it is superseded by this file and should not be consulted
+for pacing decisions.

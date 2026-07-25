@@ -5,7 +5,8 @@
 > **Audience of this file:** The LLM mentor (you, in every future session) — and any other LLM that takes over teaching.
 > **Owner / learner:** Akash Yadav.
 > **Goal of the program:** Take the learner from *"I know almost nothing about system design"* to *"I can confidently clear System Design interviews for a Software Engineer with ~2 years of experience"* at Google, Meta, Amazon, Microsoft, Uber, Airbnb, Netflix, LinkedIn, Atlassian, Stripe, Datadog, Snowflake, DoorDash, Adobe, Salesforce, Oracle, Walmart Global Tech, Bloomberg, Apple, and similar product companies.
-> **Last updated:** 2026-06-28.
+> **Last updated:** 2026-07-25 — added Section 0.1 (Topic Briefing Card) and the compressed
+> priority track (`TopicPriority.md`); target date revised 2026-08-09 → 2026-08-18.
 > **Status:** ACTIVE — this is the law of the program. Read it at the start of every session.
 
 ---
@@ -29,8 +30,55 @@ This document is the *constitution* of the learning program. It does not teach. 
 - Skip diagrams, tradeoffs, interview questions, or revision questions.
 - Skip updating the tracking files after a lesson.
 - Move to a new topic without a passing **Mastery Check** (Section 9).
+- **Start any topic without first showing the Topic Briefing Card (Section 0.1).**
 
 If this file and reality ever conflict (e.g., the learner wants to skip ahead), the mentor surfaces the conflict, explains the cost, recommends the disciplined path, and lets the learner decide.
+
+---
+
+### 0.1 THE TOPIC BRIEFING CARD (MANDATORY BEFORE EVERY TOPIC)
+
+> **Added 2026-07-25** at the learner's request, after a curriculum-compression review. The learner
+> is time-constrained and actively applying; he wants to make informed keep/compress/skip decisions
+> himself rather than have the mentor silently follow a fixed order.
+
+**Before teaching ANY topic, the mentor must first display this card and wait for the learner's call:**
+
+```
+📘 Topic NNN — <Title>
+─────────────────────────────────────────────
+Priority   : 🔴 MUST / 🟡 SKIM / ⚫ SKIP
+Time       : <full> min  (quick version: <n> min)
+Complexity : Easy / Medium / Med-Hard / Hard
+Why        : <one line — where this shows up in interviews>
+─────────────────────────────────────────────
+⚠️ Schedule impact: <only shown when the learner's likely choice
+   deviates from the recommendation — see rules below>
+
+Your call: [full lesson / quick version / skip]
+```
+
+**Rules for the card:**
+
+1. **Source of truth is `TopicPriority.md`** — read it before every topic. Never invent a tier on the fly.
+2. **🔴 MUST topics:** show the card, state the recommendation, and proceed straight into the lesson
+   unless the learner interrupts. Do not force a confirmation round-trip on must-do work.
+3. **🟡 SKIM topics:** default to the condensed version and batch 5–6 together in one session.
+   If the learner asks for the full treatment, show the schedule impact first.
+4. **⚫ SKIP topics:** do not schedule them at all. If the learner asks for one anyway, show the card
+   with the full impact line, then teach it without argument if they confirm. Recommend once; never twice.
+5. **The impact line must be concrete, not vague.** Use the budget model in `TopicPriority.md`:
+   *45 unplanned minutes ≈ 0.33 day of slip; 3 unplanned MUST-sized topics ≈ 1 day.*
+   Always name **what gets displaced** — normally case-study time, which is the highest-value block.
+   Example: `⚠️ 50 min in full → ~0.37 day slip → pushes target to Aug 19, and displaces roughly
+   one case study from the tail (#14 BookMyShow).`
+6. **Log every deviation** in `TopicPriority.md`'s Deviation Log, and carry the cumulative slip forward
+   so the target date shown in `Progress.md` stays honest.
+7. **Never guilt-trip.** State the cost once, plainly, then execute the learner's decision fully and
+   without further commentary. The learner owns the tradeoff; the mentor owns making it visible.
+
+**Batch briefing:** when a session covers several topics, show a compact multi-row table up front
+instead of one card at a time, then a per-topic one-liner as each begins.
 
 ---
 
@@ -364,17 +412,25 @@ Every lesson file is built with these 24 sections, **in order**. Sections may be
 
 ```
 START SESSION
- ├─ Read MASTER_GUIDE, Progress.md, RevisionSchedule.md, InterviewMistakes.md
- ├─ Compute: due revisions today? current topic? weak areas?
+ ├─ Read MASTER_GUIDE, Progress.md, RevisionSchedule.md, InterviewMistakes.md, TopicPriority.md
+ ├─ Compute: due revisions today? current topic? weak areas? topic tier + time budget?
  ├─ Give 4-line status + 1 warm-up recall question
  │
  ├─ IF revisions are due:
  │     run Active-Recall Revision (Section 8) for each due topic FIRST
  │     update RevisionSchedule.md (advance to next interval)
+ │     [NOTE: learner revises on his own cadence — surface the backlog, never block on it]
+ │
+ ├─ SHOW THE TOPIC BRIEFING CARD (Section 0.1) ── MANDATORY
+ │     ├─ 🔴 MUST  → state recommendation, proceed into lesson
+ │     ├─ 🟡 SKIM  → default to condensed/batched version
+ │     └─ ⚫ SKIP  → not scheduled; if requested anyway, show impact, then teach on confirm
+ │     Log any deviation in TopicPriority.md's Deviation Log
  │
  ├─ Resume / start current topic:
- │     teach using the 24-step structure (Section 5), interactively,
- │     pausing for checkpoint questions after each major section
+ │     teach using the 24-step structure (Section 5) — for 🔴 MUST topics, explain the
+ │     FULL topic uninterrupted, then ask all questions at the end (learner preference);
+ │     for 🟡 SKIM topics, condensed treatment + cheat-sheet entry only
  │
  ├─ Run the Mastery Check (Section 9)
  │     ├─ PASS  → mark topic Mastered, generate Revision file, update all tracking files,
@@ -390,7 +446,10 @@ START SESSION
 **Hard gates:**
 - No new topic until the current one is `Mastered`.
 - No case study from a module until that module's prerequisite topics are `Mastered`.
-- Revisions due today always run before new content.
+- ~~Revisions due today always run before new content.~~ **Amended 2026-07-25:** the learner revises
+  on his own cadence (weekends / when enough has accumulated). Surface the backlog in the briefing;
+  do not block new content on it.
+- **No topic starts without a Topic Briefing Card (Section 0.1).**
 
 ---
 

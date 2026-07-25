@@ -27,10 +27,11 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
    - Which topics are due today (with target times)
    - Whether they are ahead, on track, or behind
    - A one-line pace check: "You should be on topic NNN by today. You are on topic MMM. You are X days ahead/behind."
-4. Check `RevisionSchedule.md` — if any topics are due for revision today, run revision BEFORE new content
+4. Check `RevisionSchedule.md` — surface any due/overdue revisions in the briefing. **Do not block new content on them**: the learner revises on his own cadence (weekends / when enough accumulates)
 5. Check `InterviewMistakes.md` for mistakes with recurrence ≥ 2 — run a 60-second scored drill on each BEFORE anything else
-6. Deliver lesson or revision per the guide's teaching algorithm; every lesson touching a tech category includes a "when to use / when NOT to use" decision box (also appended to `TechChoices.md`)
-7. After session, update all affected tracking files
+6. **Read `TopicPriority.md` and show the Topic Briefing Card** (tier / time / complexity / why, plus schedule impact if the learner deviates) — see `SYSTEM_DESIGN_MASTER_GUIDE.md` §0.1. Never start a topic without it
+7. Deliver lesson or revision per the guide's teaching algorithm; every lesson touching a tech category includes a "when to use / when NOT to use" decision box (also appended to `TechChoices.md`)
+8. After session, update all affected tracking files (including `TopicPriority.md`'s Deviation Log if the learner overrode a tier)
 
 > **Daily briefing format (say this at the start of every session):**
 > ```
@@ -52,7 +53,8 @@ The learner is **Akash Yadav**, a mid-level engineer preparing for FAANG+ system
 | `InterviewMistakes.md` | Running log of learner mistakes with root cause + fix + mnemonic | Mentor (when a mistake occurs) |
 | `Glossary.md` | Alphabetical term definitions; add ~3-5 terms per new topic | Mentor |
 | `CheatSheets.md` | 1-screen condensed summaries per topic; add after each completed topic | Mentor |
-| `Schedule.md` | Master day-by-day schedule — target dates for all 114 topics, LLD, case studies; read every session | Mentor reads; never modifies unless timeline changes |
+| `Schedule.md` | Master day-by-day schedule (v2, compressed track); read every session | Mentor reads; never modifies unless timeline changes |
+| `TopicPriority.md` | Tier (🔴 must / 🟡 skim / ⚫ skip), time, complexity and skip-cost for every remaining topic + the Deviation Log; read before every topic | Mentor maintains; learner decides |
 | `Numbers.md` | Latency, data size, and capacity formulas reference card | Static; update rarely |
 | `TechChoices.md` | "When to use what" tech decision playbook (problem → tech → why → why not alternatives); grows after each lesson touching a tech category | Mentor |
 | `Topics/NNN_*.md` | One lesson file per HLD topic; created when topic is taught | Mentor |
@@ -92,11 +94,13 @@ Remote: `https://github.com/akki2104/System-Design-Learnings` (username: `akki21
 > git push -u origin main
 > ```
 
-## Curriculum Position (as of 2026-07-01)
+## Curriculum Position (as of 2026-07-25)
 
-- **Current module:** Module 0 → Module 1 (transitioning)
-- **Completed:** Topics 001–004
-- **Mastered:** 0 topics (mastery confirmed after Day-7 revision passes)
-- **Next:** Topic 005 onward per `Progress.md` and `Schedule.md`
-- **Interview-ready target:** August 9, 2026
-- **Schedule file:** `Schedule.md` — consult this every session for daily targets
+- **Current module:** Module 2 — Data Storage Foundations (Modules 0 and 1 complete)
+- **Completed:** Topics 001–027
+- **Mastered:** 0 topics formally (mastery gate applied only to ~30 core topics on the compressed track)
+- **Next:** Topic 028 onward per `Progress.md`, `Schedule.md` (v2), and `TopicPriority.md`
+- **Interview-ready target:** **August 18, 2026** (revised from Aug 9 on 2026-07-25)
+- **Track:** COMPRESSED v2 — 35 🔴 must-topics, 26 🟡 skims, 26 ⚫ skipped, 14 case studies, 6 LLD sessions, 3 mocks
+- **Schedule file:** `Schedule.md` — consult every session for daily targets
+- **Priority file:** `TopicPriority.md` — consult before every topic; show the Topic Briefing Card

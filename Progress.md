@@ -4,12 +4,23 @@
 ```
 Last Updated    : 2026-07-25
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 028 NoSQL Overview (Next)
+Current Topic   : 028 NoSQL Overview (Next) — 🔴 MUST, 40 min, Medium
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 27 (001-027) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now overdue. Learner revises on own cadence.
 Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. New: 026 shared-then-upgrade lock trap, detection-vs-prevention causality. Long-standing: reads in write QPS formula. Note: 027 (MVCC) was a clean/strong lesson, no mistakes logged.
-Pace            : ~51 topics behind Schedule.md as of 2026-07-25 (should be on ~078, on 027)
+
+── COMPRESSED TRACK v2 (adopted 2026-07-25) ────────────────────────────
+Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days)
+Pace            : ON TRACK against the new Schedule.md v2 (Day 1 of 23)
+Cumulative slip : 0.0 days   ← updated from TopicPriority.md's Deviation Log
+Remaining work  : 35 🔴 must-topics · 26 🟡 skims · 26 ⚫ skipped
+                  + 14 case studies + 6 LLD sessions + 3 mocks  ≈ 51 hrs
+Priority source : TopicPriority.md — mentor MUST show the Topic Briefing Card
+                  (Master Guide §0.1) before every topic. Learner decides
+                  full / quick / skip; deviations logged with schedule impact.
+────────────────────────────────────────────────────────────────────────
+
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
