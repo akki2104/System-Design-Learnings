@@ -862,3 +862,43 @@ MVCC → solves reader-writer blocking
 Locking (026) → still needed for writer-writer conflicts
 ```
 ---
+
+### [028] NoSQL Overview
+```
+FOUR CATEGORIES
+─────────────────────────────────────────────────
+Key-Value    → get/put by key, no query lang     → Redis, DynamoDB(KV)
+Document     → JSON-like, flexible per-doc schema → MongoDB, Couchbase
+Wide-Column  → diff columns/row, write-optimized  → Cassandra, HBase, Bigtable
+Graph        → nodes+edges, relationship traversal → Neo4j
+
+RELATIONAL vs NOSQL (extends 005/021)
+─────────────────────────────────────────────────
+Schema: fixed/write-time      vs  flexible/per-record
+Consistency: ACID             vs  often eventual (CAP preview, 046)
+Joins: first-class            vs  avoided by design (denormalize)
+Scaling: vertical+bolted-on   vs  horizontal from the ground up
+
+WHY NOSQL WRITES SCALE BETTER — actual mechanism
+─────────────────────────────────────────────────
+LEADERLESS/MULTI-MASTER replication → any node accepts writes
+(NOT "the data model is different" — it's the replication architecture)
+Relational: single-primary bottleneck for all writes
+
+SCHEMA-ON-WRITE vs SCHEMA-ON-READ
+─────────────────────────────────────────────────
+Write (relational): structure enforced AT WRITE TIME
+Read (document): no enforcement at write; app interprets AT READ TIME
+  → 2 docs in same MongoDB collection CAN have different fields
+
+THE TRAP: "write-heavy → MongoDB"
+─────────────────────────────────────────────────
+Category error — MongoDB(Document) = schema flexibility, NOT write
+throughput. Wide-Column (Cassandra/DynamoDB) = the write-heavy answer.
+
+THE BIGGER TRAP: "NoSQL is just more scalable"
+─────────────────────────────────────────────────
+Not an upgrade — a DIFFERENT TRADEOFF. Gains availability + write
+throughput by GIVING UP strong consistency + joins. Name the cost.
+```
+---

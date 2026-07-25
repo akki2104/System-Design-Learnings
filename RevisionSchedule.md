@@ -304,3 +304,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-24 | 027 | MVCC | +30 days | Pending |
 | 2026-09-23 | 027 | MVCC | +60 days | Pending |
 | 2026-10-23 | 027 | MVCC | +90 days | Pending |
+
+| 2026-07-27 | 028 | NoSQL Overview | +1 day | Pending |
+| 2026-07-29 | 028 | NoSQL Overview | +3 days | Pending |
+| 2026-08-02 | 028 | NoSQL Overview | +7 days | Pending |
+| 2026-08-10 | 028 | NoSQL Overview | +15 days | Pending |
+| 2026-08-25 | 028 | NoSQL Overview | +30 days | Pending |
+| 2026-09-24 | 028 | NoSQL Overview | +60 days | Pending |
+| 2026-10-24 | 028 | NoSQL Overview | +90 days | Pending |

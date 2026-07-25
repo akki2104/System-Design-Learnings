@@ -161,4 +161,11 @@ Kept in alphabetical order.
 | VACUUM | Postgres's background process that reclaims old row versions no longer visible to any active transaction | [027](Topics/027_MVCC.md) |
 | Table Bloat | Storage buildup from old row versions accumulating faster than VACUUM can reclaim them | [027](Topics/027_MVCC.md) |
 
+| Key-Value Store | The simplest NoSQL model — get/put by key only, no query language; extremely fast (Redis, DynamoDB KV mode) | [028](Topics/028_NoSQL_Overview.md) |
+| Document Store | Stores semi-structured, JSON-like documents with a flexible per-document schema (MongoDB, Couchbase) | [028](Topics/028_NoSQL_Overview.md) |
+| Wide-Column / Column-Family Store | Rows can have different columns; optimized for massive write throughput with a known access pattern (Cassandra, HBase, Bigtable) | [028](Topics/028_NoSQL_Overview.md) |
+| Graph Database | Stores nodes + edges, optimized for traversing relationships (Neo4j) | [028](Topics/028_NoSQL_Overview.md) |
+| Schema-on-Write | Structure is enforced at the moment data is written (relational default) | [028](Topics/028_NoSQL_Overview.md) |
+| Schema-on-Read | No enforced structure at write time — structure is interpreted by the application when reading; records in the same collection can differ | [028](Topics/028_NoSQL_Overview.md) |
+
 <!-- Rows added after each lesson -->

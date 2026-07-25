@@ -2,13 +2,13 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-07-25
+Last Updated    : 2026-07-26
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 028 NoSQL Overview (Next) — 🔴 MUST, 40 min, Medium
+Current Topic   : 029 Wide-Column Stores (Next) — 🔴 MUST, 45 min, Med-Hard
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 27 (001-027) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Topics Completed: 28 (001-028) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. New: 026 shared-then-upgrade lock trap, detection-vs-prevention causality. Long-standing: reads in write QPS formula. Note: 027 (MVCC) was a clean/strong lesson, no mistakes logged.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. New: 026 shared-then-upgrade lock trap, detection-vs-prevention causality. Long-standing: reads in write QPS formula. Note: 027 (MVCC) and 028 (NoSQL Overview) were both clean/strong lessons, no mistakes logged.
 
 ── COMPRESSED TRACK v2 (adopted 2026-07-25) ────────────────────────────
 Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days)
@@ -83,6 +83,8 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-22 | Revision session — 9 topics (009,011,013,015,017,022,023,024,025). 7 passed/advanced (011 and 017 RESOLVED after being persistent); 2 reset: 013 (gRPC browser blocker, PERSISTENT ×3, needs mnemonic drill not re-explanation), 025 (1st revision, failed both sub-questions). | Reset revisions (013,015,025) due 2026-07-23; then Topic 026 |
 | 2026-07-25 | Topic 026 (Concurrency Control: Locks, 2PL, Deadlocks) — Completed. Correctly explained Strict 2PL's cascading-rollback rationale and the flexibility-vs-safety shape of the detection-vs-prevention tradeoff. Corrected: proposed a shared-lock-then-upgrade sequence for preventing Lost Update, which actually risks a lock-upgrade deadlock (fix: exclusive lock at read time via SELECT...FOR UPDATE); also said deadlock detection "causes" more deadlocks than prevention (corrected — deadlock occurrence is timing-dependent, not strategy-dependent). Confidence: 4/5. | Topic 027 — MVCC |
 | 2026-07-25 | Topic 027 (MVCC) — Completed same session. Strong pass, no mistakes logged. Correctly explained why readers/writers never block each other (different physical row versions), correctly reasoned through why Repeatable Read's fixed per-transaction snapshot prevents re-reads from seeing concurrent commits, and correctly identified (with a request for elaboration) that MVCC alone doesn't prevent Lost Update — Postgres's extra write-conflict detection does the actual work depending on isolation level. Confidence: 4/5. Closes out the Topics 020/024/025/026/027 transactions-and-concurrency arc. | Topic 028 — NoSQL Overview |
+| 2026-07-25 | COMPRESSED TRACK v2 ADOPTED — new TopicPriority.md created (tier system: 🔴 MUST/🟡 SKIM/⚫ SKIP for all remaining topics), target date revised 2026-08-09 → 2026-08-18, case studies trimmed 54→14, LLD trimmed 19→6 sessions. New process requirement: show a Topic Briefing Card (tier/time/complexity/why) before every topic going forward. | Topic 028 — NoSQL Overview, with Briefing Card shown first |
+| 2026-07-26 | Topic 028 (NoSQL Overview) — Completed. First topic taught under the new Briefing Card protocol (🔴 MUST, 40m, Medium). Clean pass on all 3 checkpoints: correctly identified "write-heavy → MongoDB" as a category error (Wide-Column is the actual fit), correctly named leaderless/multi-master replication as the real mechanism behind NoSQL write throughput (not "the data model"), and correctly defined schema-on-write vs schema-on-read. No mistakes logged. Confidence: 4-5/5. | Topic 029 — Wide-Column Stores |
 | 2026-07-22 | BIG REVISION SESSION — 9 overdue topics covered (009, 011, 013, 015, 017, 022, 023, 024, 025), following the new "cover the full topic, not just weak points" protocol. Two real wins: 011's TLS-guarantee gap and 017's health-check-mechanism gap both RESOLVED after persisting across 2 prior attempts. Two topics remain PERSISTENT and now need a different remediation approach: 013's gRPC browser blocker has produced a 3rd distinct wrong reason across 3 sessions — flagging for a mnemonic-first drill instead of more conceptual re-teaching. 015's short-polling latency-vs-waste mechanism failed a 3rd time with the same shallow answer — switched teaching method to a concrete numeric walkthrough (10,000 clients × poll-interval change) rather than re-explaining the concept abstractly; retest with a similarly concrete question next time. New minor gaps: 009 still missing "management" as DNS's 3rd hierarchy reason; 017 forgot the basic L4 vs L7 distinction; 025 (first revision) got both sub-questions wrong — non-repeatable-vs-phantom distinguishing axis, and the isolation-level decision framing was too vague — RESET to +1 day. 022, 023, 024 all passed clean. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks; retest 013/015 with new approaches next revision cycle |
 
 ---
@@ -118,8 +120,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 025 | Isolation Levels & Anomalies | Completed | 2026-07-20 | 2026-07-20 | — | 0 | 2026-07-22 (FAILED) | 2026-07-23 | 3 | Med-Hard | RESET (1st revision) — non-repeatable vs phantom distinguishing axis wrong; isolation-level decision framing too vague |
 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | Completed | 2026-07-25 | 2026-07-25 | — | 0 | — | 2026-07-26 | 4 | Med-Hard | Proposed shared-then-upgrade locking for Lost Update (risks lock-upgrade deadlock; corrected to X-lock at read time); said detection "causes" more deadlocks than prevention (corrected — timing-dependent, not strategy-dependent) |
 | 027 | MVCC | Completed | 2026-07-25 | 2026-07-25 | — | 0 | — | 2026-07-26 | 4 | Med-Hard | None — clean pass, correctly self-identified that MVCC alone doesn't prevent Lost Update and asked for the completing mechanism (Postgres's isolation-level-dependent write-conflict detection) |
-| 027 | MVCC | Not Started | — | — | — | 0 | — | — | — | — | — |
-| 028 | NoSQL Overview | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 028 | NoSQL Overview | Completed | 2026-07-26 | 2026-07-26 | — | 0 | — | 2026-07-27 | 4-5 | Medium | None — clean pass on all 3 checkpoints (write-heavy category error, leaderless replication mechanism, schema-on-write vs schema-on-read) |
 | 029 | Wide-Column Stores | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 030 | Document Stores | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 031 | Choosing a Database | Not Started | — | — | — | 0 | — | — | — | — | — |
