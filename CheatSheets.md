@@ -818,3 +818,47 @@ COST: more locking = safer, less concurrent → MVCC (027) is the
 mostly-lock-free alternative
 ```
 ---
+
+### [027] MVCC (Multi-Version Concurrency Control)
+```
+CORE IDEA
+─────────────────────────────────────────────────
+Keep MULTIPLE VERSIONS of each row instead of locking.
+Readers read the OLD version; writer creates a NEW version elsewhere.
+→ physically different data → NEVER need to block each other.
+(Writers still conflict with OTHER writers on the same row — not eliminated)
+
+MECHANISM (Postgres)
+─────────────────────────────────────────────────
+xmin = txn that created this row version
+xmax = txn that superseded it (empty = still current)
+Transaction takes a SNAPSHOT at start → sees only versions committed
+  before its snapshot, hides versions superseded before its snapshot
+UPDATE = mark old row's xmax, INSERT a new row version (no in-place edit)
+
+WHY POSTGRES'S REPEATABLE READ BLOCKS PHANTOMS (resolves Topic 025 *)
+─────────────────────────────────────────────────
+Read Committed  → NEW snapshot EVERY STATEMENT
+Repeatable Read → ONE snapshot for the WHOLE TRANSACTION
+  → snapshot never advances → no new row can ever appear → no phantoms
+
+MVCC ≠ AUTOMATIC LOST UPDATE PROTECTION
+─────────────────────────────────────────────────
+Read Committed: UPDATE re-applies against newest commit (EvalPlanQual)
+  but naive app code (SELECT, compute in app, UPDATE) can still
+  silently lose an update — DB doesn't know app's math was stale
+Repeatable Read/Serializable: detects write-write conflict → ERRORS:
+  "could not serialize access due to concurrent update" → app must retry
+"Just use MVCC" is an INCOMPLETE answer — always name the isolation level
+
+COST: VACUUM
+─────────────────────────────────────────────────
+Old versions not deleted immediately (still needed by open snapshots)
+Background VACUUM reclaims them; falling behind → TABLE BLOAT
+
+MVCC + LOCKING WORK TOGETHER (not alternatives)
+─────────────────────────────────────────────────
+MVCC → solves reader-writer blocking
+Locking (026) → still needed for writer-writer conflicts
+```
+---

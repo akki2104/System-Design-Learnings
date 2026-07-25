@@ -154,4 +154,11 @@ Kept in alphabetical order.
 | Wait-For Graph | A graph of which transaction is waiting on which; a cycle indicates a deadlock | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
 | Deadlock Prevention (Lock Ordering) | Requiring all transactions to acquire locks in a fixed global order, making deadlocks structurally impossible | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
 
+| MVCC (Multi-Version Concurrency Control) | Keeping multiple versions of each row so readers and writers act on different versions and never block each other | [027](Topics/027_MVCC.md) |
+| Snapshot | A record of which transactions had already committed at a given moment, used to decide which row versions a transaction can see | [027](Topics/027_MVCC.md) |
+| xmin / xmax | Hidden row metadata: the transaction that created a row version (xmin) and the one that superseded it (xmax) | [027](Topics/027_MVCC.md) |
+| EvalPlanQual | Postgres's Read Committed mechanism that re-applies an UPDATE's WHERE clause against a newly-committed row version instead of erroring | [027](Topics/027_MVCC.md) |
+| VACUUM | Postgres's background process that reclaims old row versions no longer visible to any active transaction | [027](Topics/027_MVCC.md) |
+| Table Bloat | Storage buildup from old row versions accumulating faster than VACUUM can reclaim them | [027](Topics/027_MVCC.md) |
+
 <!-- Rows added after each lesson -->

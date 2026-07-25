@@ -296,3 +296,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-24 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +30 days | Pending |
 | 2026-09-23 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +60 days | Pending |
 | 2026-10-23 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +90 days | Pending |
+
+| 2026-07-26 | 027 | MVCC | +1 day | Pending |
+| 2026-07-28 | 027 | MVCC | +3 days | Pending |
+| 2026-08-01 | 027 | MVCC | +7 days | Pending |
+| 2026-08-09 | 027 | MVCC | +15 days | Pending |
+| 2026-08-24 | 027 | MVCC | +30 days | Pending |
+| 2026-09-23 | 027 | MVCC | +60 days | Pending |
+| 2026-10-23 | 027 | MVCC | +90 days | Pending |
