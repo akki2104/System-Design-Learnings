@@ -778,3 +778,43 @@ Locking mechanism → Topic 026 (2PL, Deadlocks)
 Snapshot isolation impl → Topic 027 (MVCC)
 ```
 ---
+
+### [026] Concurrency Control: Locks, 2PL, Deadlocks
+```
+LOCK TYPES
+─────────────────────────────────────────────────
+Shared (S)    → reading, compatible with other S-locks
+Exclusive (X) → writing, incompatible with ANY other lock on that row
+
+PREVENTING LOST UPDATE — THE TRAP
+─────────────────────────────────────────────────
+WRONG: S-lock to read, upgrade to X to write
+  → both txns hold S concurrently, both read stale value,
+    then BOTH block on upgrade → lock-upgrade DEADLOCK
+RIGHT: X-lock AT READ TIME → SELECT ... FOR UPDATE
+  → 2nd txn's READ itself blocks until 1st commits (sees NEW value)
+
+TWO-PHASE LOCKING (2PL) — guarantees SERIALIZABILITY
+─────────────────────────────────────────────────
+Growing phase  → acquire only, release none
+Shrinking phase → once you release ONE lock, acquire NONE more
+Strict 2PL: hold ALL X-locks until commit/abort (not just shrinking
+   phase start) → avoids CASCADING ROLLBACK (dirty read → chain of rollbacks)
+
+DEADLOCKS
+─────────────────────────────────────────────────
+A holds Row1 wants Row2 | B holds Row2 wants Row1 → both wait forever
+Detection: wait-for graph, cycle → abort a VICTIM, app retries
+Prevention: fixed global lock-ACQUISITION ORDER → structurally impossible
+
+DETECTION vs PREVENTION — the tradeoff
+─────────────────────────────────────────────────
+Neither strategy CAUSES more/fewer deadlocks (timing-dependent, not
+strategy-dependent). Detection = flexible ordering, pays abort/retry
+cost when cycles form. Prevention = zero deadlock risk, but forces a
+fixed order → can over-conservatively block txns that'd never deadlock.
+
+COST: more locking = safer, less concurrent → MVCC (027) is the
+mostly-lock-free alternative
+```
+---

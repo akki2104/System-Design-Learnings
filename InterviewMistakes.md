@@ -15,6 +15,20 @@ Format:
 
 ---
 
+### 2026-07-25 — [Topic 026: Concurrency Control: Locks, 2PL, Deadlocks]
+- Mistake: Proposed preventing Lost Update via "acquire shared lock to read, then upgrade to exclusive to write"
+- Why it's wrong: Shared locks are compatible with each other — both transactions could hold a shared lock simultaneously and both read the same stale value. When both then try to upgrade to exclusive, neither can proceed (each blocked by the other's shared lock) — a lock-upgrade deadlock, not a clean fix.
+- Correct understanding: Acquire the EXCLUSIVE lock at read time (`SELECT ... FOR UPDATE`), not a shared lock. This blocks the second transaction's READ itself until the first commits, so it always sees the up-to-date value.
+- How to remember: "Lock what you'll write, from the moment you read it — don't start shared and hope to upgrade."
+- Recurs? 1
+
+### 2026-07-25 — [Topic 026: Concurrency Control: Locks, 2PL, Deadlocks]
+- Mistake: Said deadlock detection would "cause more deadlocks to occur" compared to prevention
+- Why it's wrong: Deadlocks occur (or don't) based purely on actual lock-request timing/ordering — independent of which resolution strategy the DB uses. Detection doesn't create deadlocks; it just doesn't stop them from forming, then resolves them reactively.
+- Correct understanding: Detection = reactive, more flexible lock ordering, pays an abort/retry cost when a cycle does form. Prevention = proactive, structurally zero deadlock risk, but forces a fixed global lock order that can over-conservatively block transactions that would never have actually deadlocked.
+- How to remember: The tradeoff is flexibility-vs-guaranteed-safety, not "which approach causes more deadlocks."
+- Recurs? 1
+
 ### 2026-07-22 — [Revision — Topic 025: Isolation Levels & Anomalies]
 - Mistake: Distinguished non-repeatable read from phantom read using the wrong axis ("without filter vs with filter, different count both times")
 - Why it's wrong: Both real examples actually use a filter (e.g., `WHERE id='X'` is a filter too) — filter-presence isn't the distinguishing feature.

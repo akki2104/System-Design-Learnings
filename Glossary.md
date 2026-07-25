@@ -145,4 +145,13 @@ Kept in alphabetical order.
 | Repeatable Read | Isolation level preventing dirty reads + non-repeatable reads via a consistent snapshot; MySQL/InnoDB's default | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
 | Serializable | The strictest isolation level; transactions behave as if run one after another sequentially, preventing all anomalies at the highest performance cost | [025](Topics/025_Isolation_Levels_and_Anomalies.md) |
 
+| Shared Lock (S-lock) | A read lock compatible with other shared locks — multiple transactions can hold it on the same row simultaneously | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Exclusive Lock (X-lock) | A write lock incompatible with any other lock (shared or exclusive) on the same row | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Two-Phase Locking (2PL) | A protocol with a growing phase (acquire-only) followed by a shrinking phase (release-only), guaranteeing serializability | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Strict 2PL | 2PL variant holding all exclusive locks until commit/abort, preventing cascading rollback | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Cascading Rollback | A chain reaction where rolling back one transaction forces every transaction that read its uncommitted data to also roll back | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Deadlock | Two or more transactions each hold a lock the other needs, so neither can proceed | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Wait-For Graph | A graph of which transaction is waiting on which; a cycle indicates a deadlock | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+| Deadlock Prevention (Lock Ordering) | Requiring all transactions to acquire locks in a fixed global order, making deadlocks structurally impossible | [026](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) |
+
 <!-- Rows added after each lesson -->

@@ -2,14 +2,14 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-07-22
+Last Updated    : 2026-07-25
 Current Module  : MODULE 2 — Data Storage Foundations
-Current Topic   : 026 Concurrency Control: Locks, 2PL, Deadlocks (Next)
+Current Topic   : 027 MVCC (Next)
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 25 (001-025) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
-Revisions Due   : Big revision session run 2026-07-22 (9 topics: 009,011,013,015,017,022,023,024,025). 7 passed/advanced, 2 RESET to +1 day due 2026-07-23: 013 (PERSISTENT ×3), 025 (1st revision, failed).
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. RESOLVED — 011 TLS auth guarantee, 017 health check distinction (both cleared 2026-07-22). New: 025 non-repeatable vs phantom axis, isolation-level decision framing. Minor: 009 missing "management" as 3rd DNS reason, 017 forgot L4/L7 basics. Long-standing: reads in write QPS formula.
-Pace            : ~48 topics behind Schedule.md as of 2026-07-22 (should be on ~073, on 025)
+Topics Completed: 26 (001-026) — MODULE 1 COMPLETE, MODULE 2 IN PROGRESS
+Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now overdue. Learner revises on own cadence.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. New: 026 shared-then-upgrade lock trap, detection-vs-prevention causality. Long-standing: reads in write QPS formula.
+Pace            : ~50 topics behind Schedule.md as of 2026-07-25 (should be on ~078, on 026)
 Overall Interview Readiness : 6%
 
 Learner Profile : Some exposure — knows terms like CDN, load balancer; not design-confident yet.
@@ -69,6 +69,8 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-07-20 | Topic 023 (B-Trees vs LSM-Trees) — Completed same session. Core misconception surfaced and corrected: believed SSTables were unsorted, so LSM reads couldn't binary search — corrected that SSTables ARE sorted (the name says so), and the real read cost is checking MULTIPLE sorted structures, not losing sorting within one. Q1 (B-Tree random writes) only half-answered initially, missing why LSM avoids the same cost. Q4 (LSM not "strictly better") was clean and correct on the first try. Confidence: 3/5. | Topic 024 — Transactions & ACID |
 | 2026-07-20 | Topic 024 (Transactions & ACID) — Completed same session. Clean 4/4 pass — correctly distinguished ACID Consistency from CAP Consistency (a common interview trap), correctly identified Durability as literally the WAL mechanism from Topic 020 rather than something new, and gave well-reasoned answer on when to skip transactions (analytics/logging). No mistakes logged. Confidence: 4-5/5. | Topic 025 — Isolation Levels & Anomalies |
 | 2026-07-20 | Topic 025 (Isolation Levels & Anomalies) — Completed same session. Correctly identified the minimum isolation level (Repeatable Read) for a non-repeatable-read scenario and correctly reasoned through why Read Committed doesn't prevent a double-spend race (named it as "both commit before either reads the other's write") — but initially named the anomaly by the isolation level that permits it instead of its actual name; corrected to Non-Repeatable Read and additionally taught Lost Update (the anomaly the bank-transfer race actually is) as a superset addition beyond the master guide's three named anomalies, since it directly completes the reasoning. Confidence: 4/5. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks |
+| 2026-07-22 | Revision session — 9 topics (009,011,013,015,017,022,023,024,025). 7 passed/advanced (011 and 017 RESOLVED after being persistent); 2 reset: 013 (gRPC browser blocker, PERSISTENT ×3, needs mnemonic drill not re-explanation), 025 (1st revision, failed both sub-questions). | Reset revisions (013,015,025) due 2026-07-23; then Topic 026 |
+| 2026-07-25 | Topic 026 (Concurrency Control: Locks, 2PL, Deadlocks) — Completed. Correctly explained Strict 2PL's cascading-rollback rationale and the flexibility-vs-safety shape of the detection-vs-prevention tradeoff. Corrected: proposed a shared-lock-then-upgrade sequence for preventing Lost Update, which actually risks a lock-upgrade deadlock (fix: exclusive lock at read time via SELECT...FOR UPDATE); also said deadlock detection "causes" more deadlocks than prevention (corrected — deadlock occurrence is timing-dependent, not strategy-dependent). Confidence: 4/5. | Topic 027 — MVCC |
 | 2026-07-22 | BIG REVISION SESSION — 9 overdue topics covered (009, 011, 013, 015, 017, 022, 023, 024, 025), following the new "cover the full topic, not just weak points" protocol. Two real wins: 011's TLS-guarantee gap and 017's health-check-mechanism gap both RESOLVED after persisting across 2 prior attempts. Two topics remain PERSISTENT and now need a different remediation approach: 013's gRPC browser blocker has produced a 3rd distinct wrong reason across 3 sessions — flagging for a mnemonic-first drill instead of more conceptual re-teaching. 015's short-polling latency-vs-waste mechanism failed a 3rd time with the same shallow answer — switched teaching method to a concrete numeric walkthrough (10,000 clients × poll-interval change) rather than re-explaining the concept abstractly; retest with a similarly concrete question next time. New minor gaps: 009 still missing "management" as DNS's 3rd hierarchy reason; 017 forgot the basic L4 vs L7 distinction; 025 (first revision) got both sub-questions wrong — non-repeatable-vs-phantom distinguishing axis, and the isolation-level decision framing was too vague — RESET to +1 day. 022, 023, 024 all passed clean. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks; retest 013/015 with new approaches next revision cycle |
 
 ---
@@ -102,7 +104,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 023 | B-Trees vs LSM-Trees | Completed | 2026-07-20 | 2026-07-20 | — | 1 | 2026-07-22 | 2026-07-25 | 4 | Medium | Revision pass clean — LSM read-stopping reasoning solid |
 | 024 | Transactions & ACID | Completed | 2026-07-20 | 2026-07-20 | — | 1 | 2026-07-22 | 2026-07-25 | 4-5 | Med-Hard | Revision pass clean — ACID-vs-CAP consistency and WAL rollback both solid |
 | 025 | Isolation Levels & Anomalies | Completed | 2026-07-20 | 2026-07-20 | — | 0 | 2026-07-22 (FAILED) | 2026-07-23 | 3 | Med-Hard | RESET (1st revision) — non-repeatable vs phantom distinguishing axis wrong; isolation-level decision framing too vague |
-| 026 | Concurrency Control: Locks, 2PL, Deadlocks | Not Started | — | — | — | 0 | — | — | — | — | — |
+| 026 | Concurrency Control: Locks, 2PL, Deadlocks | Completed | 2026-07-25 | 2026-07-25 | — | 0 | — | 2026-07-26 | 4 | Med-Hard | Proposed shared-then-upgrade locking for Lost Update (risks lock-upgrade deadlock; corrected to X-lock at read time); said detection "causes" more deadlocks than prevention (corrected — timing-dependent, not strategy-dependent) |
 | 027 | MVCC | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 028 | NoSQL Overview | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 029 | Wide-Column Stores | Not Started | — | — | — | 0 | — | — | — | — | — |

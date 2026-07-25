@@ -288,3 +288,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-07-23 | 013 | RPC & gRPC | +1 day (reset, 3rd time) | Pending — PERSISTENT, needs mnemonic drill |
 | 2026-07-23 | 015 | WebSockets, SSE, Polling, Long Polling | +1 day (reset, 3rd time) | Pending — PERSISTENT, numeric approach tried |
 | 2026-07-23 | 025 | Isolation Levels & Anomalies | +1 day (reset) | Pending — first revision failed |
+
+| 2026-07-26 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +1 day | Pending |
+| 2026-07-28 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +3 days | Pending |
+| 2026-08-01 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +7 days | Pending |
+| 2026-08-09 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +15 days | Pending |
+| 2026-08-24 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +30 days | Pending |
+| 2026-09-23 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +60 days | Pending |
+| 2026-10-23 | 026 | Concurrency Control: Locks, 2PL, Deadlocks | +90 days | Pending |
