@@ -174,4 +174,10 @@ Kept in alphabetical order.
 | Query-Driven Data Modeling | Designing one denormalized table per access pattern instead of normalizing and relying on joins | [029](Topics/029_Wide_Column_Stores.md) |
 | Hot Partition | A partition receiving disproportionate traffic due to a low-cardinality or skewed partition key, overwhelming its replica set | [029](Topics/029_Wide_Column_Stores.md) |
 
+| BSON | Binary JSON — MongoDB's on-disk document format | [030](Topics/030_Document_Stores.md) |
+| Embedding | Storing related child data directly inside the parent document — best for bounded, always-read-together data | [030](Topics/030_Document_Stores.md) |
+| Referencing | Storing related data in a separate document, linked by ID — best for large/unbounded/independently-queried data | [030](Topics/030_Document_Stores.md) |
+| Replica Set (MongoDB) | A leader-follower group (one primary, several secondaries) — NOT leaderless, unlike Cassandra | [030](Topics/030_Document_Stores.md) |
+| Shard Key (MongoDB) | The field determining which shard holds a document; conceptually equivalent to a Wide-Column partition key | [030](Topics/030_Document_Stores.md) |
+
 <!-- Rows added after each lesson -->

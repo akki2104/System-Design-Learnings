@@ -945,9 +945,9 @@ Doesn't fit: ad-hoc queries, cross-entity transactions/joins, strong
 ```
 ---
 
-### [030] Document Stores (MongoDB) — 🟡 SKIM
+### [030] Document Stores (MongoDB)
 ```
-BUILDS ON 028's schema-on-read tradeoff. Two NEW angles:
+BUILDS ON 028's schema-on-read tradeoff. Key differentiators:
 
 NESTING — documents support arrays/sub-documents; Wide-Column stays FLAT
   → fits naturally hierarchical entities (product+variants, nested prefs)
@@ -957,13 +957,25 @@ FLEXIBLE SECONDARY INDEXING — index ANY field, unlike Wide-Column's
   only MOSTLY known upfront (not rigidly fixed) — costs some write
   throughput vs a leaderless Wide-Column store.
 
-Sharding uses a shard key (same concept, same hot-shard risk as 029).
+EMBED vs REFERENCE — the core MongoDB modeling decision
+─────────────────────────────────────────────────
+Embed     → child always read WITH parent, BOUNDED size (addresses)
+Reference → child LARGE/unbounded/independently queried (orders)
+            → needs 2nd query ($lookup), not a real join
+
+REPLICATION — MongoDB is NOT leaderless (unlike Cassandra!)
+─────────────────────────────────────────────────
+Replica set = ONE primary (all writes) + secondaries (replicate,
+  read-serving). Primary dies → election. Still single-writer at
+  any moment — caps write throughput below a leaderless Wide-Column store.
+Sharding (shard key) = horizontal scale, same hot-shard risk as 029.
 
 QUICK COMPARISON
 ─────────────────────────────────────────────────
               Relational      Document         Wide-Column
 Structure     flat/normalized  nested/flexible  flat/sparse
 Query flex    High (joins)     Medium (2nd idx) Low (PK-first only)
-Write ceiling Lowest (1 leader) Medium          Highest (leaderless)
+Write ceiling Lowest (1 leader) Medium(1/shard) Highest (leaderless)
+Replication   Leader-follower  Leader-follower  Leaderless
 ```
 ---

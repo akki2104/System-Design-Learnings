@@ -320,3 +320,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-25 | 029 | Wide-Column Stores | +30 days | Pending |
 | 2026-09-24 | 029 | Wide-Column Stores | +60 days | Pending |
 | 2026-10-24 | 029 | Wide-Column Stores | +90 days | Pending |
+
+| 2026-07-27 | 030 | Document Stores | +1 day | Pending |
+| 2026-07-29 | 030 | Document Stores | +3 days | Pending |
+| 2026-08-02 | 030 | Document Stores | +7 days | Pending |
+| 2026-08-10 | 030 | Document Stores | +15 days | Pending |
+| 2026-08-25 | 030 | Document Stores | +30 days | Pending |
+| 2026-09-24 | 030 | Document Stores | +60 days | Pending |
+| 2026-10-24 | 030 | Document Stores | +90 days | Pending |
