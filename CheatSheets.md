@@ -944,3 +944,26 @@ Doesn't fit: ad-hoc queries, cross-entity transactions/joins, strong
              consistency required
 ```
 ---
+
+### [030] Document Stores (MongoDB) — 🟡 SKIM
+```
+BUILDS ON 028's schema-on-read tradeoff. Two NEW angles:
+
+NESTING — documents support arrays/sub-documents; Wide-Column stays FLAT
+  → fits naturally hierarchical entities (product+variants, nested prefs)
+
+FLEXIBLE SECONDARY INDEXING — index ANY field, unlike Wide-Column's
+  rigid partition-key-first-only access. Fits when query patterns are
+  only MOSTLY known upfront (not rigidly fixed) — costs some write
+  throughput vs a leaderless Wide-Column store.
+
+Sharding uses a shard key (same concept, same hot-shard risk as 029).
+
+QUICK COMPARISON
+─────────────────────────────────────────────────
+              Relational      Document         Wide-Column
+Structure     flat/normalized  nested/flexible  flat/sparse
+Query flex    High (joins)     Medium (2nd idx) Low (PK-first only)
+Write ceiling Lowest (1 leader) Medium          Highest (leaderless)
+```
+---
