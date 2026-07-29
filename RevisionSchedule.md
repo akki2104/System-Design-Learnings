@@ -312,3 +312,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-25 | 028 | NoSQL Overview | +30 days | Pending |
 | 2026-09-24 | 028 | NoSQL Overview | +60 days | Pending |
 | 2026-10-24 | 028 | NoSQL Overview | +90 days | Pending |
+
+| 2026-07-27 | 029 | Wide-Column Stores | +1 day | Pending |
+| 2026-07-29 | 029 | Wide-Column Stores | +3 days | Pending |
+| 2026-08-02 | 029 | Wide-Column Stores | +7 days | Pending |
+| 2026-08-10 | 029 | Wide-Column Stores | +15 days | Pending |
+| 2026-08-25 | 029 | Wide-Column Stores | +30 days | Pending |
+| 2026-09-24 | 029 | Wide-Column Stores | +60 days | Pending |
+| 2026-10-24 | 029 | Wide-Column Stores | +90 days | Pending |

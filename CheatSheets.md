@@ -902,3 +902,45 @@ Not an upgrade — a DIFFERENT TRADEOFF. Gains availability + write
 throughput by GIVING UP strong consistency + joins. Name the cost.
 ```
 ---
+
+### [029] Wide-Column Stores
+```
+DATA MODEL
+─────────────────────────────────────────────────
+Partition Key   → WHICH node(s)/replica set holds this data
+Clustering Key  → ORDER of rows within a partition
+Columns         → sparse, different rows can have different columns
+
+WRITE THROUGHPUT = TWO COMPOUNDING MECHANISMS
+─────────────────────────────────────────────────
+1. LSM-Tree engine (023) per node    → fast sequential writes locally
+2. Leaderless replication (cluster)  → ANY replica of THAT partition's
+                                        replica set accepts writes
+                                        (NOT "any node in the cluster")
+Lose #1 → random writes, slow. Lose #2 → single-primary bottleneck,
+          same outage risk as master-slave relational setups.
+
+TUNABLE CONSISTENCY (Cassandra) — preview of Quorums (050)
+─────────────────────────────────────────────────
+ONE → fast, weak | QUORUM → majority, balanced | ALL → strong, slow
+
+QUERY-DRIVEN DATA MODELING (vs Relational's model-data-first)
+─────────────────────────────────────────────────
+Relational: normalize data → joins handle any query
+Wide-Column: model QUERIES first → 1 denormalized table PER access
+             pattern, app keeps them in sync (no joins exist)
+WHY 1 table can't serve 2 patterns: partition key = physical location.
+Wrong partition key for a query → scan EVERY partition (unbounded, slow)
+
+HOT PARTITIONS (preview of Shard Key, 043)
+─────────────────────────────────────────────────
+Low-cardinality/skewed partition key → one replica set overwhelmed,
+                                          others idle
+
+DECISION
+─────────────────────────────────────────────────
+Fits: known/fixed access patterns, massive writes, horizontal scale
+Doesn't fit: ad-hoc queries, cross-entity transactions/joins, strong
+             consistency required
+```
+---

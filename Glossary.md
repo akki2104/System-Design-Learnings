@@ -168,4 +168,10 @@ Kept in alphabetical order.
 | Schema-on-Write | Structure is enforced at the moment data is written (relational default) | [028](Topics/028_NoSQL_Overview.md) |
 | Schema-on-Read | No enforced structure at write time — structure is interpreted by the application when reading; records in the same collection can differ | [028](Topics/028_NoSQL_Overview.md) |
 
+| Partition Key | The field determining which node(s)/replica set physically hold a Wide-Column row's data | [029](Topics/029_Wide_Column_Stores.md) |
+| Clustering Key (Sort Key) | The field determining the order of rows within a partition | [029](Topics/029_Wide_Column_Stores.md) |
+| Tunable Consistency | Choosing per-query how many replicas must acknowledge a read/write (ONE/QUORUM/ALL in Cassandra) | [029](Topics/029_Wide_Column_Stores.md) |
+| Query-Driven Data Modeling | Designing one denormalized table per access pattern instead of normalizing and relying on joins | [029](Topics/029_Wide_Column_Stores.md) |
+| Hot Partition | A partition receiving disproportionate traffic due to a low-cardinality or skewed partition key, overwhelming its replica set | [029](Topics/029_Wide_Column_Stores.md) |
+
 <!-- Rows added after each lesson -->
