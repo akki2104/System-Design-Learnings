@@ -328,3 +328,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-25 | 030 | Document Stores | +30 days | Pending |
 | 2026-09-24 | 030 | Document Stores | +60 days | Pending |
 | 2026-10-24 | 030 | Document Stores | +90 days | Pending |
+
+| 2026-07-31 | 031 | Choosing a Database | +1 day | Pending |
+| 2026-08-02 | 031 | Choosing a Database | +3 days | Pending |
+| 2026-08-06 | 031 | Choosing a Database | +7 days | Pending |
+| 2026-08-14 | 031 | Choosing a Database | +15 days | Pending |
+| 2026-08-29 | 031 | Choosing a Database | +30 days | Pending |
+| 2026-09-28 | 031 | Choosing a Database | +60 days | Pending |
+| 2026-10-28 | 031 | Choosing a Database | +90 days | Pending |

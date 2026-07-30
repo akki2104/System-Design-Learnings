@@ -180,4 +180,6 @@ Kept in alphabetical order.
 | Replica Set (MongoDB) | A leader-follower group (one primary, several secondaries) — NOT leaderless, unlike Cassandra | [030](Topics/030_Document_Stores.md) |
 | Shard Key (MongoDB) | The field determining which shard holds a document; conceptually equivalent to a Wide-Column partition key | [030](Topics/030_Document_Stores.md) |
 
+| Polyglot Persistence | Using multiple databases in one system, each solving a different sub-problem, instead of one database for everything | [031](Topics/031_Choosing_a_Database.md) |
+
 <!-- Rows added after each lesson -->

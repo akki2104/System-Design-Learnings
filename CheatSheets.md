@@ -979,3 +979,48 @@ Write ceiling Lowest (1 leader) Medium(1/shard) Highest (leaderless)
 Replication   Leader-follower  Leader-follower  Leaderless
 ```
 ---
+
+### [031] Choosing a Database
+```
+THE FRAMEWORK — 6 QUESTIONS, IN ORDER
+─────────────────────────────────────────────────
+1. Access pattern: known/fixed vs ad-hoc/evolving?
+2. Read:write ratio? (003)
+3. Relationships/joins needed?
+4. Consistency: strong vs eventual tolerable?
+5. Schema shape: flat / nested / wide-sparse?
+6. Scale ceiling: will 1 machine ever be insufficient?
+
+DECISION TREE
+─────────────────────────────────────────────────
+Joins+strong consistency+moderate scale     → Relational (Postgres)
+Massive writes+known pattern+eventual OK    → Wide-Column (Cassandra)
+Nested/evolving+mostly-known queries        → Document (MongoDB)
+Simple ultra-fast key lookups                → Key-Value (Redis)
+Relationship traversal IS the query          → Graph (Neo4j)
+
+POLYGLOT PERSISTENCE — real systems use MULTIPLE DBs
+─────────────────────────────────────────────────
+e.g. e-commerce: Postgres(orders) + Redis(cart) +
+     Elasticsearch(search) + S3(images)
+TRAP: knowing the principle ≠ applying it under pressure —
+      instinct can still default to "1 DB for everything"
+
+JUSTIFICATION FORMAT (extends 005)
+─────────────────────────────────────────────────
+"For [data/pattern], I'll use [X] because [property].
+ Considered [Y], rejected because [Y's cost]. Matters because [impact]."
+
+COMMON TRAP: familiarity/hype over requirement-match
+─────────────────────────────────────────────────
+"MongoDB because flexible" when need = write throughput (wrong)
+"Cassandra because scales" when need = joins (wrong)
+→ ALWAYS name the specific property needed BEFORE naming a DB
+
+BEYOND DB CHOICE: some systems' hardest problem isn't storage
+─────────────────────────────────────────────────
+e.g. collaborative editor → real-time sync (WebSockets, 015) +
+     conflict resolution (CRDTs/OT, 057) — DB just persists
+     the already-resolved state. Flag this explicitly.
+```
+---

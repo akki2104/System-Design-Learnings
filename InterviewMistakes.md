@@ -15,6 +15,15 @@ Format:
 
 ---
 
+### 2026-07-30 — [Topic 031: Choosing a Database]
+- Mistake: In a practice scenario (collaborative document editor), used a single Document store (MongoDB) to solve both "store document content" and "search by title/content" — right after the lesson explicitly taught polyglot persistence as the fix for exactly this pattern.
+- Why it's wrong: Full-text, relevance-ranked search at scale is a different problem than structured content storage — a document store's secondary indexes aren't built for it. This is the same category error as Topic 028's "write-heavy → MongoDB" trap, just recurring in a new context: defaulting to one familiar database for multiple distinct sub-problems.
+- Correct understanding: Document store (MongoDB) for content/metadata; dedicated search engine (Elasticsearch) for full-text search — polyglot persistence applied, not just stated as a principle.
+- How to remember: Knowing a principle and applying it under pressure are different skills — when a scenario has two distinct query shapes (structured lookup vs. full-text search), that's the signal to reach for two different stores, not one.
+- Recurs? 1 (related in spirit to the Topic 028 write-heavy/MongoDB category error, but a distinct instance — different underlying gap: single-store-for-everything, not throughput-vs-flexibility conflation)
+
+---
+
 ### 2026-07-25 — [Topic 026: Concurrency Control: Locks, 2PL, Deadlocks]
 - Mistake: Proposed preventing Lost Update via "acquire shared lock to read, then upgrade to exclusive to write"
 - Why it's wrong: Shared locks are compatible with each other — both transactions could hold a shared lock simultaneously and both read the same stale value. When both then try to upgrade to exclusive, neither can proceed (each blocked by the other's shared lock) — a lock-upgrade deadlock, not a clean fix.
