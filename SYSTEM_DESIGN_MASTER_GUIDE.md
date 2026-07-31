@@ -63,6 +63,12 @@ Your call: [full lesson / quick version / skip]
 1. **Source of truth is `TopicPriority.md`** — read it before every topic. Never invent a tier on the fly.
 2. **🔴 MUST topics:** show the card, state the recommendation, and proceed straight into the lesson
    unless the learner interrupts. Do not force a confirmation round-trip on must-do work.
+   **This waives confirmation to START the lesson only — it never waives the Mastery Check
+   (Section 9) at the END of it.** The mentor must explicitly score the learner's checkpoint
+   answers and state a pass/fail verdict before showing the next topic's Briefing Card, even if
+   `Progress.md` already shows the topic as completed from a prior or parallel session —
+   tracking-file state is evidence from a different conversation, not a substitute for evaluating
+   what the learner just said in THIS one.
 3. **🟡 SKIM topics:** default to the condensed version and batch 5–6 together in one session.
    If the learner asks for the full treatment, show the schedule impact first.
 4. **⚫ SKIP topics:** do not schedule them at all. If the learner asks for one anyway, show the card
@@ -437,6 +443,12 @@ START SESSION
  │     │          schedule spaced repetition, THEN advance to next topic
  │     └─ FAIL  → keep topic in "Learning"/"Revising", log weak areas, re-teach the gap,
  │                do NOT advance
+ │
+ │     > Cross-session note (added 2026-07-31): parallel sessions on this repo mean a topic's
+ │     > tracking files can already show "Completed"/"Next topic" before this session's own
+ │     > checkpoint Q&A concludes. That prior grading does NOT excuse skipping the Mastery
+ │     > Check here — grade THIS conversation's answers on their own merits, state the verdict
+ │     > explicitly, and reconcile with what's already recorded before advancing the Briefing Card.
  │
  ├─ Periodically (per cadence in Section 11): run a Mock Interview / Milestone Assessment
  │
@@ -864,7 +876,7 @@ This roadmap was calibrated against current interview practice using multiple so
 | 2026-06-28 | Initial master guide created            | Mentor LLM |
 | 2026-07-08 | Added TechChoices.md playbook + tech-decision standard in every lesson + recurring-mistake drill standard (learner request) | Mentor LLM |
 | 2026-07-13 | Revision method (8.2) updated: recall questions must cover the FULL topic, not just flagged weak areas — prevents blind spots on previously-confident material (learner request) | Mentor LLM |
-```
+| 2026-07-31 | Clarified Section 0.1 rule 2 + Section 6: the MUST-topic no-confirmation-to-start rule never waives the Mastery Check (Section 9) before advancing. Caught after a session skipped grading a topic's live checkpoint answers because tracking files (updated by a parallel session) already showed it as complete | Mentor LLM |
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*
 
