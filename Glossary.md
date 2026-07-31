@@ -188,5 +188,8 @@ Kept in alphabetical order.
 | Cache Stampede | Many concurrent requests miss simultaneously when a hot key expires, all hammering the DB at once | [032](Topics/032_Caching_Fundamentals.md) |
 | Read-Your-Own-Write | A consistency requirement where a user must immediately see the effect of their own write — a bad caching candidate signal | [032](Topics/032_Caching_Fundamentals.md) |
 | Locality of Reference | Temporal (recently-accessed data gets re-accessed soon) + spatial (nearby data gets accessed together) — the mechanism behind the 80/20 rule that makes caching work | [032](Topics/032_Caching_Fundamentals.md) |
+| Cache-Aside | App-managed pattern: miss reads DB and populates cache; write goes to DB and deletes (invalidates) the cache entry | [033](Topics/033_Caching_Patterns.md) |
+| Write-Through | Writes go to cache and DB synchronously, acknowledged only after both succeed — always fresh, costs double write latency | [033](Topics/033_Caching_Patterns.md) |
+| Write-Behind (Write-Back) | Writes go to cache only, acknowledged immediately, DB updated asynchronously/batched later — fastest writes, but unflushed writes are lost on a cache crash | [033](Topics/033_Caching_Patterns.md) |
 
 <!-- Rows added after each lesson -->

@@ -344,3 +344,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-30 | 032 | Caching Fundamentals | +30 days | Pending |
 | 2026-09-29 | 032 | Caching Fundamentals | +60 days | Pending |
 | 2026-10-29 | 032 | Caching Fundamentals | +90 days | Pending |
+
+| 2026-08-01 | 033 | Caching Patterns | +1 day | Pending |
+| 2026-08-03 | 033 | Caching Patterns | +3 days | Pending |
+| 2026-08-07 | 033 | Caching Patterns | +7 days | Pending |
+| 2026-08-15 | 033 | Caching Patterns | +15 days | Pending |
+| 2026-08-30 | 033 | Caching Patterns | +30 days | Pending |
+| 2026-09-29 | 033 | Caching Patterns | +60 days | Pending |
+| 2026-10-29 | 033 | Caching Patterns | +90 days | Pending |

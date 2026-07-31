@@ -20,7 +20,16 @@ Format:
 - Why it's wrong: The same cached value can be perfectly acceptable for a display/browsing read and unacceptable for a transactional read (e.g., a price shown on a product page vs. the price used to actually charge the customer at checkout) — acceptability is a function of use, not just the data. Separately, "don't cache the cart" has two precise, nameable reasons (≈1:1 read:write ratio, and read-your-own-write consistency requirement) rather than one vague UX complaint.
 - Correct understanding: Split staleness tolerance by read type (display vs transactional) before answering "is this acceptable"; justify caching decisions by naming which of the framework's specific criteria (read:write ratio, staleness tolerance, consistency requirement) a data type passes or fails.
 - How to remember: "Browsing can wait, checkout can't" — same stale value, different acceptability by use. And always name the failed criterion, not just the vibe.
-- Recurs? 1
+- Recurs? 2 — **PERSISTENT.** Second instance same day (2026-07-31, separate session): given a TTL=60s price-cache trap question (view at t=30s, checkout at t=45s), correctly protected the transactional read (checkout must bypass cache) independently, but the "why is t=30s fine" half of the same display-vs-transactional distinction had to be supplied rather than self-produced. The risk-avoidance instinct is solid; originating the *symmetric* "and here's why the other side is fine" reasoning is the actual gap. Needs a 60-second targeted drill at the start of the next session per the recurring-mistake standard.
+
+---
+
+### 2026-07-31 — [Topic 033: Caching Patterns]
+- Mistake: First stated the cache-aside write path as "write directly to db" with no mention of invalidating the cache entry.
+- Why it's wrong: If a write only touches the DB and never touches the cache, the next read is a cache HIT returning the now-stale value — until the TTL happens to expire. The entire reason cache-aside does anything on write (rather than ignoring the cache) is to force the next read to miss and repopulate from the fresh DB value. This also silently contradicted the learner's own (correct) Q2 answer about why you'd delete rather than overwrite the entry — which only makes sense if a write touches the cache at all.
+- Correct understanding: Cache-aside write = write to DB, THEN delete the cache entry for that key. Self-corrected immediately and completely when prompted to reconcile with the Q2 answer.
+- How to remember: "Write touches two places: the DB gets the new value, the cache just gets emptied."
+- Recurs? 1 (self-corrected same session, first instance)
 
 ---
 

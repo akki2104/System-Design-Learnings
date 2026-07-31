@@ -72,6 +72,21 @@ Example — Zomato's `orders` and `restaurants`:
 
 ---
 
+## Caching Patterns — Which One, and When (Topic 033)
+
+| Pattern | Pick it when | Do NOT pick it when | Real users |
+|---|---|---|---|
+| **Cache-Aside** (lazy loading) | Default for read-heavy data; DB stays unambiguous source of truth; simple to reason about | You need zero read-after-write staleness window | Product catalogs, user profiles |
+| **Write-Through** | Read-after-write freshness matters; can tolerate slightly higher write latency | Write volume is very high and every extra ms of write latency compounds | User settings/preferences |
+| **Write-Behind** (write-back) | Write volume is very high, DB write throughput is the bottleneck, some data loss on a rare crash is acceptable | Losing unflushed writes would be a real problem (money, inventory) | View counters, analytics/activity events |
+
+**Interview-ready "why not" phrases:**
+- *"Not write-behind for inventory decrements feeding checkout — losing unflushed writes on a cache crash could cause overselling."*
+- *"Not write-through for the view counter — doubling write latency on every view for data that's fine to lose a few seconds of isn't worth it."*
+- *"Cache-aside stays the default for the catalog — the DB remains authoritative and a brief miss-then-repopulate window is fine."*
+
+---
+
 ## Sections added by later topics
 
 <!-- Topic 008 will add: TCP vs UDP decision box -->

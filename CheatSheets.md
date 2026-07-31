@@ -1067,4 +1067,32 @@ WHEN TO CACHE
 Read-skewed + hot-set-small + staleness OK + DB is bottleneck
 → else: don't add complexity for no measured win
 ```
+
+### [033] Caching Patterns
+```
+CACHE-ASIDE (lazy loading) — the default
+─────────────────────────────────────────────────
+Read miss → app queries DB → app populates cache
+Write     → app writes DB → app DELETES cache entry (not overwrite —
+            avoids a race). Skip the delete and the next read is a HIT
+            returning the stale value until TTL.
+DB always source of truth. No data-loss risk.
+
+WRITE-THROUGH
+─────────────────────────────────────────────────
+Write → cache AND DB synchronously, ack after both
+Always fresh, but 2x write latency. No data-loss risk.
+
+WRITE-BEHIND (write-back)
+─────────────────────────────────────────────────
+Write → cache only, ack immediately, DB flushed async/batched
+Fastest writes, reduced DB load, but DATA LOSS if cache crashes
+before flush.
+
+PICK BY DATA TYPE, NOT ONE SYSTEM-WIDE CHOICE
+─────────────────────────────────────────────────
+Product catalog         → cache-aside
+User settings/prefs     → write-through (needs instant read-after-write)
+View counters/analytics → write-behind (loss-tolerant, write-heavy)
+```
 ---

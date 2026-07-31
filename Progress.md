@@ -4,11 +4,11 @@
 ```
 Last Updated    : 2026-07-31
 Current Module  : MODULE 3 — Caching
-Current Topic   : 033 Caching Patterns (Next) — 🔴 MUST, 45 min, Medium
+Current Topic   : 034 Eviction Policies (Next) — 🟡 SKIM, 8 min, Easy
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 32 (001-032) — MODULE 1 & 2 COMPLETE, MODULE 3 STARTED
+Topics Completed: 33 (001-033) — MODULE 1 & 2 COMPLETE, MODULE 3 IN PROGRESS
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. New: 032 display-vs-transactional staleness acceptability + naming specific framework criteria over UX vibes. 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness: protects the risky side (checkout) reliably but needs the symmetric "why the other side is fine" reasoning supplied rather than self-produced. New: 033 first-pass cache-aside write path omitted cache invalidation (self-corrected same session when reconciled against own Q2 answer). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula.
 
 ── COMPRESSED TRACK v2 (adopted 2026-07-25) ────────────────────────────
 Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days)
