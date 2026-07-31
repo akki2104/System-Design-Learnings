@@ -336,3 +336,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-29 | 031 | Choosing a Database | +30 days | Pending |
 | 2026-09-28 | 031 | Choosing a Database | +60 days | Pending |
 | 2026-10-28 | 031 | Choosing a Database | +90 days | Pending |
+
+| 2026-08-01 | 032 | Caching Fundamentals | +1 day | Pending |
+| 2026-08-03 | 032 | Caching Fundamentals | +3 days | Pending |
+| 2026-08-07 | 032 | Caching Fundamentals | +7 days | Pending |
+| 2026-08-15 | 032 | Caching Fundamentals | +15 days | Pending |
+| 2026-08-30 | 032 | Caching Fundamentals | +30 days | Pending |
+| 2026-09-29 | 032 | Caching Fundamentals | +60 days | Pending |
+| 2026-10-29 | 032 | Caching Fundamentals | +90 days | Pending |

@@ -182,4 +182,10 @@ Kept in alphabetical order.
 
 | Polyglot Persistence | Using multiple databases in one system, each solving a different sub-problem, instead of one database for everything | [031](Topics/031_Choosing_a_Database.md) |
 
+| Cache | A smaller, faster storage layer in front of a slower source of truth, holding hot data for quick reads | [032](Topics/032_Caching_Fundamentals.md) |
+| Cache Hit / Miss | Hit: data found in cache (fast path). Miss: data not found (must query the slower source, then usually populate the cache) | [032](Topics/032_Caching_Fundamentals.md) |
+| Hit Ratio | hits / (hits + misses); the primary measure of how much read load a cache is absorbing | [032](Topics/032_Caching_Fundamentals.md) |
+| Cache Stampede | Many concurrent requests miss simultaneously when a hot key expires, all hammering the DB at once | [032](Topics/032_Caching_Fundamentals.md) |
+| Read-Your-Own-Write | A consistency requirement where a user must immediately see the effect of their own write — a bad caching candidate signal | [032](Topics/032_Caching_Fundamentals.md) |
+
 <!-- Rows added after each lesson -->

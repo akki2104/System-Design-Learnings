@@ -1021,6 +1021,45 @@ BEYOND DB CHOICE: some systems' hardest problem isn't storage
 ─────────────────────────────────────────────────
 e.g. collaborative editor → real-time sync (WebSockets, 015) +
      conflict resolution (CRDTs/OT, 057) — DB just persists
-     the already-resolved state. Flag this explicitly.
+```
+
+### [032] Caching Fundamentals
+```
+WHAT: fast, small copy of hot data in front of a slower source
+      of truth. Bet: 80/20 rule (hot set << total data).
+
+HIT RATIO = hits / (hits + misses) — THE key cache metric
+
+WHY A CACHE HIT BEATS EVEN A GOOD INDEXED QUERY
+─────────────────────────────────────────────────
+NOT just "RAM > disk" (buffer pool is already RAM!)
+Real reason: DB query still pays parsing + locking +
+MVCC visibility checks (027) + WAL bookkeeping.
+Cache = hashmap lookup by key. Skips all of it.
+
+INVALIDATION — the actual hard problem
+─────────────────────────────────────────────────
+TTL: auto-expire after N sec. Bounds staleness, doesn't kill it.
+Explicit invalidation: delete/update cache on write. Immediate,
+  but every write path must remember to do it.
+DISPLAY read (browsing) ≠ TRANSACTIONAL read (checkout) —
+  same stale data can be fine for one, unacceptable for other.
+
+GOOD CANDIDATES                BAD CANDIDATES
+─────────────────────────────────────────────────
+Read-heavy/write-light         Write-heavy
+Expensive to compute           Needs read-your-own-write
+Tolerates staleness            Huge + rarely accessed
+→ cart fails 2 bad criteria at once (≈1:1 R:W + RYOW)
+
+CACHE STAMPEDE (thundering herd)
+─────────────────────────────────────────────────
+Hot key expires → 1000s of concurrent misses → hammer DB at once
+Fix: jittered TTLs, or lock so only 1 request refills
+
+WHEN TO CACHE
+─────────────────────────────────────────────────
+Read-skewed + hot-set-small + staleness OK + DB is bottleneck
+→ else: don't add complexity for no measured win
 ```
 ---

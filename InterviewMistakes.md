@@ -15,6 +15,15 @@ Format:
 
 ---
 
+### 2026-07-31 — [Topic 032: Caching Fundamentals]
+- Mistake: Treated "is 30-second staleness acceptable" as one fixed yes/no property of the cached data itself, rather than depending on where the read is used; also justified "don't cache the cart" primarily via UX language ("frustration") instead of naming the specific framework criteria it fails.
+- Why it's wrong: The same cached value can be perfectly acceptable for a display/browsing read and unacceptable for a transactional read (e.g., a price shown on a product page vs. the price used to actually charge the customer at checkout) — acceptability is a function of use, not just the data. Separately, "don't cache the cart" has two precise, nameable reasons (≈1:1 read:write ratio, and read-your-own-write consistency requirement) rather than one vague UX complaint.
+- Correct understanding: Split staleness tolerance by read type (display vs transactional) before answering "is this acceptable"; justify caching decisions by naming which of the framework's specific criteria (read:write ratio, staleness tolerance, consistency requirement) a data type passes or fails.
+- How to remember: "Browsing can wait, checkout can't" — same stale value, different acceptability by use. And always name the failed criterion, not just the vibe.
+- Recurs? 1
+
+---
+
 ### 2026-07-30 — [Topic 031: Choosing a Database]
 - Mistake: In a practice scenario (collaborative document editor), used a single Document store (MongoDB) to solve both "store document content" and "search by title/content" — right after the lesson explicitly taught polyglot persistence as the fix for exactly this pattern.
 - Why it's wrong: Full-text, relevance-ranked search at scale is a different problem than structured content storage — a document store's secondary indexes aren't built for it. This is the same category error as Topic 028's "write-heavy → MongoDB" trap, just recurring in a new context: defaulting to one familiar database for multiple distinct sub-problems.
