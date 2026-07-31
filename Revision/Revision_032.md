@@ -62,9 +62,42 @@ At t=30s (browsing/display read): showing the stale cached price is generally ac
 
 ---
 
+## Q6. What are the two forms of locality of reference, and why do they explain why caching works at all?
+
+<details>
+<summary>Answer</summary>
+
+Temporal locality — data accessed recently is likely to be accessed again soon (a trending tweet gets re-read heavily right after posting). Spatial locality — data near recently-accessed data tends to get accessed together (reading a product usually means its reviews/images/price get read next). Together they explain the ~80/20 rule: a small hot set accounts for most reads, so caching just that hot set captures most of the benefit.
+
+</details>
+
+---
+
+## Q7. List the caching layers from closest to the user to closest to the source of truth.
+
+<details>
+<summary>Answer</summary>
+
+Browser cache → CDN/edge → reverse proxy/API gateway → application layer (in-process) → distributed cache (Redis/Memcached) → DB buffer pool → disk. The closer to the user, the faster and cheaper, but the harder to keep consistent.
+
+</details>
+
+---
+
+## Q8. Given a 20ms DB round-trip and a 1ms cache hit, what's the average latency at an 80% hit rate? Show the math.
+
+<details>
+<summary>Answer</summary>
+
+avg = (hit_rate × hit_cost) + (miss_rate × miss_cost) = (0.8 × 1ms) + (0.2 × 20ms) = 0.8 + 4.0 = 4.8ms.
+
+</details>
+
+---
+
 ## 30-Second Elevator Pitch
 
-> A cache is a fast, small copy of hot data sitting in front of a slower source of truth, justified by the 80/20 rule and measured by hit ratio. A cache hit beats even a well-indexed DB query because it skips per-query DB overhead — parsing, locking, MVCC checks, WAL bookkeeping — not just because RAM is faster than disk. The real cost of caching is invalidation: staleness is the price of speed, managed via TTL or explicit invalidation. Good candidates are read-heavy and staleness-tolerant; bad candidates are write-heavy or require read-your-own-write consistency — a shopping cart fails both at once. The same data can be acceptable-stale for display but unacceptable-stale for a transaction. Cache stampede is the signature failure mode when a hot key expires under load.
+> A cache is a fast, small, disposable copy of hot data sitting in front of a slower source of truth, justified by locality of reference (temporal + spatial) and the resulting 80/20 rule, and measured by hit ratio. Caching exists at every layer — browser, CDN, reverse proxy, app-local, distributed cache, DB buffer pool — and naming the right layer is part of the skill. A cache hit beats even a well-indexed DB query because it skips per-query DB overhead — parsing, locking, MVCC checks, WAL bookkeeping — not just because RAM is faster than disk. The real cost of caching is invalidation: staleness is the price of speed, managed via TTL or explicit invalidation. Good candidates are read-heavy and staleness-tolerant; bad candidates are write-heavy or require read-your-own-write consistency — a shopping cart fails both at once. The same data can be acceptable-stale for display but unacceptable-stale for a transaction. Cache stampede is the signature failure mode when a hot key expires under load.
 
 ---
 

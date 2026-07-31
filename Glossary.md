@@ -187,5 +187,6 @@ Kept in alphabetical order.
 | Hit Ratio | hits / (hits + misses); the primary measure of how much read load a cache is absorbing | [032](Topics/032_Caching_Fundamentals.md) |
 | Cache Stampede | Many concurrent requests miss simultaneously when a hot key expires, all hammering the DB at once | [032](Topics/032_Caching_Fundamentals.md) |
 | Read-Your-Own-Write | A consistency requirement where a user must immediately see the effect of their own write — a bad caching candidate signal | [032](Topics/032_Caching_Fundamentals.md) |
+| Locality of Reference | Temporal (recently-accessed data gets re-accessed soon) + spatial (nearby data gets accessed together) — the mechanism behind the 80/20 rule that makes caching work | [032](Topics/032_Caching_Fundamentals.md) |
 
 <!-- Rows added after each lesson -->

@@ -1026,9 +1026,14 @@ e.g. collaborative editor → real-time sync (WebSockets, 015) +
 ### [032] Caching Fundamentals
 ```
 WHAT: fast, small copy of hot data in front of a slower source
-      of truth. Bet: 80/20 rule (hot set << total data).
+      of truth. Bet: 80/20 rule (hot set << total data), driven
+      by locality of reference (temporal + spatial).
+
+LAYERS (user → truth): browser → CDN → reverse proxy →
+  app-local → distributed (Redis/Memcached) → DB buffer pool → disk
 
 HIT RATIO = hits / (hits + misses) — THE key cache metric
+  e.g. 20ms DB / 1ms hit @ 80% hit rate → avg = 4.8ms
 
 WHY A CACHE HIT BEATS EVEN A GOOD INDEXED QUERY
 ─────────────────────────────────────────────────
