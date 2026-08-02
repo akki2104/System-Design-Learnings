@@ -22,6 +22,14 @@ Remaining work  : 35 🔴 must-topics · 26 🟡 skims · 26 ⚫ skipped
 Priority source : TopicPriority.md — mentor MUST show the Topic Briefing Card
                   (Master Guide §0.1) before every topic. Learner decides
                   full / quick / skip; deviations logged with schedule impact.
+
+LLD Interleave  : (rule added 2026-08-02) Mentor suggests an LLD session ~every 2-3 HLD
+  Tracker         topics; learner opts in ("LLD session") or continues HLD — never forced.
+                  Pulls from the COMPRESSED 6-session list only (Schedule.md Phase 5:
+                  L001+L002, L004, L008, L009+L010, L011, L019), not the full 19-lesson list.
+                  Phase 5 (Aug 15-16) remains the default fallback if none are taken early.
+                  LLD Sessions Done: 0 / 6.  Last suggested: after Topic 035 (this check-in).
+                  Next suggestion due: ~after Topic 037-038 if none taken now.
 ────────────────────────────────────────────────────────────────────────
 
 Overall Interview Readiness : 6%

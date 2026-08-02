@@ -353,6 +353,16 @@ The roadmap is divided into **Modules**. Within a module, topics are taught **in
 - **114** Cost Reasoning in Design (the 2025+ differentiator)
 
 ### LLD TRACK (parallel; begins after Module 2, ~1 LLD lesson per 2–3 HLD lessons)
+
+> **Compressed Track v2 note (added 2026-08-02, learner-requested):** Schedule.md's Phase 5
+> batches all 6 LLD sessions into a dedicated Aug 15-16 block as the *default* plan — this is
+> intentional and stays as-is. Separately, the mentor also proactively **suggests** an LLD
+> session roughly every 2-3 HLD topics (this ~1-per-2-3 principle below); the learner decides
+> each time whether to take it ("LLD session") or continue with the next HLD topic. Any LLD
+> session run this way, whenever it happens, draws from the **compressed 6-session list**
+> (Schedule.md Phase 5's groupings: L001+L002, L004, L008, L009+L010, L011, L019) — not the
+> full 19-lesson list below, which remains the source curriculum content but is no longer the
+> scheduled unit.
 - **L001** OOP Fundamentals (encapsulation, abstraction, inheritance, polymorphism)
 - **L002** SOLID Principles (with refactors)
 - **L003** GRASP Principles
