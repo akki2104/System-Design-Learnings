@@ -1127,3 +1127,37 @@ TTL mark unless sliding/refresh-on-read TTL explicitly built (GETEX)
 NOT this one item being re-read (re-read = same slot, no new space)
 ```
 ---
+
+### [035] Cache Problems (Stampede, Penetration, Avalanche)
+```
+DISTINGUISH BY TRIGGER (all 3 end in "DB gets hammered")
+─────────────────────────────────────────────────
+PENETRATION: key exists in NEITHER cache NOR DB — never populates, ever
+STAMPEDE:    ONE hot key expires → 1000s of concurrent misses on IT
+AVALANCHE:   MANY keys expire together, OR whole cache cluster dies
+
+PENETRATION FIX
+─────────────────────────────────────────────────
+Cache the negative result (null/"NOT_FOUND", short TTL)
+Bloom filter in front of DB — ONE-SIDED error:
+  "might exist" (false positive OK) / "definitely NOT" (never false neg)
+  → safe hard gate, never wrongly blocks a real key
+
+STAMPEDE FIX
+─────────────────────────────────────────────────
+Mutex/lock: 1st miss queries DB, others WAIT for it (N DB calls → 1,
+            but waiters are blocked — can itself bottleneck)
+Logical/soft expiration: serve stale value NOW + refresh in background
+            → nobody waits, better than mutex
+
+AVALANCHE FIX (2 different causes!)
+─────────────────────────────────────────────────
+Cause: mass simultaneous TTL expiry → Fix: JITTER every TTL
+       (base + random(0,N), not same TTL for a whole warmed batch)
+Cause: cache cluster outage        → Fix: HA/replicated cache cluster
+       + circuit breaker in front of DB + multi-tier caching (L1 local)
+
+TRAP: don't reach for 1 fix (lock/jitter/bloom) for all 3 —
+      match the fix to the STATED trigger
+```
+---

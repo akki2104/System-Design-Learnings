@@ -195,5 +195,10 @@ Kept in alphabetical order.
 | LFU (Least Frequently Used) | Eviction policy that removes the item with the lowest access count; vulnerable to stale-popularity blind spots | [034](Topics/034_Eviction_Policies.md) |
 | FIFO (First In, First Out) | Eviction policy that removes the oldest-inserted item regardless of access pattern | [034](Topics/034_Eviction_Policies.md) |
 | Sliding TTL | A TTL variant that refreshes/extends on every access, unlike the standard fixed-clock-from-insertion default | [034](Topics/034_Eviction_Policies.md) |
+| Cache Penetration | Repeated queries for a key that exists in neither cache nor DB — never has anything to cache, every request pays the full DB round-trip | [035](Topics/035_Cache_Problems.md) |
+| Cache Breakdown | Alternate name for cache stampede — one very hot key expiring under concurrent load | [035](Topics/035_Cache_Problems.md) |
+| Cache Avalanche | Many keys expiring simultaneously, or the entire cache cluster going down — either way, a large fraction of traffic suddenly bypasses the cache at once | [035](Topics/035_Cache_Problems.md) |
+| Bloom Filter | A probabilistic structure with a one-sided error (false positives possible, never false negatives) — used to gate obviously-nonexistent keys before they reach the DB | [035](Topics/035_Cache_Problems.md) |
+| Logical (Soft) Expiration | Serving a stale cached value immediately while refreshing it in the background, instead of blocking requests on a synchronous regeneration | [035](Topics/035_Cache_Problems.md) |
 
 <!-- Rows added after each lesson -->

@@ -360,3 +360,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-01 | 034 | Eviction Policies | +30 days | Pending |
 | 2026-10-01 | 034 | Eviction Policies | +60 days | Pending |
 | 2026-10-31 | 034 | Eviction Policies | +90 days | Pending |
+
+| 2026-08-03 | 035 | Cache Problems | +1 day | Pending |
+| 2026-08-05 | 035 | Cache Problems | +3 days | Pending |
+| 2026-08-09 | 035 | Cache Problems | +7 days | Pending |
+| 2026-08-17 | 035 | Cache Problems | +15 days | Pending |
+| 2026-09-01 | 035 | Cache Problems | +30 days | Pending |
+| 2026-10-01 | 035 | Cache Problems | +60 days | Pending |
+| 2026-10-31 | 035 | Cache Problems | +90 days | Pending |
