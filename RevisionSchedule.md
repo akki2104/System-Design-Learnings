@@ -352,3 +352,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-08-30 | 033 | Caching Patterns | +30 days | Pending |
 | 2026-09-29 | 033 | Caching Patterns | +60 days | Pending |
 | 2026-10-29 | 033 | Caching Patterns | +90 days | Pending |
+
+| 2026-08-03 | 034 | Eviction Policies | +1 day | Pending |
+| 2026-08-05 | 034 | Eviction Policies | +3 days | Pending |
+| 2026-08-09 | 034 | Eviction Policies | +7 days | Pending |
+| 2026-08-17 | 034 | Eviction Policies | +15 days | Pending |
+| 2026-09-01 | 034 | Eviction Policies | +30 days | Pending |
+| 2026-10-01 | 034 | Eviction Policies | +60 days | Pending |
+| 2026-10-31 | 034 | Eviction Policies | +90 days | Pending |

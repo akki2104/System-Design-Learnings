@@ -1096,3 +1096,34 @@ User settings/prefs     → write-through (needs instant read-after-write)
 View counters/analytics → write-behind (loss-tolerant, write-heavy)
 ```
 ---
+
+### [034] Eviction Policies
+```
+LRU (default) — evict least-recently-ACCESSED item
+─────────────────────────────────────────────────
+O(1) via HashMap(find) + Doubly-Linked-List(reorder/evict)
+Hashmap alone CANNOT do this — no ordering, would need O(n) scan
+Exploits temporal locality directly. Redis default.
+
+LFU — evict lowest access COUNT
+─────────────────────────────────────────────────
+Blind spot: stale popularity. Old viral item (10k hits, now cold)
+outlasts a currently-active item (50 hits) — WRONG call.
+Needs counter + decay to fix. More complex, marginal gain over LRU.
+
+FIFO — evict oldest-INSERTED item
+─────────────────────────────────────────────────
+Simplest (just a queue), ignores access pattern entirely.
+Rarely chosen when LRU is available.
+
+TTL ≠ EVICTION POLICY — different axis
+─────────────────────────────────────────────────
+TTL = staleness (time-based, fixed clock from insertion by default)
+Eviction = memory pressure (space-based, which key to remove when full)
+STANDARD TTL DOES NOT REFRESH ON READ — hot item still expires at
+TTL mark unless sliding/refresh-on-read TTL explicitly built (GETEX)
+
+"CACHE FILLS UP" = global capacity event across MANY DIFFERENT keys,
+NOT this one item being re-read (re-read = same slot, no new space)
+```
+---

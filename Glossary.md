@@ -191,5 +191,9 @@ Kept in alphabetical order.
 | Cache-Aside | App-managed pattern: miss reads DB and populates cache; write goes to DB and deletes (invalidates) the cache entry | [033](Topics/033_Caching_Patterns.md) |
 | Write-Through | Writes go to cache and DB synchronously, acknowledged only after both succeed — always fresh, costs double write latency | [033](Topics/033_Caching_Patterns.md) |
 | Write-Behind (Write-Back) | Writes go to cache only, acknowledged immediately, DB updated asynchronously/batched later — fastest writes, but unflushed writes are lost on a cache crash | [033](Topics/033_Caching_Patterns.md) |
+| LRU (Least Recently Used) | Eviction policy that removes the item untouched for the longest time; O(1) via hashmap + doubly-linked list | [034](Topics/034_Eviction_Policies.md) |
+| LFU (Least Frequently Used) | Eviction policy that removes the item with the lowest access count; vulnerable to stale-popularity blind spots | [034](Topics/034_Eviction_Policies.md) |
+| FIFO (First In, First Out) | Eviction policy that removes the oldest-inserted item regardless of access pattern | [034](Topics/034_Eviction_Policies.md) |
+| Sliding TTL | A TTL variant that refreshes/extends on every access, unlike the standard fixed-clock-from-insertion default | [034](Topics/034_Eviction_Policies.md) |
 
 <!-- Rows added after each lesson -->

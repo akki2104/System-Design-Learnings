@@ -15,6 +15,15 @@ Format:
 
 ---
 
+### 2026-08-02 — [Topic 034: Eviction Policies]
+- Mistake: (1) Claimed a hashmap alone could mimic LRU's O(1) behavior. (2) Assumed a cache's TTL automatically keeps refreshing/extending as long as requests keep coming for that item.
+- Why it's wrong: (1) A hashmap has no ordering — it can confirm a key exists in O(1) but cannot identify "least recently used" without an O(n) scan; the doubly-linked list is what makes reorder-on-access and evict-from-back both O(1). (2) A standard TTL is a fixed clock set at insertion time and counts down regardless of read frequency — refresh-on-read ("sliding TTL") is a specific, opt-in design (e.g. Redis's GETEX), not the default. A hot item still expires at the TTL mark under the default behavior.
+- Correct understanding: LRU needs hashmap (find) + linked list (order/evict) — neither alone suffices. TTL and eviction policy are independent, orthogonal mechanisms: TTL fires on its own fixed schedule regardless of access pattern, unless sliding TTL is explicitly implemented; LRU/eviction only decides who gets removed under memory pressure.
+- How to remember: "Hashmap finds, list orders" for LRU. For TTL: "the clock doesn't care how popular you are" — it only resets if you explicitly build that in.
+- Recurs? 1
+
+---
+
 ### 2026-07-31 — [Topic 032: Caching Fundamentals]
 - Mistake: Treated "is 30-second staleness acceptable" as one fixed yes/no property of the cached data itself, rather than depending on where the read is used; also justified "don't cache the cart" primarily via UX language ("frustration") instead of naming the specific framework criteria it fails.
 - Why it's wrong: The same cached value can be perfectly acceptable for a display/browsing read and unacceptable for a transactional read (e.g., a price shown on a product page vs. the price used to actually charge the customer at checkout) — acceptability is a function of use, not just the data. Separately, "don't cache the cart" has two precise, nameable reasons (≈1:1 read:write ratio, and read-your-own-write consistency requirement) rather than one vague UX complaint.
