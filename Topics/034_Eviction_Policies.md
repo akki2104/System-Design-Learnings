@@ -25,7 +25,7 @@ Doubly-Linked List: maintains recency order (O(1) move-to-front on access,
 ```
 A hashmap alone cannot do this — it has no ordering, so finding "which key is least recently used" would require an O(n) scan (or storing timestamps and still scanning for the minimum). The linked list is what makes reordering and eviction both O(1) via pure pointer rewiring. The two structures divide the labor: hashmap finds, linked list orders/evicts. This is why LRU is implemented as *both*, never either alone.
 
-This is the default eviction policy in Redis and most caching libraries.
+This is the default eviction policy in Redis and most caching libraries — configured directly via `maxmemory-policy` (`allkeys-lru`, `allkeys-lfu`, `volatile-ttl`, `volatile-lru`, `noeviction`, etc.). Naming the actual config value ("I'd set `allkeys-lru`") is a stronger interview answer than "I'd evict old stuff."
 
 ---
 
