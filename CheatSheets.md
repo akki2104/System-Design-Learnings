@@ -1161,3 +1161,38 @@ TRAP: don't reach for 1 fix (lock/jitter/bloom) for all 3 —
       match the fix to the STATED trigger
 ```
 ---
+
+### [036] Distributed Caching with Redis/Memcached
+```
+REDIS DATA STRUCTURES (the real differentiator over plain KV)
+─────────────────────────────────────────────────
+STRING (+INCR/DECR atomic) · LIST (queues/feeds) · SET (membership)
+HASH (object fields in one key) · ZSET (ranked, O(log n) — leaderboards,
+rate limiters, anything ordered by a score)
+
+REDIS vs MEMCACHED
+─────────────────────────────────────────────────
+Memcached: pure KV, multi-threaded, no persistence, no clustering — simplest
+Redis: rich structures, single-thread/core (free atomicity), optional
+       persistence, built-in clustering + replication, pub/sub, scripting
+Redis is fast enough to serve AS A CACHE — NOT fast/durable enough to
+BE a database. Real source of truth stays in a real DB.
+
+PERSISTENCE
+─────────────────────────────────────────────────
+RDB = periodic snapshot (fast restart, loses since-last-snapshot data)
+AOF = write log (durable, slower restart)
+Both together = common real setup. STILL not ACID durability.
+
+CLUSTERING
+─────────────────────────────────────────────────
+16384 fixed hash slots, slot = CRC16(key) % 16384
+Each shard = primary + replicas (HA per shard)
+Multi-key atomicity requires same slot → use hash tags {user123}:field
+
+SHARP EDGES
+─────────────────────────────────────────────────
+Single-thread per instance → one slow command (KEYS *, big SORT) blocks all
+Cross-shard multi-key ops are NOT atomic without hash tags
+```
+---

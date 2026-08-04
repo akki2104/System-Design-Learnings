@@ -368,3 +368,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-01 | 035 | Cache Problems | +30 days | Pending |
 | 2026-10-01 | 035 | Cache Problems | +60 days | Pending |
 | 2026-10-31 | 035 | Cache Problems | +90 days | Pending |
+
+| 2026-08-05 | 036 | Distributed Caching with Redis/Memcached | +1 day | Pending |
+| 2026-08-07 | 036 | Distributed Caching with Redis/Memcached | +3 days | Pending |
+| 2026-08-11 | 036 | Distributed Caching with Redis/Memcached | +7 days | Pending |
+| 2026-08-19 | 036 | Distributed Caching with Redis/Memcached | +15 days | Pending |
+| 2026-09-03 | 036 | Distributed Caching with Redis/Memcached | +30 days | Pending |
+| 2026-10-03 | 036 | Distributed Caching with Redis/Memcached | +60 days | Pending |
+| 2026-11-02 | 036 | Distributed Caching with Redis/Memcached | +90 days | Pending |

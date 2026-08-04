@@ -87,6 +87,20 @@ Example — Zomato's `orders` and `restaurants`:
 
 ---
 
+## Caching Infrastructure — Redis vs Memcached vs Managed (Topic 036)
+
+| Option | Pick it when | Do NOT pick it when | Real users |
+|---|---|---|---|
+| **Memcached** | Pure key-value caching is the entire need; multi-threaded per-instance throughput matters more than features | You need rich data structures, persistence, or built-in clustering/HA | Simple page-fragment/session caches |
+| **Redis** | Need data structures beyond plain KV (leaderboards, rate limiters, queues, session field-updates) with atomic server-side ops; want built-in HA + horizontal scaling | Data must never be lost — Redis is fast enough to serve as a cache, not to replace a real database | Twitter (timeline cache), rate limiters everywhere, leaderboards |
+| **Managed (ElastiCache/MemoryDB)** | Want Redis/Memcached's benefits without operating the cluster (failover, patching, backups handled) | Team has strong ops bandwidth and needs config control the managed layer restricts | Most cloud-native product teams |
+
+**Interview-ready "why not" phrases:**
+- *"Not Memcached here — the leaderboard needs a sorted set with atomic rank queries; Memcached would force sorting in the app layer, reopening the exact race conditions a cache should avoid."*
+- *"Not Redis as the source of truth — even with AOF, it's not an ACID-durable database; the real record stays in Postgres."*
+
+---
+
 ## Sections added by later topics
 
 <!-- Topic 008 will add: TCP vs UDP decision box -->

@@ -200,5 +200,10 @@ Kept in alphabetical order.
 | Cache Avalanche | Many keys expiring simultaneously, or the entire cache cluster going down — either way, a large fraction of traffic suddenly bypasses the cache at once | [035](Topics/035_Cache_Problems.md) |
 | Bloom Filter | A probabilistic structure with a one-sided error (false positives possible, never false negatives) — used to gate obviously-nonexistent keys before they reach the DB | [035](Topics/035_Cache_Problems.md) |
 | Logical (Soft) Expiration | Serving a stale cached value immediately while refreshing it in the background, instead of blocking requests on a synchronous regeneration | [035](Topics/035_Cache_Problems.md) |
+| Sorted Set (ZSET) | Redis data structure: members ranked by a score, O(log n) insert/range/rank — leaderboards, rate limiters, anything ordered by a numeric value | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
+| RDB (Redis) | Periodic point-in-time snapshot of the dataset to disk — fast restart, loses writes since the last snapshot | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
+| AOF (Append-Only File) | Redis persistence mode logging every write command as it happens — durable, slower restart (log replay) | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
+| Redis Cluster / Hash Slots | Redis's sharding scheme: 16,384 fixed hash slots (CRC16(key) % 16384), each owned by one shard (primary + replicas) | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
+| Hash Tags (Redis) | `{key}` syntax forcing related keys onto the same cluster slot, required for multi-key atomicity under Redis Cluster | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
 
 <!-- Rows added after each lesson -->

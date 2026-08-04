@@ -363,3 +363,12 @@ Format:
 - Correct understanding: The anomaly is Non-Repeatable Read; Read Committed is the isolation level that PERMITS it to happen (prevented starting at Repeatable Read).
 - How to remember: Anomaly = the failure mode's name. Isolation level = which failure modes are allowed at that tier. Two different vocabularies — don't swap them.
 - Recurs? 1
+
+---
+
+### 2026-08-04 — [Topic 036: Distributed Caching with Redis/Memcached]
+- Mistake: Described Redis as "a server fast enough to be used as a database."
+- Why it's wrong: Inverts the actual point of the lesson — Redis is fast enough to serve AS A CACHE despite being a full data-structure server; it is not fast or durable enough to replace a real database. This is the same underlying trap as Topic 032's "primary durable store" mistake, now recurring in a new topic's specific phrasing.
+- Correct understanding: Redis's data lives in memory (RDB/AOF persistence is a restart-loss mitigation, not an ACID durability guarantee); the real database's disk-backed storage remains the actual source of truth. Self-corrected immediately and completely on a direct nudge.
+- How to remember: "Fast enough to cache, not fast enough to BE the database."
+- Recurs? 1 (first instance of this exact phrasing; related in spirit to the Topic 032 durable-store trap)
