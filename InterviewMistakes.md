@@ -372,3 +372,12 @@ Format:
 - Correct understanding: Redis's data lives in memory (RDB/AOF persistence is a restart-loss mitigation, not an ACID durability guarantee); the real database's disk-backed storage remains the actual source of truth. Self-corrected immediately and completely on a direct nudge.
 - How to remember: "Fast enough to cache, not fast enough to BE the database."
 - Recurs? 1 (first instance of this exact phrasing; related in spirit to the Topic 032 durable-store trap)
+
+---
+
+### 2026-08-06 — [Topic 037: Cache Consistency & Invalidation]
+- Mistake: Explained why an app server's L1 local cache survives a shared distributed-cache delete via "the cache server might have different nodes... those nodes will be having a copy of the keys" — i.e., attributed it to replication lag within the distributed cache's own cluster.
+- Why it's wrong: An L1 local cache isn't a node of the distributed cache's cluster at all — it's a completely separate, in-process cache the app maintains itself, which never received the delete because it was never part of that cluster's replication in the first place. Conflating this with intra-cluster replica lag misattributes a structural-separation fact to a timing fact.
+- Correct understanding: L1 (per-server local) and L2 (shared distributed) are structurally different caches. Deleting L2 does nothing to L1 by design, not by lag. Each independent cache copy (L1, L2, CDN edges) needs its own invalidation, typically via a broadcast (pub/sub or purge API). Self-corrected immediately and precisely on a direct nudge.
+- How to remember: "L1 was never in the room — you can't un-invite it from a conversation it never joined."
+- Recurs? 1

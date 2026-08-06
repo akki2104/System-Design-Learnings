@@ -376,3 +376,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-03 | 036 | Distributed Caching with Redis/Memcached | +30 days | Pending |
 | 2026-10-03 | 036 | Distributed Caching with Redis/Memcached | +60 days | Pending |
 | 2026-11-02 | 036 | Distributed Caching with Redis/Memcached | +90 days | Pending |
+
+| 2026-08-07 | 037 | Cache Consistency & Invalidation | +1 day | Pending |
+| 2026-08-09 | 037 | Cache Consistency & Invalidation | +3 days | Pending |
+| 2026-08-13 | 037 | Cache Consistency & Invalidation | +7 days | Pending |
+| 2026-08-21 | 037 | Cache Consistency & Invalidation | +15 days | Pending |
+| 2026-09-05 | 037 | Cache Consistency & Invalidation | +30 days | Pending |
+| 2026-10-05 | 037 | Cache Consistency & Invalidation | +60 days | Pending |
+| 2026-11-04 | 037 | Cache Consistency & Invalidation | +90 days | Pending |

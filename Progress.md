@@ -2,13 +2,13 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-08-04
-Current Module  : MODULE 3 — Caching
-Current Topic   : 037 Cache Consistency & Invalidation (Next) — 🔴 MUST, 45 min, Hard
+Last Updated    : 2026-08-06
+Current Module  : MODULE 4 — Scaling & Distributing Data
+Current Topic   : 038 Vertical vs Horizontal Scaling (Next) — 🟡 SKIM, 8 min, Easy
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 36 (001-036) — MODULE 1 & 2 COMPLETE, MODULE 3 IN PROGRESS
+Topics Completed: 37 (001-037) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 STARTING
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 036 "Redis fast enough to BE a database" inversion (self-corrected on nudge — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035: clean pass, no new gaps.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 037 L1-cache-as-cluster-node mix-up (attributed structural separation to replication lag; self-corrected on nudge). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035: clean pass, no new gaps.
 
 ── COMPRESSED TRACK v2 (adopted 2026-07-25) ────────────────────────────
 Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days)

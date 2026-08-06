@@ -101,6 +101,18 @@ Example — Zomato's `orders` and `restaurants`:
 
 ---
 
+## Invalidation Broadcast Mechanism (Topic 037)
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **Redis Pub/Sub** | Already running Redis; need a lightweight, low-latency fan-out to app-server local caches | Guaranteed delivery matters — Pub/Sub is fire-and-forget, a subscriber offline at publish time misses the message |
+| **Kafka topic** | Need durable, replayable invalidation events, or many heterogeneous consumers (analytics + cache invalidation off the same stream) | Latency must be sub-millisecond and the extra infra/ops overhead isn't justified for "just" cache invalidation |
+| **CDN purge API** | Invalidating edge-cached content specifically | Invalidating app-server-local or distributed-cache copies — a CDN purge doesn't touch those |
+
+**Interview-ready "why not" phrase:** *"Not a bare Redis DEL for the multi-layer case — that only clears the shared cache. I'd broadcast the invalidation over Pub/Sub so every app server's local cache evicts the key too, since it was never part of Redis's own replication to begin with."*
+
+---
+
 ## Sections added by later topics
 
 <!-- Topic 008 will add: TCP vs UDP decision box -->

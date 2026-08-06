@@ -1196,3 +1196,31 @@ Single-thread per instance → one slow command (KEYS *, big SORT) blocks all
 Cross-shard multi-key ops are NOT atomic without hash tags
 ```
 ---
+
+### [037] Cache Consistency & Invalidation
+```
+ORDER MATTERS
+─────────────────────────────────────────────────
+WRONG: delete cache → update DB → guaranteed staleness window
+RIGHT: update DB → delete cache → narrower, but NOT zero, residual race
+
+RESIDUAL RACE MITIGATIONS
+─────────────────────────────────────────────────
+Delayed double-delete: delete again after ~500ms-1s
+Short TTL: self-heals any stale value that sneaks through
+Versioned/CAS writes: reject overwriting cache with an older version (most robust)
+Write-around: skip caching on write entirely, let next read repopulate normally
+
+MULTIPLE CACHE COPIES
+─────────────────────────────────────────────────
+L1 (per-server local, NOT a node of the distributed cluster) + L2 (shared
+distributed) + CDN edges = independent copies, structurally separate
+One DELETE only clears one copy → need invalidation BROADCAST (pub/sub, CDN purge API)
+
+THE BIG PICTURE
+─────────────────────────────────────────────────
+"Do multiple copies agree on current state?" = the same question
+distributed consistency (048) and replication lag (040) answer.
+Cache invalidation is a small instance of that general problem.
+```
+---

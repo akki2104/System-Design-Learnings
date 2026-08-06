@@ -205,5 +205,9 @@ Kept in alphabetical order.
 | AOF (Append-Only File) | Redis persistence mode logging every write command as it happens — durable, slower restart (log replay) | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
 | Redis Cluster / Hash Slots | Redis's sharding scheme: 16,384 fixed hash slots (CRC16(key) % 16384), each owned by one shard (primary + replicas) | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
 | Hash Tags (Redis) | `{key}` syntax forcing related keys onto the same cluster slot, required for multi-key atomicity under Redis Cluster | [036](Topics/036_Distributed_Caching_Redis_Memcached.md) |
+| Delayed Double-Delete | Deleting a cache key again a short delay after the first delete, to catch a straggling read that repopulated it with stale data in the interim | [037](Topics/037_Cache_Consistency_Invalidation.md) |
+| Versioned / CAS Write (Cache) | Only overwriting a cached value if the incoming write's version/timestamp is newer than what's already cached — the most robust fix to the write-vs-reader invalidation race | [037](Topics/037_Cache_Consistency_Invalidation.md) |
+| Write-Around | Writing directly to the DB without touching the cache at all, letting the next read repopulate it via the normal cache-aside miss path | [037](Topics/037_Cache_Consistency_Invalidation.md) |
+| Invalidation Broadcast | Publishing an "invalidate key X" event (pub/sub, CDN purge API) so every independent cache layer/node evicts the key, since a single delete only clears one cache copy | [037](Topics/037_Cache_Consistency_Invalidation.md) |
 
 <!-- Rows added after each lesson -->
