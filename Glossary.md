@@ -209,5 +209,15 @@ Kept in alphabetical order.
 | Versioned / CAS Write (Cache) | Only overwriting a cached value if the incoming write's version/timestamp is newer than what's already cached — the most robust fix to the write-vs-reader invalidation race | [037](Topics/037_Cache_Consistency_Invalidation.md) |
 | Write-Around | Writing directly to the DB without touching the cache at all, letting the next read repopulate it via the normal cache-aside miss path | [037](Topics/037_Cache_Consistency_Invalidation.md) |
 | Invalidation Broadcast | Publishing an "invalidate key X" event (pub/sub, CDN purge API) so every independent cache layer/node evicts the key, since a single delete only clears one cache copy | [037](Topics/037_Cache_Consistency_Invalidation.md) |
+| Encapsulation | Hiding a class's state and enforcing invariants through controlled methods — "who can touch my data" | [L001](LLD/L001_OOP_Fundamentals.md) |
+| Abstraction | Exposing what an object does while hiding how it does it — "what do you need to know to use me" | [L001](LLD/L001_OOP_Fundamentals.md) |
+| Inheritance | A subclass acquiring a parent class's fields/methods, modeling an is-a relationship; often overused where composition (has-a) fits better | [L001](LLD/L001_OOP_Fundamentals.md) |
+| Polymorphism | The same interface producing different behavior depending on runtime type (overriding) or argument types (overloading) | [L001](LLD/L001_OOP_Fundamentals.md) |
+| SOLID | Five class-design principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) that keep a design flexible as requirements change | [L002](LLD/L002_SOLID_Principles.md) |
+| Single Responsibility Principle | A class should have exactly one reason to change | [L002](LLD/L002_SOLID_Principles.md) |
+| Open/Closed Principle | A class should be open for extension but closed for modification — achieved via polymorphism | [L002](LLD/L002_SOLID_Principles.md) |
+| Liskov Substitution Principle | A subclass must be usable anywhere its parent is expected without breaking behavior — the formal test for whether an inheritance choice is sound | [L002](LLD/L002_SOLID_Principles.md) |
+| Interface Segregation Principle | Prefer several small, focused interfaces over one large interface that forces unused methods on implementers | [L002](LLD/L002_SOLID_Principles.md) |
+| Dependency Inversion Principle | High-level modules should depend on abstractions, not concrete implementations; Dependency Injection (L014) is the technique that implements this | [L002](LLD/L002_SOLID_Principles.md) |
 
 <!-- Rows added after each lesson -->

@@ -384,3 +384,19 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-05 | 037 | Cache Consistency & Invalidation | +30 days | Pending |
 | 2026-10-05 | 037 | Cache Consistency & Invalidation | +60 days | Pending |
 | 2026-11-04 | 037 | Cache Consistency & Invalidation | +90 days | Pending |
+
+| 2026-08-14 | L001 | OOP Fundamentals | +1 day | Pending |
+| 2026-08-16 | L001 | OOP Fundamentals | +3 days | Pending |
+| 2026-08-20 | L001 | OOP Fundamentals | +7 days | Pending |
+| 2026-08-28 | L001 | OOP Fundamentals | +15 days | Pending |
+| 2026-09-12 | L001 | OOP Fundamentals | +30 days | Pending |
+| 2026-10-12 | L001 | OOP Fundamentals | +60 days | Pending |
+| 2026-11-11 | L001 | OOP Fundamentals | +90 days | Pending |
+
+| 2026-08-14 | L002 | SOLID Principles | +1 day | Pending |
+| 2026-08-16 | L002 | SOLID Principles | +3 days | Pending |
+| 2026-08-20 | L002 | SOLID Principles | +7 days | Pending |
+| 2026-08-28 | L002 | SOLID Principles | +15 days | Pending |
+| 2026-09-12 | L002 | SOLID Principles | +30 days | Pending |
+| 2026-10-12 | L002 | SOLID Principles | +60 days | Pending |
+| 2026-11-11 | L002 | SOLID Principles | +90 days | Pending |

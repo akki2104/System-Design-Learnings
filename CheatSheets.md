@@ -1224,3 +1224,35 @@ distributed consistency (048) and replication lag (040) answer.
 Cache invalidation is a small instance of that general problem.
 ```
 ---
+
+### [L001+L002] OOP Fundamentals + SOLID (LLD Session 1/6)
+```
+OOP 4 PILLARS
+─────────────────────────────────────────────────
+ENCAPSULATION: hide STATE, enforce invariants — "who can touch my data"
+ABSTRACTION:   hide COMPLEXITY behind simple interface — "what to use me"
+INHERITANCE:   is-a. Overused where has-a (composition) fits better (L007)
+POLYMORPHISM:  same call, different runtime behavior (override) or
+               different compile-time resolution (overload)
+               → THE mechanism that makes Open/Closed possible
+
+SOLID
+─────────────────────────────────────────────────
+S — Single Responsibility: 1 class = 1 reason to change
+    (Order calc-total + save-to-db → split into Order + OrderRepository)
+O — Open/Closed: extend without editing existing code
+    (if/else on type → interface + polymorphism, new class ≠ touch old code)
+L — Liskov Substitution: subclass must honor PARENT'S FULL CONTRACT
+    (Square extends Rectangle breaks independent width/height — is-a
+    grammatically, but NOT behaviorally substitutable)
+I — Interface Segregation: small focused interfaces, not 1 fat one
+    (Worker{work,eat} forces Robot to stub eat() → split Workable/Eatable)
+D — Dependency Inversion: depend on ABSTRACTIONS not concretions
+    (OrderService should depend on NotificationSender interface, not
+    `new GmailSender()` directly) → DI (L014) is the TECHNIQUE for this
+
+TRAP: SOLID letters aren't independent —
+  O needs polymorphism (L001), D needs abstraction (L001),
+  L is the formal correctness-check on an L001 inheritance choice
+```
+---
