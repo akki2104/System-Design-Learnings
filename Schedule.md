@@ -1,5 +1,12 @@
 # Master Schedule — COMPRESSED TRACK (v2)
 
+> ⚠️ **SEQUENCING SUPERSEDED BY TRACK v3 (2026-08-17)** — see Master Guide §0.2. As of Aug 17, the
+> Aug 18 target date arrived with case studies at 0/14 and mocks at 0/3 despite theory ~60% done.
+> The mentor now teaches case studies' specific missing prerequisites just-in-time rather than
+> requiring all Phase 1-3 theory to finish first — the Phase 4→6 ordering below is no longer
+> followed. **This file's content/scope (tiers, time budgets, case-study list) remains the active
+> reference** — only the phase-by-phase calendar sequencing is superseded. Reversible on request.
+
 > **Rewritten:** 2026-07-25, from the learner's *actual* position (Topic 027 complete), replacing the
 > original v1 calendar which assumed a zero-gap run from June 28 and had drifted ~51 topics out of date.
 > **Priority ratings live in `TopicPriority.md`** — read it before every topic and show the Topic

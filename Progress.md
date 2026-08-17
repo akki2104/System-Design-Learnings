@@ -2,7 +2,7 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-08-13
+Last Updated    : 2026-08-17
 Current Module  : MODULE 4 — Scaling & Distributing Data
 Current Topic   : 038 Vertical vs Horizontal Scaling (Next) — 🟡 SKIM, 8 min, Easy
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
@@ -11,15 +11,33 @@ Topics Completed: 37 HLD (001-037) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 START
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
 Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 037 L1-cache-as-cluster-node mix-up (attributed structural separation to replication lag; self-corrected on nudge). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, L001, L002: clean passes, no new gaps.
 
-── COMPRESSED TRACK v2 (adopted 2026-07-25) ────────────────────────────
-Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days)
-Pace            : BEHIND — Schedule.md v2 Phase 2 (Aug 1-4) expects ~056-069 by now;
-                  actual position is 034. Gap is real, not just skim-vs-full accounting —
-                  flag for a pace conversation if it persists past this week.
-Cumulative slip : ~4-5 days (estimated from Schedule.md comparison; TopicPriority.md's
-                  Deviation Log itself not yet updated with a formal entry)
+── SEQUENCING TRACK v3 (adopted 2026-08-17) ────────────────────────────
+Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersedes v2's
+                  "finish all theory, then case studies" ordering. Teach only a case
+                  study's specific missing prerequisites just-in-time (full lessons,
+                  full tracking files, committed/pushed), then run the case study
+                  learner-driven (Section 10.3). Reversible to v2 sequencing on request.
+Trigger         : Aug 17 status check — v2 target date (Aug 18) arrived with case
+                  studies 0/14 and mocks 0/3 despite theory ~60% done. Real bottleneck
+                  was zero case-study reps, not remaining theory.
+In progress     : Pre-TinyURL (Case Study #1) prerequisite batch — 038,039,040,041,
+                  042,043,044 (Module 4) + 098 (Unique ID Generation), ~4.75h, before
+                  Case Study #1 begins.
+Scope reference : TopicPriority.md's tiers (MUST/SKIM/SKIP) and Schedule.md's content
+                  (case-study list, time budgets) remain authoritative — v3 changes
+                  ORDERING only, not scope.
+
+── COMPRESSED TRACK v2 (adopted 2026-07-25; scope reference under v3) ──
+Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days) — effectively passed;
+                  see Aug 17 status check. Real remaining work ≈ 44 hours (computed from
+                  TopicPriority.md time budgets: ~19.7h MUST theory, ~4.9h SKIM theory,
+                  ~11.8h case studies, ~3.8h LLD, ~3.75h mocks). Actual pace since adoption
+                  has run ~7x slower than the ~2.25h/day assumed (≈6.9h of lesson content
+                  completed in 23 days). No new fixed target date set — v3 tracks by
+                  hours-of-work-remaining rather than a calendar date until a real
+                  interview-driven deadline is named.
 Remaining work  : 35 🔴 must-topics · 26 🟡 skims · 26 ⚫ skipped
-                  + 14 case studies + 6 LLD sessions + 3 mocks  ≈ 51 hrs
+                  + 14 case studies + 6 LLD sessions + 3 mocks  ≈ 51 hrs (original estimate)
 Priority source : TopicPriority.md — mentor MUST show the Topic Briefing Card
                   (Master Guide §0.1) before every topic. Learner decides
                   full / quick / skip; deviations logged with schedule impact.

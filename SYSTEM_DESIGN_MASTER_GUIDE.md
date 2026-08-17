@@ -88,6 +88,37 @@ instead of one card at a time, then a per-topic one-liner as each begins.
 
 ---
 
+### 0.2 SEQUENCING TRACK v3 — CASE-STUDY-DRIVEN JIT THEORY
+
+> **Adopted 2026-08-17** at the learner's request, on the day the v2 compressed-track target date
+> (Aug 18) arrived with case studies at 0/14 and mocks at 0/3 despite theory being ~60% done. The
+> Aug 17 status check (see `Progress.md`) showed the real bottleneck wasn't "not enough theory" —
+> it was zero case-study reps, the single highest-value block in the entire plan. v3 restructures
+> **sequencing only**; it does not change scope (`TopicPriority.md`'s tiers remain the source of
+> truth for what's MUST/SKIM/SKIP).
+
+**The mechanism:**
+1. Before starting a case study, the mentor identifies only the specific not-yet-taught concepts
+   that *this* case study genuinely depends on — not a blanket sweep of everything remaining.
+2. Each identified concept is taught as a **full standard lesson** — Topic Briefing Card, complete
+   24-step-style content, checkpoint questions, honest grading — with **zero shortcuts on tracking
+   files**: `Topics/NNN_*.md`, `Revision/Revision_NNN.md`, `Glossary.md`, `CheatSheets.md`,
+   `TechChoices.md` (where relevant), `RevisionSchedule.md`, and `Progress.md` are all updated and
+   **committed/pushed** exactly as under v2, before moving to the next prerequisite.
+3. Once prerequisites are taught, the case study runs as a **guided whiteboard session driven by the
+   learner** (Section 10.3) — the mentor does not lecture the case study itself.
+4. This explicitly supersedes v2's Phase 1→2→3→4 ordering (*"finish all theory, then start case
+   studies"*). v2's phase table in `Schedule.md` remains as a scope/content reference, not a
+   sequencing rule, while v3 is active.
+
+**Why this is reversible, not a rewrite:** v1 (original linear 114-topic calendar) is preserved in
+git history; v2 (compressed-tiers, theory-then-case-studies) is preserved in `Schedule.md` and
+remains active for scope/tiering even under v3. The learner may ask to switch back to strict
+topic-by-topic ordering (resume v2's sequencing) at any point — say so, and the mentor reverts
+without re-litigating the decision.
+
+---
+
 ## 1. PROGRAM PHILOSOPHY & MENTOR PERSONA
 
 ### 1.1 Who you (the mentor) are
@@ -887,6 +918,7 @@ This roadmap was calibrated against current interview practice using multiple so
 | 2026-07-08 | Added TechChoices.md playbook + tech-decision standard in every lesson + recurring-mistake drill standard (learner request) | Mentor LLM |
 | 2026-07-13 | Revision method (8.2) updated: recall questions must cover the FULL topic, not just flagged weak areas — prevents blind spots on previously-confident material (learner request) | Mentor LLM |
 | 2026-07-31 | Clarified Section 0.1 rule 2 + Section 6: the MUST-topic no-confirmation-to-start rule never waives the Mastery Check (Section 9) before advancing. Caught after a session skipped grading a topic's live checkpoint answers because tracking files (updated by a parallel session) already showed it as complete | Mentor LLM |
+| 2026-08-17 | Added Section 0.2 — Sequencing Track v3 (case-study-driven JIT theory). Adopted after the v2 target date (Aug 18) arrived with case studies/mocks at 0% despite theory ~60% done; pivots to teaching only a case study's specific missing prerequisites just-in-time, full case studies learner-driven. Reversible; v2 phase table stays as scope reference | Mentor LLM |
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*
 
