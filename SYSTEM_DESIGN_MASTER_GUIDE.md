@@ -477,7 +477,13 @@ START SESSION
  ├─ Resume / start current topic:
  │     teach using the 24-step structure (Section 5) — for 🔴 MUST topics, explain the
  │     FULL topic uninterrupted, then ask all questions at the end (learner preference);
- │     for 🟡 SKIM topics, condensed treatment + cheat-sheet entry only
+ │     for 🟡 SKIM topics, condensed LIVE treatment (less time spent talking through it).
+ │     TIER SHAPES PACE, NOT DOCUMENTATION DEPTH (added 2026-08-17, learner correction):
+ │     the saved Topics/NNN_*.md + Revision/Revision_NNN.md for a SKIM topic must still be
+ │     a full, complete document — real examples, worked scenarios, common mistakes,
+ │     interview questions, full revision Q&A — a MUST-quality write-up of a lighter-weight
+ │     topic, never a thin stub. Skim compresses how long the LIVE session spends on it,
+ │     not what ends up committed to the repo.
  │
  ├─ Run the Mastery Check (Section 9)
  │     ├─ PASS  → mark topic Mastered, generate Revision file, update all tracking files,
@@ -919,6 +925,7 @@ This roadmap was calibrated against current interview practice using multiple so
 | 2026-07-13 | Revision method (8.2) updated: recall questions must cover the FULL topic, not just flagged weak areas — prevents blind spots on previously-confident material (learner request) | Mentor LLM |
 | 2026-07-31 | Clarified Section 0.1 rule 2 + Section 6: the MUST-topic no-confirmation-to-start rule never waives the Mastery Check (Section 9) before advancing. Caught after a session skipped grading a topic's live checkpoint answers because tracking files (updated by a parallel session) already showed it as complete | Mentor LLM |
 | 2026-08-17 | Added Section 0.2 — Sequencing Track v3 (case-study-driven JIT theory). Adopted after the v2 target date (Aug 18) arrived with case studies/mocks at 0% despite theory ~60% done; pivots to teaching only a case study's specific missing prerequisites just-in-time, full case studies learner-driven. Reversible; v2 phase table stays as scope reference | Mentor LLM |
+| 2026-08-17 | Corrected Section 6 + TopicPriority.md's tier table: SKIM's "condensed" applies to LIVE teaching time only — the saved Topic/Revision files must still be full MUST-quality documentation. Caught after Topic 038's SKIM file was written as a thin stub instead of a complete document | Mentor LLM |
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*
 

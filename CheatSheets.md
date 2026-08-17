@@ -1256,3 +1256,22 @@ TRAP: SOLID letters aren't independent —
   L is the formal correctness-check on an L001 inheritance choice
 ```
 ---
+
+### [038] Vertical vs Horizontal Scaling
+```
+VERTICAL (up)   : bigger machine. Simple, no cross-node consistency issue.
+                  Hard ceiling, single point of failure.
+                  COST CURVE WORSE THAN LINEAR — bigger instances cost >2x for 2x capacity.
+HORIZONTAL (out): more machines. Near-unlimited, redundancy built in.
+                  Costs: network calls, partial failure, consistency BETWEEN NODES.
+
+LAYER MATTERS
+─────────────────────────────────────────────────
+App/web tier (stateless) → horizontal is CHEAP (LB + more instances)
+DB/storage tier (stateful) → horizontal is the HARD problem (→ Topics 039-043)
+
+RULE: scale vertically until a real ceiling forces horizontal — not by default preference.
+Real example: Stack Overflow ran huge vertically-scaled boxes for years — not everyone
+must go horizontal on a fixed timeline.
+```
+---

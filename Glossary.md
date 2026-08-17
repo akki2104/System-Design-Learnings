@@ -219,5 +219,7 @@ Kept in alphabetical order.
 | Liskov Substitution Principle | A subclass must be usable anywhere its parent is expected without breaking behavior — the formal test for whether an inheritance choice is sound | [L002](LLD/L002_SOLID_Principles.md) |
 | Interface Segregation Principle | Prefer several small, focused interfaces over one large interface that forces unused methods on implementers | [L002](LLD/L002_SOLID_Principles.md) |
 | Dependency Inversion Principle | High-level modules should depend on abstractions, not concrete implementations; Dependency Injection (L014) is the technique that implements this | [L002](LLD/L002_SOLID_Principles.md) |
+| Vertical Scaling (scale up) | Adding more CPU/RAM/disk to one machine — simple, no cross-node consistency issue, but hits a hard ceiling and is a single point of failure | [038](Topics/038_Vertical_vs_Horizontal_Scaling.md) |
+| Horizontal Scaling (scale out) | Adding more machines and spreading load across them — near-unlimited ceiling and redundancy, but introduces network calls, partial failure, and consistency between nodes | [038](Topics/038_Vertical_vs_Horizontal_Scaling.md) |
 
 <!-- Rows added after each lesson -->

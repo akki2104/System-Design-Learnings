@@ -14,7 +14,7 @@
 | Tier | Meaning | Typical time | Mentor behaviour |
 |------|---------|--------------|------------------|
 | 🔴 **MUST** | Asked directly or needed as vocabulary in most case studies. Skipping creates a visible gap. | 35–50 min | Full 24-step lesson + revision file |
-| 🟡 **SKIM** | Worth recognising and name-dropping; not worth a full lesson at this level. | 8–10 min | Batched 5–6 per session, condensed. Cheat-sheet entry only, no separate revision file |
+| 🟡 **SKIM** | Worth recognising and name-dropping; not worth a full LIVE lesson at this level. | 8–10 min | Batched 5–6 per session, condensed LIVE treatment. **Documentation is still full-depth** — complete `Topics/NNN_*.md` + `Revision/Revision_NNN.md`, real examples, common mistakes, interview questions, full revision Q&A. Tier shapes teaching pace, never documentation depth (2026-08-17 correction) |
 | ⚫ **SKIP** | Staff-level, specialist, or already-known-by-any-engineer. Very rarely decides a 2-YOE interview. | 0 (45+ if done anyway) | Not scheduled. Available on request with stated cost |
 
 ---

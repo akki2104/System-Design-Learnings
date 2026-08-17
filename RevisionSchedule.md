@@ -400,3 +400,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-12 | L002 | SOLID Principles | +30 days | Pending |
 | 2026-10-12 | L002 | SOLID Principles | +60 days | Pending |
 | 2026-11-11 | L002 | SOLID Principles | +90 days | Pending |
+
+| 2026-08-18 | 038 | Vertical vs Horizontal Scaling | +1 day | Pending |
+| 2026-08-20 | 038 | Vertical vs Horizontal Scaling | +3 days | Pending |
+| 2026-08-24 | 038 | Vertical vs Horizontal Scaling | +7 days | Pending |
+| 2026-09-01 | 038 | Vertical vs Horizontal Scaling | +15 days | Pending |
+| 2026-09-16 | 038 | Vertical vs Horizontal Scaling | +30 days | Pending |
+| 2026-10-16 | 038 | Vertical vs Horizontal Scaling | +60 days | Pending |
+| 2026-11-15 | 038 | Vertical vs Horizontal Scaling | +90 days | Pending |
