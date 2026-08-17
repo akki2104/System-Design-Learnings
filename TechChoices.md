@@ -113,6 +113,18 @@ Example — Zomato's `orders` and `restaurants`:
 
 ---
 
+## Replication Topology (Topic 039)
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **Leader-Follower** | Single-region system, strong write consistency matters, reads can tolerate slight staleness | Multiple regions need low-latency local writes |
+| **Multi-Leader** | Multiple regions each need local writes, some write-conflict resolution is acceptable | Conflicts would be unacceptable/hard to resolve (e.g., financial ledgers) |
+| **Leaderless** | Massive write throughput with tunable consistency is the priority (Cassandra/DynamoDB) | A single, unambiguous write path is required |
+
+**Interview-ready "why not" phrase:** *"Not leaderless for the orders database — orders need a clear, unambiguous write path, not tunable eventual consistency; leader-follower with read replicas for reporting load is the right default."*
+
+---
+
 ## Sections added by later topics
 
 <!-- Topic 008 will add: TCP vs UDP decision box -->

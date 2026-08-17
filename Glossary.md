@@ -221,5 +221,9 @@ Kept in alphabetical order.
 | Dependency Inversion Principle | High-level modules should depend on abstractions, not concrete implementations; Dependency Injection (L014) is the technique that implements this | [L002](LLD/L002_SOLID_Principles.md) |
 | Vertical Scaling (scale up) | Adding more CPU/RAM/disk to one machine — simple, no cross-node consistency issue, but hits a hard ceiling and is a single point of failure | [038](Topics/038_Vertical_vs_Horizontal_Scaling.md) |
 | Horizontal Scaling (scale out) | Adding more machines and spreading load across them — near-unlimited ceiling and redundancy, but introduces network calls, partial failure, and consistency between nodes | [038](Topics/038_Vertical_vs_Horizontal_Scaling.md) |
+| Leader-Follower Replication | One node (leader) accepts all writes and propagates to followers, which serve reads and can be promoted on leader failure — the default replication topology for relational DBs | [039](Topics/039_Replication.md) |
+| Multi-Leader Replication | More than one node accepts writes, each propagating to the others — used across regions for low-latency local writes, at the cost of resolving write conflicts | [039](Topics/039_Replication.md) |
+| Synchronous / Asynchronous Replication | Sync: leader waits for follower ack before acking the client (no data loss, added latency). Async: leader acks immediately (fast, but an acknowledged write is lost if the leader dies before replicating it) | [039](Topics/039_Replication.md) |
+| Semi-Synchronous Replication | Leader waits for confirmation from at least one follower, then replicates to the rest asynchronously — bounds data loss while keeping latency to one round-trip | [039](Topics/039_Replication.md) |
 
 <!-- Rows added after each lesson -->

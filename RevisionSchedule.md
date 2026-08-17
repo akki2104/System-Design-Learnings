@@ -408,3 +408,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-16 | 038 | Vertical vs Horizontal Scaling | +30 days | Pending |
 | 2026-10-16 | 038 | Vertical vs Horizontal Scaling | +60 days | Pending |
 | 2026-11-15 | 038 | Vertical vs Horizontal Scaling | +90 days | Pending |
+
+| 2026-08-18 | 039 | Replication | +1 day | Pending |
+| 2026-08-20 | 039 | Replication | +3 days | Pending |
+| 2026-08-24 | 039 | Replication | +7 days | Pending |
+| 2026-09-01 | 039 | Replication | +15 days | Pending |
+| 2026-09-16 | 039 | Replication | +30 days | Pending |
+| 2026-10-16 | 039 | Replication | +60 days | Pending |
+| 2026-11-15 | 039 | Replication | +90 days | Pending |

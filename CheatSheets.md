@@ -1275,3 +1275,33 @@ Real example: Stack Overflow ran huge vertically-scaled boxes for years — not 
 must go horizontal on a fixed timeline.
 ```
 ---
+
+### [039] Replication
+```
+WHY REPLICATE
+─────────────────────────────────────────────────
+Availability · Read scaling (often the PRIMARY reason) · Geo-locality · DR
+
+TOPOLOGIES
+─────────────────────────────────────────────────
+Leader-Follower: one write path, N read replicas — default for relational DBs
+Multi-Leader: multiple write-accepting nodes, per-region — needs conflict handling
+Leaderless: any node accepts writes, reconciled via quorums (Cassandra/DynamoDB)
+
+SYNC vs ASYNC (the core interview tradeoff)
+─────────────────────────────────────────────────
+Sync: leader waits for follower ack → no data loss, but +1 round-trip latency,
+      can stall on a slow follower
+Async: leader acks immediately → fast, but leader death before replication
+       = ACKNOWLEDGED WRITE LOST
+Semi-sync: wait for ONE follower, async to the rest — the common real compromise
+
+FOLLOWERS ARE FOR
+─────────────────────────────────────────────────
+Read-scaling (often day-one reason) · failover target · isolated analytics load
+
+SETS UP NEXT
+─────────────────────────────────────────────────
+Async replication → followers can fall behind → Replication Lag (Topic 040)
+```
+---
