@@ -381,3 +381,12 @@ Format:
 - Correct understanding: L1 (per-server local) and L2 (shared distributed) are structurally different caches. Deleting L2 does nothing to L1 by design, not by lag. Each independent cache copy (L1, L2, CDN edges) needs its own invalidation, typically via a broadcast (pub/sub or purge API). Self-corrected immediately and precisely on a direct nudge.
 - How to remember: "L1 was never in the room — you can't un-invite it from a conversation it never joined."
 - Recurs? 1
+
+---
+
+### 2026-08-20 — [Topic 040: Replication Lag & Read-Your-Writes]
+- Mistake: Asked for an example where replication lag causes a "real correctness problem, not just a UX glitch," first answer given was a tweet not appearing on refresh — the same category of visible-only glitch the question explicitly excluded.
+- Why it's wrong: A tweet not showing up self-resolves the moment the replica catches up, with zero lasting effect — it's cosmetic staleness, not correctness staleness. The distinguishing test is whether an action was TAKEN on the stale read with a consequence that outlives the lag itself.
+- Correct understanding: After the cosmetic-vs-correctness distinction was explained with worked examples (payment-status retry causing a duplicate charge, inventory oversell, idempotency-key bypass), correctly and independently generated a new example: a lagging replica showing "not blocked" lets a blocked user's message reach the person who blocked them — a real privacy/trust violation that already happened and can't be undone once the replica catches up.
+- How to remember: "Cosmetic self-heals when the replica catches up. Correctness doesn't — the money's already moved, the message already arrived."
+- Recurs? 1

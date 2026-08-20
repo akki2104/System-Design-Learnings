@@ -225,5 +225,10 @@ Kept in alphabetical order.
 | Multi-Leader Replication | More than one node accepts writes, each propagating to the others — used across regions for low-latency local writes, at the cost of resolving write conflicts | [039](Topics/039_Replication.md) |
 | Synchronous / Asynchronous Replication | Sync: leader waits for follower ack before acking the client (no data loss, added latency). Async: leader acks immediately (fast, but an acknowledged write is lost if the leader dies before replicating it) | [039](Topics/039_Replication.md) |
 | Semi-Synchronous Replication | Leader waits for confirmation from at least one follower, then replicates to the rest asynchronously — bounds data loss while keeping latency to one round-trip | [039](Topics/039_Replication.md) |
+| Replication Lag | The variable delay between a write landing on the leader and becoming visible on a follower — never fixed, changes with load/network/transaction size | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
+| Read-Your-Writes (RYW) Consistency | Guarantee that a user always sees their own writes immediately, even if reads generally go to a lagging replica | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
+| Monotonic Reads | Guarantee that once a user has seen a value, they never see an older value later — prevents data appearing to "go backwards" across differently-lagged replicas | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
+| Consistent Prefix Reads | Guarantee that causally-ordered writes are seen by readers in that same order, relevant across shards/multi-leader setups | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
+| Cosmetic vs Correctness Staleness | A stale read merely displayed (self-resolving, harmless) vs a stale read acted upon with a consequence that outlives the lag (duplicate charge, oversold item, message delivered to a blocker) | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
 
 <!-- Rows added after each lesson -->

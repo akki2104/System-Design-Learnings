@@ -1305,3 +1305,28 @@ SETS UP NEXT
 Async replication → followers can fall behind → Replication Lag (Topic 040)
 ```
 ---
+
+### [040] Replication Lag & Read-Your-Writes
+```
+WHAT IT IS: variable delay, leader-write → follower-visible. NEVER fixed.
+
+CLASSIC ANOMALY: user writes (leader) → reads own data (lagging follower)
+                 → looks MISSING
+
+THREE NAMED GUARANTEES (each fixes ONE anomaly)
+─────────────────────────────────────────────────
+Read-Your-Writes: see your OWN writes → route to leader briefly, or to the
+                  replica that got the write
+Monotonic Reads: never go BACKWARDS → sticky-route a user to the SAME replica
+Consistent Prefix Reads: causally-ordered writes stay ordered (shards/multi-leader)
+
+APPLY TARGETED, NOT GLOBAL — fix only the reads that need it
+
+COSMETIC vs CORRECTNESS STALENESS (the sharper test)
+─────────────────────────────────────────────────
+Cosmetic: stale value DISPLAYED, self-resolves, harmless (tweet not showing)
+Correctness: stale value ACTED ON, consequence OUTLIVES the lag —
+  duplicate charge (payment-status retry), oversold item (stock check),
+  message delivered to a blocker (block-list check), rate-limit bypass
+```
+---

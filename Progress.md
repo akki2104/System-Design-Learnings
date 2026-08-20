@@ -2,14 +2,14 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-08-17
+Last Updated    : 2026-08-20
 Current Module  : MODULE 4 — Scaling & Distributing Data
-Current Topic   : 040 Replication Lag & Read-Your-Writes (Next) — 🔴 MUST, 45 min, Med-Hard
+Current Topic   : 041 Partitioning & Sharding (Next) — 🔴 MUST, 50 min, Med-Hard
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 39 HLD (001-039) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
+Topics Completed: 40 HLD (001-040) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 037 L1-cache-as-cluster-node mix-up (attributed structural separation to replication lag; self-corrected on nudge). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, L001, L002: clean passes, no new gaps.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 040 cosmetic-vs-correctness staleness gap (first reached for a display-only example when asked for a correctness bug; self-corrected once the distinction was explained). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, L001, L002: clean passes, no new gaps.
 
 ── SEQUENCING TRACK v3 (adopted 2026-08-17) ────────────────────────────
 Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersedes v2's
