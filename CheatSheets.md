@@ -1330,3 +1330,39 @@ Correctness: stale value ACTED ON, consequence OUTLIVES the lag —
   message delivered to a blocker (block-list check), rate-limit bypass
 ```
 ---
+
+### [041] Partitioning & Sharding
+```
+WHY: Replication can't fix WRITE throughput or STORAGE capacity —
+  all writes still hit 1 leader, that leader's disk holds ALL data.
+  Sharding = split the DATA ITSELF across machines.
+
+PARTITIONING + REPLICATION = ORTHOGONAL, COMPOSED TOGETHER
+─────────────────────────────────────────────────
+Sharding    → solves: storage capacity, write throughput
+Replication → solves: availability, read scaling
+EACH SHARD is itself a leader-follower replica set.
+No per-shard replication = each shard is a NEW single point of failure.
+
+3 STRATEGIES
+─────────────────────────────────────────────────
+RANGE-based (A-M / N-Z):  + efficient range queries
+                           - hot-spotting (timestamp keys → latest shard hot)
+HASH-based (hash(k)%N):    + even distribution, no hot-spot from skew
+                           - range queries expensive (query ALL shards)
+                           - changing N reshuffles ~ALL keys → Consistent
+                             Hashing (042) fixes this
+DIRECTORY-based (lookup):  + flexible rebalancing (update map, not formula)
+                           - lookup service = new SPOF/bottleneck
+
+SHARDING COSTS
+─────────────────────────────────────────────────
+Cross-shard joins = network calls (005)
+Cross-shard transactions = need 2PC (054) / Saga (055), not free ACID
+Hot partitions can STILL happen even with hashing (skewed key value)
+Rebalancing = hard, live data movement (044)
+
+TRAP: crediting per-shard replication with read-scaling ONLY —
+      its PRIMARY job is availability (no SPOF per shard)
+```
+---

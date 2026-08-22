@@ -15,6 +15,15 @@ Format:
 
 ---
 
+### 2026-08-22 — [Topic 041: Partitioning & Sharding]
+- Mistake: Asked why a customer_id-sharded orders table needs BOTH sharding and per-shard replication, credited the per-shard replication only with sharing read load — omitted its more fundamental role.
+- Why it's wrong: Read-scaling is a real secondary benefit of per-shard replication, but the primary reason is availability/fault-tolerance — without replication, each shard is a brand-new single point of failure for its own slice of data; that shard's one machine dying makes that data unavailable (or lost) with no fallback.
+- Correct understanding: Sharding divides the LOAD (write throughput + storage) across machines; replication (applied per shard) protects each divided PIECE from being a new SPOF, with read-scaling as a bonus. Both are needed because they solve different problems, not because one "adds more" of what the other does.
+- How to remember: "Sharding splits the work. Replication makes sure losing one worker doesn't lose the work."
+- Recurs? 1
+
+---
+
 ### 2026-08-02 — [Topic 034: Eviction Policies]
 - Mistake: (1) Claimed a hashmap alone could mimic LRU's O(1) behavior. (2) Assumed a cache's TTL automatically keeps refreshing/extending as long as requests keep coming for that item.
 - Why it's wrong: (1) A hashmap has no ordering — it can confirm a key exists in O(1) but cannot identify "least recently used" without an O(n) scan; the doubly-linked list is what makes reorder-on-access and evict-from-back both O(1). (2) A standard TTL is a fixed clock set at insertion time and counts down regardless of read frequency — refresh-on-read ("sliding TTL") is a specific, opt-in design (e.g. Redis's GETEX), not the default. A hot item still expires at the TTL mark under the default behavior.

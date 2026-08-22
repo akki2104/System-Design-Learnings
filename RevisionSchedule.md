@@ -424,3 +424,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-19 | 040 | Replication Lag & Read-Your-Writes | +30 days | Pending |
 | 2026-10-19 | 040 | Replication Lag & Read-Your-Writes | +60 days | Pending |
 | 2026-11-18 | 040 | Replication Lag & Read-Your-Writes | +90 days | Pending |
+
+| 2026-08-23 | 041 | Partitioning & Sharding | +1 day | Pending |
+| 2026-08-25 | 041 | Partitioning & Sharding | +3 days | Pending |
+| 2026-08-29 | 041 | Partitioning & Sharding | +7 days | Pending |
+| 2026-09-06 | 041 | Partitioning & Sharding | +15 days | Pending |
+| 2026-09-21 | 041 | Partitioning & Sharding | +30 days | Pending |
+| 2026-10-21 | 041 | Partitioning & Sharding | +60 days | Pending |
+| 2026-11-20 | 041 | Partitioning & Sharding | +90 days | Pending |

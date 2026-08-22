@@ -230,5 +230,9 @@ Kept in alphabetical order.
 | Monotonic Reads | Guarantee that once a user has seen a value, they never see an older value later — prevents data appearing to "go backwards" across differently-lagged replicas | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
 | Consistent Prefix Reads | Guarantee that causally-ordered writes are seen by readers in that same order, relevant across shards/multi-leader setups | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
 | Cosmetic vs Correctness Staleness | A stale read merely displayed (self-resolving, harmless) vs a stale read acted upon with a consequence that outlives the lag (duplicate charge, oversold item, message delivered to a blocker) | [040](Topics/040_Replication_Lag_Read_Your_Writes.md) |
+| Partitioning / Sharding | Splitting a dataset itself across multiple machines so each holds/writes only a fraction — solves storage-capacity and write-throughput limits that replication alone cannot | [041](Topics/041_Partitioning_and_Sharding.md) |
+| Range-Based Partitioning | Splitting data by ranges of the partition key; efficient range queries but risks hot-spotting on skewed ranges (e.g., timestamp) | [041](Topics/041_Partitioning_and_Sharding.md) |
+| Hash-Based Partitioning | `shard = hash(key) % N`; even distribution, but sacrifices cheap range queries and makes naive rebalancing disruptive | [041](Topics/041_Partitioning_and_Sharding.md) |
+| Directory-Based Partitioning | A lookup service maps key → shard explicitly; flexible rebalancing, but the lookup service itself becomes a new critical dependency | [041](Topics/041_Partitioning_and_Sharding.md) |
 
 <!-- Rows added after each lesson -->
