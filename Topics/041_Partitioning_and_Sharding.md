@@ -61,6 +61,7 @@ A separate lookup/directory service holds an explicit mapping of key → shard, 
 
 Splitting data across machines reintroduces problems that were trivial on one machine:
 - **Cross-partition queries/joins get expensive** (Topic 005's insight made concrete): a join across two shards means a network round-trip, not an in-memory lookup.
+- **Cross-partition aggregation requires scatter-gather.** "Count all users" or "sum all orders today" can no longer run as a single-machine query — it has to fan out to every shard and merge the partial results in the application layer, which is slower and more complex than one machine's `COUNT(*)`.
 - **Cross-partition transactions are hard.** A single-node ACID transaction (Topic 024) is easy because everything lives on one machine with one WAL. A transaction touching two shards needs distributed coordination — two-phase commit (Topic 054 preview) or a Saga (Topic 055 preview).
 - **Hot partitions can still occur** even with hashing, if the *chosen key* itself is low-cardinality or one value dominates traffic (Topic 029's hot-partition concept, generalized).
 - **Rebalancing is operationally hard** — adding/removing shards means physically moving data between machines while the system stays live (full topic in 044).
