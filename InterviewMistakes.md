@@ -399,3 +399,12 @@ Format:
 - Correct understanding: After the cosmetic-vs-correctness distinction was explained with worked examples (payment-status retry causing a duplicate charge, inventory oversell, idempotency-key bypass), correctly and independently generated a new example: a lagging replica showing "not blocked" lets a blocked user's message reach the person who blocked them — a real privacy/trust violation that already happened and can't be undone once the replica catches up.
 - How to remember: "Cosmetic self-heals when the replica catches up. Correctness doesn't — the money's already moved, the message already arrived."
 - Recurs? 1
+
+---
+
+### 2026-09-16 — [Topic 042: Consistent Hashing]
+- Mistake: Described virtual node placement on the hash ring as physical nodes' copies being placed "at equidistant levels."
+- Why it's wrong: Deliberate even spacing would require knowing all future node positions in advance, which defeats the purpose of a dynamically-growing/shrinking cluster. The actual mechanism is many independently-hashed (effectively random) points per physical node; the balancing effect comes from the law of large numbers averaging out enough random points, not from engineered uniform spacing.
+- Correct understanding: Virtual nodes = many independent hashes per physical node (random ring positions), not evenly-spaced placement. Self-corrected immediately and precisely once the "equidistant defeats the purpose" contradiction was pointed out.
+- How to remember: "Random and many, not spaced and few — the law of large numbers does the balancing, not a ruler."
+- Recurs? 1

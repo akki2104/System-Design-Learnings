@@ -2,14 +2,17 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-08-22
+Last Updated    : 2026-09-16
 Current Module  : MODULE 4 — Scaling & Distributing Data
-Current Topic   : 042 Consistent Hashing (Next) — 🔴 MUST, per pre-TinyURL prerequisite batch
+Current Topic   : 043 Choosing a Shard Key (Next) — 🔴 MUST, per pre-TinyURL prerequisite batch
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 41 HLD (001-041) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
+Topics Completed: 42 HLD (001-042) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
+Track R (Tech)  : R01 Redis — 📦 CONSOLIDATED, READY TO LEARN (2026-08-31). Files written and
+                  cross-referenced; NOT taught, NOT completed, NOT mastered. See TopicPriority.md
+                  "TECHNOLOGY DEEP DIVES — Track R" for the schedule-impact options.
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, L001, L002: clean passes, no new gaps.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 042 virtual-node placement mischaracterized as "equidistant" (self-corrected once the contradiction was pointed out). 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, L001, L002: clean passes, no new gaps.
 
 ── SEQUENCING TRACK v3 (adopted 2026-08-17) ────────────────────────────
 Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersedes v2's
@@ -20,9 +23,10 @@ Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersed
 Trigger         : Aug 17 status check — v2 target date (Aug 18) arrived with case
                   studies 0/14 and mocks 0/3 despite theory ~60% done. Real bottleneck
                   was zero case-study reps, not remaining theory.
-In progress     : Pre-TinyURL (Case Study #1) prerequisite batch — 038,039,040,041,
-                  042,043,044 (Module 4) + 098 (Unique ID Generation), ~4.75h, before
-                  Case Study #1 begins.
+In progress     : Pre-TinyURL (Case Study #1) prerequisite batch — 038 ✅ 039 ✅ 040 ✅
+                  041 ✅ 042 ✅ done. Remaining: 043 (Choosing a Shard Key), 044
+                  (Rebalancing, SKIM), 098 (Unique ID Generation) — then Case Study
+                  #1 (TinyURL) begins, learner-driven.
 Scope reference : TopicPriority.md's tiers (MUST/SKIM/SKIP) and Schedule.md's content
                   (case-study list, time budgets) remain authoritative — v3 changes
                   ORDERING only, not scope.
@@ -130,6 +134,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 2026-08-20 | Topic 040 (Replication Lag & Read-Your-Writes) — Completed (🔴 MUST, 45m, Med-Hard), part of the pre-TinyURL prerequisite batch. Covered the read-your-writes/monotonic-reads/consistent-prefix-reads anomaly trio and, going beyond the original scope, the cosmetic-vs-correctness staleness distinction (a stale read merely displayed and self-resolving vs one acted upon with a consequence — duplicate charge, oversell, message to a blocker — that outlives the lag). First answer to "give a correctness bug" reached for a display-only example (tweet not appearing); self-corrected with a strong original example (blocked user's message still reaching the blocker via a lagging replica) once the distinction was explained. Confidence: 5/5. | Topic 041 — Partitioning & Sharding |
 | 2026-08-22 | Topic 041 (Partitioning & Sharding) — Completed (🔴 MUST, 50m, Med-Hard), part of the pre-TinyURL prerequisite batch. Covered why replication alone can't fix write-throughput/storage limits, the three partitioning strategies (range/hash/directory) with their tradeoffs, partitioning+replication as orthogonal-but-composed, and sharding's costs (cross-shard joins/transactions, hot partitions, rebalancing). Clean on the rebalancing-cost mechanism (naive `%N` reshuffle) and the timestamp-hot-partition mechanism; one gap on the "why do you need both sharding and per-shard replication" question — credited replication only with read-scaling, omitting its primary role (preventing each shard from being a new single point of failure). Corrected in detail. Confidence: 4/5. | Topic 042 — Consistent Hashing (next in the pre-TinyURL batch) |
 | 2026-07-22 | BIG REVISION SESSION — 9 overdue topics covered (009, 011, 013, 015, 017, 022, 023, 024, 025), following the new "cover the full topic, not just weak points" protocol. Two real wins: 011's TLS-guarantee gap and 017's health-check-mechanism gap both RESOLVED after persisting across 2 prior attempts. Two topics remain PERSISTENT and now need a different remediation approach: 013's gRPC browser blocker has produced a 3rd distinct wrong reason across 3 sessions — flagging for a mnemonic-first drill instead of more conceptual re-teaching. 015's short-polling latency-vs-waste mechanism failed a 3rd time with the same shallow answer — switched teaching method to a concrete numeric walkthrough (10,000 clients × poll-interval change) rather than re-explaining the concept abstractly; retest with a similarly concrete question next time. New minor gaps: 009 still missing "management" as DNS's 3rd hierarchy reason; 017 forgot the basic L4 vs L7 distinction; 025 (first revision) got both sub-questions wrong — non-repeatable-vs-phantom distinguishing axis, and the isolation-level decision framing was too vague — RESET to +1 day. 022, 023, 024 all passed clean. | Topic 026 — Concurrency Control: Locks, 2PL, Deadlocks; retest 013/015 with new approaches next revision cycle |
+| 2026-08-31 | **Repository work only — NO teaching, NO topic completed.** Full-repo Redis audit and consolidation at the learner's request. Audited every Redis mention (28 files; substantive coverage in 032-037 caching, 017 sessions, 028/031 DB choice, TechChoices, CheatSheets, Glossary). Created `Topics/R01_Redis_Consolidated_Module.md` (Track R — Technology Deep Dives, ~1-1.5 days, full 24-step structure) and `Revision/Revision_R01_Redis.md`. Gaps filled that the scattered coverage lacked: why Redis is fast (incl. the Redis-6 I/O-threading nuance), the full data-structure→use-case map (Streams, Bitmap, HyperLogLog, Geo), Redis BEYOND caching (rate limiting, distributed locks + the Redlock/fencing-token debate, sessions, counters, leaderboards, Pub/Sub, Streams, queues, idempotency, presence, geospatial), replication vs Sentinel vs Cluster stated as a three-way distinction, async-replication write loss on failover, `maxmemory-policy` defaults, hot keys/hot shards/big keys, MULTI/EXEC vs WATCH vs Lua, Redis vs Memcached/DB/Kafka/RabbitMQ, seven worked system placements, and labelled reported-vs-practice interview questions. Cross-reference pointers added to 017, 028, 031, 032-037; new decision boxes in TechChoices.md; 23 terms in Glossary.md; cheat sheet in CheatSheets.md. **No spaced-repetition entries scheduled — those start only on actual completion.** | Learner's call: schedule R01 as a standalone 1-1.5 day block, or fold it into the pre-Case-Study-#2 (Rate Limiter) prerequisite batch. Otherwise Topic 042 — Consistent Hashing remains next in the pre-TinyURL batch |
 
 ---
 
@@ -251,6 +256,7 @@ Wk 5–6 : Revision + 5 more Case Studies + company-flavored mocks
 | 112 | Estimation Mastery Drill | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 113 | Bottleneck Hunting & Evolution | Not Started | — | — | — | 0 | — | — | — | — | — |
 | 114 | Cost Reasoning in Design | Not Started | — | — | — | 0 | — | — | — | — | — |
+| **R01** | **Redis — Consolidated Module** (Track R) | **Consolidated — Ready to Learn** | — | — | — | 0 | — | — | — | Med-Hard | Not yet taught. Files exist + cross-referenced. Known incoming traps carried from 036/034/033/032/017/037 are pre-listed in the revision file |
 
 ---
 
