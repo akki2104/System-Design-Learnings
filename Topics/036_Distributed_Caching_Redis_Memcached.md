@@ -5,6 +5,8 @@
 **Completed:** 2026-08-04
 **Confidence:** 4/5
 
+> 🔗 **Redis is consolidated in [R01 — The Redis Consolidated Module](R01_Redis_Consolidated_Module.md)** (created 2026-08-31). This topic remains the Module-3 lesson (Redis *as distributed cache*, vs Memcached). R01 is the authoritative Redis document: data structures by use case, Redis beyond caching (rate limiting, locks, sessions, leaderboards, streams, presence, geo), replication vs Sentinel vs Cluster, atomicity/MULTI/WATCH/Lua, Redis vs Kafka/RabbitMQ/DB, failure modes, and interview questions. Nothing here is superseded — R01 extends it.
+
 ---
 
 ## 1. Why This Topic Exists

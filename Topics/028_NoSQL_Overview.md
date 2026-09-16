@@ -5,6 +5,8 @@
 **Completed:** 2026-07-26
 **Confidence:** 4-5/5
 
+> 🔗 The key-value category's canonical example is expanded in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) — Redis is a *data-structure* server, not just a KV store.
+
 ---
 
 ## 1. Why This Topic Exists

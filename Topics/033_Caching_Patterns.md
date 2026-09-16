@@ -5,6 +5,8 @@
 **Completed:** 2026-07-31
 **Confidence:** 4/5
 
+> 🔗 These patterns expressed in actual Redis commands (`SET … EX`, `DEL` vs `UNLINK`, write-behind via `INCR` + periodic flush) are in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.6.
+
 ---
 
 ## 1. Why This Topic Exists

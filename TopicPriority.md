@@ -222,6 +222,41 @@ Ordered by interview frequency. Do them in this order; if time runs short, the t
 
 ---
 
+## TECHNOLOGY DEEP DIVES — Track R *(cross-module consolidations)*
+
+> Added 2026-08-31 at the learner's request. A Track-R topic is not a new curriculum item —
+> it **consolidates material already spread across several modules** into one authoritative,
+> teachable-in-one-sitting document, and fills the gaps that the scattered treatment left. It
+> follows the full 24-step lesson structure and gets a full `Topics/` + `Revision/` pair like
+> any 🔴 MUST topic. Scheduling it is the learner's call.
+
+| ID | Topic | Tier | Time | Complexity | Why |
+|----|-------|------|------|-----------|-----|
+| R01 | **Redis — Consolidated Module** | 🔴 MUST | ~4.5h lesson + ~1h revision (**1–1.5 days**) | Med-Hard | The most name-dropped and most shallowly-defended technology in HLD rounds. Touches 5 of the 7 rubric dimensions. Appears in Case Studies #1, #2, #3, #4, #5, #9, #13, #14 — consolidating it once is cheaper than re-learning it eight times |
+
+**Status:** 📦 **CONSOLIDATED — READY TO LEARN.** Files exist and are cross-referenced
+([Topics/R01_Redis_Consolidated_Module.md](Topics/R01_Redis_Consolidated_Module.md),
+[Revision/Revision_R01_Redis.md](Revision/Revision_R01_Redis.md)). **Nothing has been taught
+and nothing is marked Completed or Mastered.**
+
+**Schedule impact if scheduled as a standalone block:**
+```
+4.5h lesson + 1h revision ≈ 5.5h ≈ 2.4 days at the assumed 2.25h/day rate.
+BUT ~2.0h of it is re-consolidation of 032-037/039-041 material already learned,
+so the genuinely NEW content is ~2.5-3.0h ≈ 1.2-1.3 days.
+
+Cheaper alternative the learner may prefer under Track v3 (JIT theory):
+  fold R01 into the pre-Case-Study-#2 (Rate Limiter) prerequisite batch, where its
+  rate-limiting, lock and atomicity sections are needed anyway — the marginal cost
+  then drops to roughly one extra 45-60 min block.
+```
+
+**Future Track-R candidates (not created, listed so the pattern is visible):** Kafka,
+PostgreSQL, Elasticsearch, S3/object storage. Create one only when the same scattering
+problem appears — do **not** pre-emptively build a deep dive per technology.
+
+---
+
 ## Mock Interviews — 3
 
 | # | Type | Time | When |

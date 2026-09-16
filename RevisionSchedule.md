@@ -5,6 +5,21 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 
 ---
 
+## ⏸️ NOT SCHEDULED — R01 Redis (Consolidated Module)
+
+**Added 2026-08-31.** `Topics/R01_Redis_Consolidated_Module.md` and `Revision/Revision_R01_Redis.md`
+exist and are cross-referenced, but the module has **not been taught**. Spaced repetition is keyed to
+a *completion* date, so **no R01 rows are added to the queue below.**
+
+**When R01 is actually completed**, add the standard seven rows (+1/+3/+7/+15/+30/+60/+90 from the real
+completion date, verified against the system date on that day — see the 2026-07-20 date-correction note
+below for why that verification is not optional).
+
+The R01 revision file is still usable *right now* as a pre-interview quick-revision sheet — it just
+isn't part of the spaced-repetition queue yet.
+
+---
+
 ## REVISION BLITZ — 2026-07-19 (DATE CORRECTED — was mislabeled 2026-07-13; see 2026-07-20 note below)
 
 Full backlog cleared (18 topics: 001-002, 006-021). Individual scattered rows below are
@@ -432,3 +447,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-09-21 | 041 | Partitioning & Sharding | +30 days | Pending |
 | 2026-10-21 | 041 | Partitioning & Sharding | +60 days | Pending |
 | 2026-11-20 | 041 | Partitioning & Sharding | +90 days | Pending |
+
+| 2026-09-17 | 042 | Consistent Hashing | +1 day | Pending |
+| 2026-09-19 | 042 | Consistent Hashing | +3 days | Pending |
+| 2026-09-23 | 042 | Consistent Hashing | +7 days | Pending |
+| 2026-10-01 | 042 | Consistent Hashing | +15 days | Pending |
+| 2026-10-16 | 042 | Consistent Hashing | +30 days | Pending |
+| 2026-11-15 | 042 | Consistent Hashing | +60 days | Pending |
+| 2026-12-15 | 042 | Consistent Hashing | +90 days | Pending |

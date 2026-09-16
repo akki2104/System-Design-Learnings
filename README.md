@@ -37,6 +37,7 @@ scores are self-assessed and often unflattering, and the pace warnings are accur
 | **9 — Specialized Building Blocks** | 089–101 | ⬜ Not started |
 | **10 — Architecture Styles & Delivery** | 102–110 | ⬜ Not started |
 | **11 — HLD Capstone Method** | 111–114 | ⬜ Not started |
+| **Track R — Technology Deep Dives** | R01 Redis | 📦 Consolidated, ready to learn |
 
 Plus a parallel LLD track (6 sessions), 14 case studies, and 3 mock interviews — all pending.
 
@@ -85,8 +86,8 @@ active-recall answers without notes, and drawing the key diagram from scratch.
 | [`Progress.md`](Progress.md) | Live dashboard, per-topic status, confidence scores, weak areas, full session log |
 | [`Schedule.md`](Schedule.md) | Day-by-day compressed plan (v2), rewritten from actual position |
 | [`TopicPriority.md`](TopicPriority.md) | Tier / time / complexity / skip-cost for every remaining topic |
-| [`Topics/`](Topics/) | One full lesson per topic — 34 files so far |
-| [`Revision/`](Revision/) | Active-recall Q&A per topic, with collapsible answers — 28 files |
+| [`Topics/`](Topics/) | One full lesson per topic, plus Track-R technology deep dives |
+| [`Revision/`](Revision/) | Active-recall Q&A per topic, with collapsible answers |
 | [`InterviewMistakes.md`](InterviewMistakes.md) | Every mistake with root cause, fix, and mnemonic |
 | [`CheatSheets.md`](CheatSheets.md) | One-screen condensed summary per topic |
 | [`Glossary.md`](Glossary.md) | Every term introduced, linked to its source topic |
@@ -104,6 +105,7 @@ Reasonable places to start if you're browsing:
 - [**027 — MVCC**](Topics/027_MVCC.md) — why readers never block writers, and the precise reason MVCC alone does *not* prevent lost updates
 - [**026 — Concurrency Control**](Topics/026_Concurrency_Control_Locks_2PL_Deadlocks.md) — 2PL, cascading rollback, and the lock-upgrade deadlock trap
 - [**012 — REST API Design**](Topics/012_REST_API_Design.md) — cursor vs. offset pagination as a *correctness* fix, not a performance one
+- [**R01 — Redis, consolidated**](Topics/R01_Redis_Consolidated_Module.md) — one authoritative pass over Redis for interviews: data structures by use case, Redis *beyond* caching, replication vs Sentinel vs Cluster, and what actually breaks when it dies
 
 Each lesson pairs with a [revision file](Revision/) containing active-recall questions, a 30-second
 elevator pitch, and the specific weak areas to watch.

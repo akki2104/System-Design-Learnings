@@ -5,6 +5,8 @@
 **Completed:** 2026-08-06
 **Confidence:** 4/5
 
+> 🔗 Redis-side invalidation mechanics (`DEL` vs `UNLINK`, Pub/Sub's at-most-once fan-out and its offline-subscriber gap, RESP3 client-side caching) are in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.6 and §4.8(f).
+
 ---
 
 ## 1. Why This Topic Exists

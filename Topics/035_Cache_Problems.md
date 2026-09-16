@@ -5,6 +5,8 @@
 **Completed:** 2026-08-02
 **Confidence:** 5/5
 
+> 🔗 The Redis implementations of these fixes — `SET NX EX` stampede mutex, `SET … "__NULL__"` negative caching, `BF.EXISTS`, plus the **hot key** problem that sharding cannot fix — are in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.6–4.7.
+
 ---
 
 ## 1. Why This Topic Exists

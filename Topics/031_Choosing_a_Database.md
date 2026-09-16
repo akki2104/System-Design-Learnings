@@ -5,6 +5,8 @@
 **Completed:** 2026-07-30
 **Confidence:** 4/5
 
+> 🔗 Redis's place in a polyglot design — and the full "why not Redis as the source of truth" argument — is in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §10.2 and §17.5.
+
 ---
 
 ## 1. Why This Topic Exists

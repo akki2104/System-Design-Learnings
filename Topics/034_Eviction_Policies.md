@@ -5,6 +5,8 @@
 **Completed:** 2026-08-02
 **Confidence:** 4/5
 
+> 🔗 Redis's concrete `maxmemory-policy` values (**default is `noeviction` — writes fail**), lazy vs active expiry, and the eviction-vs-expiry distinction are in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.6.
+
 ---
 
 ## 1. Why This Topic Exists

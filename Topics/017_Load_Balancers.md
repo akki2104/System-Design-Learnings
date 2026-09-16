@@ -4,6 +4,8 @@
 **Completed:** 2026-07-13
 **Confidence:** 4/5
 
+> 🔗 The Redis-backed session store referenced in §5 (and why it removes the *need* for stickiness rather than being "a better sticky session") is expanded in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.8(c).
+
 ---
 
 ## 1. Why Load Balancers Exist

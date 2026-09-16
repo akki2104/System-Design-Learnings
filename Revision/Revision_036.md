@@ -3,6 +3,10 @@
 **Format:** Active recall — answer before reading the answer.
 **Completed:** 2026-08-04
 
+> 🔗 A broader Redis revision pass (data structures beyond caching, replication vs Sentinel vs
+> Cluster, atomicity, failure modes, interview questions) is in
+> [Revision/Revision_R01_Redis.md](Revision_R01_Redis.md).
+
 ---
 
 ## Q1. Name Redis's four extra data structures beyond a plain string value, and give one real use case for each.

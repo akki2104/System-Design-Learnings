@@ -125,6 +125,69 @@ Example — Zomato's `orders` and `restaurants`:
 
 ---
 
+## REDIS — Full Decision Set (Topic R01)
+
+> Consolidated 2026-08-31. Full reasoning: [Topics/R01_Redis_Consolidated_Module.md](Topics/R01_Redis_Consolidated_Module.md).
+> The Memcached-vs-Redis-vs-Managed table above (Topic 036) still stands — these extend it to the
+> uses of Redis that are *not* caching.
+
+### R1. Should this data live in Redis at all?
+
+```
+The one test: IS IT RECONSTRUCTIBLE from a durable store beneath it?
+  YES → Redis is a candidate (cache, session, counter, lock, leaderboard, presence, rate limit)
+  NO  → it belongs in Postgres/DynamoDB/S3 first; Redis may sit IN FRONT of it, never instead of it
+```
+
+### R2. Redis deployment topology
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **Standalone** | Dev, or a genuinely disposable cache you would accept losing entirely | Anything production-facing — it is a single point of failure |
+| **Primary + replicas + Sentinel** | **Default for most systems.** Dataset fits one node's RAM; you want automatic failover and read scaling | One node's RAM or write throughput is the ceiling you're hitting |
+| **Redis Cluster** | Working set or write throughput exceeds one node (roughly: >50 GB hot set, or writes beyond one core) | Scale doesn't demand it — you pay hash-tag constraints on multi-key ops and real ops complexity for nothing |
+
+**Interview-ready "why not" phrase:** *"Not Cluster yet — the working set is 8 GB and reads are 20k/sec, both comfortably inside one primary. I'd run primary-plus-two-replicas with Sentinel for failover, and revisit Cluster when the hot set approaches one node's RAM."*
+
+### R3. Redis vs Kafka vs RabbitMQ (async work — Topic R01 §10.3–10.4)
+
+| Option | Pick it when | Do NOT pick it when | Real users |
+|---|---|---|---|
+| **Redis List** | Simple background jobs, Redis already running, losing a job is merely annoying | Losing a job is a bug — a popped message is gone if the worker dies | Thumbnail/resize workers, email queues in small services |
+| **Redis Streams** | Want ack + redelivery + consumer groups without standing up a broker; modest volume, short retention | You need long-horizon replay, TB-scale retention, or throughput beyond one machine's RAM | In-app notification fan-out, event pipelines in Redis-centric stacks |
+| **Redis Pub/Sub** | Cheap fan-out where losing a message is fine (cache invalidation, WebSocket push) | Delivery matters at all — at-most-once, no persistence, no replay, offline subscribers lose the message permanently | Cache-invalidation broadcast, live presence |
+| **Kafka** | Durable replayable history, event sourcing/CDC, many independent consumer groups on one stream, very high throughput | Latency must be sub-ms and the broker's ops overhead isn't justified | Analytics pipelines, CDC, LinkedIn/Uber-scale event backbones |
+| **RabbitMQ / SQS** | Rich routing topologies, per-message acks, dead-letter queues, priorities | You just need a fast in-memory list and already run Redis | Payment webhooks, order-processing workflows |
+
+**Interview-ready "why not" phrases:**
+- *"Not Kafka for the in-app notification fan-out — retention is minutes, one consumer group, and we already run Redis; Streams gives me ack and redelivery without a broker to operate."*
+- *"Not Redis Streams for the analytics pipeline — four consumers need independent replay over a week of history, which is disk-scale retention Redis would have to hold in RAM."*
+- *"Not Redis Pub/Sub for anything that must arrive — a subscriber that is restarting at publish time loses the message permanently."*
+
+### R4. Distributed lock mechanism (Topic R01 §4.8b, preview [099])
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **Redis `SET NX PX` + Lua release** | **Efficiency lock** — the lock prevents duplicate *work*, and occasional double execution is merely wasteful | It is a **correctness lock** — two holders would corrupt data or double-charge |
+| **Redlock (N independent primaries)** | You want more fault tolerance than one instance and accept the timing assumptions | You believe it gives correctness — it still has no fencing token and relies on bounded clock drift |
+| **etcd / ZooKeeper** | Correctness-critical mutual exclusion with consensus-backed guarantees | The ops cost isn't justified and an idempotent design would remove the need |
+| **Fencing tokens + idempotent operation** | **Best answer whenever available** — the protected resource rejects stale writers, so the lock need not be perfect | Nothing downstream can check a token (then you need a real lock service) |
+
+**Interview-ready "why not" phrase:** *"A Redis `SET NX PX` lock is fine to stop two workers doing the same import twice. I would not rely on it to prevent a double charge — async replication means a failover can hand the same lock to two clients, so the charge path gets an idempotency key and a fencing token instead."*
+
+### R5. Rate-limiting mechanism in Redis (Topic R01 §4.8a, preview [071])
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **Fixed window (`INCR` + `EXPIRE`)** | Simplest, O(1), tiny memory; approximate enforcement is fine | Boundary bursts are unacceptable (2× the limit across a window edge) |
+| **Sliding window log (ZSET + Lua)** | Accuracy matters; no boundary burst allowed | Request rate is high enough that one ZSET member per request is too much memory |
+| **Token bucket (Hash + Lua)** | You want controlled bursts plus a steady refill — the usual production choice | Simplicity outweighs burst control |
+| **Local in-memory counter** | Single instance, or a per-node fraction of a global quota | Multiple servers must share one quota — N servers would each allow the full limit |
+
+**Interview-ready "why not" phrase:** *"Not a local in-memory counter — with six gateway instances that silently becomes a 6× limit. The counter has to be shared, and `INCR` in Redis is atomic so the check-and-increment can't race. If Redis is unreachable I fail open and log it, because blocking all traffic is worse than briefly under-enforcing."*
+
+---
+
 ## Sections added by later topics
 
 <!-- Topic 008 will add: TCP vs UDP decision box -->

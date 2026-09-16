@@ -21,6 +21,23 @@ Triple-indexed: by company, by difficulty, by topic.
 ## Index by Topic
 <!-- Sections added per topic as lessons complete -->
 
+### Redis (Track R01) — 20 questions, provenance-labelled
+
+The full question set lives in
+[`Topics/R01_Redis_Consolidated_Module.md`](Topics/R01_Redis_Consolidated_Module.md) **§20**, split into:
+
+- **✅ Reported / commonly documented (10)** — Redis vs Memcached · design a distributed rate limiter ·
+  implement a distributed lock · design a leaderboard · what happens if Redis goes down · is Redis
+  single-threaded and why it matters · how Cluster routes a key · Redis vs Kafka · cache-DB consistency ·
+  RDB vs AOF and the crash loss window.
+- **⚙️ Practice (10)** — generated for this curriculum, testing understanding rather than command recall.
+- Plus the **follow-up chains**, **8 interview traps**, and **7 trade-off questions** in the same section.
+
+> Labelling convention introduced here and worth reusing: ✅ = documented in published interview-experience
+> write-ups and established prep collections as commonly asked; ⚙️ = generated for practice. Neither is a
+> guarantee of what a specific interviewer will ask.
+
+
 ---
 
 ## Index by Company

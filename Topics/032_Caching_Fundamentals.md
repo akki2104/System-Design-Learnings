@@ -5,6 +5,8 @@
 **Completed:** 2026-07-31
 **Confidence:** 4/5
 
+> 🔗 Redis-specific mechanics for everything below (TTL semantics, `maxmemory-policy`, what happens when Redis dies) live in [R01 — Redis Consolidated Module](R01_Redis_Consolidated_Module.md) §4.6.
+
 > Note: this topic was independently taught in two parallel sessions (one on this machine, one
 > on another). This file merges both — the fuller in-chat lesson as the base, plus the other
 > session's DB-internals mechanism, invalidation framing, read-your-own-write concept, and cache

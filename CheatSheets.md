@@ -1366,3 +1366,130 @@ TRAP: crediting per-shard replication with read-scaling ONLY —
       its PRIMARY job is availability (no SPOF per shard)
 ```
 ---
+
+### [R01] Redis — Consolidated Module
+
+> 📦 Consolidated 2026-08-31, **not yet taught.** Full lesson:
+> [Topics/R01_Redis_Consolidated_Module.md](Topics/R01_Redis_Consolidated_Module.md) ·
+> Quick revision: [Revision/Revision_R01_Redis.md](Revision/Revision_R01_Redis.md)
+> Supersedes nothing — extends [036]'s Redis-as-cache treatment to all of Redis.
+
+```
+MODEL     one fast clerk · one clipboard · differently-shaped boxes · RAM · room can burn down
+RULE      fast enough to serve AS a cache/coordination layer — NOT durable enough to BE the DB
+WHY FAST  RAM · no query planner · single-threaded EXECUTION (free atomicity, no locks)
+          · I/O threads since 6.0 (network only — the guarantee is unchanged)
+NUMBERS   0.1–1 ms · 50–100k ops/sec/instance (500k–1M+ pipelined) · 16,384 slots
+          · HLL ≤12 KB @ 0.81% error · keep nodes ≤25–50 GB (fork/failover/resync)
+
+STRUCTURE → USE CASE
+─────────────────────────────────────────────────
+String  SET k v EX ttl NX · INCR → cached blob · counters · rate limit · LOCK · idempotency
+Hash    HSET · HINCRBY          → SESSIONS · carts · per-field object updates
+List    LPUSH / BRPOP           → simple job queue · capped activity feed
+Set     SADD · SISMEMBER · SINTER → uniqueness · tags · mutual friends · dedup
+ZSET    ZADD · ZREVRANGE · ZREVRANK → LEADERBOARDS · sliding-window limiter · delayed queue
+                                      · presence · time-ordered feeds   ← the workhorse
+Stream  XADD · XREADGROUP · XACK → queue WITH ack + redelivery ("Kafka-lite")
+Bitmap  SETBIT · BITCOUNT       → daily-active-users (1 bit/user)
+HLL     PFADD · PFCOUNT         → unique counts at scale, approximate
+GEO     GEOADD · GEOSEARCH      → "near me"
+
+CACHING (Redis layer over 032–037)
+─────────────────────────────────────────────────
+cache-aside: GET → miss → DB → SET EX ttl ; write: DB then DEL (never overwrite)
+maxmemory-policy DEFAULT = noeviction → WRITES FAIL. Pure cache → allkeys-lru.
+TTL does NOT refresh on read (GETEX opts in) · expiry = lazy + active sampling
+UNLINK > DEL for big keys · jitter TTLs on bulk warm
+stampede→SET NX EX mutex / logical expiry · penetration→negative cache + BF.EXISTS
+avalanche→jitter + HA + circuit breaker
+HOT KEY → L1 cache / key splitting / replicas / CDN.  SHARDING DOES NOT HELP.
+
+BEYOND CACHING (where interviews live)
+─────────────────────────────────────────────────
+rate limit  String INCR (fixed) | ZSET (sliding) | Hash+Lua (token bucket) — SHARED counter
+lock        SET res <uuid> NX PX ttl + Lua compare-and-delete release
+            TTL mandatory · unique value mandatory · atomic release mandatory
+            efficiency lock OK · correctness lock → fencing token / etcd-ZK / idempotency
+session     Hash + TTL → app servers become STATELESS (not "better sticky sessions")
+counters    INCR, flush to DB (write-behind — crash loses the un-flushed delta)
+leaderboard ZSET: ZREVRANGE (top-K) + ZREVRANK (my rank), both server-side O(log n)
+pub/sub     fire-and-forget, at-most-once — offline subscriber LOSES the message
+streams     XADD/XREADGROUP/XACK + pending list + XCLAIM redelivery
+queue       List (simple, lossy on worker crash) | Stream (ack + redelivery)
+idempotency SET idem:{key} … NX EX — nil reply means duplicate
+presence    SET presence:{u} 1 EX 30, or ZADD online <ts> {u} if you need the LIST
+geo         GEOSEARCH … BYRADIUS … ASC COUNT n
+
+DISTRIBUTED
+─────────────────────────────────────────────────
+replication COPIES · Sentinel PROMOTES (HA, no shards) · Cluster SPLITS + promotes
+  → Sentinel and Cluster are ALTERNATIVES, never layered
+Replication is ASYNC → an ACKNOWLEDGED write can be LOST on failover
+  WAIT reduces the window, never removes it · min-replicas-to-write bounds the loss
+Replicas scale READS only (stale) · writes scale ONLY by sharding
+NEVER read locks or rate-limit counters from a replica
+Cluster: slot = CRC16(key) mod 16384 · multi-key ops need SAME SLOT → hash tags {user:1}:*
+
+PERSISTENCE
+─────────────────────────────────────────────────
+RDB  = fork+snapshot   → fast restart, lose MINUTES, fork latency + COW memory spike
+AOF  = write log       → appendfsync always | EVERYSEC (default, lose ~1s) | no
+Run BOTH. RESTARTABLE ≠ DURABLE. Cold restart = 100% miss = avalanche.
+
+ATOMICITY / CONCURRENCY
+─────────────────────────────────────────────────
+every single command atomic (one thread, to completion)
+MULTI/EXEC : no rollback on runtime errors, no read-then-branch. Isolation only.
+WATCH      : optimistic CAS — EXEC returns nil if changed, CALLER retries
+Lua EVAL   : atomic read-branch-write. Keep short. Same slot in Cluster.
+pipelining ≠ transaction (throughput only)
+App-side GET→modify→SET = LOST UPDATE race → use INCR/HINCRBY/WATCH/Lua
+
+VS ALTERNATIVES
+─────────────────────────────────────────────────
+Memcached  simpler pure-KV, multi-threaded, no persistence/clustering
+Postgres   durable · ACID · joins · ad-hoc queries · cheap per GB
+Kafka      ON-DISK, long retention, full replay, partition parallelism, huge throughput
+RabbitMQ   routing topologies, per-message acks, DEAD-LETTER QUEUES, priorities
+etcd/ZK    consensus-backed CORRECTNESS locks
+TRAP: "Redis Pub/Sub is like Kafka" — Streams is the Kafka-shaped one; Pub/Sub loses messages
+
+FAILURE
+─────────────────────────────────────────────────
+no HA → avalanche · failover → lost acked writes + lock re-acquisition
+maxmemory → errors (default) or eviction · hot key → one shard saturates
+KEYS */big DEL/long Lua → blocks EVERY client · fork on big dataset → latency spike
+cold restart → 100% miss
+ALWAYS STATE: fail open or fail closed, per use case
+
+ALWAYS SAY  which structure · what TTL · what happens when it dies · fail open/closed
+NEVER SAY   "Redis can be the database" · "add shards for the hot key"
+            "Pub/Sub is like Kafka" · "MULTI/EXEC rolls back"
+```
+---
+
+### [042] Consistent Hashing
+```
+PROBLEM: naive hash(key) % N reshuffles almost ALL keys when N changes
+
+THE RING: keys AND nodes hashed onto same circular space (0 to 2^32-1)
+Key belongs to FIRST node found walking CLOCKWISE from its hash position
+
+WHY IT WORKS: add/remove ONE node → only ~1/N of keys move (the ones
+"local" to that node's slice) — everyone else untouched
+
+VIRTUAL NODES (not optional in practice)
+Each physical node placed at MANY (100-200+) INDEPENDENTLY HASHED points
+→ balance comes from LAW OF LARGE NUMBERS over many random points,
+  NOT from deliberate even spacing (which needs future positions known)
+→ also spreads rebalancing load across many nodes, not one
+
+DOESN'T SOLVE: hot KEYS (→ 043) · actual data-migration mechanics (→ 044)
+              · replication (→ 039, separate decision, often combined:
+                replicate to next N nodes clockwise)
+
+RELATED: Redis Cluster's 16384 fixed hash slots (036) — same goal,
+         simpler/more constrained variant vs a continuous ring
+```
+---

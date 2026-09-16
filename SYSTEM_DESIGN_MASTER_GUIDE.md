@@ -416,6 +416,39 @@ The roadmap is divided into **Modules**. Within a module, topics are taught **in
 
 > The LLD numbering lives in `/LLD`. The mentor interleaves LLD lessons into the schedule but tracks them with the same status/mastery system.
 
+### TRACK R — TECHNOLOGY DEEP DIVES (cross-module consolidations)
+
+> **Added 2026-08-31 at the learner's explicit request.** This does **not** change the 114-topic
+> canonical roadmap above, its ordering, or any topic's tier. A Track-R entry is a **consolidation
+> artifact**, not new curriculum: it gathers material a single technology has scattered across several
+> modules into one authoritative, teachable-in-one-sitting document, and fills the gaps that the
+> scattered treatment left behind.
+
+**Rules for creating a Track-R topic:**
+
+1. **Only on the learner's request, and only for a genuine scattering problem** — a technology the
+   learner will meet 5+ separate times across different modules. Never pre-emptively one per technology.
+2. **Consolidate, do not duplicate.** The Track-R file restates only the technology-specific layer and
+   **cross-references** the canonical topics for shared theory. The canonical topics get a one-line
+   pointer back; nothing in them is superseded, rewritten, or deleted.
+3. **Full 24-step lesson structure** (Section 5) and a matching `Revision/Revision_R0N_*.md`, exactly as
+   for a 🔴 MUST topic. Tier shapes pace, never documentation depth (see the 2026-08-17 correction).
+4. **Scoped to the interview, not to the technology.** Anything that only matters to an operator of that
+   technology is marked "⚫ beyond scope" and given one line. The optimisation target is
+   *mental model → use cases → architecture → trade-offs → failure modes → interview questions.*
+5. **Interview questions must be provenance-labelled** — ✅ documented-as-commonly-asked vs ⚙️ generated
+   for practice. Never present generated questions as reported ones.
+6. **Creating the files is not teaching them.** A newly consolidated Track-R topic is marked
+   `Consolidated — Ready to Learn` in `Progress.md`, gets **no** `RevisionSchedule.md` rows (spaced
+   repetition keys off a real completion date), and is **never** marked Completed or Mastered until it
+   has actually been delivered and its Mastery Check (Section 9) scored.
+
+**Current Track-R entries:**
+
+- **R01** Redis — Consolidated Module (`Topics/R01_Redis_Consolidated_Module.md`) — consolidates 017,
+  028, 031, 032–037, 039–041 and previews 042, 056, 059–061, 070, 071, 082, 089, 090, 092, 098, 099.
+  ~4.5 h lesson + ~1 h revision ≈ 1–1.5 days. **Status: Consolidated — Ready to Learn.**
+
 ---
 
 ## 5. THE 24-STEP LESSON STRUCTURE (EVERY `/Topics` AND `/LLD` LESSON FOLLOWS THIS)
@@ -926,6 +959,7 @@ This roadmap was calibrated against current interview practice using multiple so
 | 2026-07-31 | Clarified Section 0.1 rule 2 + Section 6: the MUST-topic no-confirmation-to-start rule never waives the Mastery Check (Section 9) before advancing. Caught after a session skipped grading a topic's live checkpoint answers because tracking files (updated by a parallel session) already showed it as complete | Mentor LLM |
 | 2026-08-17 | Added Section 0.2 — Sequencing Track v3 (case-study-driven JIT theory). Adopted after the v2 target date (Aug 18) arrived with case studies/mocks at 0% despite theory ~60% done; pivots to teaching only a case study's specific missing prerequisites just-in-time, full case studies learner-driven. Reversible; v2 phase table stays as scope reference | Mentor LLM |
 | 2026-08-17 | Corrected Section 6 + TopicPriority.md's tier table: SKIM's "condensed" applies to LIVE teaching time only — the saved Topic/Revision files must still be full MUST-quality documentation. Caught after Topic 038's SKIM file was written as a thin stub instead of a complete document | Mentor LLM |
+| 2026-08-31 | Added **Track R — Technology Deep Dives** to Section 4 (learner request): a mechanism for consolidating one technology's scattered coverage into a single authoritative, interview-scoped document with its own Revision file. Does not change the 114-topic roadmap, its ordering, or any tier. First entry: R01 Redis. Includes the rule that consolidating files is NOT teaching them — no Completed/Mastered status and no spaced-repetition rows until the module is actually delivered and its Mastery Check scored | Mentor LLM |
 
 *(The mentor appends a row here whenever this constitution is meaningfully revised — e.g., roadmap reorder, new module, updated interview calibration.)*
 
