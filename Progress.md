@@ -2,17 +2,17 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-09-16
+Last Updated    : 2026-09-17
 Current Module  : MODULE 4 — Scaling & Distributing Data
-Current Topic   : 043 Choosing a Shard Key (Next) — 🔴 MUST, per pre-TinyURL prerequisite batch
+Current Topic   : 044 Rebalancing & Resharding (Next) — 🟡 SKIM, per pre-TinyURL prerequisite batch
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
-Topics Completed: 42 HLD (001-042) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
+Topics Completed: 43 HLD (001-043) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 IN PROGRESS
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
 Track R (Tech)  : R01 Redis — 📦 CONSOLIDATED, READY TO LEARN (2026-08-31). Files written and
                   cross-referenced; NOT taught, NOT completed, NOT mastered. See TopicPriority.md
                   "TECHNOLOGY DEEP DIVES — Track R" for the schedule-impact options.
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 042 virtual-node placement mischaracterized as "equidistant" (self-corrected once the contradiction was pointed out). 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, L001, L002: clean passes, no new gaps.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New: 043 clean pass but needed a nudge to supply the requested conflicting-criteria example (definitions were right, example wasn't volunteered). 042 virtual-node placement mischaracterized as "equidistant" (self-corrected once the contradiction was pointed out). 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected — same family as 032's durable-store trap). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, L001, L002: clean passes, no new gaps.
 
 ── SEQUENCING TRACK v3 (adopted 2026-08-17) ────────────────────────────
 Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersedes v2's
@@ -24,9 +24,9 @@ Trigger         : Aug 17 status check — v2 target date (Aug 18) arrived with c
                   studies 0/14 and mocks 0/3 despite theory ~60% done. Real bottleneck
                   was zero case-study reps, not remaining theory.
 In progress     : Pre-TinyURL (Case Study #1) prerequisite batch — 038 ✅ 039 ✅ 040 ✅
-                  041 ✅ 042 ✅ done. Remaining: 043 (Choosing a Shard Key), 044
-                  (Rebalancing, SKIM), 098 (Unique ID Generation) — then Case Study
-                  #1 (TinyURL) begins, learner-driven.
+                  041 ✅ 042 ✅ 043 ✅ done. Remaining: 044 (Rebalancing, SKIM), 098
+                  (Unique ID Generation) — then Case Study #1 (TinyURL) begins,
+                  learner-driven.
 Scope reference : TopicPriority.md's tiers (MUST/SKIM/SKIP) and Schedule.md's content
                   (case-study list, time budgets) remain authoritative — v3 changes
                   ORDERING only, not scope.

@@ -455,3 +455,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-10-16 | 042 | Consistent Hashing | +30 days | Pending |
 | 2026-11-15 | 042 | Consistent Hashing | +60 days | Pending |
 | 2026-12-15 | 042 | Consistent Hashing | +90 days | Pending |
+
+| 2026-09-18 | 043 | Choosing a Shard Key | +1 day | Pending |
+| 2026-09-20 | 043 | Choosing a Shard Key | +3 days | Pending |
+| 2026-09-24 | 043 | Choosing a Shard Key | +7 days | Pending |
+| 2026-10-02 | 043 | Choosing a Shard Key | +15 days | Pending |
+| 2026-10-17 | 043 | Choosing a Shard Key | +30 days | Pending |
+| 2026-11-16 | 043 | Choosing a Shard Key | +60 days | Pending |
+| 2026-12-16 | 043 | Choosing a Shard Key | +90 days | Pending |

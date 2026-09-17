@@ -1493,3 +1493,31 @@ RELATED: Redis Cluster's 16384 fixed hash slots (036) — same goal,
          simpler/more constrained variant vs a continuous ring
 ```
 ---
+
+### [043] Choosing a Shard Key
+```
+FOUR CRITERIA
+─────────────────────────────────────────────────
+1. High cardinality — enough distinct values to spread across N shards
+2. Even ACCESS distribution — not just even value distribution
+3. Aligns with the DOMINANT query — that query should hit ONE shard
+4. Avoid monotonic key + RANGE partitioning together (hash removes this)
+
+THESE CAN CONFLICT — prioritize the DOMINANT query
+─────────────────────────────────────────────────
+e.g. TinyURL: user_id has good cardinality/distribution but fails to
+match the dominant query (short_code→long_url) — wrong choice anyway.
+Serve secondary query patterns via a separate index/table instead.
+
+WORKED EXAMPLE — TinyURL: shard by short_code, NOT user_id
+─────────────────────────────────────────────────
+short_code: high cardinality + matches the ONLY real query (redirect)
+user_id: would ease "list my URLs" but wrecks the hot redirect path
+         into a scatter-gather
+
+SHARD KEY ≠ HOT-KEY PROTECTION (same boundary as 042)
+─────────────────────────────────────────────────
+Even a perfect shard key can't stop ONE viral value from overloading
+its shard. CACHING solves that, not a better shard key.
+```
+---

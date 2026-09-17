@@ -259,5 +259,6 @@ Kept in alphabetical order.
 | Valkey | BSD-licensed, Linux-Foundation-governed fork of Redis created in March 2024 after the SSPL relicense; API-compatible drop-in, increasingly the managed-cloud default | [R01](Topics/R01_Redis_Consolidated_Module.md) |
 | Consistent Hashing | Places both keys and nodes on a hash ring; a key belongs to the first node clockwise from its position — adding/removing a node only moves ~1/N of keys instead of nearly all of them | [042](Topics/042_Consistent_Hashing.md) |
 | Virtual Nodes | Placing each physical node at many independently-hashed, effectively random points on a consistent-hashing ring so load balances via the law of large numbers, rather than one point per node (which is uneven) | [042](Topics/042_Consistent_Hashing.md) |
+| Shard Key | The field(s) fed into a partitioning strategy to decide which shard a record lives on; choosing it well (cardinality, distribution, query alignment) is independent of the hashing mechanics used | [043](Topics/043_Choosing_a_Shard_Key.md) |
 
 <!-- Rows added after each lesson -->
