@@ -463,3 +463,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-10-17 | 043 | Choosing a Shard Key | +30 days | Pending |
 | 2026-11-16 | 043 | Choosing a Shard Key | +60 days | Pending |
 | 2026-12-16 | 043 | Choosing a Shard Key | +90 days | Pending |
+
+| 2026-09-20 | 044 | Rebalancing & Resharding | +1 day | Pending |
+| 2026-09-22 | 044 | Rebalancing & Resharding | +3 days | Pending |
+| 2026-09-26 | 044 | Rebalancing & Resharding | +7 days | Pending |
+| 2026-10-04 | 044 | Rebalancing & Resharding | +15 days | Pending |
+| 2026-10-19 | 044 | Rebalancing & Resharding | +30 days | Pending |
+| 2026-11-18 | 044 | Rebalancing & Resharding | +60 days | Pending |
+| 2026-12-18 | 044 | Rebalancing & Resharding | +90 days | Pending |

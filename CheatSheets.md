@@ -1521,3 +1521,40 @@ Even a perfect shard key can't stop ONE viral value from overloading
 its shard. CACHING solves that, not a better shard key.
 ```
 ---
+
+### [044] Rebalancing & Resharding
+```
+CONSISTENT HASHING (042) decides WHICH keys move.
+REBALANCING = actually moving the bytes, live, no downtime.
+
+2 ORGANIZING APPROACHES
+─────────────────────────────────────────────────
+Fixed over-partitioning (MongoDB chunks, Kafka): pre-split into MANY
+  more partitions than nodes → rebalance = reassign WHOLE partitions
+Dynamic partitioning: split when too big / merge when too small
+  (B-tree-like) → adapts to data volume, more complex logic
+
+LIVE MIGRATION MECHANICS
+─────────────────────────────────────────────────
+1. New node assigned a partition/range
+2. Background bulk-copy from current owner → new owner
+3. CURRENT OWNER STAYS AUTHORITATIVE during the copy (no downtime)
+4. Catch up writes that landed DURING the copy
+5. Atomic cutover once new owner fully caught up
+6. Cleanup old copy
+
+COPY SOURCE ON NODE FAILURE — surviving replica, NEVER the dead node
+─────────────────────────────────────────────────
+Dead node = unreachable = can't be a copy source, period.
+Copy comes from the OTHER replicas that already held the data
+(replication factor > 1, Topic 041) → restores RF back to normal.
+No replication on that shard = data genuinely GONE till node returns.
+
+GUARDRAIL: DON'T MAKE REBALANCING FULLY AUTOMATIC
+─────────────────────────────────────────────────
+15s GC pause on Node7 (500GB) → automatic rebalance = massive
+unnecessary copy load on 9 healthy nodes, then Node7 comes back fine.
+FIX: grace period (e.g. 5 min sustained down) or operator confirm
+     before triggering a large rebalance.
+```
+---
