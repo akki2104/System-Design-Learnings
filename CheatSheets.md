@@ -1558,3 +1558,46 @@ FIX: grace period (e.g. 5 min sustained down) or operator confirm
      before triggering a large rebalance.
 ```
 ---
+
+### [098] Unique ID Generation (Snowflake, ULID)
+```
+WHY: sharding (041-044) breaks single auto-increment counter —
+     1 shared counter across shards = the exact bottleneck sharding
+     was meant to eliminate.
+
+4 COMPETING PROPERTIES: unique, decentralized, sortable, compact
+  — no single approach maximizes all 4
+
+RANDOM UUID v4 — 122 random bits (6 reserved for version/variant)
+  Collision: birthday paradox, 2^122 space → need ~2^61 UUIDs for
+  50% collision chance. Negligible in practice.
+  COST: fragments B-TREE inserts (022/023) — random insert point,
+  not sortable, 128 bits = bigger than a 64-bit int.
+
+SNOWFLAKE — 64 bits: [41 timestamp][10 machine][12 sequence]
+  Decentralized AFTER one-time worker-ID assignment (not per-ID!)
+  TIMESTAMP FIRST (not machine ID) → GLOBAL time-sortable:
+    machine-ID-first would only sort WITHIN one machine's own stream
+    (numeric order dominated by which machine, not when → breaks
+    global chronological order across machines)
+  CLOCK RISK: NTP step-correction can jump clock BACKWARD →
+    reused timestamp → possible duplicate/out-of-order ID.
+    Fix: track last-used timestamp, wait or error if clock regresses.
+
+ULID — 128 bits: [48 timestamp][80 randomness]
+  Like Snowflake (timestamp-first, sortable) but NO machine-ID field
+  → ZERO coordination of any kind (not even startup worker-ID)
+  Cost: bigger than Snowflake (128 vs 64 bits)
+
+RANGE/BLOCK ALLOCATION — central service hands out ID RANGES
+  (not single IDs) → reduces (not eliminates) coordination freq.
+  Flickr/Instagram-style "ticket servers."
+
+DECISION
+─────────────────────────────────────────────────
+No sharding, need order+simple    → auto-increment/sequence
+Sharded, decentralized+compact+sortable → Snowflake
+Sharded, decentralized+ZERO coordination, size less critical → ULID
+Reduce (not eliminate) central coordination → range allocation
+```
+---

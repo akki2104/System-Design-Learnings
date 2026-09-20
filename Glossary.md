@@ -261,5 +261,9 @@ Kept in alphabetical order.
 | Virtual Nodes | Placing each physical node at many independently-hashed, effectively random points on a consistent-hashing ring so load balances via the law of large numbers, rather than one point per node (which is uneven) | [042](Topics/042_Consistent_Hashing.md) |
 | Shard Key | The field(s) fed into a partitioning strategy to decide which shard a record lives on; choosing it well (cardinality, distribution, query alignment) is independent of the hashing mechanics used | [043](Topics/043_Choosing_a_Shard_Key.md) |
 | Rebalancing / Resharding | The operational mechanics of actually moving data between nodes once ownership changes (e.g., from consistent hashing) — copy, catch-up, atomic cutover, cleanup | [044](Topics/044_Rebalancing_and_Resharding.md) |
+| Snowflake ID | A 64-bit decentralized ID: [41-bit timestamp][10-bit machine ID][12-bit sequence] — timestamp-first layout gives global (not just per-machine) time-sortability with no per-ID coordination | [098](Topics/098_Unique_ID_Generation.md) |
+| ULID | A 128-bit UUID-compatible, timestamp-first sortable ID (48-bit timestamp + 80-bit randomness) needing zero coordination of any kind, unlike Snowflake's one-time worker-ID assignment | [098](Topics/098_Unique_ID_Generation.md) |
+| UUID (v4) | A 128-bit ID with 122 bits of true randomness; collision probability is negligible (birthday-paradox math over 2^122) but the ID is neither sortable nor compact | [098](Topics/098_Unique_ID_Generation.md) |
+| Range/Block ID Allocation | A central service hands out entire ID ranges (not single IDs) to each machine, reducing coordination frequency by orders of magnitude while keeping strict global ordering | [098](Topics/098_Unique_ID_Generation.md) |
 
 <!-- Rows added after each lesson -->
