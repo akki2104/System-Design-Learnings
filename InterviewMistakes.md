@@ -408,3 +408,22 @@ Format:
 - Correct understanding: Virtual nodes = many independent hashes per physical node (random ring positions), not evenly-spaced placement. Self-corrected immediately and precisely once the "equidistant defeats the purpose" contradiction was pointed out.
 - How to remember: "Random and many, not spaced and few — the law of large numbers does the balancing, not a ruler."
 - Recurs? 1
+
+---
+
+### 2026-09-26 — [Case Study #1: TinyURL — Estimation]
+- Mistake: Computed write QPS by treating the daily volume (3.5M/day) directly as a per-second rate ("3.5/s"), skipping the ÷86,400 conversion; separately, computed storage as 100M rows × 100 bytes = "10^9 bytes = 1GB/month" — a power-of-ten short (100M × 100 = 10^10, i.e. 10GB, not 1GB).
+- Why it's wrong: Both are the same class of error — dropping or mis-tracking an order of magnitude during a multi-step unit conversion under time pressure. This is a recurrence of the long-standing "reads-in-write-QPS formula" weak area already flagged in Progress.md (Topic 112's estimation drill is intended to target this directly).
+- Correct understanding: Write QPS = daily volume ÷ 86,400 (or ÷~10^5 as a fast mental-math approximation, giving ~35-40/s here, not 3.5/s). Storage = row_count × row_size, checked digit-by-digit against powers of ten (100,000,000 × 100 = 10,000,000,000 = 10GB, not 1GB). Both corrected immediately once flagged.
+- How to remember: "Count the zeros twice" — once for the volume, once for the conversion — before trusting a back-of-envelope number.
+- Recurs? 2 — PERSISTENT (same underlying gap as the long-standing write-QPS/estimation weak area).
+
+---
+
+### 2026-09-26 — [Case Study #1: TinyURL — Recurring Pattern]
+- Mistake: Across the case study, several first-pass answers were directionally right but missed the *precise mechanism* until a follow-up isolated it: (1) called 301 "temporary" (it's Permanent; 302 is Temporary — direct contradiction of reasoning already established earlier in the same session), (2) the redirect-flow narration skipped the cache-check step even though the accompanying diagram showed it, (3) proposed auto-increment for short-code generation despite having already chosen a decentralized DynamoDB architecture two steps earlier for the opposite reason, (4) proposed a Redis Cluster for cache-node failure without including per-shard replication (sharding alone doesn't survive a node dying), (5) described DynamoDB rebalancing without naming that the copy source must be a surviving replica, not the dead node, (6) framed CDN caching as solving "billions of records" (a storage-scaling claim) instead of request/latency scaling, and initially omitted its analytics/staleness tradeoff, (7) first monitoring answer covered only per-link viral-click detection, missing the baseline system-health signals (latency/error-rate/traffic/saturation) and cache hit ratio.
+- Why it's wrong: Each of these is a case of stopping at "a plausible-sounding answer" rather than checking it against a mechanism already established earlier in the same conversation, or against the full breadth of what the question actually asked (e.g., "what would you monitor" needs baseline system health, not just one business metric).
+- Correct understanding: All seven were corrected in the same turn once the precise gap was named — this reflects strong adaptability under a direct follow-up, but the goal for next time is closing more of these gaps on the first pass, by explicitly cross-checking a new answer against decisions already locked in earlier in the same design (e.g., "did I just contradict the DB choice I made two steps ago?").
+- How to remember: "Before answering, check it against what you already decided two steps ago."
+- Recurs? 1 (first full case-study attempt; watch for whether this self-check habit forms by Case Study #2)
+

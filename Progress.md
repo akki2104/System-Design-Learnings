@@ -2,18 +2,19 @@
 
 ## Dashboard
 ```
-Last Updated    : 2026-09-21
-Current Module  : MODULE 4 — Scaling & Distributing Data (complete) → Case Study #1 next
-Current Topic   : ALL pre-TinyURL prerequisites done. Next: Case Study #1 — TinyURL /
-                  URL Shortener, learner-driven (Sequencing Track v3, Section 10.3)
+Last Updated    : 2026-09-26
+Current Module  : Case Study #1 COMPLETE → Module 5 (Distributed Systems Theory) or Case Study #2 next
+Current Topic   : Case Study #1 (TinyURL) done. Next: either Topic 045+ (Module 5) or Case Study #2
+                  (Rate Limiter) per Sequencing Track v3 — learner's call.
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 45 HLD (001-044, 098) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 THEORY COMPLETE
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
+                  + 1 Case Study (CS001 TinyURL — see CaseStudies/CS001_TinyURL.md)
 Track R (Tech)  : R01 Redis — 📦 CONSOLIDATED, READY TO LEARN (2026-08-31). Files written and
                   cross-referenced; NOT taught, NOT completed, NOT mastered. See TopicPriority.md
                   "TECHNOLOGY DEEP DIVES — Track R" for the schedule-impact options.
 Revisions Due   : 013 (+1d, PERSISTENT ×3), 025 (+1d, reset) both due 2026-07-23 — now well overdue. Learner revises on own cadence.
-Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. 043 clean pass but needed a nudge to supply the requested conflicting-criteria example. 042 virtual-node placement mischaracterized as "equidistant" (self-corrected). 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. Long-standing: reads in write QPS formula. 035, 039, 044, 098, L001, L002: clean passes, no new gaps.
+Top Weak Areas  : PERSISTENT (×3, needs mnemonic drill not re-explanation) — 013 gRPC browser blocker (3rd different wrong reason). PERSISTENT (×3, teaching method changed to numeric example) — 015 short-polling latency-vs-waste. PERSISTENT ×2, now confirmed in CS001 too — reads-in-write-QPS/estimation formula (skipped ÷86400, 10x storage slip). PERSISTENT (×2, needs 60s drill next session) — 032 display-vs-transactional staleness. New (CS001): a recurring first-pass pattern of plausible-but-imprecise answers on mechanism questions (301/302, cache-skip in redirect narration, auto-increment contradicting the chosen DB, Redis sharding-vs-replication, DynamoDB rebalance source, CDN scaling-axis conflation, monitoring baseline-signals gap) — all self-corrected same-turn once precisely named; watch whether the "check against what I decided two steps ago" habit forms by Case Study #2. 043 clean pass but needed a nudge to supply the requested conflicting-criteria example. 042 virtual-node placement mischaracterized as "equidistant" (self-corrected). 041 credited per-shard replication only with read-scaling, omitted its primary availability/SPOF-prevention role. 040 cosmetic-vs-correctness staleness gap (self-corrected). 037 L1-cache-as-cluster-node mix-up (self-corrected). 036 "Redis fast enough to BE a database" inversion (self-corrected). 034 hashmap-alone-for-LRU + TTL-refreshes-on-read misconceptions (both corrected). 033 first-pass cache-aside write path omitted cache invalidation (self-corrected). 031 polyglot-persistence-under-pressure gap. 035, 039, 044, 098, L001, L002: clean passes, no new gaps.
 
 ── SEQUENCING TRACK v3 (adopted 2026-08-17) ────────────────────────────
 Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersedes v2's
@@ -24,9 +25,10 @@ Mode            : Case-study-driven JIT theory (Master Guide §0.2) — supersed
 Trigger         : Aug 17 status check — v2 target date (Aug 18) arrived with case
                   studies 0/14 and mocks 0/3 despite theory ~60% done. Real bottleneck
                   was zero case-study reps, not remaining theory.
-In progress     : Pre-TinyURL (Case Study #1) prerequisite batch — 038 ✅ 039 ✅ 040 ✅
-                  041 ✅ 042 ✅ 043 ✅ 044 ✅ 098 ✅ — ALL DONE. Case Study #1
-                  (TinyURL) begins next, learner-driven.
+In progress     : Pre-TinyURL prerequisite batch (038-044, 098) — ALL DONE.
+                  Case Study #1 (TinyURL) — COMPLETE 2026-09-26, full guided
+                  whiteboard session, see CaseStudies/CS001_TinyURL.md.
+                  Next JIT prerequisite batch begins once Case Study #2 is chosen.
 Scope reference : TopicPriority.md's tiers (MUST/SKIM/SKIP) and Schedule.md's content
                   (case-study list, time budgets) remain authoritative — v3 changes
                   ORDERING only, not scope.

@@ -37,6 +37,16 @@ The full question set lives in
 > write-ups and established prep collections as commonly asked; ⚙️ = generated for practice. Neither is a
 > guarantee of what a specific interviewer will ask.
 
+### Case Study #1 — TinyURL / URL Shortener — 12 questions
+
+The full follow-up question list lives in
+[`CaseStudies/CS001_TinyURL.md`](CaseStudies/CS001_TinyURL.md) **§16**, covering: auto-increment vs a
+partitioned DB, the cache-miss redirect flow, why Snowflake's timestamp bits go first, sharding vs
+replication at the cache layer, where rebalanced DynamoDB data actually comes from, 302 vs 301, the
+security concern unique to URL shorteners, stampede detection vs generic high traffic, load-balancer
+HA, Postgres-vs-DynamoDB at today's scale, why a conditional write beats a relational check-then-insert,
+and the CDN-caching tradeoff.
+
 
 ---
 

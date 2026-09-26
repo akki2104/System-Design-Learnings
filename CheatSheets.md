@@ -1601,3 +1601,50 @@ Sharded, decentralized+ZERO coordination, size less critical → ULID
 Reduce (not eliminate) central coordination → range allocation
 ```
 ---
+
+### [CS001] TinyURL / URL Shortener
+```
+ESTIMATION: 100M new URLs/mo → ~3.5M/day → ~40 write/s, ~4K read/s (100:1),
+            ~10GB/mo → ~600GB/5yr storage
+
+API: POST /urls {long_url, alias?, expiry?} → 201 {short_url} / 409 conflict
+     GET /{short_code} → 302 Found, Location header (NOT 301 — analytics +
+     immediate expiry/update visibility > browser/CDN caching efficiency)
+     404 not found (410 Gone = more precise for expired)
+
+DB: DynamoDB (PK=short_code) over Postgres — pure KV lookup, no joins ever
+    needed, eventual consistency = cosmetic staleness (self-resolving),
+    native horizontal write-scaling. Postgres WOULD work at today's scale —
+    chose DynamoDB because it matches the access shape, not because forced to.
+
+ID GENERATION: Snowflake [timestamp|machine ID|sequence], base62-encoded
+  (URL-safe, no escaping unlike base64's +/=). Auto-increment REJECTED —
+  contradicts the decentralized DB already chosen. UUID v4 REJECTED — not sortable.
+  Custom alias uniqueness: DynamoDB conditional write
+  (ConditionExpression: attribute_not_exists) — atomic check+write, ZERO race
+  window (stronger than relational SELECT-then-INSERT).
+
+ARCHITECTURE: Client → CDN (short TTL, viral-spike protection ONLY) → LB →
+  App servers → Redis (cache-aside, READ path only — writes skip cache
+  entirely since URL mappings are immutable, no invalidation race exists) →
+  DynamoDB (sharded by short_code + per-shard replicas)
+
+FAILURE HANDLING:
+  Redis node dies → need SHARDING (capacity) AND REPLICATION (availability) —
+    sharding alone does NOT survive a node dying
+  DynamoDB shard unavailable → data comes from a SURVIVING REPLICA, never the
+    dead node itself; needs replication factor >1; grace period before
+    triggering rebalance (avoid overreacting to a transient blip)
+  LB dies → managed cloud LB (self-healing) or DNS failover / floating VIP+VRRP
+
+MONITORING: p99 latency, error rate, traffic vs capacity, saturation, CACHE
+  HIT RATIO (leading indicator), per-link clicks (viral detection), per-KEY
+  miss concentration (precise stampede signal — ≠ aggregate traffic)
+
+SECURITY (the TinyURL-specific one): malicious URL/phishing screening before
+  shortening + periodic re-scan — a shortener hides the destination, a
+  natural phishing vector. Also: open redirect is this system's whole
+  purpose, named explicitly. Snowflake IDs are sortable but NOT
+  cryptographically unguessable (caveat if unlisted-link privacy mattered).
+```
+---
