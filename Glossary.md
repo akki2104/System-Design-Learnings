@@ -265,5 +265,10 @@ Kept in alphabetical order.
 | ULID | A 128-bit UUID-compatible, timestamp-first sortable ID (48-bit timestamp + 80-bit randomness) needing zero coordination of any kind, unlike Snowflake's one-time worker-ID assignment | [098](Topics/098_Unique_ID_Generation.md) |
 | UUID (v4) | A 128-bit ID with 122 bits of true randomness; collision probability is negligible (birthday-paradox math over 2^122) but the ID is neither sortable nor compact | [098](Topics/098_Unique_ID_Generation.md) |
 | Range/Block ID Allocation | A central service hands out entire ID ranges (not single IDs) to each machine, reducing coordination frequency by orders of magnitude while keeping strict global ordering | [098](Topics/098_Unique_ID_Generation.md) |
+| Fixed Window Counter | Rate-limiting algorithm that counts requests per fixed time window; simple, but allows ~2x the limit through in a burst straddling the window boundary | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
+| Sliding Window Log | Rate-limiting algorithm that logs every request's timestamp in the trailing window; perfectly accurate, but memory-expensive at scale | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
+| Sliding Window Counter | Rate-limiting algorithm that weights the previous window's count by its overlap with the current sliding window; good accuracy, low memory — the common practical choice | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
+| Token Bucket | Rate-limiting algorithm: a bucket refills tokens at a fixed rate; each request spends one — allows bursts up to bucket capacity while enforcing a steady-state average rate | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
+| Leaky Bucket | Rate-limiting algorithm: requests queue and are processed at a fixed constant rate; smooths all traffic to that rate, allowing no bursts through | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
 
 <!-- Rows added after each lesson -->

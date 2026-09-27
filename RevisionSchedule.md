@@ -479,3 +479,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-10-21 | 098 | Unique ID Generation (Snowflake, ULID) | +30 days | Pending |
 | 2026-11-20 | 098 | Unique ID Generation (Snowflake, ULID) | +60 days | Pending |
 | 2026-12-20 | 098 | Unique ID Generation (Snowflake, ULID) | +90 days | Pending |
+
+| 2026-09-28 | 071 | Rate Limiting & Throttling | +1 day | Pending |
+| 2026-09-30 | 071 | Rate Limiting & Throttling | +3 days | Pending |
+| 2026-10-04 | 071 | Rate Limiting & Throttling | +7 days | Pending |
+| 2026-10-12 | 071 | Rate Limiting & Throttling | +15 days | Pending |
+| 2026-10-27 | 071 | Rate Limiting & Throttling | +30 days | Pending |
+| 2026-11-26 | 071 | Rate Limiting & Throttling | +60 days | Pending |
+| 2026-12-26 | 071 | Rate Limiting & Throttling | +90 days | Pending |

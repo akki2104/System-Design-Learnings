@@ -1648,3 +1648,43 @@ SECURITY (the TinyURL-specific one): malicious URL/phishing screening before
   cryptographically unguessable (caveat if unlisted-link privacy mattered).
 ```
 ---
+
+### [071] Rate Limiting & Throttling
+```
+WHY: every system has a capacity ceiling (003) — rate limiting enforces
+     "no single client exceeds their fair share."
+ENFORCE AT: client (advisory only, don't trust) → API Gateway (standard,
+     centralizes once) → per-service (granular, needs shared state)
+
+MULTI-SERVER TRAP: per-server in-memory counter → effective limit =
+  N_servers × limit (10 servers × 100/min = 1000/min!) — MUST share
+  state (Redis) across servers for the limit to mean anything.
+
+5 ALGORITHMS
+─────────────────────────────────────────────────
+FIXED WINDOW      : count/window, reset at boundary. simple.
+                    FLAW: ~2x limit can pass in a burst AT the boundary
+SLIDING WINDOW LOG: log every timestamp, count in trailing window.
+                    Accurate, no boundary flaw. Memory-expensive.
+SLIDING WINDOW CTR: weight prev window's count by overlap % + current
+                    window count. Good accuracy, LOW memory. Common.
+TOKEN BUCKET      : bucket refills at rate R, each req spends 1 token.
+                    ALLOWS BURSTS up to capacity, avg rate = R long-term.
+LEAKY BUCKET      : requests queue, processed (leak) at fixed rate R.
+                    NO BURSTS EVER — smooths everything to constant R.
+
+TOKEN vs LEAKY (classic interview Q): burst-TOLERANT vs burst-ELIMINATING
+  — not "better/worse", different goals (legit-burst-friendly UX vs
+  protecting a downstream that truly can't handle ANY burst)
+
+ATOMICITY: check-then-increment MUST be atomic (026's race pattern) —
+  Redis INCR (single op) or Lua script for compound token-bucket logic.
+  Non-atomic = 2 concurrent reqs both read count=9(limit10), both pass.
+
+429 RESPONSE: Retry-After, X-RateLimit-Limit/Remaining/Reset headers
+  → lets well-behaved clients back off correctly (ties to 069)
+
+GRANULARITY: per-user/API-key (precise, needs auth) > per-IP (weak,
+  NAT-shared or defeated by IP rotation) > global
+```
+---
