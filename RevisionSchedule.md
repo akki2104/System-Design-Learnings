@@ -8,8 +8,10 @@ Intervals: +1, +3, +7, +15, +30, +60, +90 days from completion date.
 ## ⏸️ NOT SCHEDULED — R01 Redis (Consolidated Module)
 
 **Added 2026-08-31.** `Topics/R01_Redis_Consolidated_Module.md` and `Revision/Revision_R01_Redis.md`
-exist and are cross-referenced, but the module has **not been taught**. Spaced repetition is keyed to
-a *completion* date, so **no R01 rows are added to the queue below.**
+exist and are cross-referenced. **Update 2026-10-06: PARTIALLY taught** (core concepts, data structures,
+Redis-as-cache, Replication/Sentinel/Cluster, rate limiting + locks, persistence/atomicity); §4.8(c)-(l)
+and §5-§24 deferred just-in-time. Spaced repetition is keyed to a *completion* date, so **no R01 rows
+are added to the queue below** until the module is actually completed.
 
 **When R01 is actually completed**, add the standard seven rows (+1/+3/+7/+15/+30/+60/+90 from the real
 completion date, verified against the system date on that day — see the 2026-07-20 date-correction note

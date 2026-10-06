@@ -4,7 +4,7 @@
 **Consolidates:** Topics 017, 028, 031, 032, 033, 034, 035, 036, 037, 039, 040, 041 + previews 042, 056, 059, 060, 061, 070, 071, 082, 089, 090, 092, 098, 099
 **Tier:** 🔴 MUST
 **Time budget:** ~4.5 h lesson + ~1.0 h revision ≈ **1–1.5 days**
-**Status:** 📦 **CONSOLIDATED — READY TO LEARN** (not taught, not completed, not mastered)
+**Status:** 🟡 **PARTIALLY TAUGHT (2026-09-27 → 2026-10-06)** — NOT completed, NOT mastered. Taught live: §1-3, §4.1-4.4, §4.5, §4.6, §4.7, §4.8(a) rate limiting + (b) locks, §4.9. **Deferred, to be taught just-in-time before the case study that needs each:** §4.8(c)-(l) (sessions, counters, leaderboards, Pub/Sub, Streams, queues, idempotency, coordination, presence, geospatial) and §5-§24 (diagrams, tradeoffs vs alternatives, failure modes, monitoring, security, interview Q&A).
 **Created:** 2026-08-31
 **Confidence:** — (not yet assessed)
 

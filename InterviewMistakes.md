@@ -15,6 +15,15 @@ Format:
 
 ---
 
+### 2026-09-30 — [R01 Redis: maxmemory-policy `noeviction`]
+- Mistake: Said that under `noeviction` with memory full, Redis "throws errors that the value isn't available in cache" — i.e. described it as a read/miss failure.
+- Why it's wrong: Reads and misses behave normally. The failure is on WRITES: once `maxmemory` is hit and the policy is `noeviction` (the actual factory default), Redis rejects new write commands with an OOM error instead of evicting an old key.
+- Correct understanding: `noeviction` = cache goes effectively read-only on existing data and actively errors on new writes (including cache-aside's populate-on-miss), exactly when load is highest. `allkeys-lru` is the usual fix.
+- How to remember: "noeviction fails the WRITE, not the READ."
+- Recurs? 1
+
+---
+
 ### 2026-08-22 — [Topic 041: Partitioning & Sharding]
 - Mistake: Asked why a customer_id-sharded orders table needs BOTH sharding and per-shard replication, credited the per-shard replication only with sharing read load — omitted its more fundamental role.
 - Why it's wrong: Read-scaling is a real secondary benefit of per-shard replication, but the primary reason is availability/fault-tolerance — without replication, each shard is a brand-new single point of failure for its own slice of data; that shard's one machine dying makes that data unavailable (or lost) with no fallback.
