@@ -1688,3 +1688,32 @@ GRANULARITY: per-user/API-key (precise, needs auth) > per-IP (weak,
   NAT-shared or defeated by IP rotation) > global
 ```
 ---
+
+### [CS003] Rate Limiter (compressed-track Case Study #2)
+```
+SCALE: 100M DAU × 50 calls = 5×10^9/day → ~58K avg, ~250K peak checks/s
+STATE: 100-200 B/active client → 10-20 GB (TTL'd — only ACTIVE clients)
+QPS FORCES CLUSTER, NOT MEMORY: 250K vs ~50-100K/node; each check is a WRITE
+  → 8-10 primary shards; replicas = availability only, never read counters from them
+
+DESIGN: gateway middleware (no extra hop) → ONE EVALSHA call → Redis Cluster
+  key = rl:{rule}:{clientId}   Hash{tokens,last_refill}   TTL = capacity÷rate (LOSSLESS:
+  expired = full bucket). /login keyed by IP (user not authenticated yet).
+  Script runs INSIDE Redis (read→decide→write must be atomic — else Topic 026 race)
+  ORDER: 1 now=Redis TIME  2 read/init  3 REFILL tokens=min(cap, tokens+Δt×rate)
+         4 if tokens>=1 spend else reject, retry_after=(1-tokens)/rate  5 write+TTL
+  ONE clock (shard's), not each gateway's. Route: CRC16(whole key) mod 16384.
+
+FAILURE: Redis timeout SHORT (ms) → general endpoints FAIL OPEN; /login FAIL CLOSED
+  w/ local in-memory fallback. Failover takes seconds; state after failover is
+  over-permissive but BOUNDED (≤1 bucket), ONE-SIDED, SELF-CORRECTING.
+HOT KEY (1 key=1 slot=1 shard=1 thread; more shards DON'T help):
+  local token leasing > key splitting > dedicated shard
+10x: gateway scales trivially; Redis is the bottleneck → ~80-100 shards + local
+  "blocked-until" cache so blocked clients never hit Redis.
+SECURITY: X-Forwarded-For spoof (trust only your LB's hop), botnet many-IP
+  (per-account/global limits, CAPTCHA, WAF), NAT collateral, leaked key, limiter-as-DoS.
+MONITOR: baseline (latency p99, traffic, errors, saturation) + FALLBACK RATE + per-rule 429 spike
+TRAPS: "separate service = SPOF" is WRONG (replicate it); real reason = extra hop + ops burden.
+```
+---

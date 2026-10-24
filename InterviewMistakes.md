@@ -15,6 +15,24 @@ Format:
 
 ---
 
+### 2026-10-24 — [Case Study #2: Rate Limiter — Monitoring baseline signals]
+- Mistake: Asked for monitoring signals, led with traffic counts (requests, allowed, blocked), hot shards and misbehaving clients — missing latency, error rate and saturation entirely.
+- Why it's wrong: Specific signals catch specific failures only. The limiter sits on every request's critical path, so its own latency (p99), its Redis timeout/error rate and shard saturation are the first things that break — and the fallback rate (how often fail-open/closed fires) is the key signal that the limiter has stopped limiting.
+- Correct understanding: Always cover the baseline four (latency, traffic, errors, saturation) FIRST, then add the system-specific signals (fallback rate, per-rule 429 spike, hot shards, failover/lag events).
+- How to remember: "Four basics first, then the specials."
+- Recurs? 2 — **PERSISTENT.** Same gap as Case Study #1 (jumped straight to per-link click counts). Needs a 60-second drill before Case Study #3.
+
+---
+
+### 2026-10-24 — [Case Study #2: Rate Limiter — Architecture & reasoning slips]
+- Mistake: (1) Drew the Lua token-bucket logic inside the gateway as read → compute → write, re-creating the race the script exists to prevent (the script runs inside Redis). (2) Logic bugs: check before refill; `> 1` instead of `>= 1`; `tokens += min(cap, Δt×rate)` can overflow capacity. (3) Said memory AND QPS force Redis Cluster — only QPS does (10–20 GB fits on one node). (4) Rejected a separate limiter service as a "single point of failure" — a service can be replicated; the real reasons are the extra hop and the operational burden. (5) Keyed `/login` by user ID/API key though the caller isn't authenticated yet (IP is the key). (6) Credited per-shard replication only partly again when asked about failover; did not address the failover window.
+- Why it's wrong: Each is a plausible answer that contradicts a mechanism or decision already established in the same session — the same "check against what I decided two steps ago" pattern logged in Case Study #1.
+- Correct understanding: Atomic logic runs where the data lives (one Lua call to Redis). Refill, then check with `>= 1`, with the cap wrapping the total. Name WHICH number drives a sizing decision. Justify placement by hop + operational cost. Key unauthenticated endpoints by IP.
+- How to remember: "Script runs in Redis. Refill, then check. Which number forced it?"
+- Recurs? 2 — the cross-checking pattern from CS1 persisted (self-corrected only after the mentor named each gap).
+
+---
+
 ### 2026-09-30 — [R01 Redis: maxmemory-policy `noeviction`]
 - Mistake: Said that under `noeviction` with memory full, Redis "throws errors that the value isn't available in cache" — i.e. described it as a read/miss failure.
 - Why it's wrong: Reads and misses behave normally. The failure is on WRITES: once `maxmemory` is hit and the policy is `noeviction` (the actual factory default), Redis rejects new write commands with an OOM error instead of evicting an old key.
