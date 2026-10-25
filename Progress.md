@@ -4,8 +4,9 @@
 ```
 Last Updated    : 2026-10-24
 Current Module  : Case Study #2 (Rate Limiter) COMPLETE → next case study's JIT prerequisite batch
-Current Topic   : Next: Case Study order #3 = CS005 Unique ID Generator (no new prerequisites —
-                  Topic 098 done). Full re-ordered 19-case list (by difficulty) is in TopicPriority.md.
+Current Topic   : Next: Case Study order #3 = CS011 Twitter / News Feed — first identify its missing
+                  prerequisites (fanout; R01 §4.8 sessions/queues/pub-sub/Streams). The re-ordered
+                  19-case list (by interview frequency) is in TopicPriority.md.
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 46 HLD (001-044, 071, 098) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 THEORY COMPLETE
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
