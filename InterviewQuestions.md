@@ -101,4 +101,4 @@ and the CDN-caching tradeoff.
   - Follow-ups: fail open vs closed? shard dies at peak? one heavy client on one key? how do you rate limit /login before auth? how does IP limiting get defeated?
   - Hidden traps: logic drawn in the gateway (re-creates the race); "memory forces Cluster" (QPS does); keying /login by user ID; "separate service = SPOF"; monitoring without baseline signals
   - Expected discussion: token bucket in a Redis Lua script; key rl:{rule}:{id}; lossless TTL; single Redis clock; Cluster sized by QPS; per-endpoint fail-open/closed with local fallback; hot-key fixes
-  - Evaluation criteria: atomicity reasoning, correct sizing driver, committed failure policy, operational signals (see CaseStudies/CS002_Rate_Limiter.md §17)
+  - Evaluation criteria: atomicity reasoning, correct sizing driver, committed failure policy, operational signals (see CaseStudies/CS003_Rate_Limiter.md §17)

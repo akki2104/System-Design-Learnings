@@ -1,6 +1,6 @@
 # Case Study #2 (compressed track): Rate Limiter
 
-**Numbering:** file number = position on the compressed 14-case list (Rate Limiter is #2). The old 54-row table in Progress.md still labels it `CS003` (Pastebin was `CS002` there); that table predates the compressed plan.
+**Roadmap ID:** CS003 (the 2nd case study on the compressed 14-case list; file numbering follows the Progress.md table)
 **Tier:** 🔴 (Tier 1 — extremely common; pairs with Topic 071)
 **Completed:** 2026-10-24
 **Confidence:** 3/5
@@ -288,4 +288,4 @@ Learner covered: traffic, allowed/blocked counts, hot shards, misbehaving client
 ---
 
 ## 18. Cheat Sheet
-See the `CS002 Rate Limiter` entry appended to `CheatSheets.md`.
+See the `CS003 Rate Limiter` entry appended to `CheatSheets.md`.
