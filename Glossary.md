@@ -271,7 +271,7 @@ Kept in alphabetical order.
 | Token Bucket | Rate-limiting algorithm: a bucket refills tokens at a fixed rate; each request spends one — allows bursts up to bucket capacity while enforcing a steady-state average rate | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
 | Leaky Bucket | Rate-limiting algorithm: requests queue and are processed at a fixed constant rate; smooths all traffic to that rate, allowing no bursts through | [071](Topics/071_Rate_Limiting_and_Throttling.md) |
 
-| Local Token Leasing | Each gateway takes a block of tokens from Redis for a hot key and spends them locally, cutting Redis calls ~100x at the cost of slightly looser enforcement | [CS003](CaseStudies/CS003_Rate_Limiter.md) |
-| Blocked-Until Cache | A gateway-local record that a client is blocked until time T, so repeat requests from an abusive client are rejected without touching Redis | [CS003](CaseStudies/CS003_Rate_Limiter.md) |
+| Local Token Leasing | Each gateway takes a block of tokens from Redis for a hot key and spends them locally, cutting Redis calls ~100x at the cost of slightly looser enforcement | [CS002](CaseStudies/CS002_Rate_Limiter.md) |
+| Blocked-Until Cache | A gateway-local record that a client is blocked until time T, so repeat requests from an abusive client are rejected without touching Redis | [CS002](CaseStudies/CS002_Rate_Limiter.md) |
 
 <!-- Rows added after each lesson -->

@@ -1689,7 +1689,7 @@ GRANULARITY: per-user/API-key (precise, needs auth) > per-IP (weak,
 ```
 ---
 
-### [CS003] Rate Limiter (compressed-track Case Study #2)
+### [CS002] Rate Limiter (compressed-track Case Study #2)
 ```
 SCALE: 100M DAU × 50 calls = 5×10^9/day → ~58K avg, ~250K peak checks/s
 STATE: 100-200 B/active client → 10-20 GB (TTL'd — only ACTIVE clients)
