@@ -4,8 +4,8 @@
 ```
 Last Updated    : 2026-10-24
 Current Module  : Case Study #2 (Rate Limiter) COMPLETE → next case study's JIT prerequisite batch
-Current Topic   : Next: Case Study #3 (Twitter / News Feed) per TopicPriority.md order — identify its
-                  missing prerequisites first (likely R01 §4.8 sessions/queues/pub-sub/Streams, fanout).
+Current Topic   : Next: Case Study order #3 = CS005 Unique ID Generator (no new prerequisites —
+                  Topic 098 done). Full re-ordered 19-case list (by difficulty) is in TopicPriority.md.
 Topics Mastered : 0 / 114 (HLD)   0 / 19 (LLD)   0 / 54 (Case Studies)
 Topics Completed: 46 HLD (001-044, 071, 098) — MODULES 1, 2 & 3 COMPLETE, MODULE 4 THEORY COMPLETE
                   + 2 LLD (L001, L002 — LLD Session 1/6, see tracker below)
@@ -49,7 +49,7 @@ Target Date     : 2026-08-18  (revised from 2026-08-09; +9 days) — effectively
                   hours-of-work-remaining rather than a calendar date until a real
                   interview-driven deadline is named.
 Remaining work  : 35 🔴 must-topics · 26 🟡 skims · 26 ⚫ skipped
-                  + 14 case studies + 6 LLD sessions + 3 mocks  ≈ 51 hrs (original estimate)
+                  + 19 case studies (2 done; list revised 2026-10-25) + 6 LLD sessions + 3 mocks  ≈ 51 hrs (original estimate) + ~4.75 h for the 5 added case studies
 Priority source : TopicPriority.md — mentor MUST show the Topic Briefing Card
                   (Master Guide §0.1) before every topic. Learner decides
                   full / quick / skip; deviations logged with schedule impact.

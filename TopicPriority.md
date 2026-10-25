@@ -33,7 +33,7 @@ Target date        : 2026-08-18  (revised from 2026-08-09 on 2026-07-25)
 | 🔴 Must theory topics | 35 × 40 min | ~23.5 |
 | 🟡 Skim batches | 26 × 8 min | ~3.5 |
 | LLD essentials | 6 × 45 min | ~4.5 |
-| Case studies | 14 × 50 min | ~11.5 |
+| Case studies | 19 (2 done) × ~52 min | ~16.5 (was ~11.5) |
 | Mock interviews | 3 × 75 min | ~3.75 |
 | Revision (weekend cadence) | — | ~4.0 |
 | **TOTAL REMAINING** | | **~51 hrs ≈ 23 days** |
@@ -197,28 +197,40 @@ in the briefing card before the topic starts.
 
 ---
 
-## Case Studies — 14 *(the highest-ROI block in the entire plan)*
+## Case Studies — 19 *(the highest-ROI block in the entire plan)*
 
-Ordered by interview frequency. Do them in this order; if time runs short, the tail is what gets cut.
+> **Revised 2026-10-25 at the learner's request:** list expanded from 14 to 19 (added Proximity,
+> Dropbox/Drive, Google Docs, Google Maps, S3-style Object Storage) and **re-ordered by difficulty**
+> (easiest → hardest) instead of interview frequency. IDs below are the ORIGINAL Progress.md IDs
+> and are the file names (e.g. `CaseStudies/CS003_Rate_Limiter.md`) — the "Order" column is the
+> position in this plan. Time figures for the 5 added items are estimates.
 
-| # | Case Study | Tier | Time | Why it's on the list |
-|---|---|---|---|---|
-| 1 | TinyURL / URL Shortener | 🔴 | 45m | The universal warm-up question |
-| 2 | Rate Limiter | 🔴 | 45m | Extremely common; pairs with Topic 071 |
-| 3 | Twitter / News Feed | 🔴 | 60m | The canonical fanout problem |
-| 4 | WhatsApp / Chat | 🔴 | 60m | Pairs with WebSockets (015) |
-| 5 | Notification System | 🔴 | 45m | Queue + fanout + third-party integration |
-| 6 | Unique ID Generator | 🔴 | 40m | Short; pairs with Topic 098 |
-| 7 | Key-Value Store / Distributed Cache | 🔴 | 50m | Consistent hashing + quorums in practice |
-| 8 | YouTube / Video Streaming | 🔴 | 60m | CDN + blob storage + encoding pipeline |
-| 9 | Uber / Ride Matching | 🔴 | 60m | Geospatial in practice (Topic 092) |
-| 10 | Payment Gateway (Stripe-style) | 🔴 | 60m | Idempotency + consistency under money constraints |
-| 11 | Typeahead / Autocomplete | 🔴 | 45m | Tries + caching + ranking |
-| 12 | Web Crawler | 🟡 | 45m | Good for queue/dedup reasoning |
-| 13 | Leaderboard / Top-K | 🟡 | 40m | Redis sorted sets |
-| 14 | BookMyShow / Ticketing | 🟡 | 55m | Locking + inventory under contention |
+| Order | ID | Case Study | Difficulty | Time | Status | Why it's on the list |
+|---|---|---|---|---|---|---|
+| 1 | CS001 | TinyURL / URL Shortener | Easy | 45m | ✅ done | The universal warm-up |
+| 2 | CS003 | Rate Limiter | Easy–Med | 45m | ✅ done | Pairs with Topic 071 |
+| 3 | CS005 | Unique ID Generator | Easy | 40m | | Short; pairs with Topic 098 (already taught) |
+| 4 | CS010 | Leaderboard / Top-K | Easy–Med | 40m | | Redis sorted sets *(moved up from the old tail)* |
+| 5 | CS007 | Notification System | Medium | 45m | | Queue + fanout + third-party integration |
+| 6 | CS006 | Web Crawler | Medium | 45m | | Queue/dedup reasoning *(moved up from the old tail)* |
+| 7 | CS020 | Typeahead / Autocomplete | Medium | 45m | | Tries + caching + ranking |
+| 8 | CS016 | YouTube / Video Streaming | Medium | 60m | | CDN + blob storage + encoding pipeline |
+| 9 | CS011 | Twitter / News Feed | Med–Hard | 60m | | The canonical fanout problem |
+| 10 | CS014 | WhatsApp / Chat | Med–Hard | 60m | | Pairs with WebSockets (015) |
+| 11 | CS023 | BookMyShow / Ticketing | Med–Hard | 55m | | Locking + inventory under contention *(moved up from the old tail)* |
+| 12 | CS009 | Nearby Friends / Proximity | Med–Hard | 50m | | **Added.** Geospatial indexing (geohash/quadtree) + moving-object writes |
+| 13 | CS004 | Key-Value Store / Distributed Cache | Hard | 55m | | Consistent hashing + replication + quorums in practice |
+| 14 | CS018 | Dropbox / Google Drive | Hard | 55m | | **Added.** Chunking, dedup, sync, metadata vs blob |
+| 15 | CS044 | S3-style Object Storage | Hard | 55m | | **Added.** Durability (replication vs erasure coding), metadata/data split |
+| 16 | CS026 | Uber / Ride Matching | Hard | 60m | | Geospatial + real-time matching (Topic 092) |
+| 17 | CS029 | Payment Gateway (Stripe-style) | Hard | 60m | | Idempotency + consistency under money constraints |
+| 18 | CS019 | Google Docs (Collaborative Editing) | Very Hard | 60m | | **Added.** OT/CRDT conflict resolution (Topic 057 is ⚫ SKIP — would need teaching) |
+| 19 | CS028 | Google Maps | Very Hard | 65m | | **Added.** Graph routing, map tiles, ETA, large-scale geo data |
 
-**Cut first if behind:** #12, #13, #14 (the 🟡 tail). **Never cut:** #1–#6.
+**Ordering caveat:** this order is by difficulty, not frequency. Several of the most frequently asked
+(Twitter, WhatsApp, Payment Gateway, Uber) now sit in the middle/late. If time runs short, cut from
+the **rarely-asked tail** — Google Maps, Google Docs, S3, Dropbox — not simply from the end.
+Mocks stay anchored by count: Mock 1 after case study #6 of this order, Mock 2 after #11, Mock 3 final week.
 
 ---
 
@@ -274,4 +286,4 @@ rather than mysterious.
 
 | Date | Topic | Recommended | Chosen | Time cost | Cumulative slip |
 |------|-------|-------------|--------|-----------|-----------------|
-| — | — | — | — | — | 0.0 days |
+| 2026-10-25 | Case-study list | 14 cases ordered by frequency | 19 cases (+Proximity, Dropbox/Drive, Google Docs, Google Maps, S3) ordered by difficulty | ≈ +4.75 h (5 added × ~57 min est.) ≈ +2 days at 2.25 h/day | Tracked in hours under Track v3: ~+4.75 h |
