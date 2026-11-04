@@ -489,3 +489,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-10-27 | 071 | Rate Limiting & Throttling | +30 days | Pending |
 | 2026-11-26 | 071 | Rate Limiting & Throttling | +60 days | Pending |
 | 2026-12-26 | 071 | Rate Limiting & Throttling | +90 days | Pending |
+
+| 2026-11-05 | 058 | Why Asynchronous Processing | +1 day | Pending |
+| 2026-11-07 | 058 | Why Asynchronous Processing | +3 days | Pending |
+| 2026-11-11 | 058 | Why Asynchronous Processing | +7 days | Pending |
+| 2026-11-19 | 058 | Why Asynchronous Processing | +15 days | Pending |
+| 2026-12-04 | 058 | Why Asynchronous Processing | +30 days | Pending |
+| 2027-01-03 | 058 | Why Asynchronous Processing | +60 days | Pending |
+| 2027-02-02 | 058 | Why Asynchronous Processing | +90 days | Pending |

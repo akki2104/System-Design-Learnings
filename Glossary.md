@@ -274,4 +274,8 @@ Kept in alphabetical order.
 | Local Token Leasing | Each gateway takes a block of tokens from Redis for a hot key and spends them locally, cutting Redis calls ~100x at the cost of slightly looser enforcement | [CS003](CaseStudies/CS003_Rate_Limiter.md) |
 | Blocked-Until Cache | A gateway-local record that a client is blocked until time T, so repeat requests from an abusive client are rejected without touching Redis | [CS003](CaseStudies/CS003_Rate_Limiter.md) |
 
+| Asynchronous Processing | Handing work off and responding immediately (often 202 Accepted) so a worker finishes it later, instead of making the caller wait | [058](Topics/058_Why_Asynchronous_Processing.md) |
+| Load Leveling | Using a queue to absorb a burst of work so it is processed at the workers' steady pace | [058](Topics/058_Why_Asynchronous_Processing.md) |
+| Consumer Lag / Backlog | Work waiting in a queue because producers outpace consumers; delay is roughly backlog divided by processing rate | [058](Topics/058_Why_Asynchronous_Processing.md) |
+
 <!-- Rows added after each lesson -->

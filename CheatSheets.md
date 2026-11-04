@@ -1717,3 +1717,20 @@ MONITOR: baseline (latency p99, traffic, errors, saturation) + FALLBACK RATE + p
 TRAPS: "separate service = SPOF" is WRONG (replicate it); real reason = extra hop + ops burden.
 ```
 ---
+
+### [058] Why Asynchronous Processing
+```
+SYNC = caller waits for the full result.  ASYNC = hand off, respond now (202 Accepted).
+THE TEST: does the caller NEED this result to proceed?
+  yes (charge card, stock check) -> SYNC   |   side effect (email, fanout, analytics) -> ASYNC
+
+BUYS : low latency, time decoupling, load leveling, failure isolation+retries, independent scaling
+COSTS: eventual consistency (040), more moving parts, delivery uncertainty (061),
+       no instant result, UNBOUNDED BACKLOG if consumers are slower
+
+QUEUE MATH: backlog = (arrival - service) x time ;  delay = backlog / service rate
+  500/s in, 400/s out, 5 min -> 100 x 300 = 30,000 backlog -> 30,000 / 400 = 75 s wait
+A queue buffers TEMPORARY spikes only - a permanent gap needs more workers.
+Async replication (039) = the same tradeoff: fast ack, small loss risk, staleness.
+```
+---
