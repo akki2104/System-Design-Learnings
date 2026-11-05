@@ -497,3 +497,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-12-04 | 058 | Why Asynchronous Processing | +30 days | Pending |
 | 2027-01-03 | 058 | Why Asynchronous Processing | +60 days | Pending |
 | 2027-02-02 | 058 | Why Asynchronous Processing | +90 days | Pending |
+
+| 2026-11-06 | 056 | Idempotency & Exactly-Once Semantics | +1 day | Pending |
+| 2026-11-08 | 056 | Idempotency & Exactly-Once Semantics | +3 days | Pending |
+| 2026-11-12 | 056 | Idempotency & Exactly-Once Semantics | +7 days | Pending |
+| 2026-11-20 | 056 | Idempotency & Exactly-Once Semantics | +15 days | Pending |
+| 2026-12-05 | 056 | Idempotency & Exactly-Once Semantics | +30 days | Pending |
+| 2027-01-04 | 056 | Idempotency & Exactly-Once Semantics | +60 days | Pending |
+| 2027-02-03 | 056 | Idempotency & Exactly-Once Semantics | +90 days | Pending |

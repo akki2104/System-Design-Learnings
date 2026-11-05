@@ -1734,3 +1734,27 @@ A queue buffers TEMPORARY spikes only - a permanent gap needs more workers.
 Async replication (039) = the same tradeoff: fast ack, small loss risk, staleness.
 ```
 ---
+
+### [056] Idempotency & Exactly-Once Semantics
+```
+LOST-RESPONSE PROBLEM: client can't tell "request lost" from "response lost"
+  -> retry (risk double charge) or not (risk no charge) -> make retries SAFE.
+
+IDEMPOTENT = N executions leave the SAME FINAL STATE (state, not response body)
+  yes: balance=100, DELETE, PUT, ZADD(set member)   no: balance+=10, POST create, LPUSH, send email
+  prefer naturally idempotent ops (ZADD over LPUSH)
+
+IDEMPOTENCY KEY (POST needs it)
+  client: ONE key per intent (UUID), REUSED on every retry (new key per retry = double charge)
+  server: ATOMIC claim (DB unique constraint / Redis SET NX) -> do work -> STORE response;
+          duplicate -> return stored response. Handle IN-PROGRESS (409), bind key to request
+          hash (same key, different body = reject), expire after retention window (~24h).
+
+CRASH WINDOW: charge then (separately) record -> crash between -> retry charges again
+  FIX: effect + idempotency record in ONE DB transaction. External call? FORWARD the key.
+
+EXACTLY-ONCE DELIVERY is mostly a myth over a network.
+  at-least-once delivery + idempotent processing = EFFECTIVELY-ONCE
+  (when a system says exactly-once, say WHAT and WHERE - e.g. Kafka's own transactions)
+```
+---

@@ -278,4 +278,9 @@ Kept in alphabetical order.
 | Load Leveling | Using a queue to absorb a burst of work so it is processed at the workers' steady pace | [058](Topics/058_Why_Asynchronous_Processing.md) |
 | Consumer Lag / Backlog | Work waiting in a queue because producers outpace consumers; delay is roughly backlog divided by processing rate | [058](Topics/058_Why_Asynchronous_Processing.md) |
 
+| Idempotent Operation | An operation whose N-fold execution leaves the same final state as one execution (state, not the response body); GET/PUT/DELETE are, POST is not | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
+| Idempotency Key | A unique key generated once per client intent and reused on every retry, letting the server claim it atomically, do the work once, and return the stored result on duplicates | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
+| At-Most-Once / At-Least-Once / Exactly-Once | Delivery outcomes: never retry (may lose), retry until acknowledged (may duplicate), exactly one processing (not achievable over a network; see Effectively-Once) | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
+| Effectively-Once | At-least-once delivery combined with idempotent processing (deduplication), giving exactly-once *effects* | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
+
 <!-- Rows added after each lesson -->
