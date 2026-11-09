@@ -1758,3 +1758,24 @@ EXACTLY-ONCE DELIVERY is mostly a myth over a network.
   (when a system says exactly-once, say WHAT and WHERE - e.g. Kafka's own transactions)
 ```
 ---
+
+### [059] Message Queues (RabbitMQ model)
+```
+QUEUE = durable buffer between producer and consumer; BROKER runs it (RabbitMQ, SQS, ActiveMQ)
+WORK QUEUE: many COMPETING CONSUMERS on one queue, each msg -> ONE worker (scale by adding workers)
+PUB/SUB   : EXCHANGE copies a msg into several queues (one per service); each queue's workers share load
+
+ACK (the key mechanism): broker keeps msg "in flight" until ACK; no ack (crash) -> REDELIVERED
+  ack AFTER processing = AT-LEAST-ONCE (dupes possible -> consumers must be IDEMPOTENT, 056)
+  ack BEFORE processing = AT-MOST-ONCE (crash loses the work)      SQS: visibility timeout
+DURABILITY CHAIN: publisher confirm -> durable queue + persistent msgs (+ replication) -> consumer ack
+
+FAILURE: retries with delay; POISON msg -> DEAD-LETTER QUEUE after N tries; ALERT on DLQ depth; msg TTL
+ORDER  : not guaranteed with parallel consumers/retries -> same consumer per key / partitions (Kafka, 060)
+CAPACITY: workers = arrival rate / per-worker rate (+headroom). 2000/s, 100/worker -> 20 min (~26);
+          only 15 -> backlog +500/s. Monitor queue DEPTH and message AGE.
+
+QUEUE vs KAFKA vs REDIS LIST: queue deletes on ack, no replay | Kafka retains a log, replay |
+  Redis List pop+crash = LOST (no ack)
+```
+---

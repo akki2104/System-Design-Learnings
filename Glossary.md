@@ -283,4 +283,12 @@ Kept in alphabetical order.
 | At-Most-Once / At-Least-Once / Exactly-Once | Delivery outcomes: never retry (may lose), retry until acknowledged (may duplicate), exactly one processing (not achievable over a network; see Effectively-Once) | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
 | Effectively-Once | At-least-once delivery combined with idempotent processing (deduplication), giving exactly-once *effects* | [056](Topics/056_Idempotency_and_Exactly_Once_Semantics.md) |
 
+| Message Queue / Broker | A durable buffer between producers and consumers, run by a broker (RabbitMQ, SQS); holds work until a consumer is ready | [059](Topics/059_Message_Queues.md) |
+| Competing Consumers | Many workers reading one queue, each message going to exactly one of them; scales work out | [059](Topics/059_Message_Queues.md) |
+| Exchange | RabbitMQ component that routes a published message into one or more queues (enables publish/subscribe) | [059](Topics/059_Message_Queues.md) |
+| Acknowledgement (Ack) | A consumer's confirmation that a message was processed; until then the broker keeps it and redelivers on a crash. Ack after processing = at-least-once | [059](Topics/059_Message_Queues.md) |
+| Dead-Letter Queue (DLQ) | A queue for messages that fail repeatedly (poison messages), so they stop blocking the main queue | [059](Topics/059_Message_Queues.md) |
+| Visibility Timeout | SQS mechanism: a received message is hidden for N seconds and reappears if not deleted, giving redelivery | [059](Topics/059_Message_Queues.md) |
+| Publisher Confirm | The broker telling the producer it has stored the message | [059](Topics/059_Message_Queues.md) |
+
 <!-- Rows added after each lesson -->

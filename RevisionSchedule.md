@@ -505,3 +505,11 @@ NOT all individually marked — this block is the authoritative record for this 
 | 2026-12-05 | 056 | Idempotency & Exactly-Once Semantics | +30 days | Pending |
 | 2027-01-04 | 056 | Idempotency & Exactly-Once Semantics | +60 days | Pending |
 | 2027-02-03 | 056 | Idempotency & Exactly-Once Semantics | +90 days | Pending |
+
+| 2026-11-10 | 059 | Message Queues | +1 day | Pending |
+| 2026-11-12 | 059 | Message Queues | +3 days | Pending |
+| 2026-11-16 | 059 | Message Queues | +7 days | Pending |
+| 2026-11-24 | 059 | Message Queues | +15 days | Pending |
+| 2026-12-09 | 059 | Message Queues | +30 days | Pending |
+| 2027-01-08 | 059 | Message Queues | +60 days | Pending |
+| 2027-02-07 | 059 | Message Queues | +90 days | Pending |

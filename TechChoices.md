@@ -193,5 +193,15 @@ The one test: IS IT RECONSTRUCTIBLE from a durable store beneath it?
 <!-- Topic 008 will add: TCP vs UDP decision box -->
 <!-- Topic 015 will add: WebSockets vs SSE vs polling decision box -->
 <!-- Topic 017 will add: L4 vs L7 load balancer decision box -->
+### Message queue: RabbitMQ vs SQS vs Redis List (Topic 059; Kafka added in 060)
+
+| Option | Pick it when | Do NOT pick it when |
+|---|---|---|
+| **RabbitMQ** | You want rich routing (exchanges, pub/sub + work queues), per-message acks, DLQs; self-managed is acceptable | You need replay of old messages, or very high throughput log-style streaming (use Kafka) |
+| **Amazon SQS** | You want a managed, auto-scaling at-least-once queue with a visibility timeout and little operational work | You need complex routing or strict ordering at high throughput |
+| **Redis List (`LPUSH`/`BRPOP`)** | Losing a job is merely annoying and you want the simplest possible queue | A job lost to a worker crash is a bug — a pop followed by a crash loses the message (no ack); use a broker or Redis Streams |
+
+**Interview-ready "why not" phrase:** *"Not a Redis List here — if the worker dies after popping, the message is gone. I want per-message acknowledgement and redelivery, so a broker queue, with idempotent consumers and a dead-letter queue."*
+
 <!-- Topic 059-060 will add: Kafka vs RabbitMQ vs SQS decision box -->
 <!-- Topic 031 will consolidate the full DB decision framework -->
